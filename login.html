@@ -205,7 +205,7 @@
   </div>
 
   <script>
-    const ACCESS_CODE = "Tree@bamboo";
+    const ACCESS_CODES = ["Tree@bamboo", "Stone@rock", "Water@river", "Fire@flame", "Air@wind", "Earth@soil", "Light@sun", "Darkness@night", "Ocean@wave", "Mountain@peak"];
 
     // If already logged in, skip straight to the portal.
     if (localStorage.getItem('mm_auth') === '1') {
@@ -218,7 +218,7 @@
       const password = document.getElementById('password').value;
       const errorBox = document.getElementById('login-error');
 
-      if (password === ACCESS_CODE && username.length > 0) {
+      if (ACCESS_CODES.includes(password) && username.length > 0) {
         localStorage.setItem('mm_auth', '1');
         localStorage.setItem('mm_user', username);
         window.location.href = './index.html';
