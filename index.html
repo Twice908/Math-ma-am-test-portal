@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('./login.html');
+  }
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Math ma'am Academy — Homi Bhabha Practice Tests</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +47,9 @@
   }
 
   *{box-sizing:border-box;}
+  html{overflow-x:hidden;}
   body{
+    max-width:100%;
     margin:0;
     background:var(--bg);
     font-family:'Inter',system-ui,sans-serif;
@@ -50,6 +57,7 @@
     -webkit-font-smoothing:antialiased;
   }
   h1,h2,h3{font-family:'Poppins',system-ui,sans-serif;}
+  img,svg{max-width:100%;}
 
   .page{max-width:1080px;margin:0 auto;padding:0 24px;}
 
@@ -58,7 +66,7 @@
     background:var(--gradient-hero);
     position:relative;
     overflow:hidden;
-    padding:56px 0 72px;
+    padding:22px 0 26px;
   }
   .hero::before{
     content:"";
@@ -76,13 +84,36 @@
     background:radial-gradient(circle, rgba(101,216,244,0.25) 0%, transparent 70%);
     bottom:-200px; left:-140px;
   }
-  .hero-inner{position:relative;z-index:1;}
-  .logo-wrap{margin-bottom:28px;}
+  .hero-inner{
+    position:relative;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .hero-brand{display:flex;align-items:center;gap:12px;}
   .logo-wrap img{
     height:64px;
     width: auto;
     display:block;
   }
+  @media (max-width:560px){
+    .logo-wrap img{height:44px;}
+  }
+
+  .logout-link{
+    color:#C9C3E6;
+    font-size:12.5px;
+    font-weight:600;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,0.18);
+    padding:6px 14px;
+    border-radius:999px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .logout-link:hover{color:#fff;border-color:rgba(255,255,255,0.4);}
 
   .hero-eyebrow{
     display:inline-block;
@@ -110,6 +141,141 @@
     line-height:1.6;
     max-width:560px;
     margin:0;
+  }
+
+  /* ---------------- Exam Selector ---------------- */
+  .exam-picker{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-card);
+    padding:22px 24px;
+    margin:-30px 0 32px;
+    position:relative;
+    z-index:2;
+  }
+  .exam-picker label{
+    display:block;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+  }
+  /* Custom dropdown (replaces native <select> for consistent cross-device styling) */
+  .exam-dropdown{
+    position:relative;
+    width:100%;
+  }
+  .exam-dropdown-btn{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:15px;
+    font-weight:600;
+    color:var(--ink);
+    background:var(--bg);
+    border:1.5px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:14px 16px;
+    cursor:pointer;
+    transition:border-color .15s ease;
+    text-align:left;
+  }
+  .exam-dropdown-btn span{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .exam-dropdown-btn svg{
+    flex-shrink:0;
+    width:18px;height:18px;
+    color:var(--ink-soft);
+    transition:transform .15s ease;
+  }
+  .exam-dropdown.open .exam-dropdown-btn{border-color:var(--brand-purple);}
+  .exam-dropdown.open .exam-dropdown-btn svg{transform:rotate(180deg);}
+  .exam-dropdown-btn:focus-visible{outline:2px solid var(--brand-purple);outline-offset:2px;}
+
+  .exam-dropdown-list{
+    list-style:none;
+    margin:8px 0 0;
+    padding:6px;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:var(--surface);
+    border:1.5px solid var(--border);
+    border-radius:var(--radius-md);
+    box-shadow:var(--shadow-card-hover);
+    z-index:10;
+    display:none;
+    max-height:70vh;
+    overflow-y:auto;
+  }
+  .exam-dropdown.open .exam-dropdown-list{display:block;}
+
+  /* Nested groups inside the dropdown */
+  .exam-group + .exam-group{margin-top:2px;}
+  .exam-group-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    font-size:14.5px;
+    font-weight:600;
+    color:var(--ink);
+    padding:12px 14px;
+    border-radius:10px;
+    cursor:pointer;
+    line-height:1.4;
+  }
+  .exam-group-head:hover,
+  .exam-group-head:focus-visible{background:var(--bg);}
+  .exam-group-head svg{
+    flex-shrink:0;
+    width:15px;height:15px;
+    color:var(--ink-soft);
+    transition:transform .15s ease;
+  }
+  .exam-group.open .exam-group-head svg{transform:rotate(180deg);}
+  .exam-group.open .exam-group-head{color:var(--brand-purple);}
+
+  .exam-group-sub{
+    list-style:none;
+    margin:0;
+    padding:0;
+    max-height:0;
+    overflow:hidden;
+  }
+  .exam-group.open .exam-group-sub{max-height:220px;}
+  .exam-group-sub li{
+    font-size:13.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+    padding:10px 14px 10px 30px;
+    border-radius:10px;
+    cursor:pointer;
+    white-space:normal;
+    line-height:1.4;
+  }
+  .exam-group-sub li:hover,
+  .exam-group-sub li:focus-visible{background:var(--bg);color:var(--ink);}
+  .exam-group-sub li[aria-selected="true"]{
+    color:var(--brand-purple);
+    font-weight:600;
+    background:rgba(138,93,224,0.08);
+  }
+
+  .exam-picker .exam-note{
+    margin-top:10px;
+    font-size:12.5px;
+    color:var(--ink-soft);
   }
 
   /* ---------------- Main ---------------- */
@@ -140,11 +306,7 @@
   }
   @media (max-width:680px){
     .test-grid{grid-template-columns:1fr;}
-    .logo-wrap img{
-    height:64px;
-    width:100%;
-    display:block;
-  }
+    .hero-inner{justify-content:center;text-align:center;}
   }
   
   .test-card{
@@ -273,102 +435,282 @@
 
   <header class="hero">
     <div class="page hero-inner">
-      <div class="logo-wrap">
-        <!-- Placeholder path — save the logo file as assets/logo.png alongside index.html -->
-        <img src="./assets/logo.png" alt="Math ma'am Academy — Where Every Subject Clicks">
+      <div class="hero-brand">
+        <div class="logo-wrap">
+          <!-- Placeholder path — save the logo file as assets/logo.png alongside index.html -->
+          <img src="./assets/logo.png" alt="Math ma'am Academy — Where Every Subject Clicks">
+        </div>
       </div>
-      <span class="hero-eyebrow">Dr. Homi Bhabha Balvaidnyanik Competition</span>
-      <h1>Practice Test Portal</h1>
-      <p>Standard VI · English Medium — pick a test below to begin. Every test is timed and scores itself the moment you submit.</p>
+      <span class="hero-eyebrow">Practice Test Portal</span>
+      <a href="#" class="logout-link" onclick="logout();return false;">Log out</a>
     </div>
   </header>
 
   <main>
     <div class="page">
-      <div class="section-head">
-        <h2>Available Tests</h2>
-        <span>2 tests ready</span>
+
+      <div class="exam-picker">
+        <label id="exam-label" for="exam-dropdown-btn">Select an examination to practice</label>
+        <div class="exam-dropdown" id="exam-dropdown">
+          <button type="button" class="exam-dropdown-btn" id="exam-dropdown-btn"
+                  aria-haspopup="listbox" aria-expanded="false" aria-labelledby="exam-label"
+                  onclick="toggleExamDropdown()">
+            <span id="exam-dropdown-label">Homi Bhabha Competition — 6th Std</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="exam-dropdown-list" id="exam-dropdown-list" role="listbox" tabindex="-1" aria-labelledby="exam-label">
+
+            <li class="exam-group" data-group="scholarship">
+              <div class="exam-group-head" onclick="toggleGroup(this.parentElement)">
+                Scholarship Exam
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <ul class="exam-group-sub">
+                <li role="option" data-group-label="Scholarship Exam" onclick="selectSub('scholarship-4', 'Scholarship Exam — 4th Std', this)">4th Std</li>
+                <li role="option" data-group-label="Scholarship Exam" onclick="selectSub('scholarship-7', 'Scholarship Exam — 7th Std', this)">7th Std</li>
+              </ul>
+            </li>
+
+            <li class="exam-group" data-group="olympiad">
+              <div class="exam-group-head" onclick="toggleGroup(this.parentElement)">
+                Olympiad Prep
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <ul class="exam-group-sub">
+                <li role="option" onclick="selectSub('olympiad-maths', 'Olympiad Prep — Maths', this)">Maths</li>
+                <li role="option" onclick="selectSub('olympiad-science', 'Olympiad Prep — Science', this)">Science</li>
+                <li role="option" onclick="selectSub('olympiad-english', 'Olympiad Prep — English', this)">English</li>
+              </ul>
+            </li>
+
+            <li class="exam-group open" data-group="homibhabha">
+              <div class="exam-group-head" onclick="toggleGroup(this.parentElement)">
+                Homi Bhabha Balvaidnyanik Competition
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <ul class="exam-group-sub">
+                <li role="option" aria-selected="true" onclick="selectSub('homibhabha-6', 'Homi Bhabha Competition — 6th Std', this)">6th Std</li>
+                <li role="option" onclick="selectSub('homibhabha-9', 'Homi Bhabha Competition — 9th Std', this)">9th Std</li>
+              </ul>
+            </li>
+
+            <li class="exam-group" data-group="languages">
+              <div class="exam-group-head" onclick="toggleGroup(this.parentElement)">
+                International Languages
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <ul class="exam-group-sub">
+                <li role="option" onclick="selectSub('languages-german', 'International Languages — German (Deutsch)', this)">German (Deutsch)</li>
+                <li role="option" onclick="selectSub('languages-french', 'International Languages — French', this)">French</li>
+                <li role="option" onclick="selectSub('languages-japanese', 'International Languages — Japanese', this)">Japanese</li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+        <p class="exam-note" id="exam-note">Standard VI · English Medium — pick a test below to begin. Every test is timed and scores itself the moment you submit.</p>
       </div>
 
-      <div class="test-grid">
+      <div id="exam-homibhabha" class="exam-section">
 
-        <div class="test-card">
-          <div class="test-card-band warm"></div>
-          <div class="test-card-body">
-            <span class="test-card-tag warm">Test 1 · Official Paper</span>
-            <h3>2022 Official Paper</h3>
-            <p>The full recreated 2022 question paper — general science, GK, and reasoning across the complete syllabus.</p>
-            <div class="card-meta">
-              <span class="meta-pill">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                100 Questions
-              </span>
-              <span class="meta-pill">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                90 min
-              </span>
-            </div>
-            <a class="start-link warm" href="./tests/test1.html">
-              Start Test 1
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
-            </a>
-          </div>
+        <div class="exam-subsection" data-sub="homibhabha-6">
+        <div class="section-head">
+          <h2>Homi Bhabha Balvaidnyanik Competition — Std VI</h2>
+          <span>3 tests ready</span>
         </div>
 
-        <div class="test-card">
-          <div class="test-card-band cool"></div>
-          <div class="test-card-body">
-            <span class="test-card-tag cool">Test 2 · Practice Set</span>
-            <h3>Practice Set – 01</h3>
-            <p>A fresh 40-question set covering Guess Who Am I, analogies, odd-one-out, diagram reasoning, and unitary-method numericals.</p>
-            <div class="card-meta">
-              <span class="meta-pill">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                40 Questions
-              </span>
-              <span class="meta-pill">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                30 min
-              </span>
+        <div class="test-grid">
+
+          <div class="test-card">
+            <div class="test-card-band warm"></div>
+            <div class="test-card-body">
+              <span class="test-card-tag warm">Test 1 · Official Paper</span>
+              <h3>Homi Bhabha 6th Std — 2022 Official Paper</h3>
+              <p>The full recreated 2022 question paper — general science, GK, and reasoning across the complete syllabus.</p>
+              <div class="card-meta">
+                <span class="meta-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  100 Questions
+                </span>
+                <span class="meta-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  90 min
+                </span>
+              </div>
+              <a class="start-link warm" href="./tests/test1.html">
+                Start Test 1
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+              </a>
             </div>
-            <a class="start-link cool" href="./tests/test2.html">
-              Start Test 2
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
-            </a>
           </div>
+
+          <div class="test-card">
+            <div class="test-card-band cool"></div>
+            <div class="test-card-body">
+              <span class="test-card-tag cool">Test 2 · Practice Set</span>
+              <h3>Homi Bhabha 6th Std — Practice Set 01</h3>
+              <p>A fresh 40-question set covering Guess Who Am I, analogies, odd-one-out, diagram reasoning, and unitary-method numericals.</p>
+              <div class="card-meta">
+                <span class="meta-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  40 Questions
+                </span>
+                <span class="meta-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a class="start-link cool" href="./tests/test2.html">
+                Start Test 2
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="test-card">
+            <div class="test-card-band cool"></div>
+            <div class="test-card-body">
+              <span class="test-card-tag cool">Test 3 · Practice Set</span>
+              <h3>Homi Bhabha 6th Std — Practice Set 03</h3>
+              <p>A fresh 50-question set covering Guess Who Am I, analogies, odd-one-out, diagram reasoning, and unitary-method numericals.</p>
+              <div class="card-meta">
+                <span class="meta-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  50 Questions
+                </span>
+                <span class="meta-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a class="start-link cool" href="./tests/test3.html">
+                Start Test 3
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
         </div>
 
-        <div class="test-card">
-          <div class="test-card-band cool"></div>
-          <div class="test-card-body">
-            <span class="test-card-tag cool">Test 3 · Practice Set</span>
-            <h3>Practice Set – 03</h3>
-            <p>A fresh 50-question set covering Guess Who Am I, analogies, odd-one-out, diagram reasoning, and unitary-method numericals.</p>
-            <div class="card-meta">
-              <span class="meta-pill">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                50 Questions
-              </span>
-              <span class="meta-pill">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                30 min
-              </span>
-            </div>
-            <a class="start-link cool" href="./tests/test3.html">
-              Start Test 3
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
-            </a>
-          </div>
+        <div class="footer-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span><b>Note:</b> each test opens on its own page and scores itself when you submit — nothing is saved between visits yet. A results/history section can be added later.</span>
+        </div>
         </div>
 
+        <div class="exam-subsection" data-sub="homibhabha-9" style="display:none;">
+          <div class="section-head">
+            <h2>Homi Bhabha Balvaidnyanik Competition — Std IX</h2>
+            <span>Coming soon</span>
+          </div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for the 9th Std Homi Bhabha Competition are being prepared and will appear here soon.</span>
+          </div>
+        </div>
       </div>
 
-      <div class="footer-note">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-        <span><b>Note:</b> each test opens on its own page and scores itself when you submit — nothing is saved between visits yet. A results/history section can be added later.</span>
+      <div id="exam-scholarship" class="exam-section" style="display:none;">
+        <div class="section-head">
+          <h2 id="scholarship-heading">Scholarship Exam — 4th Std</h2>
+          <span>Coming soon</span>
+        </div>
+        <div class="footer-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span id="scholarship-note">Practice tests for the Scholarship Exam (4th Std) are being prepared and will appear here soon.</span>
+        </div>
       </div>
+
+      <div id="exam-olympiad" class="exam-section" style="display:none;">
+        <div class="section-head">
+          <h2 id="olympiad-heading">Olympiad Prep — Maths</h2>
+          <span>Coming soon</span>
+        </div>
+        <div class="footer-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span id="olympiad-note">Olympiad practice tests for Maths are on the way.</span>
+        </div>
+      </div>
+
+      <div id="exam-languages" class="exam-section" style="display:none;">
+        <div class="section-head">
+          <h2 id="languages-heading">International Languages — German (Deutsch)</h2>
+          <span>Coming soon</span>
+        </div>
+        <div class="footer-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span id="languages-note">Practice tests for German (Deutsch) are being prepared and will appear here soon.</span>
+        </div>
+      </div>
+
     </div>
   </main>
+
+  <script>
+    function logout(){
+      localStorage.removeItem('mm_auth');
+      localStorage.removeItem('mm_user');
+      window.location.href = './login.html';
+    }
+
+    const SUB_NOTES = {
+      'scholarship-4':   "Standard IV — pick a test below to begin.",
+      'scholarship-7':   "Standard VII — pick a test below to begin.",
+      'olympiad-maths':  "Maths Olympiad — pick a test below to begin.",
+      'olympiad-science':"Science Olympiad — pick a test below to begin.",
+      'olympiad-english':"English Olympiad — pick a test below to begin.",
+      'homibhabha-6':    "Standard VI · English Medium — pick a test below to begin. Every test is timed and scores itself the moment you submit.",
+      'homibhabha-9':    "Standard IX · English Medium — pick a test below to begin.",
+      'languages-german':  "German (Deutsch) — pick a test below to begin.",
+      'languages-french':  "French — pick a test below to begin.",
+      'languages-japanese':"Japanese — pick a test below to begin."
+    };
+
+    function showExam(value){
+      const group = value.split('-')[0];
+      document.querySelectorAll('.exam-section').forEach(function(el){
+        el.style.display = (el.id === 'exam-' + group) ? '' : 'none';
+      });
+      document.querySelectorAll('.exam-subsection').forEach(function(el){
+        el.style.display = (el.dataset.sub === value) ? '' : 'none';
+      });
+      document.getElementById('exam-note').innerHTML = SUB_NOTES[value] || '';
+    }
+
+    const examDropdown = document.getElementById('exam-dropdown');
+    const examDropdownBtn = document.getElementById('exam-dropdown-btn');
+
+    function toggleExamDropdown(){
+      const isOpen = examDropdown.classList.toggle('open');
+      examDropdownBtn.setAttribute('aria-expanded', isOpen);
+    }
+    function closeExamDropdown(){
+      examDropdown.classList.remove('open');
+      examDropdownBtn.setAttribute('aria-expanded', 'false');
+    }
+    function toggleGroup(groupEl){
+      const willOpen = !groupEl.classList.contains('open');
+      document.querySelectorAll('.exam-group').forEach(function(el){
+        el.classList.remove('open');
+      });
+      if (willOpen) groupEl.classList.add('open');
+    }
+    function selectSub(value, label, li){
+      document.getElementById('exam-dropdown-label').textContent = label;
+      document.querySelectorAll('.exam-group-sub li').forEach(function(el){
+        el.removeAttribute('aria-selected');
+      });
+      li.setAttribute('aria-selected', 'true');
+      closeExamDropdown();
+      showExam(value);
+    }
+    document.addEventListener('click', function(e){
+      if (!examDropdown.contains(e.target)) closeExamDropdown();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeExamDropdown();
+    });
+  </script>
 
   <footer class="site-footer">Math ma'am Academy · Where Every Subject Clicks</footer>
 

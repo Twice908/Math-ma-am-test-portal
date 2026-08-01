@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand-pink:   #DB5DE0;
+    --brand-purple: #8A5DE0;
+    --brand-blue:   #7FB4F1;
+    --brand-cyan:   #65D8F4;
+
+    --navy:         #1B1836;
+    --navy-soft:    #2B2555;
+    --ink:          #241E3D;
+    --ink-soft:     #6B647F;
+    --bg:           #F7F5FC;
+    --surface:      #FFFFFF;
+    --border:       #E7E1F5;
+    --danger:       #E5484D;
+
+    --gradient-warm: linear-gradient(135deg, var(--brand-pink), var(--brand-purple));
+    --gradient-cool: linear-gradient(135deg, var(--brand-purple), var(--brand-blue), var(--brand-cyan));
+    --gradient-hero: linear-gradient(120deg, var(--navy) 0%, var(--navy-soft) 55%, #3C2F73 100%);
+
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --shadow-card: 0 4px 14px rgba(63, 45, 110, 0.08);
+    --shadow-card-hover: 0 16px 32px rgba(63, 45, 110, 0.16);
+  }
+
+  *{box-sizing:border-box;}
+  html{overflow-x:hidden;}
+  body{
+    max-width:100%;
+    margin:0;
+    min-height:100vh;
+    background:var(--gradient-hero);
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    position:relative;
+    overflow:hidden;
+  }
+  body::before{
+    content:"";
+    position:absolute;
+    width:520px;height:520px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(219,93,224,0.30) 0%, transparent 70%);
+    top:-220px; right:-160px;
+  }
+  body::after{
+    content:"";
+    position:absolute;
+    width:420px;height:420px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(101,216,244,0.22) 0%, transparent 70%);
+    bottom:-200px; left:-140px;
+  }
+  h1,h2,h3{font-family:'Poppins',system-ui,sans-serif;}
+  img,svg{max-width:100%;}
+
+  .login-card{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:380px;
+    background:var(--surface);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-card-hover);
+    padding:36px 30px 30px;
+  }
+  .login-logo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+  }
+  .login-logo img{height:56px;width:auto;display:block;}
+
+  .login-card h1{
+    font-size:20px;
+    font-weight:700;
+    color:var(--ink);
+    text-align:center;
+    margin:0 0 6px;
+  }
+  .login-card p.sub{
+    text-align:center;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:0 0 26px;
+    line-height:1.5;
+  }
+
+  .field{margin-bottom:16px;}
+  .field label{
+    display:block;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .field input{
+    width:100%;
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:15px;
+    font-weight:500;
+    color:var(--ink);
+    background:var(--bg);
+    border:1.5px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:13px 14px;
+    transition:border-color .15s ease;
+  }
+  .field input:focus{outline:none;border-color:var(--brand-purple);}
+
+  .login-error{
+    display:none;
+    align-items:center;
+    gap:8px;
+    background:rgba(229,72,77,0.08);
+    border:1px solid rgba(229,72,77,0.25);
+    color:var(--danger);
+    font-size:13px;
+    font-weight:500;
+    padding:10px 12px;
+    border-radius:10px;
+    margin-bottom:16px;
+  }
+  .login-error.show{display:flex;}
+  .login-error svg{width:16px;height:16px;flex-shrink:0;}
+
+  .login-btn{
+    width:100%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    text-decoration:none;
+    color:#fff;
+    font-family:'Poppins',system-ui,sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    padding:14px 20px;
+    border:none;
+    border-radius:var(--radius-md);
+    background:var(--gradient-warm);
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  }
+  .login-btn:hover{transform:translateY(-1px);opacity:.92;}
+  .login-btn:active{transform:translateY(0);}
+  .login-btn svg{width:16px;height:16px;flex-shrink:0;}
+
+  .login-note{
+    margin-top:18px;
+    text-align:center;
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+</style>
+</head>
+<body>
+
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="./assets/logo.png" alt="Math ma'am Academy">
+    </div>
+    <h1>Student Login</h1>
+    <p class="sub">Enter your name and the shared access code to reach the practice test portal.</p>
+
+    <div class="login-error" id="login-error">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+      <span>That access code isn't right. Please check with your teacher and try again.</span>
+    </div>
+
+    <form id="login-form" autocomplete="off">
+      <div class="field">
+        <label for="username">Your Name</label>
+        <input type="text" id="username" name="username" placeholder="e.g. Aarav Shah" required>
+      </div>
+      <div class="field">
+        <label for="password">Access Code</label>
+        <input type="password" id="password" name="password" placeholder="Shared access code" required>
+      </div>
+      <button type="submit" class="login-btn">
+        Enter Portal
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+      </button>
+    </form>
+
+    <p class="login-note">This portal is only for students of Math ma'am Academy. Ask your teacher if you don't have the access code.</p>
+  </div>
+
+  <script>
+    const ACCESS_CODE = "Tree@bamboo";
+
+    // If already logged in, skip straight to the portal.
+    if (localStorage.getItem('mm_auth') === '1') {
+      window.location.href = './index.html';
+    }
+
+    document.getElementById('login-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const errorBox = document.getElementById('login-error');
+
+      if (password === ACCESS_CODE && username.length > 0) {
+        localStorage.setItem('mm_auth', '1');
+        localStorage.setItem('mm_user', username);
+        window.location.href = './index.html';
+      } else {
+        errorBox.classList.add('show');
+      }
+    });
+  </script>
+
+</body>
+</html>
