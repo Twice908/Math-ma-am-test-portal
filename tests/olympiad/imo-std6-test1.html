@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — SOF IMO Class 6 · Level 1 Mock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">SOF International Mathematics Olympiad · Level 1</p>
+    <h1>IMO Class 6 — Mock Paper 1</h1>
+    <p class="subtitle">Standard VI · English Medium · Questions 1–50 · Official SOF section pattern</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Total marks: <b>60</b></span>
+      <span>Achievers: <b>3 marks each</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>60:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> This mock follows the official SOF IMO Level-1 pattern for Class 6 — four sections in order:
+    <b>Logical Reasoning (Q1–15)</b>, <b>Mathematical Reasoning (Q16–35)</b>, <b>Everyday Mathematics (Q36–45)</b>
+    and the <b>Achievers Section (Q46–50)</b>. The first three sections carry <b>1 mark</b> per question; the
+    Achievers Section carries <b>3 marks</b> per question, giving 60 marks from 50 questions. There is
+    <b>no negative marking</b>, so attempt every question. Select one option per question by tapping its bubble.
+    The timer started as soon as this page loaded. When you're ready, tap <b>Check My Score</b> at the bottom —
+    correct answers turn green and any option you picked incorrectly turns red. The test auto-submits when the timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">60:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   INLINE DIAGRAMS (non-verbal reasoning / geometry)
+   ===================================================================== */
+const triangleFig = `<svg width="180" height="130" viewBox="0 0 180 130">
+  <polygon points="90,12 20,116 160,116" fill="none" stroke="#1E2B3C" stroke-width="2"/>
+  <line x1="90" y1="12" x2="90" y2="116" stroke="#A6342A" stroke-width="2"/>
+  <text x="90" y="8" font-size="11" text-anchor="middle" fill="#4B5768">A</text>
+  <text x="12" y="126" font-size="11" fill="#4B5768">B</text>
+  <text x="163" y="126" font-size="11" fill="#4B5768">C</text>
+  <text x="90" y="128" font-size="11" text-anchor="middle" fill="#A6342A">D</text>
+</svg>`;
+
+const matchstickFig = `<svg width="300" height="90" viewBox="0 0 300 90">
+  <rect x="10" y="20" width="40" height="40" fill="none" stroke="#1E2B3C" stroke-width="2"/>
+  <text x="30" y="80" font-size="11" text-anchor="middle" fill="#4B5768">Figure 1</text>
+  <rect x="90" y="20" width="40" height="40" fill="none" stroke="#1E2B3C" stroke-width="2"/>
+  <rect x="130" y="20" width="40" height="40" fill="none" stroke="#1E2B3C" stroke-width="2"/>
+  <text x="130" y="80" font-size="11" text-anchor="middle" fill="#4B5768">Figure 2</text>
+  <rect x="210" y="20" width="26" height="40" fill="none" stroke="#1E2B3C" stroke-width="2"/>
+  <rect x="236" y="20" width="26" height="40" fill="none" stroke="#1E2B3C" stroke-width="2"/>
+  <rect x="262" y="20" width="26" height="40" fill="none" stroke="#1E2B3C" stroke-width="2"/>
+  <text x="249" y="80" font-size="11" text-anchor="middle" fill="#4B5768">Figure 3</text>
+</svg>`;
+
+const barGraph = `<b>Books issued from the school library (Q40)</b>
+<table class="data-tbl" style="margin-top:8px;background:#fff">
+  <tr><th>Day</th><th>Books issued</th></tr>
+  <tr><td>Monday</td><td>24</td></tr>
+  <tr><td>Tuesday</td><td>18</td></tr>
+  <tr><td>Wednesday</td><td>30</td></tr>
+  <tr><td>Thursday</td><td>12</td></tr>
+  <tr><td>Friday</td><td>36</td></tr>
+</table>`;
+
+/* =====================================================================
+   QUESTION DATA — official SOF IMO Level 1 structure for Class 6:
+     Section 1  Logical Reasoning        15 Q × 1 mark = 15
+     Section 2  Mathematical Reasoning   20 Q × 1 mark = 20
+     Section 3  Everyday Mathematics     10 Q × 1 mark = 10
+     Section 4  Achievers Section         5 Q × 3 marks = 15
+                                         --------------------
+                                         50 Q            60 marks
+
+   Section 2/3/4 content follows the NCERT "Ganita Prakash" Class 6
+   syllabus listed by SOF: Patterns in Mathematics, Lines and Angles,
+   Number Play, Data Handling, Prime Time, Perimeter and Area, Fractions,
+   Playing with Constructions, Symmetry, The Other Side of Zero.
+   ===================================================================== */
+const QUESTIONS = [
+
+/* ---------- SECTION 1 — LOGICAL REASONING · Q1–Q15 · 1 mark ---------- */
+
+{section:{title:"Section 1 — Logical Reasoning", note:"Questions 1 to 15 · 1 mark each · 15 marks"}, marks:1,
+ q:"Find the next number in the series:<br><span style='color:#4B5768'>3, 6, 11, 18, 27, <span class='blank'></span></span>",
+ opts:["38","36","37","40"], correct:0},
+
+{marks:1, q:"Find the odd one out.",
+ opts:["121","144","169","150"], correct:3},
+
+{marks:1, q:"In a certain code language, <b>MATH</b> is written as <b>NBUI</b>. How will <b>PLUS</b> be written in the same code?",
+ opts:["QMVT","QMTV","OKTR","QNVT"], correct:0},
+
+{marks:1, q:"Choose the correct analogy:<br><span style='color:#4B5768'>Water : Pipe :: Electricity : <span class='blank'></span></span>",
+ opts:["Wire","Bulb","Switch","Battery"], correct:0},
+
+{marks:1, q:"A boy walks 5 m towards the north, turns right and walks 3 m, then turns right again and walks 5 m. How far is he now from his starting point?",
+ opts:["3 m","5 m","8 m","13 m"], correct:0},
+
+{marks:1, q:"In a row of 30 students, Riya is 12th from the left end. What is her position from the right end?",
+ opts:["19th","18th","20th","17th"], correct:0},
+
+{marks:1, q:"Pointing to a man, Sita said, “He is the son of my grandfather's only son.” How is the man related to Sita?",
+ opts:["Her brother","Her father","Her uncle","Her cousin"], correct:0},
+
+{marks:1, q:"Which of the following capital letters looks exactly the same as its mirror image when the mirror is held vertically beside it?",
+ opts:["A","B","P","R"], correct:0},
+
+{marks:1, q:"Find the next letter in the series:<br><span style='color:#4B5768'>B, D, G, K, <span class='blank'></span></span>",
+ opts:["P","O","N","Q"], correct:0},
+
+{marks:1, q:"In the given figure, AD is drawn from vertex A to the side BC. How many triangles are there in the figure altogether?",
+ diagram:triangleFig,
+ opts:["3","2","4","5"], correct:0},
+
+{marks:1, q:"If <b>5 × 3 = 16</b> and <b>7 × 2 = 15</b>, then <b>9 × 4 = <span class='blank'></span></b>",
+ opts:["37","36","38","40"], correct:0},
+
+{marks:1, q:"Find the odd one out.",
+ opts:["Square","Rectangle","Rhombus","Cube"], correct:3},
+
+{marks:1, q:"Complete the series:<br><span style='color:#4B5768'>AZ, BY, CX, <span class='blank'></span></span>",
+ opts:["DW","DV","EW","DX"], correct:0},
+
+{marks:1, q:"If today is Wednesday, what day of the week will it be after 61 days?",
+ opts:["Monday","Sunday","Tuesday","Saturday"], correct:0},
+
+{marks:1, q:"Arrange the following words in the order in which they appear in a dictionary.<br><span style='color:#4B5768'>1. Prime &nbsp; 2. Pattern &nbsp; 3. Perimeter &nbsp; 4. Place</span>",
+ opts:["2, 3, 4, 1","2, 4, 3, 1","3, 2, 1, 4","2, 3, 1, 4"], correct:0},
+
+/* ---------- SECTION 2 — MATHEMATICAL REASONING · Q16–Q35 · 1 mark ---------- */
+
+{section:{title:"Section 2 — Mathematical Reasoning", note:"Questions 16 to 35 · 1 mark each · 20 marks"}, marks:1,
+ q:"Using each of the digits <b>5, 0, 2, 8</b> exactly once, what is the smallest four-digit number that can be formed?",
+ opts:["2058","2085","2508","5028"], correct:0},
+
+{marks:1, q:"How many prime numbers are there between 20 and 40?",
+ opts:["4","5","3","6"], correct:0},
+
+{marks:1, q:"Find the H.C.F. of <b>36</b> and <b>60</b>.",
+ opts:["12","6","18","24"], correct:0},
+
+{marks:1, q:"Find the L.C.M. of <b>12</b> and <b>18</b>.",
+ opts:["36","72","54","24"], correct:0},
+
+{marks:1, q:"Which of the following fractions is the <b>greatest</b>?",
+ opts:["2/3","3/4","5/8","7/12"], correct:1},
+
+{marks:1, q:"Subtract: <b>3/4 − 5/8 = <span class='blank'></span></b>",
+ opts:["1/8","1/4","1/2","3/8"], correct:0},
+
+{marks:1, q:"Add: <b>2 ⅓ + 1 ⅙ = <span class='blank'></span></b>",
+ opts:["3 ½","3 ⅓","4 ½","2 ½"], correct:0},
+
+{marks:1, q:"Find the value of <b>(−7) + 12 − (−3)</b>.",
+ opts:["8","2","−8","16"], correct:0},
+
+{marks:1, q:"Which of the following integers is the <b>smallest</b>?",
+ opts:["−15","−8","0","5"], correct:0},
+
+{marks:1, q:"Two angles are complementary. If one of them measures 35°, find the other.",
+ opts:["55°","145°","65°","45°"], correct:0},
+
+{marks:1, q:"What is the angle between the hour hand and the minute hand of a clock at exactly 3 o'clock?",
+ opts:["90°","60°","120°","30°"], correct:0},
+
+{marks:1, q:"The perimeter of a square is 48 cm. Find its area.",
+ opts:["144 sq cm","576 sq cm","96 sq cm","121 sq cm"], correct:0},
+
+{marks:1, q:"Find the area of a rectangle whose length is 15 m and breadth is 8 m.",
+ opts:["120 sq m","46 sq m","23 sq m","240 sq m"], correct:0},
+
+{marks:1, q:"How many lines of symmetry does a rectangle (which is not a square) have?",
+ opts:["2","4","1","0"], correct:0},
+
+{marks:1, q:"How many lines of symmetry does an equilateral triangle have?",
+ opts:["3","1","2","6"], correct:0},
+
+{marks:1, q:"Find the mean of <b>4, 8, 6, 10 and 12</b>.",
+ opts:["8","10","6","9"], correct:0},
+
+{marks:1, q:"Find the next number in the pattern:<br><span style='color:#4B5768'>1, 4, 9, 16, 25, <span class='blank'></span></span>",
+ opts:["36","30","35","49"], correct:0},
+
+{marks:1, q:"Which of the following numbers is divisible by <b>both 3 and 4</b>?",
+ opts:["132","122","118","146"], correct:0},
+
+{marks:1, q:"Two angles of a triangle measure 65° and 45°. Find the third angle.",
+ opts:["70°","80°","60°","75°"], correct:0},
+
+{marks:1, q:"Write <b>84</b> in Roman numerals.",
+ opts:["LXXXIV","XXCIV","LXXXVI","LXXIV"], correct:0},
+
+/* ---------- SECTION 3 — EVERYDAY MATHEMATICS · Q36–Q45 · 1 mark ---------- */
+
+{section:{title:"Section 3 — Everyday Mathematics", note:"Questions 36 to 45 · 1 mark each · 10 marks"}, marks:1,
+ q:"A shopkeeper sells 8 notebooks for ₹96. At the same rate, what will 15 such notebooks cost?",
+ opts:["₹180","₹150","₹160","₹192"], correct:0},
+
+{marks:1, q:"A train leaves a station at 6:45 a.m. and reaches its destination at 2:20 p.m. on the same day. How long is the journey?",
+ opts:["7 hours 35 minutes","8 hours 35 minutes","7 hours 25 minutes","6 hours 35 minutes"], correct:0},
+
+{marks:1, q:"Riya had ₹500 and spent ⅗ of it on books. How much money is left with her?",
+ opts:["₹200","₹300","₹250","₹150"], correct:0},
+
+{marks:1, q:"A water tank can hold 250 litres and is ⅗ full. How much more water is needed to fill it completely?",
+ opts:["100 litres","150 litres","50 litres","200 litres"], correct:0},
+
+{passage:barGraph, marks:1,
+ q:"On which day were <b>twice</b> as many books issued as on Thursday?",
+ opts:["Monday","Tuesday","Wednesday","Friday"], correct:0},
+
+{marks:1, q:"A rectangular garden measures 20 m by 15 m and is to be fenced all around. If fencing costs ₹25 per metre, what is the total cost?",
+ opts:["₹1,750","₹1,500","₹7,500","₹3,500"], correct:0},
+
+{marks:1, q:"A car travels 240 km in 4 hours. At the same speed, how far will it travel in 7 hours?",
+ opts:["420 km","400 km","480 km","360 km"], correct:0},
+
+{marks:1, q:"There are 45 students in a class and 2/9 of them are absent today. How many students are present?",
+ opts:["35","10","40","30"], correct:0},
+
+{marks:1, q:"A book is priced at ₹360 and a discount of 15% is offered. How much does a customer actually pay?",
+ opts:["₹306","₹54","₹300","₹340"], correct:0},
+
+{marks:1, q:"The temperature at 6 a.m. was −3 °C. By noon it had risen by 11 °C. What was the temperature at noon?",
+ opts:["8 °C","14 °C","−14 °C","11 °C"], correct:0},
+
+/* ---------- SECTION 4 — ACHIEVERS SECTION · Q46–Q50 · 3 marks ---------- */
+
+{section:{title:"Section 4 — Achievers Section", note:"Questions 46 to 50 · 3 marks each · 15 marks · Higher order thinking", achievers:true}, marks:3,
+ q:"Find the sum of the first <b>20</b> odd natural numbers.",
+ opts:["400","441","380","420"], correct:0},
+
+{marks:3, q:"A number leaves a remainder of 4 when divided by 7, and a remainder of 3 when divided by 5. What is the smallest <b>two-digit</b> number satisfying both conditions?",
+ opts:["18","25","53","32"], correct:0},
+
+{marks:3, q:"The perimeter of a rectangle is 60 cm and its length is twice its breadth. Find its area.",
+ opts:["200 sq cm","150 sq cm","300 sq cm","100 sq cm"], correct:0},
+
+{marks:3, q:"Squares are made in a row using matchsticks, as shown. Figure 1 uses 4 matchsticks, Figure 2 uses 7 and Figure 3 uses 10. How many matchsticks will <b>Figure 10</b> need?",
+ diagram:matchstickFig,
+ opts:["31","34","30","40"], correct:0},
+
+{marks:3, q:"How many <b>lines of symmetry</b> does a square have, and what is its <b>order of rotational symmetry</b>?",
+ opts:["4 and 4","2 and 4","4 and 2","1 and 4"], correct:0}
+];
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 3600;   /* 60 minutes — official SOF IMO duration */
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+const TOTAL_MARKS = QUESTIONS.reduce((t,q) => t + q.marks, 0);
+
+/* =====================================================================
+   RENDER QUESTIONS
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+let lastPassage = null;
+let currentSection = null;
+const sectionOf = [];   /* question index -> section title, for the breakdown */
+
+QUESTIONS.forEach((item, qi) => {
+  if(item.section){
+    const sec = document.createElement('div');
+    sec.className = 'section-divider' + (item.section.achievers ? ' achievers' : '');
+    sec.innerHTML = `<h2>${item.section.title}</h2><p>${item.section.note}</p>`;
+    root.appendChild(sec);
+    currentSection = item.section.title;
+    lastPassage = null;
+  }
+  sectionOf[qi] = currentSection;
+
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  if(item.passage && item.passage !== lastPassage){
+    const p = document.createElement('div');
+    p.className = 'passage';
+    p.innerHTML = item.passage;
+    block.insertBefore(p, head);
+    lastPassage = item.passage;
+  } else if(!item.passage){
+    lastPassage = null;
+  }
+
+  if(item.marks === 3){
+    const tag = document.createElement('div');
+    tag.className = 'marks-tag';
+    tag.textContent = '3 marks';
+    block.appendChild(tag);
+  }
+
+  if(item.diagram){
+    const d = document.createElement('div');
+    d.className = 'diagram';
+    d.innerHTML = item.diagram;
+    block.appendChild(d);
+  }
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 300){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING — weighted, as SOF marks it: 1 mark for Sections 1–3 and
+   3 marks per Achievers question. No negative marking.
+   (No persistence — nothing is saved anywhere.)
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let correctCount = 0;
+  let marks = 0;
+  const bySection = {};   /* title -> {correct, total, marks, maxMarks} */
+
+  QUESTIONS.forEach((item, qi) => {
+    const sec = sectionOf[qi];
+    if(!bySection[sec]) bySection[sec] = {correct:0, total:0, marks:0, maxMarks:0};
+    bySection[sec].total++;
+    bySection[sec].maxMarks += item.marks;
+
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selIdx = selected ? parseInt(selected.value,10) : null;
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    optLabels[item.correct].classList.add('correct-answer');
+
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+
+    if(selIdx === item.correct){
+      correctCount++;
+      marks += item.marks;
+      bySection[sec].correct++;
+      bySection[sec].marks += item.marks;
+      note.textContent = `✓ Correct — +${item.marks} mark${item.marks > 1 ? 's' : ''}`;
+    } else {
+      if(selIdx !== null) optLabels[selIdx].classList.add('wrong-answer');
+      note.textContent = selIdx === null
+        ? '— Not answered'
+        : '✗ Correct answer highlighted in green';
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const pct = Math.round(marks/TOTAL_MARKS*100);
+  document.getElementById('score-readout').innerHTML =
+    `Score: <b>${marks} / ${TOTAL_MARKS}</b> marks &nbsp;·&nbsp; ${correctCount} of ${total} correct (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  /* Section-wise breakdown — the way SOF reports an Olympiad result */
+  let rows = '';
+  Object.keys(bySection).forEach(sec => {
+    const d = bySection[sec];
+    rows += `<tr><td>${sec.replace(/^Section \d+ — /,'')}</td><td>${d.correct} / ${d.total}</td><td>${d.marks} / ${d.maxMarks}</td></tr>`;
+  });
+  rows += `<tr><td>Total</td><td>${correctCount} / ${total}</td><td>${marks} / ${TOTAL_MARKS}</td></tr>`;
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = `<h3>Section-wise breakdown</h3>
+    <table><tr><th>Section</th><th>Correct</th><th>Marks</th></tr>${rows}</table>`;
+  bd.classList.add('show');
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${marks} out of ${TOTAL_MARKS} marks. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${marks} out of ${TOTAL_MARKS} marks. Scroll up to review any marked in red.`
+        : `${marks} out of ${TOTAL_MARKS} marks. Scroll through to review the green highlights — worth another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>

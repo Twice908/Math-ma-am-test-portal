@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — SOF IEO Class 6 · Level 1 Mock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">SOF International English Olympiad · Level 1</p>
+    <h1>IEO Class 6 — Mock Paper 1</h1>
+    <p class="subtitle">Standard VI · Questions 1–50 · Official SOF section pattern</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Total marks: <b>60</b></span>
+      <span>Achievers: <b>3 marks each</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>60:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> This mock follows the official SOF IEO Level-1 pattern for Class 6 — four sections in order:
+    <b>Word and Structure Knowledge (Q1–30)</b>, <b>Reading (Q31–40)</b>,
+    <b>Spoken and Written Expression (Q41–45)</b> and the <b>Achievers Section (Q46–50)</b>.
+    The first three sections carry <b>1 mark</b> per question; the Achievers Section carries <b>3 marks</b>
+    per question, giving 60 marks from 50 questions. There is <b>no negative marking</b>, so attempt every question.
+    SOF tests <b>natural, international English usage</b> rather than rote grammar, so choose the option a fluent
+    speaker would actually say. The timer started as soon as this page loaded. When you're ready, tap
+    <b>Check My Score</b> at the bottom — correct answers turn green and any option you picked incorrectly turns red.
+    The test auto-submits when the timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">60:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   READING TEXTS — SOF lists timetables, diary entries and notices
+   among the text types tested in the Reading section.
+   ===================================================================== */
+const busTimetable = `<b>Read the bus timetable (Q31–Q34)</b>
+<table class="data-tbl" style="margin-top:8px;background:#fff">
+  <tr><th>Route</th><th>Departs</th><th>Arrives</th></tr>
+  <tr><td>City Centre</td><td>07:15</td><td>08:05</td></tr>
+  <tr><td>Lakeview</td><td>09:30</td><td>10:40</td></tr>
+  <tr><td>Hilltop</td><td>12:00</td><td>13:15</td></tr>
+  <tr><td>Airport</td><td>16:45</td><td>17:20</td></tr>
+</table>`;
+
+const diaryEntry = `<b>Read the diary entry (Q35–Q37)</b>
+<em>14 August</em> — Today was the school science fair. My model of a working windmill
+finally spun properly, though I had stayed up till midnight fixing the blades.
+Mrs Nair said it was the neatest project in our row. Anil's volcano won first prize,
+and honestly it deserved to. I wasn't upset — I just wish I had started mine a week earlier.`;
+
+const debateNotice = `<b>Read the notice (Q38–Q40)</b>
+<b style="display:block;margin-bottom:4px">NOTICE — Inter-House Debate</b>
+Friday, 22 September · 2:00 p.m. · School Auditorium<br>
+Topic: “Homework should be optional”<br>
+Two speakers per house. Names must be given to Ms D'Souza by Wednesday 20 September.<br>
+Each speaker gets four minutes. Audience: Classes VI to VIII only.`;
+
+/* =====================================================================
+   QUESTION DATA — official SOF IEO Level 1 structure, Class 6.
+   Note this is a THIRD distinct shape: IMO is 15/20/10/5 and
+   ISO is 10/35/5, but IEO is:
+     Section 1  Word and Structure Knowledge   30 Q × 1 mark  = 30
+     Section 2  Reading                        10 Q × 1 mark  = 10
+     Section 3  Spoken and Written Expression   5 Q × 1 mark  =  5
+     Section 4  Achievers Section               5 Q × 3 marks = 15
+                                                --------------------
+                                                50 Q            60 marks
+   ===================================================================== */
+const QUESTIONS = [
+
+/* ---------- SECTION 1 — WORD AND STRUCTURE KNOWLEDGE · Q1–Q30 · 1 mark ---------- */
+
+{section:{title:"Section 1 — Word and Structure Knowledge", note:"Questions 1 to 30 · 1 mark each · 30 marks"}, marks:1,
+ q:"Choose the correct collective noun:<br><span style='color:#4B5768'>a <span class='blank'></span> of wolves</span>",
+ opts:["pack","swarm","fleet","bunch"], correct:0},
+
+{marks:1, q:"Fill in the blank:<br><span style='color:#4B5768'><i>Neither of the boys has brought <span class='blank'></span> book.</i></span>",
+ opts:["his","their","theirs","them"], correct:0},
+
+{marks:1, q:"Fill in the blank:<br><span style='color:#4B5768'><i>The news <span class='blank'></span> shocking.</i></span>",
+ opts:["is","are","were","have"], correct:0},
+
+{marks:1, q:"Fill in the blank:<br><span style='color:#4B5768'><i>He speaks English <span class='blank'></span> than his brother.</i></span>",
+ opts:["more fluently","fluenter","most fluently","fluent"], correct:0},
+
+{marks:1, q:"Fill in the blank:<br><span style='color:#4B5768'><i>This is the <span class='blank'></span> film I have ever seen.</i></span>",
+ opts:["best","better","good","well"], correct:0},
+
+{marks:1, q:"Choose the correct article:<br><span style='color:#4B5768'><i>She is <span class='blank'></span> university student.</i></span>",
+ opts:["a","an","the","no article"], correct:0},
+
+{marks:1, q:"Choose the correct conjunction:<br><span style='color:#4B5768'><i><span class='blank'></span> he was very tired, he finished the race.</i></span>",
+ opts:["Although","Because","So","Unless"], correct:0},
+
+{marks:1, q:"Choose the correct preposition:<br><span style='color:#4B5768'><i>He has been living here <span class='blank'></span> 2019.</i></span>",
+ opts:["since","for","from","by"], correct:0},
+
+{marks:1, q:"Which sentence is punctuated correctly?",
+ opts:["Where are you going, Ravi?","Where are you going Ravi.","where are you going, ravi?","Where are you going Ravi!"], correct:0},
+
+{marks:1, q:"Rearrange the jumbled words into a correct sentence:<br><span style='color:#4B5768'>market / to / went / she / the</span>",
+ opts:["She went to the market.","She to the market went.","Went she to the market.","To the market she went the."], correct:0},
+
+{marks:1, q:"Fill in the blank:<br><span style='color:#4B5768'><i>By the time we reached the station, the train <span class='blank'></span>.</i></span>",
+ opts:["had left","has left","leaves","is leaving"], correct:0},
+
+{marks:1, q:"Change into the passive voice:<br><span style='color:#4B5768'><i>Somebody has stolen my bicycle.</i></span>",
+ opts:["My bicycle has been stolen.","My bicycle was stolen by somebody.","My bicycle is being stolen.","Somebody is stealing my bicycle."], correct:0},
+
+{marks:1, q:"Change into indirect speech:<br><span style='color:#4B5768'><i>She said, “I am reading a book.”</i></span>",
+ opts:["She said that she was reading a book.","She said that she is reading a book.","She says that she was reading a book.","She told that she reads a book."], correct:0},
+
+{marks:1, q:"Choose the correctly spelt word.",
+ opts:["necessary","neccessary","necesary","necessery"], correct:0},
+
+{marks:1, q:"Choose the correct collocation:<br><span style='color:#4B5768'><i>I need to <span class='blank'></span> a decision before Friday.</i></span>",
+ opts:["make","do","take","give"], correct:0},
+
+{marks:1, q:"Choose the correct collocation:<br><span style='color:#4B5768'><i>Would you like me to <span class='blank'></span> a photograph of you?</i></span>",
+ opts:["take","make","do","give"], correct:0},
+
+{marks:1, q:"Choose the correct phrasal verb:<br><span style='color:#4B5768'><i>The plane will <span class='blank'></span> at six in the morning.</i></span>",
+ opts:["take off","take up","take in","take over"], correct:0},
+
+{marks:1, q:"Choose the correct phrasal verb:<br><span style='color:#4B5768'><i>Please <span class='blank'></span> the lights when you leave the room.</i></span>",
+ opts:["turn off","turn up","turn into","turn down"], correct:0},
+
+{marks:1, q:"What does the idiom <b>“once in a blue moon”</b> mean?",
+ opts:["very rarely","very often","at night only","very quickly"], correct:0},
+
+{marks:1, q:"What does the idiom <b>“to be under the weather”</b> mean?",
+ opts:["to feel unwell","to be caught in the rain","to be very busy","to be in a bad mood"], correct:0},
+
+{marks:1, q:"Choose the word closest in meaning to <b>enormous</b>.",
+ opts:["huge","tiny","narrow","quiet"], correct:0},
+
+{marks:1, q:"Choose the word opposite in meaning to <b>ancient</b>.",
+ opts:["modern","old","historic","aged"], correct:0},
+
+{marks:1, q:"What is the noun form of the verb <b>decide</b>?",
+ opts:["decision","deciding","decisive","decidedly"], correct:0},
+
+{marks:1, q:"Which of the following is a <b>proper noun</b>?",
+ opts:["Ganges","river","water","bridge"], correct:0},
+
+{marks:1, q:"Fill in the blank:<br><span style='color:#4B5768'><i>Don't take that book — it is <span class='blank'></span>.</i></span>",
+ opts:["mine","my","me","myself"], correct:0},
+
+{marks:1, q:"Choose the correct preposition:<br><span style='color:#4B5768'><i>She is very good <span class='blank'></span> painting.</i></span>",
+ opts:["at","in","on","for"], correct:0},
+
+{marks:1, q:"Add the correct question tag:<br><span style='color:#4B5768'><i>Let's go for a walk, <span class='blank'></span>?</i></span>",
+ opts:["shall we","will we","don't we","shan't we"], correct:0},
+
+{marks:1, q:"Choose the correct modal verb:<br><span style='color:#4B5768'><i>You <span class='blank'></span> wear a helmet while riding — it is the law.</i></span>",
+ opts:["must","may","might","could"], correct:0},
+
+{marks:1, q:"Which word means <i>“without care”</i>?",
+ opts:["careless","careful","caring","carefully"], correct:0},
+
+{marks:1, q:"Fill in the blank:<br><span style='color:#4B5768'><i>If it <span class='blank'></span> tomorrow, we will cancel the picnic.</i></span>",
+ opts:["rains","rained","will rain","would rain"], correct:0},
+
+/* ---------- SECTION 2 — READING · Q31–Q40 · 1 mark ---------- */
+
+{section:{title:"Section 2 — Reading", note:"Questions 31 to 40 · 1 mark each · 10 marks"},
+ passage:busTimetable, marks:1,
+ q:"Which journey takes the <b>longest</b> time?",
+ opts:["Hilltop","Lakeview","City Centre","Airport"], correct:0},
+
+{passage:busTimetable, marks:1,
+ q:"You must reach the Airport before 6:00 p.m. Which bus should you take?",
+ opts:["The 16:45 bus","The 12:00 bus","The 09:30 bus","No bus reaches in time"], correct:0},
+
+{passage:busTimetable, marks:1,
+ q:"How long does the Lakeview journey take?",
+ opts:["1 hour 10 minutes","1 hour","50 minutes","1 hour 15 minutes"], correct:0},
+
+{passage:busTimetable, marks:1,
+ q:"Which bus leaves earliest in the day?",
+ opts:["City Centre","Lakeview","Hilltop","Airport"], correct:0},
+
+{passage:diaryEntry, marks:1,
+ q:"Why had the writer stayed up till midnight?",
+ opts:["To fix the blades of the windmill model","To finish some homework","To help Anil with his volcano","To decorate the hall"], correct:0},
+
+{passage:diaryEntry, marks:1,
+ q:"How did the writer feel about Anil winning the first prize?",
+ opts:["The writer felt Anil deserved to win","The writer was very jealous","The writer thought it was unfair","The writer did not notice the result"], correct:0},
+
+{passage:diaryEntry, marks:1,
+ q:"What does the writer regret?",
+ opts:["Not starting the project a week earlier","Choosing a windmill as the model","Asking Mrs Nair for help","Entering the science fair at all"], correct:0},
+
+{passage:debateNotice, marks:1,
+ q:"By when must the names of the speakers be submitted?",
+ opts:["Wednesday 20 September","Friday 22 September","Monday 18 September","Thursday 21 September"], correct:0},
+
+{passage:debateNotice, marks:1,
+ q:"How long is each speaker allowed to speak?",
+ opts:["Four minutes","Two minutes","Ten minutes","Fourteen minutes"], correct:0},
+
+{passage:debateNotice, marks:1,
+ q:"Who may attend the debate as audience?",
+ opts:["Students of Classes VI to VIII","The whole school","Only the debating houses","Parents and teachers only"], correct:0},
+
+/* ---------- SECTION 3 — SPOKEN AND WRITTEN EXPRESSION · Q41–Q45 · 1 mark ---------- */
+
+{section:{title:"Section 3 — Spoken and Written Expression", note:"Questions 41 to 45 · 1 mark each · 5 marks"}, marks:1,
+ q:"Your friend says, “I think plastic bags should be banned.” You <b>strongly agree</b>. What is the best reply?",
+ opts:["I couldn't agree more.","I couldn't agree less.","I am not agree with you.","You are totally wrong."], correct:0},
+
+{marks:1, q:"You want to ask a stranger for directions <b>politely</b>. Which is the best way?",
+ opts:["Could you please tell me the way to the library?","Tell me the way to the library.","I want you to show me the library.","You will take me to the library."], correct:0},
+
+{marks:1, q:"You have been invited to a party but cannot attend. Which is the most <b>polite refusal</b>?",
+ opts:["Thank you for inviting me, but I'm afraid I won't be able to make it.","No, I don't want to come.","I am not coming to your party.","Why did you even invite me?"], correct:0},
+
+{marks:1, q:"You have arrived twenty minutes late to meet a friend. What should you say?",
+ opts:["I'm really sorry for keeping you waiting.","You should have waited quietly.","It is not my fault at all.","Twenty minutes is nothing."], correct:0},
+
+{marks:1, q:"In a class discussion you want to <b>disagree politely</b>. Which opening is best?",
+ opts:["I take your point, but I see it a little differently.","You are talking complete nonsense.","That is completely wrong.","Nobody agrees with you."], correct:0},
+
+/* ---------- SECTION 4 — ACHIEVERS SECTION · Q46–Q50 · 3 marks ---------- */
+
+{section:{title:"Section 4 — Achievers Section", note:"Questions 46 to 50 · 3 marks each · 15 marks · Higher order thinking", achievers:true}, marks:3,
+ q:"SOF tests <b>international usage</b>. Which sentence is correct in international English?",
+ opts:["I'm having lunch at one o'clock.","I'm taking my lunch at one o'clock.","I'm eating my lunch since one o'clock.","I have lunch at one o'clock yesterday."], correct:0},
+
+{marks:3, q:"Some verbs describe a <b>state</b> and are not normally used in the continuous (…ing) form. Which sentence below is <b>incorrect</b> for that reason?",
+ opts:["I'm having a headache.","I have a headache.","I'm having a party on Sunday.","I'm having lunch with Meera."], correct:0},
+
+{marks:3, q:"Someone asks, “What time will you meet me tonight?” Which reply suggests there might be <b>conditions that make it difficult</b>?",
+ opts:["I would meet you at 7.00.","I'll meet you at 7.00.","I can meet you at 7.00.","I am meeting you at 7.00."], correct:0},
+
+{marks:3, q:"After a long quarrel, the two friends finally decided to <b>bury the hatchet</b>. What did they do?",
+ opts:["They made peace and ended the quarrel","They hid a weapon in the garden","They stopped speaking to each other forever","They agreed to fight one last time"], correct:0},
+
+{marks:3, q:"A food packet is labelled:<br><span style='color:#4B5768'><i>“Store in a cool, dry place. Once opened, consume within three days. Do not refreeze.”</i></span><br>Which statement is correct?",
+ opts:["Once the packet has been opened, the food should be finished within three days","The packet should be kept in a warm place","The food may be frozen again as often as you like","The food lasts only three days whether or not it is opened"], correct:0}
+];
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 3600;   /* 60 minutes — official SOF IEO duration */
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+const TOTAL_MARKS = QUESTIONS.reduce((t,q) => t + q.marks, 0);
+
+/* =====================================================================
+   RENDER QUESTIONS
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+let lastPassage = null;
+let currentSection = null;
+const sectionOf = [];   /* question index -> section title, for the breakdown */
+
+QUESTIONS.forEach((item, qi) => {
+  if(item.section){
+    const sec = document.createElement('div');
+    sec.className = 'section-divider' + (item.section.achievers ? ' achievers' : '');
+    sec.innerHTML = `<h2>${item.section.title}</h2><p>${item.section.note}</p>`;
+    root.appendChild(sec);
+    currentSection = item.section.title;
+    lastPassage = null;
+  }
+  sectionOf[qi] = currentSection;
+
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  /* A reading text is printed once, above the first question that uses it. */
+  if(item.passage && item.passage !== lastPassage){
+    const p = document.createElement('div');
+    p.className = 'passage';
+    p.innerHTML = item.passage;
+    block.insertBefore(p, head);
+    lastPassage = item.passage;
+  } else if(!item.passage){
+    lastPassage = null;
+  }
+
+  if(item.marks === 3){
+    const tag = document.createElement('div');
+    tag.className = 'marks-tag';
+    tag.textContent = '3 marks';
+    block.appendChild(tag);
+  }
+
+  if(item.diagram){
+    const d = document.createElement('div');
+    d.className = 'diagram';
+    d.innerHTML = item.diagram;
+    block.appendChild(d);
+  }
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 300){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING — weighted, as SOF marks it: 1 mark for Sections 1–3 and
+   3 marks per Achievers question. No negative marking.
+   (No persistence — nothing is saved anywhere.)
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let correctCount = 0;
+  let marks = 0;
+  const bySection = {};   /* title -> {correct, total, marks, maxMarks} */
+
+  QUESTIONS.forEach((item, qi) => {
+    const sec = sectionOf[qi];
+    if(!bySection[sec]) bySection[sec] = {correct:0, total:0, marks:0, maxMarks:0};
+    bySection[sec].total++;
+    bySection[sec].maxMarks += item.marks;
+
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selIdx = selected ? parseInt(selected.value,10) : null;
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    optLabels[item.correct].classList.add('correct-answer');
+
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+
+    if(selIdx === item.correct){
+      correctCount++;
+      marks += item.marks;
+      bySection[sec].correct++;
+      bySection[sec].marks += item.marks;
+      note.textContent = `✓ Correct — +${item.marks} mark${item.marks > 1 ? 's' : ''}`;
+    } else {
+      if(selIdx !== null) optLabels[selIdx].classList.add('wrong-answer');
+      note.textContent = selIdx === null
+        ? '— Not answered'
+        : '✗ Correct answer highlighted in green';
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const pct = Math.round(marks/TOTAL_MARKS*100);
+  document.getElementById('score-readout').innerHTML =
+    `Score: <b>${marks} / ${TOTAL_MARKS}</b> marks &nbsp;·&nbsp; ${correctCount} of ${total} correct (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  /* Section-wise breakdown — the way SOF reports an Olympiad result */
+  let rows = '';
+  Object.keys(bySection).forEach(sec => {
+    const d = bySection[sec];
+    rows += `<tr><td>${sec.replace(/^Section \d+ — /,'')}</td><td>${d.correct} / ${d.total}</td><td>${d.marks} / ${d.maxMarks}</td></tr>`;
+  });
+  rows += `<tr><td>Total</td><td>${correctCount} / ${total}</td><td>${marks} / ${TOTAL_MARKS}</td></tr>`;
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = `<h3>Section-wise breakdown</h3>
+    <table><tr><th>Section</th><th>Correct</th><th>Marks</th></tr>${rows}</table>`;
+  bd.classList.add('show');
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${marks} out of ${TOTAL_MARKS} marks. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${marks} out of ${TOTAL_MARKS} marks. Scroll up to review any marked in red.`
+        : `${marks} out of ${TOTAL_MARKS} marks. Scroll through to review the green highlights — worth another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>

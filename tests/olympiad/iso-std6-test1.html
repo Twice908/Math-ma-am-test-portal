@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — SOF ISO (NSO) Class 6 · Level 1 Mock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">SOF International Science Olympiad · Level 1</p>
+    <h1>ISO / NSO Class 6 — Mock Paper 1</h1>
+    <p class="subtitle">Standard VI · English Medium · Questions 1–50 · Official SOF section pattern</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Total marks: <b>60</b></span>
+      <span>Achievers: <b>3 marks each</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>60:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> This mock follows the official SOF Level-1 pattern for Class 6 Science — three sections in order:
+    <b>Logical Reasoning (Q1–10)</b>, <b>Science (Q11–45)</b> and the <b>Achievers Section (Q46–50)</b>.
+    The first two sections carry <b>1 mark</b> per question; the Achievers Section carries <b>3 marks</b> per
+    question, giving 60 marks from 50 questions. There is <b>no negative marking</b>, so attempt every question.
+    Select one option per question by tapping its bubble. The timer started as soon as this page loaded.
+    When you're ready, tap <b>Check My Score</b> at the bottom — correct answers turn green and any option you
+    picked incorrectly turns red. The test auto-submits when the timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">60:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   INLINE DIAGRAMS
+   ===================================================================== */
+const squaresGrid = `<svg width="140" height="140" viewBox="0 0 140 140">
+  <rect x="10" y="10" width="120" height="120" fill="none" stroke="#1E2B3C" stroke-width="2"/>
+  <line x1="70" y1="10" x2="70" y2="130" stroke="#1E2B3C" stroke-width="2"/>
+  <line x1="10" y1="70" x2="130" y2="70" stroke="#1E2B3C" stroke-width="2"/>
+</svg>`;
+
+const magnetBars = `<svg width="300" height="90" viewBox="0 0 300 90">
+  <rect x="10" y="26" width="110" height="30" fill="none" stroke="#1E2B3C" stroke-width="2"/>
+  <text x="30" y="46" font-size="14" font-weight="700" text-anchor="middle" fill="#A6342A">N</text>
+  <text x="100" y="46" font-size="14" font-weight="700" text-anchor="middle" fill="#1E2B3C">S</text>
+  <text x="65" y="76" font-size="11" text-anchor="middle" fill="#4B5768">suspended magnet</text>
+  <rect x="180" y="26" width="110" height="30" fill="none" stroke="#4B5768" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="235" y="47" font-size="14" font-weight="700" text-anchor="middle" fill="#4B5768">?</text>
+  <text x="235" y="76" font-size="11" text-anchor="middle" fill="#4B5768">unknown bar</text>
+</svg>`;
+
+/* =====================================================================
+   QUESTION DATA — official SOF ISO (formerly NSO) Level 1 structure,
+   Class 6. Note this differs from IMO: Science has THREE sections,
+   not four.
+     Section 1  Logical Reasoning   10 Q × 1 mark  = 10
+     Section 2  Science             35 Q × 1 mark  = 35
+     Section 3  Achievers Section    5 Q × 3 marks = 15
+                                     -------------------
+                                     50 Q            60 marks
+
+   Section 2 content follows the eleven NCERT "Curiosity" Class 6
+   chapters listed by SOF: The Wonderful World of Science; Food and Its
+   Components; Materials Around Us; A Journey through States of Water;
+   Methods of Separation; The Living World and Its Diversity; Exploring
+   Magnets; Measurement of Length and Motion; Temperature and Its
+   Measurement; Beyond Earth; Natural Resources.
+   ===================================================================== */
+const QUESTIONS = [
+
+/* ---------- SECTION 1 — LOGICAL REASONING · Q1–Q10 · 1 mark ---------- */
+
+{section:{title:"Section 1 — Logical Reasoning", note:"Questions 1 to 10 · 1 mark each · 10 marks"}, marks:1,
+ q:"Find the next number in the series:<br><span style='color:#4B5768'>5, 11, 23, 47, <span class='blank'></span></span>",
+ opts:["95","94","96","71"], correct:0},
+
+{marks:1, q:"Find the odd one out.",
+ opts:["Pencil","Ruler","Thermometer","Weighing balance"], correct:0},
+
+{marks:1, q:"If the letters of the alphabet are numbered A = 1, B = 2, C = 3 and so on, how is <b>CAT</b> written?",
+ opts:["3 - 1 - 20","3 - 1 - 19","2 - 1 - 20","3 - 2 - 20"], correct:0},
+
+{marks:1, q:"Choose the correct analogy:<br><span style='color:#4B5768'>Thermometer : Temperature :: Ammeter : <span class='blank'></span></span>",
+ opts:["Electric current","Voltage","Resistance","Power"], correct:0},
+
+{marks:1, q:"A boy is facing north. He turns 90° clockwise, and then turns 90° clockwise again. Which direction is he facing now?",
+ opts:["South","East","West","North"], correct:0},
+
+{marks:1, q:"Ravi is taller than Sam but shorter than Tina. Who is the tallest of the three?",
+ opts:["Tina","Ravi","Sam","Cannot be decided"], correct:0},
+
+{marks:1, q:"Find the next letter in the series:<br><span style='color:#4B5768'>C, F, I, L, <span class='blank'></span></span>",
+ opts:["O","N","M","P"], correct:0},
+
+{marks:1, q:"How many squares of all sizes are there in the given figure?",
+ diagram:squaresGrid,
+ opts:["5","4","6","9"], correct:0},
+
+{marks:1, q:"A is B's sister and B is C's mother. How is A related to C?",
+ opts:["Aunt","Mother","Sister","Grandmother"], correct:0},
+
+{marks:1, q:"Choose the correct analogy:<br><span style='color:#4B5768'>Bird : Nest :: Bee : <span class='blank'></span></span>",
+ opts:["Hive","Web","Burrow","Den"], correct:0},
+
+/* ---------- SECTION 2 — SCIENCE · Q11–Q45 · 1 mark ---------- */
+
+{section:{title:"Section 2 — Science", note:"Questions 11 to 45 · 1 mark each · 35 marks"}, marks:1,
+ q:"Which of the following is usually the <b>first</b> step in the scientific method?",
+ opts:["Observing something and asking a question","Writing the conclusion","Publishing the result","Buying the apparatus"], correct:0},
+
+{marks:1, q:"A scientist repeats the same experiment several times mainly to:",
+ opts:["check that the result is reliable","use up the leftover material","make the experiment take longer","get a different answer each time"], correct:0},
+
+{marks:1, q:"Which nutrient is the body's main source of <b>energy</b>?",
+ opts:["Carbohydrates","Vitamins","Minerals","Water"], correct:0},
+
+{marks:1, q:"Deficiency of <b>vitamin C</b> in our diet causes which disease?",
+ opts:["Scurvy","Rickets","Goitre","Night blindness"], correct:0},
+
+{marks:1, q:"A few drops of iodine solution are put on a food sample and it turns blue-black. Which component is present?",
+ opts:["Starch","Protein","Fat","Vitamin C"], correct:0},
+
+{marks:1, q:"Roughage (dietary fibre) is an important part of our food mainly because it:",
+ opts:["helps the body get rid of undigested food","gives us a lot of energy","builds new muscles","is digested very quickly"], correct:0},
+
+{marks:1, q:"Which of the following is a <b>translucent</b> material?",
+ opts:["Butter paper","Clear glass","Wooden board","Aluminium sheet"], correct:0},
+
+{marks:1, q:"Which of these substances is <b>soluble</b> in water?",
+ opts:["Sugar","Sand","Chalk powder","Coconut oil"], correct:0},
+
+{marks:1, q:"Which property is shown by a metal spoon but <b>not</b> by a wooden spoon?",
+ opts:["Lustre (shine)","Hardness","Having a fixed shape","Being visible"], correct:0},
+
+{marks:1, q:"Materials through which no light can pass are called:",
+ opts:["opaque","transparent","translucent","luminous"], correct:0},
+
+{marks:1, q:"The change of water vapour into liquid water on a cold surface is called:",
+ opts:["condensation","evaporation","sublimation","melting"], correct:0},
+
+{marks:1, q:"Which statement about <b>evaporation</b> is correct?",
+ opts:["It takes place at all temperatures","It takes place only at 100 °C","It takes place only at 0 °C","It takes place only in sunlight"], correct:0},
+
+{marks:1, q:"Clouds are formed mainly because of:",
+ opts:["condensation of water vapour high in the air","boiling of water in rivers","melting of ice on mountains","freezing of rain drops"], correct:0},
+
+{marks:1, q:"Which method would you use to separate sand from a mixture of sand and water?",
+ opts:["Filtration","Winnowing","Sublimation","Magnetic separation"], correct:0},
+
+{marks:1, q:"Husk is separated from heavier grain by using the wind. This method is called:",
+ opts:["winnowing","threshing","handpicking","sieving"], correct:0},
+
+{marks:1, q:"Common salt is obtained from sea water mainly by:",
+ opts:["evaporation","filtration","decantation","sieving"], correct:0},
+
+{marks:1, q:"Which of the following is a characteristic of <b>all</b> living things?",
+ opts:["They respire","They can fly","They make their own food","They move from place to place"], correct:0},
+
+{marks:1, q:"Desert plants such as cactus have spines instead of broad leaves mainly to:",
+ opts:["reduce loss of water","attract insects","store sunlight","stay warm at night"], correct:0},
+
+{marks:1, q:"Which part of a green plant chiefly prepares food?",
+ opts:["Leaf","Root","Stem","Flower"], correct:0},
+
+{marks:1, q:"Animals that feed only on plants are called:",
+ opts:["herbivores","carnivores","omnivores","scavengers"], correct:0},
+
+{marks:1, q:"When the north pole of one magnet is brought near the north pole of another magnet, they:",
+ opts:["repel each other","attract each other","stick together firmly","show no effect at all"], correct:0},
+
+{marks:1, q:"Which of the following materials is attracted by a magnet?",
+ opts:["Iron","Copper","Plastic","Glass"], correct:0},
+
+{marks:1, q:"A bar magnet suspended freely and allowed to come to rest always points along the:",
+ opts:["north–south direction","east–west direction","north-east direction","south-west direction"], correct:0},
+
+{marks:1, q:"What is the SI unit of length?",
+ opts:["metre","kilogram","second","litre"], correct:0},
+
+{marks:1, q:"Convert <b>2.5 km</b> into metres.",
+ opts:["2500 m","250 m","25 m","25000 m"], correct:0},
+
+{marks:1, q:"The motion of a child sitting on a moving swing is an example of:",
+ opts:["oscillatory motion","rectilinear motion","random motion","rotational motion"], correct:0},
+
+{marks:1, q:"Which is the most suitable way to measure the length of a <b>curved</b> line?",
+ opts:["Use a thread, then measure the thread with a scale","Use a metre scale directly","Use a measuring jar","Estimate it by eye"], correct:0},
+
+{marks:1, q:"The normal temperature of a healthy human body is about:",
+ opts:["37 °C","40 °C","30 °C","45 °C"], correct:0},
+
+{marks:1, q:"A clinical thermometer has a <b>kink</b> (a sharp bend) in its tube mainly to:",
+ opts:["stop the mercury from flowing back on its own","make the thermometer look attractive","allow it to measure very high temperatures","make the mercury rise faster"], correct:0},
+
+{marks:1, q:"Which thermometer should be used to measure the temperature of boiling water?",
+ opts:["A laboratory thermometer","A clinical thermometer","A doctor's thermometer","Any thermometer will do"], correct:0},
+
+{marks:1, q:"Which planet of our solar system is closest to the Sun?",
+ opts:["Mercury","Venus","Earth","Mars"], correct:0},
+
+{marks:1, q:"The Moon appears bright in the night sky because it:",
+ opts:["reflects the light of the Sun","produces its own light","burns like a star","reflects light from the Earth"], correct:0},
+
+{marks:1, q:"A group of stars that appears to form a recognisable pattern in the sky is called a:",
+ opts:["constellation","galaxy","solar system","satellite"], correct:0},
+
+{marks:1, q:"Which of the following is a <b>renewable</b> source of energy?",
+ opts:["Solar energy","Coal","Petroleum","Natural gas"], correct:0},
+
+{marks:1, q:"Which of these is the best everyday way to conserve water at home?",
+ opts:["Repairing leaking taps immediately","Leaving the tap running while brushing","Washing the car with a running hose","Emptying half-full water bottles"], correct:0},
+
+/* ---------- SECTION 3 — ACHIEVERS SECTION · Q46–Q50 · 3 marks ---------- */
+
+{section:{title:"Section 3 — Achievers Section", note:"Questions 46 to 50 · 3 marks each · 15 marks · Higher order thinking", achievers:true}, marks:3,
+ q:"A student has a mixture of common salt and water, and wants to recover <b>both</b> the salt and the water separately. Which method should be used?",
+ opts:["Distillation","Filtration only","Evaporation only","Sedimentation followed by decantation"], correct:0},
+
+{marks:3, q:"An unknown metal bar is brought near one end of a freely suspended magnet. The magnet's north pole is <b>attracted</b> to the bar, and its south pole is <b>repelled</b> by the same end of the bar. What can be concluded?",
+ diagram:magnetBars,
+ opts:["The bar is a magnet","The bar is an unmagnetised iron bar","The bar is made of plastic","Nothing can be concluded from this"], correct:0},
+
+{marks:3, q:"A car covers 150 m in the first 10 seconds and 250 m in the next 20 seconds. Which statement is correct?",
+ opts:["Its average speed is about 13.3 m/s and it was slower in the second part","Its average speed is 15 m/s and it was faster in the second part","It moved with the same speed throughout","Its average speed is 20 m/s"], correct:0},
+
+{marks:3, q:"A food sample turns blue-black with iodine solution and leaves a greasy translucent patch on paper, but shows <b>no</b> colour change in the test for protein. Which components does it contain?",
+ opts:["Starch and fat, but not protein","Protein and fat, but not starch","Starch and protein, but not fat","Only starch"], correct:0},
+
+{marks:3, q:"On a warm day, tiny water droplets appear on the <b>outer</b> surface of a glass containing ice-cold water. What is the correct explanation?",
+ opts:["Water vapour in the surrounding air condenses on the cold glass","Water leaks out through tiny pores in the glass","The ice inside melts and rises up the glass","The glass absorbs water from the table"], correct:0}
+];
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 3600;   /* 60 minutes — official SOF ISO duration */
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+const TOTAL_MARKS = QUESTIONS.reduce((t,q) => t + q.marks, 0);
+
+/* =====================================================================
+   RENDER QUESTIONS
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+let lastPassage = null;
+let currentSection = null;
+const sectionOf = [];   /* question index -> section title, for the breakdown */
+
+QUESTIONS.forEach((item, qi) => {
+  if(item.section){
+    const sec = document.createElement('div');
+    sec.className = 'section-divider' + (item.section.achievers ? ' achievers' : '');
+    sec.innerHTML = `<h2>${item.section.title}</h2><p>${item.section.note}</p>`;
+    root.appendChild(sec);
+    currentSection = item.section.title;
+    lastPassage = null;
+  }
+  sectionOf[qi] = currentSection;
+
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  if(item.passage && item.passage !== lastPassage){
+    const p = document.createElement('div');
+    p.className = 'passage';
+    p.innerHTML = item.passage;
+    block.insertBefore(p, head);
+    lastPassage = item.passage;
+  } else if(!item.passage){
+    lastPassage = null;
+  }
+
+  if(item.marks === 3){
+    const tag = document.createElement('div');
+    tag.className = 'marks-tag';
+    tag.textContent = '3 marks';
+    block.appendChild(tag);
+  }
+
+  if(item.diagram){
+    const d = document.createElement('div');
+    d.className = 'diagram';
+    d.innerHTML = item.diagram;
+    block.appendChild(d);
+  }
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 300){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING — weighted, as SOF marks it: 1 mark for Sections 1–2 and
+   3 marks per Achievers question. No negative marking.
+   (No persistence — nothing is saved anywhere.)
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let correctCount = 0;
+  let marks = 0;
+  const bySection = {};   /* title -> {correct, total, marks, maxMarks} */
+
+  QUESTIONS.forEach((item, qi) => {
+    const sec = sectionOf[qi];
+    if(!bySection[sec]) bySection[sec] = {correct:0, total:0, marks:0, maxMarks:0};
+    bySection[sec].total++;
+    bySection[sec].maxMarks += item.marks;
+
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selIdx = selected ? parseInt(selected.value,10) : null;
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    optLabels[item.correct].classList.add('correct-answer');
+
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+
+    if(selIdx === item.correct){
+      correctCount++;
+      marks += item.marks;
+      bySection[sec].correct++;
+      bySection[sec].marks += item.marks;
+      note.textContent = `✓ Correct — +${item.marks} mark${item.marks > 1 ? 's' : ''}`;
+    } else {
+      if(selIdx !== null) optLabels[selIdx].classList.add('wrong-answer');
+      note.textContent = selIdx === null
+        ? '— Not answered'
+        : '✗ Correct answer highlighted in green';
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const pct = Math.round(marks/TOTAL_MARKS*100);
+  document.getElementById('score-readout').innerHTML =
+    `Score: <b>${marks} / ${TOTAL_MARKS}</b> marks &nbsp;·&nbsp; ${correctCount} of ${total} correct (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  /* Section-wise breakdown — the way SOF reports an Olympiad result */
+  let rows = '';
+  Object.keys(bySection).forEach(sec => {
+    const d = bySection[sec];
+    rows += `<tr><td>${sec.replace(/^Section \d+ — /,'')}</td><td>${d.correct} / ${d.total}</td><td>${d.marks} / ${d.maxMarks}</td></tr>`;
+  });
+  rows += `<tr><td>Total</td><td>${correctCount} / ${total}</td><td>${marks} / ${TOTAL_MARKS}</td></tr>`;
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = `<h3>Section-wise breakdown</h3>
+    <table><tr><th>Section</th><th>Correct</th><th>Marks</th></tr>${rows}</table>`;
+  bd.classList.add('show');
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${marks} out of ${TOTAL_MARKS} marks. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${marks} out of ${TOTAL_MARKS} marks. Scroll up to review any marked in red.`
+        : `${marks} out of ${TOTAL_MARKS} marks. Scroll through to review the green highlights — worth another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>

@@ -12,427 +12,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  /* =====================================================================
-     SHARED DESIGN TOKENS — reuse these exact variables in test1.html /
-     test2.html so the whole site stays visually consistent.
-     Colors sourced directly from the Math ma'am logo (LogoHW-flip.png).
-     ===================================================================== */
-  :root{
-    /* Brand palette (from logo) */
-    --brand-pink:   #DB5DE0;
-    --brand-purple: #8A5DE0;
-    --brand-blue:   #7FB4F1;
-    --brand-cyan:   #65D8F4;
-
-    /* Derived / supporting */
-    --navy:         #1B1836;   /* hero background base */
-    --navy-soft:    #2B2555;
-    --ink:          #241E3D;
-    --ink-soft:     #6B647F;
-    --bg:           #F7F5FC;
-    --surface:      #FFFFFF;
-    --border:       #E7E1F5;
-    --success:      #22B573;
-    --danger:       #E5484D;
-
-    --gradient-warm: linear-gradient(135deg, var(--brand-pink), var(--brand-purple));
-    --gradient-cool: linear-gradient(135deg, var(--brand-purple), var(--brand-blue), var(--brand-cyan));
-    --gradient-hero: linear-gradient(120deg, var(--navy) 0%, var(--navy-soft) 55%, #3C2F73 100%);
-
-    --radius-lg: 20px;
-    --radius-md: 14px;
-    --shadow-card: 0 4px 14px rgba(63, 45, 110, 0.08);
-    --shadow-card-hover: 0 16px 32px rgba(63, 45, 110, 0.16);
-  }
-
-  *{box-sizing:border-box;}
-  html{overflow-x:hidden;}
-  body{
-    max-width:100%;
-    margin:0;
-    background:var(--bg);
-    font-family:'Inter',system-ui,sans-serif;
-    color:var(--ink);
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3{font-family:'Poppins',system-ui,sans-serif;}
-  img,svg{max-width:100%;}
-
-  .page{max-width:1080px;margin:0 auto;padding:0 24px;}
-
-  /* ---------------- Hero ---------------- */
-  .hero{
-    background:var(--gradient-hero);
-    position:relative;
-    overflow:hidden;
-    padding:22px 0 26px;
-  }
-  .hero::before{
-    content:"";
-    position:absolute;
-    width:520px;height:520px;
-    border-radius:50%;
-    background:radial-gradient(circle, rgba(219,93,224,0.35) 0%, transparent 70%);
-    top:-220px; right:-160px;
-  }
-  .hero::after{
-    content:"";
-    position:absolute;
-    width:420px;height:420px;
-    border-radius:50%;
-    background:radial-gradient(circle, rgba(101,216,244,0.25) 0%, transparent 70%);
-    bottom:-200px; left:-140px;
-  }
-  .hero-inner{
-    position:relative;
-    z-index:1;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:14px;
-  }
-  .hero-brand{display:flex;align-items:center;gap:12px;}
-  .logo-wrap img{
-    height:64px;
-    width: auto;
-    aspect-ratio:979/172;
-    object-fit:contain;
-    display:block;
-    flex-shrink:0;
-  }
-  @media (max-width:560px){
-    .logo-wrap img{height:44px;}
-  }
-
-  .logout-link{
-    color:#C9C3E6;
-    font-size:12.5px;
-    font-weight:600;
-    text-decoration:none;
-    border:1px solid rgba(255,255,255,0.18);
-    padding:6px 14px;
-    border-radius:999px;
-    transition:color .15s ease, border-color .15s ease;
-  }
-  .logout-link:hover{color:#fff;border-color:rgba(255,255,255,0.4);}
-
-  .hero-eyebrow{
-    display:inline-block;
-    font-size:12.5px;
-    font-weight:600;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:#D8D2F5;
-    background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.16);
-    padding:6px 14px;
-    border-radius:999px;
-    margin-bottom:18px;
-  }
-  .hero h1{
-    color:#fff;
-    font-size:clamp(28px, 4vw, 40px);
-    font-weight:700;
-    margin:0 0 12px;
-    line-height:1.2;
-  }
-  .hero p{
-    color:#C9C3E6;
-    font-size:16px;
-    line-height:1.6;
-    max-width:560px;
-    margin:0;
-  }
-
-  /* ---------------- Exam Selector ---------------- */
-  .exam-picker{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:var(--radius-lg);
-    box-shadow:var(--shadow-card);
-    padding:22px 24px;
-    margin:-30px 0 32px;
-    position:relative;
-    z-index:2;
-  }
-  .exam-picker label{
-    display:block;
-    font-size:12.5px;
-    font-weight:600;
-    letter-spacing:.04em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    margin-bottom:10px;
-  }
-  /* Custom dropdown (replaces native <select> for consistent cross-device styling) */
-  .exam-dropdown{
-    position:relative;
-    width:100%;
-  }
-  .exam-dropdown-btn{
-    width:100%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    font-family:'Inter',system-ui,sans-serif;
-    font-size:15px;
-    font-weight:600;
-    color:var(--ink);
-    background:var(--bg);
-    border:1.5px solid var(--border);
-    border-radius:var(--radius-md);
-    padding:14px 16px;
-    cursor:pointer;
-    transition:border-color .15s ease;
-    text-align:left;
-  }
-  .exam-dropdown-btn span{
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-  }
-  .exam-dropdown-btn svg{
-    flex-shrink:0;
-    width:18px;height:18px;
-    color:var(--ink-soft);
-    transition:transform .15s ease;
-  }
-  .exam-dropdown.open .exam-dropdown-btn{border-color:var(--brand-purple);}
-  .exam-dropdown.open .exam-dropdown-btn svg{transform:rotate(180deg);}
-  .exam-dropdown-btn:focus-visible{outline:2px solid var(--brand-purple);outline-offset:2px;}
-
-  .exam-dropdown-list{
-    list-style:none;
-    margin:8px 0 0;
-    padding:6px;
-    position:absolute;
-    top:100%;
-    left:0;
-    right:0;
-    background:var(--surface);
-    border:1.5px solid var(--border);
-    border-radius:var(--radius-md);
-    box-shadow:var(--shadow-card-hover);
-    z-index:10;
-    display:none;
-    max-height:70vh;
-    overflow-y:auto;
-  }
-  .exam-dropdown.open .exam-dropdown-list{display:block;}
-
-  /* Nested groups inside the dropdown */
-  .exam-group + .exam-group{margin-top:2px;}
-  .exam-group-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    font-size:14.5px;
-    font-weight:600;
-    color:var(--ink);
-    padding:12px 14px;
-    border-radius:10px;
-    cursor:pointer;
-    line-height:1.4;
-  }
-  .exam-group-head:hover,
-  .exam-group-head:focus-visible{background:var(--bg);}
-  .exam-group-head svg{
-    flex-shrink:0;
-    width:15px;height:15px;
-    color:var(--ink-soft);
-    transition:transform .15s ease;
-  }
-  .exam-group.open .exam-group-head svg{transform:rotate(180deg);}
-  .exam-group.open .exam-group-head{color:var(--brand-purple);}
-
-  .exam-group-sub{
-    list-style:none;
-    margin:0;
-    padding:0;
-    max-height:0;
-    overflow:hidden;
-  }
-  .exam-group.open .exam-group-sub{max-height:220px;}
-  .exam-group-sub li{
-    font-size:13.5px;
-    font-weight:500;
-    color:var(--ink-soft);
-    padding:10px 14px 10px 30px;
-    border-radius:10px;
-    cursor:pointer;
-    white-space:normal;
-    line-height:1.4;
-  }
-  .exam-group-sub li:hover,
-  .exam-group-sub li:focus-visible{background:var(--bg);color:var(--ink);}
-  .exam-group-sub li[aria-selected="true"]{
-    color:var(--brand-purple);
-    font-weight:600;
-    background:rgba(138,93,224,0.08);
-  }
-
-  .exam-picker .exam-note{
-    margin-top:10px;
-    font-size:12.5px;
-    color:var(--ink-soft);
-  }
-
-  /* ---------------- Main ---------------- */
-  main{padding:48px 0 64px;}
-  .section-head{
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    margin-bottom:24px;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .section-head h2{
-    font-size:22px;
-    font-weight:700;
-    margin:0;
-    color:var(--ink);
-  }
-  .section-head span{
-    font-size:13.5px;
-    color:var(--ink-soft);
-  }
-
-  .test-grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:22px;
-  }
-  @media (max-width:680px){
-    .test-grid{grid-template-columns:1fr;}
-    .hero-inner{justify-content:center;text-align:center;}
-  }
-  
-  .test-card{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:var(--radius-lg);
-    padding:0;
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-    box-shadow:var(--shadow-card);
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .test-card:hover{
-    transform:translateY(-4px);
-    box-shadow:var(--shadow-card-hover);
-  }
-  .test-card-band{
-    height:8px;
-    width:100%;
-  }
-  .test-card-band.warm{background:var(--gradient-warm);}
-  .test-card-band.cool{background:var(--gradient-cool);}
-
-  .test-card-body{
-    padding:24px 24px 22px;
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-    flex:1;
-  }
-  .test-card-tag{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    align-self:flex-start;
-    font-size:11.5px;
-    font-weight:600;
-    letter-spacing:.05em;
-    text-transform:uppercase;
-    padding:5px 12px;
-    border-radius:999px;
-  }
-  .test-card-tag.warm{color:var(--brand-pink);background:rgba(219,93,224,0.10);}
-  .test-card-tag.cool{color:var(--brand-blue);background:rgba(127,180,241,0.14);}
-
-  .test-card h3{
-    margin:0;
-    font-size:20px;
-    font-weight:700;
-    color:var(--ink);
-  }
-  .test-card p{
-    margin:0;
-    font-size:14px;
-    line-height:1.6;
-    color:var(--ink-soft);
-    flex:1;
-  }
-
-  .card-meta{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-  }
-  .meta-pill{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    font-size:12.5px;
-    font-weight:600;
-    color:var(--ink);
-    background:var(--bg);
-    border:1px solid var(--border);
-    padding:6px 12px;
-    border-radius:999px;
-  }
-  .meta-pill svg{width:14px;height:14px;flex-shrink:0;}
-
-  .start-link{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    text-decoration:none;
-    color:#fff;
-    font-family:'Poppins',system-ui,sans-serif;
-    font-weight:600;
-    font-size:14.5px;
-    padding:13px 20px;
-    border-radius:var(--radius-md);
-    margin-top:4px;
-    transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
-  }
-  .start-link.warm{background:var(--gradient-warm);}
-  .start-link.cool{background:var(--gradient-cool);}
-  .start-link:hover{transform:translateY(-1px);opacity:.92;}
-  .start-link:active{transform:translateY(0);}
-  .start-link svg{width:16px;height:16px;}
-
-  .footer-note{
-    margin-top:36px;
-    display:flex;
-    gap:14px;
-    align-items:flex-start;
-    padding:18px 20px;
-    background:#F0EBFA;
-    border:1px solid var(--border);
-    border-radius:var(--radius-md);
-    font-size:13.5px;
-    color:var(--ink-soft);
-    line-height:1.6;
-  }
-  .footer-note svg{width:20px;height:20px;flex-shrink:0;color:var(--brand-purple);margin-top:1px;}
-  .footer-note b{color:var(--ink);}
-
-  footer.site-footer{
-    text-align:center;
-    padding:24px 0 40px;
-    font-size:12.5px;
-    color:var(--ink-soft);
-  }
-</style>
+<link rel="stylesheet" href="./assets/css/theme.css">
+<link rel="stylesheet" href="./assets/css/portal.css">
 </head>
 <body>
 
@@ -440,7 +21,7 @@
     <div class="page hero-inner">
       <div class="hero-brand">
         <div class="logo-wrap">
-          <img src="./assets/logoHW.png" alt="Math ma'am Academy — Where Every Subject Clicks">
+          <img src="./assets/img/logoHW.png" alt="Math ma'am Academy — Where Every Subject Clicks">
         </div>
       </div>
       <span class="hero-eyebrow">Practice Test Portal</span>
@@ -457,7 +38,7 @@
           <button type="button" class="exam-dropdown-btn" id="exam-dropdown-btn"
                   aria-haspopup="listbox" aria-expanded="false" aria-labelledby="exam-label"
                   onclick="toggleExamDropdown()">
-            <span id="exam-dropdown-label">Homi Bhabha Competition — 6th Std</span>
+            <span id="exam-dropdown-label">Select an examination</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <ul class="exam-dropdown-list" id="exam-dropdown-list" role="listbox" tabindex="-1" aria-labelledby="exam-label">
@@ -473,25 +54,52 @@
               </ul>
             </li>
 
-            <li class="exam-group" data-group="olympiad">
+            <li class="exam-group" data-group="imo">
               <div class="exam-group-head" onclick="toggleGroup(this.parentElement)">
-                Olympiad Prep
+                Maths Olympiad (SOF IMO)
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
               </div>
               <ul class="exam-group-sub">
-                <li role="option" onclick="selectSub('olympiad-maths', 'Olympiad Prep — Maths', this)">Maths</li>
-                <li role="option" onclick="selectSub('olympiad-science', 'Olympiad Prep — Science', this)">Science</li>
-                <li role="option" onclick="selectSub('olympiad-english', 'Olympiad Prep — English', this)">English</li>
+                <li role="option" onclick="selectSub('imo-4', 'Maths Olympiad (IMO) — 4th Std', this)">4th Std</li>
+                <li role="option" onclick="selectSub('imo-6', 'Maths Olympiad (IMO) — 6th Std', this)">6th Std</li>
+                <li role="option" onclick="selectSub('imo-7', 'Maths Olympiad (IMO) — 7th Std', this)">7th Std</li>
+                <li role="option" onclick="selectSub('imo-9', 'Maths Olympiad (IMO) — 9th Std', this)">9th Std</li>
               </ul>
             </li>
 
-            <li class="exam-group open" data-group="homibhabha">
+            <li class="exam-group" data-group="nso">
+              <div class="exam-group-head" onclick="toggleGroup(this.parentElement)">
+                Science Olympiad (SOF ISO)
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <ul class="exam-group-sub">
+                <li role="option" onclick="selectSub('nso-4', 'Science Olympiad (NSO) — 4th Std', this)">4th Std</li>
+                <li role="option" onclick="selectSub('nso-6', 'Science Olympiad (NSO) — 6th Std', this)">6th Std</li>
+                <li role="option" onclick="selectSub('nso-7', 'Science Olympiad (NSO) — 7th Std', this)">7th Std</li>
+                <li role="option" onclick="selectSub('nso-9', 'Science Olympiad (NSO) — 9th Std', this)">9th Std</li>
+              </ul>
+            </li>
+
+            <li class="exam-group" data-group="ieo">
+              <div class="exam-group-head" onclick="toggleGroup(this.parentElement)">
+                English Olympiad (SOF IEO)
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <ul class="exam-group-sub">
+                <li role="option" onclick="selectSub('ieo-4', 'English Olympiad (IEO) — 4th Std', this)">4th Std</li>
+                <li role="option" onclick="selectSub('ieo-6', 'English Olympiad (IEO) — 6th Std', this)">6th Std</li>
+                <li role="option" onclick="selectSub('ieo-7', 'English Olympiad (IEO) — 7th Std', this)">7th Std</li>
+                <li role="option" onclick="selectSub('ieo-9', 'English Olympiad (IEO) — 9th Std', this)">9th Std</li>
+              </ul>
+            </li>
+
+            <li class="exam-group" data-group="homibhabha">
               <div class="exam-group-head" onclick="toggleGroup(this.parentElement)">
                 Homi Bhabha Balvaidnyanik Competition
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
               </div>
               <ul class="exam-group-sub">
-                <li role="option" aria-selected="true" onclick="selectSub('homibhabha-6', 'Homi Bhabha Competition — 6th Std', this)">6th Std</li>
+                <li role="option" onclick="selectSub('homibhabha-6', 'Homi Bhabha Competition — 6th Std', this)">6th Std</li>
                 <li role="option" onclick="selectSub('homibhabha-9', 'Homi Bhabha Competition — 9th Std', this)">9th Std</li>
               </ul>
             </li>
@@ -510,10 +118,18 @@
 
           </ul>
         </div>
-        <p class="exam-note" id="exam-note">Standard VI · English Medium — pick a test below to begin. Every test is timed and scores itself the moment you submit.</p>
+        <p class="exam-note" id="exam-note">Pick a standard and subject above to see the practice tests available for it.</p>
       </div>
 
-      <div id="exam-homibhabha" class="exam-section">
+      <div class="welcome-panel" id="welcome-panel">
+        <div class="welcome-panel-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h2 id="welcome-heading">Welcome to your Practice Test Portal</h2>
+        <p id="welcome-sub">Select an examination from the dropdown above to see the tests available for your standard — every test is timed, self-scoring, and free to retake.</p>
+      </div>
+
+      <div id="exam-homibhabha" class="exam-section" style="display:none;">
 
         <div class="exam-subsection" data-sub="homibhabha-6">
         <div class="section-head">
@@ -539,7 +155,7 @@
                   90 min
                 </span>
               </div>
-              <a class="start-link warm" href="./tests/test1.html">
+              <a class="start-link warm" href="./tests/homi-bhabha/std6-test1.html">
                 Start Test 1
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
               </a>
@@ -562,7 +178,7 @@
                   30 min
                 </span>
               </div>
-              <a class="start-link cool" href="./tests/test2.html">
+              <a class="start-link cool" href="./tests/homi-bhabha/std6-test2.html">
                 Start Test 2
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
               </a>
@@ -585,7 +201,7 @@
                   30 min
                 </span>
               </div>
-              <a class="start-link cool" href="./tests/test3.html">
+              <a class="start-link cool" href="./tests/homi-bhabha/std6-test3.html">
                 Start Test 3
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
               </a>
@@ -603,34 +219,335 @@
         <div class="exam-subsection" data-sub="homibhabha-9" style="display:none;">
           <div class="section-head">
             <h2>Homi Bhabha Balvaidnyanik Competition — Std IX</h2>
-            <span>Coming soon</span>
+            <span>1 test ready</span>
           </div>
+
+          <div class="test-grid">
+
+            <div class="test-card">
+              <div class="test-card-band warm"></div>
+              <div class="test-card-body">
+                <span class="test-card-tag warm">Test 1 · Theory Round</span>
+                <h3>Homi Bhabha 9th Std — Theory Paper 1</h3>
+                <p>A full-length Level-1 theory paper on the MSTA pattern — Physics, Chemistry, Biology and Environmental Science, weighted 10% Std 7 / 20% Std 8 / 60% Std 9 / 10% science GK. Results include a subject-wise breakdown.</p>
+                <div class="card-meta">
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    100 Questions
+                  </span>
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    90 min
+                  </span>
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6-6.3 4.6L7.9 13.8 2 9.4h7.6z"/></svg>
+                    100 Marks
+                  </span>
+                </div>
+                <a class="start-link warm" href="./tests/homi-bhabha/std9-test1.html">
+                  Start Test 1
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
           <div class="footer-note">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-            <span>Practice tests for the 9th Std Homi Bhabha Competition are being prepared and will appear here soon.</span>
+            <span><b>Remember:</b> the theory round is only stage one — the top <b>7.5%</b> go on to the practical exam, then an action research project and interview. MSTA weights <b>understanding, reasoning and application</b> far more than pure recall.</span>
           </div>
         </div>
       </div>
 
       <div id="exam-scholarship" class="exam-section" style="display:none;">
-        <div class="section-head">
-          <h2 id="scholarship-heading">Scholarship Exam — 4th Std</h2>
-          <span>Coming soon</span>
+
+        <div class="exam-subsection" data-sub="scholarship-4">
+          <div class="section-head">
+            <h2>Pre Upper Primary Scholarship (PUP) — Std 4</h2>
+            <span>1 test ready</span>
+          </div>
+
+          <div class="test-grid">
+
+            <div class="test-card">
+              <div class="test-card-band warm"></div>
+              <div class="test-card-body">
+                <span class="test-card-tag warm">Test 1 · Full Paper</span>
+                <h3>PUP Scholarship — Paper 1 (English &amp; Maths)</h3>
+                <p>A full-length Paper 1 built on the official MSCE Pune pattern — Section I English (Q1–25) and Section II Mathematics (Q26–75), with unit weightages taken straight from the board syllabus.</p>
+                <div class="card-meta">
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    75 Questions
+                  </span>
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    90 min
+                  </span>
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6-6.3 4.6L7.9 13.8 2 9.4h7.6z"/></svg>
+                    150 Marks
+                  </span>
+                </div>
+                <a class="start-link warm" href="./tests/scholarship/pup-std4-test1.html">
+                  Start Test 1
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span><b>Pattern:</b> the PUP exam has two papers of 75 questions each — Paper 1 (First Language + Maths) and Paper 2 (Third Language + Intelligence Test). Every question carries 2 marks and there is no negative marking.</span>
+          </div>
         </div>
-        <div class="footer-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-          <span id="scholarship-note">Practice tests for the Scholarship Exam (4th Std) are being prepared and will appear here soon.</span>
+
+        <div class="exam-subsection" data-sub="scholarship-7" style="display:none;">
+          <div class="section-head">
+            <h2>Pre Secondary Scholarship (PSS) — Std 7</h2>
+            <span>1 test ready</span>
+          </div>
+
+          <div class="test-grid">
+
+            <div class="test-card">
+              <div class="test-card-band warm"></div>
+              <div class="test-card-body">
+                <span class="test-card-tag warm">Test 1 · Full Paper</span>
+                <h3>PSS Scholarship — Paper 1 (English &amp; Maths)</h3>
+                <p>A full-length Paper 1 modelled on the official Feb 2025 PSS question paper — Section I English (Q1–25) and Section II Mathematics (Q26–75), including the board's “select two correct alternatives” questions.</p>
+                <div class="card-meta">
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    75 Questions
+                  </span>
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    90 min
+                  </span>
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6-6.3 4.6L7.9 13.8 2 9.4h7.6z"/></svg>
+                    150 Marks
+                  </span>
+                </div>
+                <a class="start-link warm" href="./tests/scholarship/pss-std7-test1.html">
+                  Start Test 1
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span><b>Watch out:</b> unlike the Std 5 paper, up to 20% of Std 8 questions have <b>two</b> correct alternatives and both must be marked — marking only one scores zero. Those questions are clearly tagged in the test.</span>
+          </div>
         </div>
       </div>
 
-      <div id="exam-olympiad" class="exam-section" style="display:none;">
-        <div class="section-head">
-          <h2 id="olympiad-heading">Olympiad Prep — Maths</h2>
-          <span>Coming soon</span>
+      <div id="exam-imo" class="exam-section" style="display:none;">
+
+        <div class="exam-subsection" data-sub="imo-6" style="display:none;">
+          <div class="section-head">
+            <h2>Maths Olympiad (SOF IMO) — Std VI</h2>
+            <span>1 test ready</span>
+          </div>
+
+          <div class="test-grid">
+
+            <div class="test-card">
+              <div class="test-card-band warm"></div>
+              <div class="test-card-body">
+                <span class="test-card-tag warm">Test 1 · Level 1 Mock</span>
+                <h3>IMO Class 6 — Level 1 Mock Paper</h3>
+                <p>A full Level-1 mock on the official SOF pattern — Logical Reasoning, Mathematical Reasoning, Everyday Mathematics and the 3-mark Achievers Section, built on the new NCERT <i>Ganita Prakash</i> Class 6 syllabus.</p>
+                <div class="card-meta">
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    50 Questions
+                  </span>
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    60 min
+                  </span>
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6-6.3 4.6L7.9 13.8 2 9.4h7.6z"/></svg>
+                    60 Marks
+                  </span>
+                </div>
+                <a class="start-link warm" href="./tests/olympiad/imo-std6-test1.html">
+                  Start Test 1
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span><b>Scoring:</b> SOF marks the first three sections at 1 mark per question, but the <b>Achievers Section carries 3 marks each</b> — 60 marks in total from 50 questions. There is no negative marking.</span>
+          </div>
         </div>
-        <div class="footer-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-          <span id="olympiad-note">Olympiad practice tests for Maths are on the way.</span>
+
+        <div class="exam-subsection" data-sub="imo-4" style="display:none;">
+          <div class="section-head"><h2>Maths Olympiad (SOF IMO) — Std IV</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Classes 1–4 sit a shorter IMO paper — 35 questions for 40 marks. A practice test is being prepared.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="imo-7" style="display:none;">
+          <div class="section-head"><h2>Maths Olympiad (SOF IMO) — Std VII</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for IMO Class 7 (50 questions, 60 marks) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="imo-9" style="display:none;">
+          <div class="section-head"><h2>Maths Olympiad (SOF IMO) — Std IX</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for IMO Class 9 (50 questions, 60 marks) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="exam-nso" class="exam-section" style="display:none;">
+        <div class="exam-subsection" data-sub="nso-4" style="display:none;">
+          <div class="section-head"><h2>Science Olympiad (SOF ISO) — Std IV</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Classes 1–4 sit a shorter NSO paper — 35 questions for 40 marks. A practice test is being prepared.</span>
+          </div>
+        </div>
+        <div class="exam-subsection" data-sub="nso-6" style="display:none;">
+          <div class="section-head">
+            <h2>Science Olympiad (SOF ISO) — Std VI</h2>
+            <span>1 test ready</span>
+          </div>
+
+          <div class="test-grid">
+
+            <div class="test-card">
+              <div class="test-card-band warm"></div>
+              <div class="test-card-body">
+                <span class="test-card-tag warm">Test 1 · Level 1 Mock</span>
+                <h3>ISO / NSO Class 6 — Level 1 Mock Paper</h3>
+                <p>A full Level-1 mock on the official SOF pattern — Logical Reasoning, a 35-question Science section and the 3-mark Achievers Section, covering all eleven NCERT <i>Curiosity</i> Class 6 chapters.</p>
+                <div class="card-meta">
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    50 Questions
+                  </span>
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    60 min
+                  </span>
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6-6.3 4.6L7.9 13.8 2 9.4h7.6z"/></svg>
+                    60 Marks
+                  </span>
+                </div>
+                <a class="start-link warm" href="./tests/olympiad/iso-std6-test1.html">
+                  Start Test 1
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span><b>Note:</b> the Science olympiad has <b>three</b> sections, not four like IMO — Logical Reasoning (10), Science (35) and Achievers (5). SOF has renamed this exam <b>ISO</b> (International Science Olympiad); it was formerly the NSO.</span>
+          </div>
+        </div>
+        <div class="exam-subsection" data-sub="nso-7" style="display:none;">
+          <div class="section-head"><h2>Science Olympiad (SOF ISO) — Std VII</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for NSO Class 7 (50 questions, 60 marks) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+        <div class="exam-subsection" data-sub="nso-9" style="display:none;">
+          <div class="section-head"><h2>Science Olympiad (SOF ISO) — Std IX</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for NSO Class 9 (50 questions, 60 marks) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="exam-ieo" class="exam-section" style="display:none;">
+        <div class="exam-subsection" data-sub="ieo-4" style="display:none;">
+          <div class="section-head"><h2>English Olympiad (SOF IEO) — Std IV</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Classes 1–4 sit a shorter IEO paper — 35 questions for 40 marks. A practice test is being prepared.</span>
+          </div>
+        </div>
+        <div class="exam-subsection" data-sub="ieo-6" style="display:none;">
+          <div class="section-head">
+            <h2>English Olympiad (SOF IEO) — Std VI</h2>
+            <span>1 test ready</span>
+          </div>
+
+          <div class="test-grid">
+
+            <div class="test-card">
+              <div class="test-card-band warm"></div>
+              <div class="test-card-body">
+                <span class="test-card-tag warm">Test 1 · Level 1 Mock</span>
+                <h3>IEO Class 6 — Level 1 Mock Paper</h3>
+                <p>A full Level-1 mock on the official SOF pattern — Word &amp; Structure Knowledge, Reading from real text types (timetable, diary, notice), Spoken &amp; Written Expression, and the 3-mark Achievers Section.</p>
+                <div class="card-meta">
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    50 Questions
+                  </span>
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    60 min
+                  </span>
+                  <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6-6.3 4.6L7.9 13.8 2 9.4h7.6z"/></svg>
+                    60 Marks
+                  </span>
+                </div>
+                <a class="start-link warm" href="./tests/olympiad/ieo-std6-test1.html">
+                  Start Test 1
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span><b>Note:</b> SOF states that IEO tests <b>communication and natural international usage</b> rather than rote grammar — so pick the option a fluent speaker would actually say, not the one that merely looks grammatical.</span>
+          </div>
+        </div>
+        <div class="exam-subsection" data-sub="ieo-7" style="display:none;">
+          <div class="section-head"><h2>English Olympiad (SOF IEO) — Std VII</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for IEO Class 7 (50 questions, 60 marks) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+        <div class="exam-subsection" data-sub="ieo-9" style="display:none;">
+          <div class="section-head"><h2>English Olympiad (SOF IEO) — Std IX</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for IEO Class 9 (50 questions, 60 marks) are being prepared and will appear here soon.</span>
+          </div>
         </div>
       </div>
 
@@ -656,20 +573,32 @@
     }
 
     const SUB_NOTES = {
-      'scholarship-4':   "Standard IV — pick a test below to begin.",
-      'scholarship-7':   "Standard VII — pick a test below to begin.",
-      'olympiad-maths':  "Maths Olympiad — pick a test below to begin.",
-      'olympiad-science':"Science Olympiad — pick a test below to begin.",
-      'olympiad-english':"English Olympiad — pick a test below to begin.",
+      'scholarship-4':   "Pre Upper Primary (PUP) Scholarship · Std 5 level — pick a test below to begin. Each paper is 75 questions for 150 marks in 90 minutes.",
+      'scholarship-7':   "Pre Secondary (PSS) Scholarship · Std 8 level — pick a test below to begin. Watch for the “select two correct alternatives” questions.",
+      'imo-4':  "SOF IMO Level 1 · Class 4 — 35 questions for 40 marks in 60 minutes.",
+      'imo-6':  "SOF IMO Level 1 · Class 6 — 50 questions for 60 marks in 60 minutes. The Achievers Section carries 3 marks per question.",
+      'imo-7':  "SOF IMO Level 1 · Class 7 — 50 questions for 60 marks in 60 minutes.",
+      'imo-9':  "SOF IMO Level 1 · Class 9 — 50 questions for 60 marks in 60 minutes.",
+      'nso-4':  "SOF NSO Level 1 · Class 4 — 35 questions for 40 marks in 60 minutes.",
+      'nso-6':  "SOF NSO Level 1 · Class 6 — 50 questions for 60 marks in 60 minutes.",
+      'nso-7':  "SOF NSO Level 1 · Class 7 — 50 questions for 60 marks in 60 minutes.",
+      'nso-9':  "SOF NSO Level 1 · Class 9 — 50 questions for 60 marks in 60 minutes.",
+      'ieo-4':  "SOF IEO Level 1 · Class 4 — 35 questions for 40 marks in 60 minutes.",
+      'ieo-6':  "SOF IEO Level 1 · Class 6 — 50 questions for 60 marks in 60 minutes.",
+      'ieo-7':  "SOF IEO Level 1 · Class 7 — 50 questions for 60 marks in 60 minutes.",
+      'ieo-9':  "SOF IEO Level 1 · Class 9 — 50 questions for 60 marks in 60 minutes.",
       'homibhabha-6':    "Standard VI · English Medium — pick a test below to begin. Every test is timed and scores itself the moment you submit.",
-      'homibhabha-9':    "Standard IX · English Medium — pick a test below to begin.",
+      'homibhabha-9':    "Standard IX · English Medium — 100 questions in 90 minutes, no negative marking. Top 7.5% qualify for the practical round.",
       'languages-german':  "German (Deutsch) — pick a test below to begin.",
       'languages-french':  "French — pick a test below to begin.",
       'languages-japanese':"Japanese — pick a test below to begin."
     };
 
+    const SELECTED_EXAM_KEY = 'mm_selected_exam';
+
     function showExam(value){
       const group = value.split('-')[0];
+      document.getElementById('welcome-panel').style.display = 'none';
       document.querySelectorAll('.exam-section').forEach(function(el){
         el.style.display = (el.id === 'exam-' + group) ? '' : 'none';
       });
@@ -705,6 +634,11 @@
       li.setAttribute('aria-selected', 'true');
       closeExamDropdown();
       showExam(value);
+      /* Remember the choice so it's still selected when the student
+         comes back from a test, or opens the portal again later. */
+      try{
+        localStorage.setItem(SELECTED_EXAM_KEY, JSON.stringify({value: value, label: label}));
+      }catch(e){ /* localStorage unavailable — selection just won't persist */ }
     }
     document.addEventListener('click', function(e){
       if (!examDropdown.contains(e.target)) closeExamDropdown();
@@ -712,6 +646,32 @@
     document.addEventListener('keydown', function(e){
       if (e.key === 'Escape') closeExamDropdown();
     });
+
+    /* =====================================================================
+       RESTORE LAST SELECTION
+       On first-ever visit nothing is stored, so the welcome message shows
+       and no exam is pre-selected. Once a student picks an exam it's saved,
+       and restored here — including after they finish a test and come back.
+       ===================================================================== */
+    (function restoreSelection(){
+      let saved = null;
+      try{ saved = JSON.parse(localStorage.getItem(SELECTED_EXAM_KEY) || 'null'); }
+      catch(e){ saved = null; }
+      if(!saved || !saved.value) return;
+
+      const li = document.querySelector('.exam-group-sub li[onclick*="\'' + saved.value + '\'"]');
+      if(!li) return;
+
+      const groupEl = li.closest('.exam-group');
+      document.querySelectorAll('.exam-group').forEach(el => el.classList.remove('open'));
+      if(groupEl) groupEl.classList.add('open');
+
+      document.getElementById('exam-dropdown-label').textContent = saved.label;
+      document.querySelectorAll('.exam-group-sub li').forEach(el => el.removeAttribute('aria-selected'));
+      li.setAttribute('aria-selected', 'true');
+
+      showExam(saved.value);
+    })();
   </script>
 
   <footer class="site-footer">Math ma'am Academy · Where Every Subject Clicks</footer>

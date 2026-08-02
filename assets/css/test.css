@@ -1,0 +1,267 @@
+/* =====================================================================
+   test.css — shared styling for every practice-test page.
+   Load AFTER theme.css. Covers the paper sheet, sticky timer and
+   progress bar, question blocks, OMR-style option bubbles, section
+   dividers, reading passages, the marks breakdown and the action bar.
+   ===================================================================== */
+.sheet{
+  max-width:820px;
+  width:100%;
+  margin:0 auto;
+  background:var(--surface);
+  min-height:100vh;
+  box-shadow:0 0 0 1px var(--border);
+}
+
+/* ---------------- Header ---------------- */
+header.title-block{
+  background:var(--gradient-hero);
+  color:#fff;
+  padding:28px 32px 24px;
+  position:relative;
+  overflow:hidden;
+}
+header.title-block::before{
+  content:"";
+  position:absolute;
+  width:280px;height:280px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(219,93,224,0.30) 0%, transparent 70%);
+  top:-140px; right:-80px;
+}
+header.title-block::after{
+  content:"";
+  position:absolute;
+  width:220px;height:220px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(101,216,244,0.22) 0%, transparent 70%);
+  bottom:-120px; left:-80px;
+}
+.back-link{
+  position:relative; z-index:1;
+  display:inline-flex;align-items:center;gap:6px;
+  color:#C9C3E6;text-decoration:none;
+  font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.back-link:hover{color:#fff;}
+.eyebrow{
+  position:relative; z-index:1;
+  display:inline-block;
+  font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:#D8D2F5;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.16);
+  padding:5px 12px;border-radius:999px;
+  margin:0 0 12px;
+}
+h1{position:relative;z-index:1;margin:0 0 6px;font-size:24px;font-weight:700;letter-spacing:.01em;}
+.subtitle{position:relative;z-index:1;margin:0;font-size:13.5px;color:#C9C3E6;}
+.meta-row{
+  position:relative;z-index:1;
+  display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;
+}
+.meta-row span{
+  font-size:12px;font-weight:600;color:#fff;
+  background:rgba(255,255,255,0.10);
+  border:1px solid rgba(255,255,255,0.18);
+  padding:6px 12px;border-radius:999px;
+}
+.meta-row span b{color:#fff;}
+
+.instructions{
+  padding:16px 32px;
+  border-bottom:1px solid var(--border);
+  background:#F0EBFA;
+  font-size:13px;
+  color:var(--ink-soft);
+  line-height:1.6;
+}
+.instructions b{color:var(--ink);}
+
+/* ---------------- Timer + Progress ---------------- */
+#timer-wrap{
+  position:sticky; top:0; z-index:6;
+  background:var(--navy);
+  color:#fff;
+  padding:10px 32px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Poppins',system-ui,sans-serif;
+  font-size:13px;
+}
+#timer-clock{
+  font-weight:700; font-size:16px; letter-spacing:.03em;
+  background:rgba(255,255,255,0.08);
+  padding:4px 14px;
+  border-radius:999px;
+}
+#timer-clock.low{color:#FFB4B7; background:rgba(229,72,77,0.18);}
+
+#progress-wrap{
+  position:sticky; top:41px; z-index:5;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:12px 32px;
+  display:flex; align-items:center; gap:14px;
+}
+#progress-bar-track{flex:1;height:8px;background:var(--border);border-radius:999px;overflow:hidden;}
+#progress-bar-fill{height:100%;width:0%;background:var(--gradient-warm);border-radius:999px;transition:width .25s ease;}
+#progress-label{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
+
+/* ---------------- Questions ---------------- */
+main{padding:8px 32px 40px;}
+.question{padding:24px 0;border-bottom:1px solid var(--border);}
+.question:last-of-type{border-bottom:none;}
+.q-head{display:flex;gap:12px;align-items:baseline;margin-bottom:12px;}
+.q-num{
+  font-family:'Poppins',system-ui,sans-serif;font-weight:700;
+  color:var(--brand-purple);font-size:14px;min-width:34px;
+}
+.q-text{font-size:15.5px;line-height:1.55;color:var(--ink);}
+.q-text .blank{display:inline-block;border-bottom:1.5px solid var(--ink);min-width:70px;height:1px;transform:translateY(-3px);}
+.diagram{
+  margin:10px 0 14px 46px;padding:12px 16px;
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-md);
+  display:inline-block;
+}
+table.data-tbl{border-collapse:collapse;font-size:13.5px;}
+table.data-tbl th,table.data-tbl td{border:1px solid var(--border);padding:6px 12px;text-align:left;}
+table.data-tbl th{background:#EFE8FA;}
+
+/* Section divider */
+.section-divider{
+  margin:26px 0 4px;
+  padding:14px 18px;
+  border-radius:var(--radius-md);
+  background:var(--gradient-cool);
+  color:#fff;
+}
+.section-divider.achievers{background:var(--gradient-warm);}
+.section-divider h2{
+  margin:0;font-size:15px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
+}
+.section-divider p{margin:4px 0 0;font-size:12.5px;color:rgba(255,255,255,0.88);}
+
+/* 3-mark badge for Achievers questions */
+.marks-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  margin:8px 0 2px 46px;
+  font-family:'Poppins',system-ui,sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--brand-pink);
+  background:rgba(219,93,224,0.10);
+  border:1px solid rgba(219,93,224,0.28);
+  padding:5px 12px;border-radius:999px;
+}
+
+.passage{
+  margin:0 0 14px 46px;padding:14px 18px;
+  background:var(--bg);border:1px solid var(--border);
+  border-left:4px solid var(--brand-purple);
+  border-radius:var(--radius-md);
+  font-size:14px;line-height:1.65;color:var(--ink);
+}
+.passage b{display:block;font-family:'Poppins',system-ui,sans-serif;font-size:11.5px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--brand-purple);margin-bottom:6px;}
+
+.options{display:grid;grid-template-columns:1fr 1fr;gap:9px 14px;margin-left:46px;}
+@media (max-width:560px){.options{grid-template-columns:1fr;}}
+label.opt{
+  display:flex;align-items:center;gap:10px;cursor:pointer;
+  padding:9px 12px;border-radius:var(--radius-md);
+  border:1.5px solid var(--border);
+  font-size:14px;
+  transition:background .15s ease, border-color .15s ease;
+}
+label.opt:hover{background:#F5F0FC;border-color:var(--brand-purple);}
+.bubble{
+  width:24px;height:24px;min-width:24px;
+  border-radius:50%;border:2px solid var(--ink-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',system-ui,sans-serif;font-size:11px;font-weight:700;
+  color:var(--ink-soft);background:#fff;
+  transition:all .15s ease;
+}
+input[type="radio"]{display:none;}
+input[type="radio"]:checked + .bubble{
+  background:var(--gradient-warm);border-color:transparent;color:#fff;
+}
+input[type="radio"]:checked ~ .opt-text{color:var(--ink);font-weight:600;}
+.opt.correct-answer{border-color:var(--success);background:rgba(34,181,115,0.06);}
+.opt.correct-answer .bubble{background:var(--success) !important;border-color:var(--success) !important;color:#fff !important;}
+.opt.wrong-answer{border-color:var(--danger);background:rgba(229,72,77,0.06);}
+.opt.wrong-answer .bubble{background:var(--danger) !important;border-color:var(--danger) !important;color:#fff !important;}
+.opt-text{flex:1;}
+
+.answer-note{
+  margin:10px 0 0 46px;font-size:12.5px;font-weight:600;
+  color:var(--success);font-family:'Poppins',system-ui,sans-serif;display:none;
+}
+.answer-note.show{display:block;}
+.answer-note.miss{color:var(--danger);}
+
+/* Section-wise breakdown table shown after submitting */
+.breakdown{
+  display:none;margin:16px 32px 0;padding:16px 18px;
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-md);
+}
+.breakdown.show{display:block;}
+.breakdown h3{margin:0 0 10px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);}
+.breakdown table{border-collapse:collapse;width:100%;font-size:13px;}
+.breakdown th,.breakdown td{border-bottom:1px solid var(--border);padding:7px 6px;text-align:left;}
+.breakdown th{font-family:'Poppins',system-ui,sans-serif;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);}
+.breakdown td:last-child,.breakdown th:last-child{text-align:right;font-weight:600;}
+.breakdown tr:last-child td{border-bottom:none;font-weight:700;color:var(--ink);}
+
+/* ---------------- Footer / actions ---------------- */
+footer.action-bar{
+  position:sticky;bottom:0;background:var(--navy);padding:18px 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+#submit-btn{
+  background:var(--gradient-warm);color:#fff;border:none;
+  padding:13px 28px;font-family:'Poppins',system-ui,sans-serif;
+  font-weight:600;font-size:14px;border-radius:var(--radius-md);cursor:pointer;
+  transition:transform .15s ease, opacity .15s ease;
+}
+#submit-btn:hover{opacity:.92;transform:translateY(-1px);}
+#submit-btn:active{transform:translateY(0);}
+#submit-btn:disabled{cursor:default;opacity:.5;transform:none;}
+#score-readout{font-family:'Poppins',system-ui,sans-serif;color:#fff;font-size:14px;}
+#score-readout b{color:var(--brand-cyan);font-size:19px;}
+
+.result-banner{
+  display:none;margin:0 32px 0;padding:14px 18px;
+  background:rgba(34,181,115,0.08);border:1px solid var(--success);
+  color:#178A57;font-size:13.5px;border-radius:var(--radius-md);
+}
+.result-banner.show{display:block;margin-top:18px;}
+.result-timestamps{
+  display:none;margin:16px 32px 0;padding:14px 18px;
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-md);
+  font-family:'Inter',system-ui,sans-serif;font-size:12.5px;color:var(--ink-soft);
+}
+.result-timestamps.show{display:block;}
+.result-timestamps b{color:var(--ink);}
+
+/* ---------------- Multi-select ("select two") support ----------------
+   Used by exams such as the MSCE PSS Std 8 paper, where up to 20% of
+   questions have two correct alternatives and both must be marked.     */
+input[type="checkbox"]{display:none;}
+input[type="checkbox"]:checked + .bubble{
+  background:var(--gradient-warm);border-color:transparent;color:#fff;
+}
+input[type="checkbox"]:checked ~ .opt-text{color:var(--ink);font-weight:600;}
+
+.multi-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  margin:8px 0 2px 46px;
+  font-family:'Poppins',system-ui,sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--brand-pink);
+  background:rgba(219,93,224,0.10);
+  border:1px solid rgba(219,93,224,0.28);
+  padding:5px 12px;border-radius:999px;
+}
+
+.passage em{color:var(--ink-soft);font-style:italic;}

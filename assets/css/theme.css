@@ -1,0 +1,45 @@
+/* =====================================================================
+   theme.css — Math ma'am Academy design tokens + base reset.
+   Loaded by EVERY page. Colours are sourced from the Math ma'am logo.
+   Change a value here and it updates across the whole portal.
+   ===================================================================== */
+:root{
+  /* Brand palette (from logo) */
+  --brand-pink:   #DB5DE0;
+  --brand-purple: #8A5DE0;
+  --brand-blue:   #7FB4F1;
+  --brand-cyan:   #65D8F4;
+
+  /* Derived / supporting */
+  --navy:         #1B1836;   /* hero background base */
+  --navy-soft:    #2B2555;
+  --ink:          #241E3D;
+  --ink-soft:     #6B647F;
+  --bg:           #F7F5FC;
+  --surface:      #FFFFFF;
+  --border:       #E7E1F5;
+  --success:      #22B573;
+  --danger:       #E5484D;
+
+  --gradient-warm: linear-gradient(135deg, var(--brand-pink), var(--brand-purple));
+  --gradient-cool: linear-gradient(135deg, var(--brand-purple), var(--brand-blue), var(--brand-cyan));
+  --gradient-hero: linear-gradient(120deg, var(--navy) 0%, var(--navy-soft) 55%, #3C2F73 100%);
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --shadow-card: 0 4px 14px rgba(63, 45, 110, 0.08);
+  --shadow-card-hover: 0 16px 32px rgba(63, 45, 110, 0.16);
+}
+
+*{box-sizing:border-box;}
+html{overflow-x:hidden;}
+body{
+  max-width:100%;
+  margin:0;
+  background:var(--bg);
+  font-family:'Inter',system-ui,sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:'Poppins',system-ui,sans-serif;}
+img,svg{max-width:100%;height:auto;}

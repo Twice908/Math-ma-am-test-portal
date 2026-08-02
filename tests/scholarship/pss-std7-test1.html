@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Scholarship (PSS) Std 8 · Paper 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Pre Secondary Scholarship Examination (PSS)</p>
+    <h1>Paper 1 — English &amp; Mathematics</h1>
+    <p class="subtitle">Std 8 (Std 7 preparation) · English Medium · Questions 1–75 · MSCE Pune pattern</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Marks each: <b>2</b></span>
+      <span>Total marks: <b>150</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>90:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> This paper follows the official MSCE Pune pattern — <b>Section I: English (First Language), Q1–25</b>
+    and <b>Section II: Mathematics, Q26–75</b>. All 75 questions are compulsory, each carries 2 marks and there is
+    <b>no negative marking</b>. Some questions are marked <b>“Select two correct alternatives”</b> — for those you must
+    tick <b>both</b> correct options; a partly-correct answer scores <b>zero</b>, exactly as in the real exam.
+    The timer started as soon as this page loaded. When you're ready, tap <b>Check My Score</b> at the bottom —
+    correct answers turn green and any option you picked incorrectly turns red. The test auto-submits when the timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">90:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   SHARED EXTRACTS (Reading Skills — 24% of the English syllabus)
+   ===================================================================== */
+const plasticExtract = `<b>Read the extract (Q19–Q22)</b>
+Every year millions of tonnes of plastic reach our oceans. Plastic does not rot away
+like leaves or paper; it only breaks into smaller and smaller pieces called microplastics.
+Fish and turtles swallow these pieces, mistaking them for food. Scientists have found
+microplastics even in the deepest trench of the Pacific. The simplest cure is not recycling
+but refusing — carrying a cloth bag and a steel bottle costs us nothing.`;
+
+const arrowPoem = `<b>Read the poem (Q23–Q24)</b>
+<em>I shot an arrow into the air,<br>
+It fell to earth, I knew not where;<br>
+For, so swiftly it flew, the sight<br>
+Could not follow it in its flight.</em>
+<div style="margin-top:6px;font-size:12.5px;color:#6B647F">— H. W. Longfellow, <i>The Arrow and the Song</i></div>`;
+
+/* =====================================================================
+   STATISTICS DATA (Statistics — 6% of the Maths syllabus)
+   ===================================================================== */
+const sportsTable = `<b>Sports chosen by 200 students of a school (Q57–Q58)</b>
+<table class="data-tbl" style="margin-top:8px;background:#fff">
+  <tr><th>Sport</th><th>Percentage of students</th></tr>
+  <tr><td>Cricket</td><td>30%</td></tr>
+  <tr><td>Kabaddi</td><td>25%</td></tr>
+  <tr><td>Kho-Kho</td><td>20%</td></tr>
+  <tr><td>Football</td><td>15%</td></tr>
+  <tr><td>Others</td><td>10%</td></tr>
+</table>`;
+
+/* =====================================================================
+   QUESTION DATA
+   Weightage follows the official MSCE Pune Std 8 syllabus:
+   English — Vocabulary 12%, Word Puzzles 4%, Language Study 16%, Grammar 16%,
+             Creative Writing 24%, Reading Skills 24%, Loan Words 4%
+   Maths   — Number Work 6%, Operations 14%, Geometry 20%, Mensuration 20%,
+             Statistics 6%, Applied Maths 16%, Algebra 18%
+
+   `multi:true` marks the official "Select two correct alternatives" questions.
+   The board caps these at 20% of the paper; this paper uses 12 of 75 (16%).
+   ===================================================================== */
+const QUESTIONS = [
+
+/* ---------- SECTION I — ENGLISH (First Language) · Q1–Q25 ---------- */
+
+{section:{title:"Section I — English (First Language)", note:"Questions 1 to 25 · 50 marks"},
+ q:"Choose the word that is <b>opposite</b> in meaning to <b>scarce</b>.",
+ opts:["scanty","abundant","rare","limited"], correct:1},
+
+{q:"Find out <b>two</b> correct synonyms of the word <b>brave</b>.",
+ multi:true, opts:["valiant","timid","gallant","feeble"], correct:[0,2]},
+
+{q:"In the abbreviation <b>UNESCO</b>, what does the letter <b>S</b> stand for?",
+ opts:["Social","Scientific","Standard","State"], correct:1},
+
+{q:"In a word ladder from <b>COLD</b> to <b>WARM</b>, only one letter may change at each step. Which word is a correct first step from COLD?",
+ opts:["CORD","CARD","WARD","WORM"], correct:0},
+
+{q:"Identify the type of sentence:<br><span style='color:#4B5768'><i>Although it was raining heavily, we went out.</i></span>",
+ opts:["Simple","Compound","Complex","Interrogative"], correct:2},
+
+{q:"Identify the figure of speech:<br><span style='color:#4B5768'><i>The stars danced merrily in the midnight sky.</i></span>",
+ opts:["Simile","Metaphor","Personification","Hyperbole"], correct:2},
+
+{q:"Choose <b>two</b> correct auxiliaries that show <b>permission</b>:<br><span style='color:#4B5768'><i>You <span class='blank'></span> leave the hall now.</i></span>",
+ multi:true, opts:["may","can","must","should"], correct:[0,1]},
+
+{q:"Identify the tense of the sentence:<br><span style='color:#4B5768'><i>She has been reading since morning.</i></span>",
+ opts:["Present perfect continuous","Present continuous","Past perfect","Simple present"], correct:0},
+
+{q:"Change into the <b>passive voice</b>:<br><span style='color:#4B5768'><i>The gardener waters the plants every morning.</i></span>",
+ opts:["The plants are watered by the gardener every morning.","The plants were watered by the gardener every morning.","The plants have been watered by the gardener.","The gardener is watering the plants every morning."], correct:0},
+
+{q:"Change into <b>indirect speech</b>:<br><span style='color:#4B5768'><i>He said, “I am very tired.”</i></span>",
+ opts:["He said that he was very tired.","He said that I am very tired.","He says that he was very tired.","He told that he is very tired."], correct:0},
+
+{q:"Add the correct question tag:<br><span style='color:#4B5768'><i>She rarely comes late, <span class='blank'></span>?</i></span>",
+ opts:["doesn't she","does she","is she","did she"], correct:1},
+
+{q:"Choose <b>two</b> correct pairs of <b>correlative conjunctions</b>.",
+ multi:true, opts:["either … or","neither … nor","although … but","because … so"], correct:[0,1]},
+
+{q:"Complete the slogan:<br><span style='color:#4B5768'><i>Save water, <span class='blank'></span></i></span>",
+ opts:["save life","waste water","drink more","buy water"], correct:0},
+
+{q:"You are writing a <b>formal email</b> to your Principal. Which is the correct salutation?",
+ opts:["Respected Sir/Madam,","Hey there,","Yo Principal,","Dear buddy,"], correct:0},
+
+{q:"Which is the correct <b>SMS short form</b> for <i>“See you tomorrow”</i>?",
+ opts:["CU 2moro","SY TMR","CY TM","C U TD"], correct:0},
+
+{q:"Choose the most suitable <b>headline</b> for this news item:<br><span style='color:#4B5768'>Indian scientists successfully landed a spacecraft near the Moon's south pole, a feat no other country has achieved.</span>",
+ opts:["India Scripts History on the Moon","Scientists Take a Holiday","Moon Seen From Earth Tonight","Spacecraft Returns Home Safely"], correct:0},
+
+{q:"You are <b>interviewing an author</b>. Which question is the most suitable opening?",
+ opts:["What inspired you to start writing?","How much money do you have?","Why are you so late today?","Do you like this chair?"], correct:0},
+
+{q:"Select <b>two</b> elements that must appear in a <b>formal letter</b>.",
+ multi:true, opts:["Sender's address","Subject line","A joke to begin with","Emojis after each line"], correct:[0,1]},
+
+{passage:plasticExtract,
+ q:"According to the extract, why is plastic more harmful than leaves or paper?",
+ opts:["It does not rot away; it only breaks into smaller pieces.","It is much heavier than paper.","It floats on the surface of the sea.","It is more expensive to produce."], correct:0},
+
+{passage:plasticExtract,
+ q:"What are <b>microplastics</b>?",
+ opts:["Very small pieces of broken-down plastic","A new kind of sea fish","Tiny bags used by scientists","Machines that recycle plastic"], correct:0},
+
+{passage:plasticExtract,
+ q:"Where have scientists found microplastics?",
+ opts:["Even in the deepest trench of the Pacific","Only on Indian beaches","Only inside recycling plants","Only in rivers"], correct:0},
+
+{passage:plasticExtract,
+ q:"Select <b>two</b> remedies that the writer actually suggests.",
+ multi:true, opts:["Carrying a cloth bag","Carrying a steel bottle","Recycling far more plastic","Burning the plastic waste"], correct:[0,1]},
+
+{passage:arrowPoem,
+ q:"Why could the poet not see where the arrow fell?",
+ opts:["It flew so swiftly that the sight could not follow it.","It was too dark to see anything.","He had closed his eyes while shooting.","The arrow was far too small."], correct:0},
+
+{passage:arrowPoem,
+ q:"Which word in the extract rhymes with <b>air</b>?",
+ opts:["earth","where","sight","flight"], correct:1},
+
+{q:"Which of the following English words is a <b>loan word</b> taken from an Indian language?",
+ opts:["bungalow","table","window","garden"], correct:0},
+
+/* ---------- SECTION II — MATHEMATICS · Q26–Q75 ---------- */
+
+{section:{title:"Section II — Mathematics", note:"Questions 26 to 75 · 100 marks"},
+ q:"Which of the following is an <b>irrational</b> number?",
+ opts:["0.25","√16","√7","22/7"], correct:2},
+
+{q:"Find the <b>additive inverse</b> of −7/12.",
+ opts:["7/12","−12/7","12/7","−7/12"], correct:0},
+
+{q:"Select <b>two</b> pairs of numbers that are <b>co-prime</b>.",
+ multi:true, opts:["(12, 18)","(9, 16)","(15, 20)","(14, 25)"], correct:[1,3]},
+
+{q:"Find the square root of <b>3136</b>.",
+ opts:["54","56","58","52"], correct:1},
+
+{q:"Find the cube root of <b>4913</b>.",
+ opts:["13","17","19","23"], correct:1},
+
+{q:"The L.C.M. of two numbers is 144 and their G.C.D. is 12. If one number is 36, find the other number.",
+ opts:["48","36","60","72"], correct:0},
+
+{q:"Simplify: <b>2⁵ × 2⁻³</b>",
+ opts:["4","2","8","16"], correct:0},
+
+{q:"A can finish a piece of work in 12 days and B can finish the same work in 18 days. Working together, in how many days will they finish it?",
+ opts:["7 ⅕ days","6 days","7 ½ days","8 days"], correct:0},
+
+{q:"Find the average of the first six multiples of 7.",
+ opts:["24.5","25.5","24","28"], correct:0},
+
+{q:"Select <b>two</b> numbers that divide <b>462</b> exactly.",
+ multi:true, opts:["6","8","11","9"], correct:[0,2]},
+
+{q:"An angle whose measure is more than 180° but less than 360° is called:",
+ opts:["a straight angle","a reflex angle","a whole angle","a complete angle"], correct:1},
+
+{q:"The angles of a triangle are (2x)°, (3x)° and (4x)°. Find the measure of the largest angle.",
+ opts:["80°","60°","40°","90°"], correct:0},
+
+{q:"The two shorter sides of a right-angled triangle are 9 cm and 12 cm. Find the length of the hypotenuse.",
+ opts:["15 cm","18 cm","21 cm","13 cm"], correct:0},
+
+{q:"Two parallel lines are cut by a transversal. If one of the two co-interior (allied) angles measures 65°, find the other.",
+ opts:["115°","65°","125°","105°"], correct:0},
+
+{q:"Find the area of a circle whose radius is 14 cm. (Take π = 22/7)",
+ opts:["616 sq cm","308 sq cm","154 sq cm","88 sq cm"], correct:0},
+
+{q:"One angle of a parallelogram measures 70°. Find the measure of the angle adjacent to it.",
+ opts:["110°","70°","120°","90°"], correct:0},
+
+{q:"Select <b>two</b> statements that are true for every <b>rhombus</b>.",
+ multi:true, opts:["All four sides are equal in length","The diagonals bisect each other at right angles","All four angles measure 90°","The diagonals are equal in length"], correct:[0,1]},
+
+{q:"Find the sum of the interior angles of a <b>hexagon</b>.",
+ opts:["720°","540°","900°","1080°"], correct:0},
+
+{q:"Two triangles in which two sides and the angle included between them are equal are congruent by which test?",
+ opts:["S-S-S test","S-A-S test","A-S-A test","R-H-S test"], correct:1},
+
+{q:"How many diagonals does a <b>pentagon</b> have?",
+ opts:["5","4","6","10"], correct:0},
+
+{q:"Find the volume of a cube whose side is 7 cm.",
+ opts:["343 cubic cm","294 cubic cm","49 cubic cm","216 cubic cm"], correct:0},
+
+{q:"Find the total surface area of a cuboid whose length, breadth and height are 8 cm, 5 cm and 3 cm.",
+ opts:["158 sq cm","79 sq cm","120 sq cm","316 sq cm"], correct:0},
+
+{q:"Find the volume of a cylinder whose radius is 7 cm and height is 10 cm. (Take π = 22/7)",
+ opts:["1540 cubic cm","2200 cubic cm","770 cubic cm","1078 cubic cm"], correct:0},
+
+{q:"Find the volume of a cone whose radius is 7 cm and height is 12 cm. (Take π = 22/7)",
+ opts:["616 cubic cm","1848 cubic cm","308 cubic cm","462 cubic cm"], correct:0},
+
+{q:"Find the volume of a sphere whose radius is 21 cm. (Take π = 22/7)",
+ opts:["38808 cubic cm","29106 cubic cm","19404 cubic cm","5544 cubic cm"], correct:0},
+
+{q:"The parallel sides of a trapezium are 12 cm and 8 cm and the distance between them is 5 cm. Find its area.",
+ opts:["50 sq cm","100 sq cm","40 sq cm","60 sq cm"], correct:0},
+
+{q:"The diagonals of a rhombus measure 16 cm and 12 cm. Find its perimeter.",
+ opts:["40 cm","28 cm","20 cm","48 cm"], correct:0},
+
+{q:"Find the capacity of a cubical tank whose each side is 2 metres. (Select two correct alternatives)",
+ multi:true, opts:["8 cubic metres","8000 litres","800 litres","6 cubic metres"], correct:[0,1]},
+
+{q:"Find the area of an equilateral triangle whose side is 12 cm.",
+ opts:["36√3 sq cm","72√3 sq cm","144√3 sq cm","18√3 sq cm"], correct:0},
+
+{q:"The circumference of a circle is 44 cm. Find its radius. (Take π = 22/7)",
+ opts:["7 cm","14 cm","3.5 cm","21 cm"], correct:0},
+
+{q:"The mean of 12, 15, x, 20 and 18 is 16. Find the value of x.",
+ opts:["15","16","14","17"], correct:0},
+
+{passage:sportsTable,
+ q:"In a pie chart of this data, what would be the central angle of the <b>Kabaddi</b> sector?",
+ opts:["90°","72°","100°","120°"], correct:0},
+
+{passage:sportsTable,
+ q:"Select <b>two</b> correct statements about the students who chose <b>cricket</b>.",
+ multi:true, opts:["60 students chose cricket","In a pie chart their sector would measure 108°","140 students chose cricket","Their sector would measure 30° in a pie chart"], correct:[0,1]},
+
+{q:"Find the compound interest on ₹8,000 at 10 p.c.p.a. for 2 years.",
+ opts:["₹1,680","₹1,600","₹1,700","₹800"], correct:0},
+
+{q:"Find the difference between the compound interest and the simple interest on ₹5,000 at 10 p.c.p.a. for 2 years.",
+ opts:["₹50","₹100","₹25","₹10"], correct:0},
+
+{q:"The marked price of an article is ₹4,000 and a discount of 15% is given on it. Find its selling price.",
+ opts:["₹3,400","₹3,600","₹3,500","₹3,200"], correct:0},
+
+{q:"An agent gets a commission of 5% on his sales. Find his commission on sales worth ₹60,000.",
+ opts:["₹3,000","₹2,500","₹3,500","₹6,000"], correct:0},
+
+{q:"An article is sold for ₹1,440 at a profit of 20%. Find its cost price.",
+ opts:["₹1,200","₹1,150","₹1,250","₹1,300"], correct:0},
+
+{q:"The population of a town is 10,000 and it increases at 10% per year. What will the population be after 2 years?",
+ opts:["12,100","12,000","11,000","13,310"], correct:0},
+
+{q:"A sum of ₹6,000 is invested at 8 p.c.p.a. simple interest for 3 years. (Select two correct alternatives)",
+ multi:true, opts:["The interest is ₹1,440","The amount is ₹7,440","The interest is ₹1,400","The amount is ₹7,000"], correct:[0,1]},
+
+{q:"The price of an article is first increased by 25% and then decreased by 20%. What is the net change in the price?",
+ opts:["No change","5% increase","5% decrease","10% increase"], correct:0},
+
+{q:"Factorise: <b>x² − 9x + 20</b>",
+ opts:["(x − 4)(x − 5)","(x + 4)(x + 5)","(x − 2)(x − 10)","(x − 1)(x − 20)"], correct:0},
+
+{q:"Solve for x: <b>3x − 7 = 14</b>",
+ opts:["7","6","5","21"], correct:0},
+
+{q:"Simplify: <b>(a + b)² − (a − b)²</b>",
+ opts:["4ab","2ab","2(a² + b²)","0"], correct:0},
+
+{q:"Write the degree of the polynomial <b>5x³y² + 7x²y − 3</b>.",
+ opts:["5","3","2","7"], correct:0},
+
+{q:"Find the value of <b>x² − 5x + 6</b> when <b>x = 4</b>.",
+ opts:["2","0","6","−2"], correct:0},
+
+{q:"Multiply: <b>(x + 3)(x − 3)</b>",
+ opts:["x² − 9","x² + 9","x² − 6x + 9","x² − 3x"], correct:0},
+
+{q:"The sum of two numbers is 45 and their difference is 11. Find the larger number.",
+ opts:["28","17","26","29"], correct:0},
+
+{q:"Select <b>two</b> correct factors of the polynomial <b>x² − 5x + 6</b>.",
+ multi:true, opts:["(x − 2)","(x − 3)","(x + 2)","(x − 6)"], correct:[0,1]},
+
+{q:"A father's present age is four times his son's age. After 10 years the father will be twice as old as his son. Find the son's present age.",
+ opts:["5 years","10 years","8 years","6 years"], correct:0}
+];
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 5400;   /* 90 minutes — official PSS Paper 1 duration */
+const MARKS_PER_QUESTION  = 2;     /* official: each question carries 2 marks    */
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+const isMulti = item => item.multi === true;
+const keyOf   = item => isMulti(item) ? item.correct.slice().sort((a,b)=>a-b) : [item.correct];
+
+/* =====================================================================
+   RENDER QUESTIONS
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+let lastPassage = null;
+
+QUESTIONS.forEach((item, qi) => {
+  if(item.section){
+    const sec = document.createElement('div');
+    sec.className = 'section-divider';
+    sec.innerHTML = `<h2>${item.section.title}</h2><p>${item.section.note}</p>`;
+    root.appendChild(sec);
+    lastPassage = null;
+  }
+
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  /* A passage/table is printed once, above the first question that uses it. */
+  if(item.passage && item.passage !== lastPassage){
+    const p = document.createElement('div');
+    p.className = 'passage';
+    p.innerHTML = item.passage;
+    block.insertBefore(p, head);
+    lastPassage = item.passage;
+  } else if(!item.passage){
+    lastPassage = null;
+  }
+
+  if(isMulti(item)){
+    const tag = document.createElement('div');
+    tag.className = 'multi-tag';
+    tag.textContent = 'Select two correct alternatives';
+    block.appendChild(tag);
+  }
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  const inputType = isMulti(item) ? 'checkbox' : 'radio';
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="${inputType}" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* On a "select two" question, stop the student ticking a third box. */
+root.addEventListener('change', e => {
+  const inp = e.target;
+  if(inp.type !== 'checkbox') return;
+  const checked = document.querySelectorAll(`input[name="${inp.name}"]:checked`);
+  if(checked.length > 2){ inp.checked = false; }
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 300){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING (no persistence — nothing is saved anywhere)
+   Official PSS rule: on a "select two" question BOTH correct circles must
+   be marked. Anything else — one only, or one right plus one wrong — is
+   credited with zero.
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let score = 0;
+  QUESTIONS.forEach((item, qi) => {
+    const chosen = Array.from(document.querySelectorAll(`input[name="q${qi}"]:checked`))
+                        .map(i => parseInt(i.value,10)).sort((a,b)=>a-b);
+    const key = keyOf(item);
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    key.forEach(k => optLabels[k].classList.add('correct-answer'));
+    chosen.forEach(c => { if(!key.includes(c)) optLabels[c].classList.add('wrong-answer'); });
+
+    const isRight = chosen.length === key.length && chosen.every((c,i) => c === key[i]);
+    if(isRight) score++;
+
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+    if(isRight){
+      note.textContent = '✓ Correct';
+    } else if(chosen.length === 0){
+      note.textContent = '— Not answered';
+      note.classList.add('miss');
+    } else if(isMulti(item) && chosen.length < 2){
+      note.textContent = '✗ Both correct alternatives had to be marked — scored zero';
+      note.classList.add('miss');
+    } else {
+      note.textContent = '✗ Correct answer highlighted in green';
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const pct = Math.round(score/total*100);
+  const marks = score * MARKS_PER_QUESTION;
+  const totalMarks = total * MARKS_PER_QUESTION;
+  document.getElementById('score-readout').innerHTML =
+    `Score: <b>${marks} / ${totalMarks}</b> marks &nbsp;·&nbsp; ${score} of ${total} correct (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${marks} out of ${totalMarks} marks. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${marks} out of ${totalMarks} marks. Scroll up to review any marked in red.`
+        : `${marks} out of ${totalMarks} marks. Scroll through to review the green highlights — worth another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>
