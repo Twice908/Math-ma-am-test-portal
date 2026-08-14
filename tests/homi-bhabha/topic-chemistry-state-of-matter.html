@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · State of Matter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Chemistry — State of Matter</h1>
+    <p class="subtitle">Standard VI · English Medium · Questions 1–40 · Std 5–8 syllabus, mid-to-hard difficulty</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>40</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>30:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> A focused topic test covering <b>State of Matter</b> only — particle theory, the properties
+    of solids, liquids and gases, change of state (melting, freezing, boiling, evaporation, condensation, sublimation
+    and deposition), and everyday applications. Questions are drawn from the Std 5 to Std 8 syllabus and pitched
+    <b>mid-to-hard</b> — mostly reasoning and application rather than plain recall. One mark each, <b>no negative
+    marking</b>. Select one option per question by tapping its bubble. The timer started as soon as this page
+    loaded. When you're ready, tap <b>Check My Score</b> — correct answers turn green, wrong picks turn red, and
+    you'll get a breakdown by sub-topic. The test auto-submits when the timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">30:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   INLINE DIAGRAMS
+   ===================================================================== */
+const heatingCurveFig = `<svg width="320" height="180" viewBox="0 0 320 180">
+  <line x1="40" y1="10" x2="40" y2="160" stroke="#1E2B3C" stroke-width="1.5"/>
+  <line x1="40" y1="160" x2="300" y2="160" stroke="#1E2B3C" stroke-width="1.5"/>
+  <text x="10" y="90" font-size="10" fill="#4B5768" transform="rotate(-90 10 90)">Temperature</text>
+  <text x="170" y="176" font-size="10" text-anchor="middle" fill="#4B5768">Time (heat supplied steadily)</text>
+  <path d="M40 150 L80 118 L160 118 L200 70 L280 70" fill="none" stroke="#A6342A" stroke-width="2.5"/>
+  <line x1="80" y1="160" x2="80" y2="118" stroke="#4B5768" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="160" y1="160" x2="160" y2="118" stroke="#4B5768" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="115" y="112" font-size="10" text-anchor="middle" fill="#1E2B3C">flat region X</text>
+  <line x1="200" y1="160" x2="200" y2="70" stroke="#4B5768" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="60" y="146" font-size="9.5" fill="#4B5768">solid warming</text>
+  <text x="235" y="66" font-size="9.5" fill="#4B5768">liquid warming further</text>
+</svg>`;
+
+const iodineFig = `<svg width="260" height="200" viewBox="0 0 260 200">
+  <ellipse cx="130" cy="24" rx="40" ry="10" fill="#EFE7D2" stroke="#4B5768" stroke-width="1.5"/>
+  <text x="130" y="14" font-size="10" text-anchor="middle" fill="#4B5768">cold watch-glass (with ice)</text>
+  <rect x="112" y="30" width="36" height="110" fill="none" stroke="#1E2B3C" stroke-width="2"/>
+  <rect x="118" y="110" width="24" height="26" fill="#5B3A78"/>
+  <text x="130" y="128" font-size="8" text-anchor="middle" fill="#fff">I₂</text>
+  <g fill="#8A5DE0" opacity="0.55">
+    <circle cx="122" cy="95" r="2.5"/><circle cx="132" cy="85" r="2.5"/><circle cx="126" cy="75" r="2.5"/>
+    <circle cx="138" cy="98" r="2.5"/><circle cx="120" cy="65" r="2.5"/><circle cx="134" cy="55" r="2.5"/>
+  </g>
+  <text x="176" y="90" font-size="10" fill="#4B5768">violet vapour</text>
+  <text x="176" y="102" font-size="10" fill="#4B5768">rising up the tube</text>
+  <path d="M100 165 Q130 185 160 165" fill="none" stroke="#4B5768" stroke-width="1.5"/>
+  <text x="130" y="196" font-size="10" text-anchor="middle" fill="#4B5768">gentle heat</text>
+  <circle cx="130" cy="176" r="4" fill="#A6342A"/>
+  <text x="30" y="45" font-size="10" fill="#5B3A78">violet crystals</text>
+  <text x="30" y="57" font-size="10" fill="#5B3A78">re-form here</text>
+  <line x1="70" y1="52" x2="112" y2="40" stroke="#5B3A78" stroke-width="1"/>
+</svg>`;
+
+/* =====================================================================
+   QUESTION DATA — Topic Practice: State of Matter (Chemistry)
+   40 questions · 1 mark each · 30 minutes · no negative marking.
+   Std 5–8 syllabus, mid-to-hard difficulty (reasoning/application-led).
+   Each question carries a `topic` used only for the sub-topic breakdown.
+   ===================================================================== */
+const QUESTIONS = [
+
+/* ---------- Particle Theory ---------- */
+
+{topic:"Particle Theory", q:"According to the particle theory of matter, the tiny particles that make up every substance are:",
+ opts:["completely at rest at all times","moving only once a substance is heated to its boiling point","moving only when the substance is a gas","in continuous, random motion"], correct:3},
+
+{topic:"Particle Theory", q:"In a solid, the particles are held in fixed positions mainly because of:",
+ opts:["a complete absence of any force between particles","forces so strong that particles cannot vibrate at all","strong forces of attraction between neighbouring particles","forces that act only once every few hours"], correct:2},
+
+{topic:"Particle Theory", q:"As a substance is heated, the average kinetic energy of its particles:",
+ opts:["decreases","stays exactly the same","becomes zero","increases"], correct:3},
+
+{topic:"Particle Theory", q:"Which of the following correctly orders solids, liquids and gases from the most closely packed particles to the most widely spaced?",
+ opts:["Gas > Liquid > Solid","Liquid > Solid > Gas","All three are equally spaced","Solid > Liquid > Gas"], correct:3},
+
+{topic:"Particle Theory", q:"Diffusion — the spontaneous mixing of particles of two substances — occurs fastest in which state of matter?",
+ opts:["Liquids","Solids","Gases","It occurs at the same rate in all three states"], correct:2},
+
+{topic:"Particle Theory", q:"Why does diffusion take place much faster in a gas than in a liquid?",
+ opts:["Gas particles are heavier than liquid particles","Gas particles do not move at all","Gas particles move faster and have much more space between them","Liquid particles repel each other very strongly"], correct:2},
+
+{topic:"Particle Theory", q:"Under a microscope, pollen grains suspended in water are seen to jiggle about randomly, even though nothing visible is pushing them. This is best explained as evidence for:",
+ opts:["the pollen grains being alive and swimming","the constant, random motion of the water particles bombarding the pollen grains","the water being completely still","light itself pushing the pollen grains"], correct:1},
+
+{topic:"Particle Theory", q:"Which of the following best explains why a gas can be compressed easily while a liquid or solid cannot be compressed much at all?",
+ opts:["Gas particles are much heavier than liquid particles","Gas particles have large empty spaces between them, which can be reduced","Gas particles are not in motion","Liquids have more empty space between particles than gases"], correct:1},
+
+/* ---------- Properties of States ---------- */
+
+{topic:"Properties of States", q:"A solid has both a fixed shape and a fixed volume mainly because its particles:",
+ opts:["move freely throughout the container","vibrate about fixed positions and cannot move past one another","are very far apart with almost no attraction","have no attractive forces acting between them"], correct:1},
+
+{topic:"Properties of States", q:"A liquid takes the shape of whatever container it is poured into, yet has a fixed volume, because its particles:",
+ opts:["can move past one another but stay close together","are held rigidly in one fixed place","are very far apart with almost no attraction between them","expand to completely fill any container"], correct:0},
+
+{topic:"Properties of States", q:"Which of the following is true of a gas but not of a liquid?",
+ opts:["It has a fixed, definite volume","It cannot flow at all","It expands to completely fill any container it is placed in","It cannot be compressed even slightly"], correct:2},
+
+{topic:"Properties of States", q:"Glass and many plastics are called <b>amorphous</b> solids because, unlike a crystalline solid such as ice, they:",
+ opts:["cannot be melted under any conditions","have a perfectly regular, repeating particle arrangement","expand less than a gas when heated","soften gradually over a range of temperatures rather than melting at one sharp temperature"], correct:3},
+
+{topic:"Properties of States", q:"Ordinary table salt (sodium chloride) is best described as a:",
+ opts:["amorphous solid, with no regular pattern","liquid at room temperature","crystalline solid, with particles in a regular repeating pattern","gas that has been cooled"], correct:2},
+
+{topic:"Properties of States", q:"Compared with solids and liquids, gases are generally:",
+ opts:["far less compressible","completely incompressible","exactly as compressible as liquids","far more compressible"], correct:3},
+
+{topic:"Properties of States", q:"Which statement correctly compares how easily the three common states of matter can be compressed?",
+ opts:["Liquids compress the least and solids compress the most","Gases compress the least and solids compress the most","Solids compress the least and gases compress the most","All three states compress by exactly the same amount"], correct:2},
+
+{topic:"Properties of States", q:"A fixed mass of gas is released from a small, sealed cylinder into a much larger empty room. What happens to the volume occupied by the gas?",
+ opts:["It expands to fill the entire room","It stays exactly the same as it was in the cylinder","It automatically shrinks to half its original volume","It cannot change unless the gas is heated first"], correct:0},
+
+/* ---------- Change of State ---------- */
+
+{topic:"Change of State", q:"The change of a solid directly into a liquid on heating is called:",
+ opts:["melting (fusion)","boiling","sublimation","condensation"], correct:0},
+
+{topic:"Change of State", q:"The change of a liquid into a solid on cooling is called:",
+ opts:["melting","evaporation","sublimation","freezing (solidification)"], correct:3},
+
+{topic:"Change of State", q:"The change of a liquid into a gas that takes place throughout the liquid, at one fixed temperature, is called:",
+ opts:["evaporation","boiling","condensation","sublimation"], correct:1},
+
+{topic:"Change of State", q:"Unlike boiling, evaporation is a process that takes place:",
+ opts:["only at the liquid's boiling point","throughout the liquid all at once","only at the surface of a liquid, and at any temperature","only in solids, never in liquids"], correct:2},
+
+{topic:"Change of State", q:"Which of the following would <b>increase</b> the rate of evaporation of water kept in an open dish?",
+ opts:["Covering the dish tightly with a lid","Increasing the surface area of the water exposed to air","Placing the dish in a cold, still, humid room","Reducing the temperature of the water"], correct:1},
+
+{topic:"Change of State", q:"Wet clothes dry faster on a windy day mainly because moving air:",
+ opts:["freezes the water on the cloth","increases the humidity right next to the cloth","stops evaporation from taking place at all","carries away water vapour from near the cloth's surface, allowing further evaporation"], correct:3},
+
+{topic:"Change of State", q:"We feel cool just after stepping out of a bath, even in a warm room, mainly because:",
+ opts:["water on the skin reflects sunlight away from the body","wet skin produces a cooling chemical","the towel used is always kept in a fridge","water evaporating from our skin absorbs heat from the body"], correct:3},
+
+{topic:"Change of State", q:"On a cold morning, tiny water droplets often form on the outside of a glass holding chilled water. This is an example of:",
+ opts:["condensation of water vapour from the surrounding air on a cold surface","evaporation of the water inside the glass","sublimation of the glass surface itself","boiling of the water inside the glass"], correct:0},
+
+{topic:"Change of State", q:"Fog and dew both form mainly because of:",
+ opts:["condensation of water vapour already present in the air","evaporation of water vapour into the air","sublimation of ice lying on the ground","boiling of water in nearby ponds"], correct:0},
+
+{topic:"Change of State", q:"The direct change of a solid into a gas, without the substance passing through the liquid state, is called:",
+ opts:["evaporation","condensation","sublimation","freezing"], correct:2},
+
+{topic:"Change of State", q:"Which of the following substances is well known for undergoing sublimation at ordinary room temperature?",
+ opts:["Common salt","Iron nails","Naphthalene (mothballs)","Cane sugar"], correct:2},
+
+{topic:"Change of State", q:"Solid carbon dioxide is commonly called “dry ice” because, on warming to room temperature, it:",
+ opts:["melts into a colourless liquid, like ordinary ice","dissolves completely in water","turns directly into carbon dioxide gas without ever forming a liquid","freezes further into an even harder solid"], correct:2},
+
+{topic:"Change of State", q:"A few crystals of iodine are gently heated in a test tube, as shown, with a cold watch-glass placed over the mouth of the tube. Violet vapour rises and forms fresh violet crystals on the cold glass. Which pair of changes has taken place, in order?",
+ diagram:iodineFig,
+ opts:["Melting, then boiling","Evaporation, then freezing","Condensation, then melting","Sublimation (solid to gas), then deposition (gas to solid)"], correct:3},
+
+{topic:"Change of State", q:"A beaker of ice is heated steadily and its temperature is recorded every minute. While the ice is actually melting, the thermometer reading:",
+ opts:["keeps rising steadily throughout the melting","falls below 0 °C as melting proceeds","jumps straight up to 100 °C","stays constant at 0 °C until all of the ice has melted"], correct:3},
+
+{topic:"Change of State", q:"The graph shows the heating curve of a solid substance as it is warmed steadily. What is happening to the substance during the flat region marked X, where the temperature does not rise even though heat is still being supplied?",
+ diagram:heatingCurveFig,
+ opts:["The substance is changing state, and the heat energy is being used to overcome forces between particles rather than to raise the temperature","The heater has been switched off during this time","The substance is cooling down rapidly","No heat is reaching the substance at all during this period"], correct:0},
+
+/* ---------- Applications & Real Life ---------- */
+
+{topic:"Applications & Real Life", q:"A pressure cooker cooks food faster than an open pan mainly because the higher pressure inside it:",
+ opts:["raises the boiling point of water above 100 °C","lowers the boiling point of water","stops the water from boiling altogether","has no effect at all on the boiling point"], correct:0},
+
+{topic:"Applications & Real Life", q:"Water boils at a lower temperature on top of a high mountain than it does at sea level, mainly because at high altitude:",
+ opts:["the air is simply colder","gravity is weaker at high altitude","atmospheric pressure is lower","there is less oxygen dissolved in the water"], correct:2},
+
+{topic:"Applications & Real Life", q:"A scald from steam at 100 °C is usually more severe than one from boiling water at the same temperature, mainly because the steam:",
+ opts:["is actually far hotter than 100 °C","never actually touches the skin","contains no water at all, unlike boiling water","releases a large extra amount of heat as it condenses back into water on the skin"], correct:3},
+
+{topic:"Applications & Real Life", q:"Which of the following is often described as a “fourth state of matter”, found in lightning, neon signs and the Sun?",
+ opts:["Plasma","Colloid","Gel","Foam"], correct:0},
+
+{topic:"Applications & Real Life", q:"A tray of water left inside the freezer compartment of a refrigerator gradually turns into ice. Which change of state has taken place?",
+ opts:["Freezing (solidification)","Melting","Evaporation","Sublimation"], correct:0},
+
+{topic:"Applications & Real Life", q:"Petrol spilt on the ground disappears completely after some time and leaves no residue behind. This is mainly because petrol:",
+ opts:["is actually a solid that sublimes","reacts chemically with the ground and disappears","is a highly volatile liquid that evaporates readily at room temperature","condenses into the surrounding air"], correct:2},
+
+{topic:"Applications & Real Life", q:"A solid air-freshener block placed inside a cupboard slowly shrinks and eventually disappears over several weeks, without ever turning into a puddle of liquid. This block most likely works by:",
+ opts:["melting","boiling","condensation","sublimation"], correct:3},
+
+{topic:"Applications & Real Life", q:"Bottles of perfume are usually kept tightly stoppered mainly to prevent the liquid from:",
+ opts:["freezing solid inside the bottle","boiling at ordinary room temperature","evaporating into the air and being wasted","sublimating directly into a solid"], correct:2},
+
+{topic:"Applications & Real Life", q:"A mixture of ice, liquid water and water vapour exists together at 0 °C, inside a sealed container, at normal atmospheric pressure. How many states of matter of the same substance are present at once?",
+ opts:["Only one state","Only two states","None, since it is a single substance","Three — solid, liquid and gas together"], correct:3}
+];
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 1800;   /* 30 minutes */
+const MARKS_PER_QUESTION  = 1;     /* 1 mark each, no negative marking */
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+/* =====================================================================
+   RENDER QUESTIONS — one continuous block, topic-focused paper
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+QUESTIONS.forEach((item, qi) => {
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  if(item.diagram){
+    const d = document.createElement('div');
+    d.className = 'diagram';
+    d.innerHTML = item.diagram;
+    block.appendChild(d);
+  }
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 120){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING — 1 mark per question, no negative marking, plus a
+   sub-topic breakdown. (No persistence — nothing is saved anywhere.)
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let score = 0;
+  const byTopic = {};
+
+  QUESTIONS.forEach((item, qi) => {
+    const t = item.topic;
+    if(!byTopic[t]) byTopic[t] = {correct:0, total:0};
+    byTopic[t].total++;
+
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selIdx = selected ? parseInt(selected.value,10) : null;
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    optLabels[item.correct].classList.add('correct-answer');
+
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+
+    if(selIdx === item.correct){
+      score++;
+      byTopic[t].correct++;
+      note.textContent = '✓ Correct';
+    } else {
+      if(selIdx !== null) optLabels[selIdx].classList.add('wrong-answer');
+      note.textContent = selIdx === null
+        ? '— Not answered'
+        : '✗ Correct answer highlighted in green';
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const marks = score * MARKS_PER_QUESTION;
+  const totalMarks = total * MARKS_PER_QUESTION;
+  const pct = Math.round(score/total*100);
+  document.getElementById('score-readout').innerHTML =
+    `Score: <b>${marks} / ${totalMarks}</b> marks (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  let rows = '';
+  Object.keys(byTopic).forEach(t => {
+    const d = byTopic[t];
+    const p = Math.round(d.correct/d.total*100);
+    rows += `<tr><td>${t}</td><td>${d.correct} / ${d.total}</td><td>${p}%</td></tr>`;
+  });
+  rows += `<tr><td>Total</td><td>${score} / ${total}</td><td>${pct}%</td></tr>`;
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = `<h3>Sub-topic breakdown</h3>
+    <table><tr><th>Sub-topic</th><th>Correct</th><th>Score</th></tr>${rows}</table>`;
+  bd.classList.add('show');
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${marks} out of ${totalMarks} marks. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${marks} out of ${totalMarks} marks. Check the sub-topic breakdown to see where to focus next.`
+        : `${marks} out of ${totalMarks} marks. Use the sub-topic breakdown below to see which area needs another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>

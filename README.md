@@ -26,7 +26,11 @@ tests/
     std6-test1.html        2022 official paper — 100 Q
     std6-test2.html        Practice set — 40 Q
     std6-test3.html        Practice set — 50 Q
+    std6-test5.html        2024 pattern paper — 100 Q / 100 marks
     std9-test1.html        Theory round — 100 Q / 100 marks
+    topic-chemistry-state-of-matter.html   Topic test — State of Matter — 40 Q / 40 marks
+    topic-physics-units-measurements.html  Topic test — Units and Measurements — 40 Q / 40 marks
+    topic-biology-classification-of-plants.html   Topic test — Classification of Plants — 40 Q / 40 marks
   scholarship/
     pup-std4-test1.html    MSCE PUP Paper 1 — 75 Q / 150 marks
     pss-std7-test1.html    MSCE PSS Paper 1 — 75 Q / 150 marks

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Classification of Plants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Biology — Classification of Plants</h1>
+    <p class="subtitle">Standard VI · English Medium · Questions 1–40 · Std 5–8 syllabus, mid-to-hard difficulty</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>40</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>30:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> A focused topic test covering <b>Classification of Plants</b> only — habit-based
+    classification (herbs, shrubs, trees, climbers, creepers), root and stem types, the major groups of the
+    plant kingdom (Thallophyta, Bryophyta, Pteridophyta, Gymnosperms, Angiosperms) with their properties and
+    examples, and the differences between monocots and dicots. Questions are drawn from the Std 5 to Std 8
+    syllabus and pitched <b>mid-to-hard</b> — mostly reasoning and application rather than plain recall.
+    One mark each, <b>no negative marking</b>. Select one option per question by tapping its bubble. The
+    timer started as soon as this page loaded. When you're ready, tap <b>Check My Score</b> — correct
+    answers turn green, wrong picks turn red, and you'll get a breakdown by sub-topic. The test auto-submits
+    when the timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">30:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   QUESTION DATA — Topic Practice: Classification of Plants (Biology)
+   40 questions · 1 mark each · 30 minutes · no negative marking.
+   Std 5–8 syllabus, mid-to-hard difficulty (reasoning/application-led).
+   Each question carries a `topic` used only for the sub-topic breakdown.
+   ===================================================================== */
+const QUESTIONS = [
+
+/* ---------- Habit-based Classification ---------- */
+
+{topic:"Habit-based Classification", q:"A plant with a soft, green, delicate stem, usually of small height, is classified as a:",
+ opts:["Shrub","Tree","Climber","Herb"], correct:3},
+
+{topic:"Habit-based Classification", q:"A plant with a hard, woody stem, several branches arising close to the ground, and a height less than that of a tree, is classified as a:",
+ opts:["Herb","Creeper","Tree","Shrub"], correct:3},
+
+{topic:"Habit-based Classification", q:"A tall plant with a single, hard, woody main stem (trunk) that branches only well above the ground is classified as a:",
+ opts:["Shrub","Herb","Climber","Tree"], correct:3},
+
+{topic:"Habit-based Classification", q:"A plant with a weak stem that cannot stand upright on its own and instead spreads out along the ground is called a:",
+ opts:["Climber","Creeper","Tree","Shrub"], correct:1},
+
+{topic:"Habit-based Classification", q:"A plant with a weak stem that grows upward by holding onto a support with the help of tendrils or twining is called a:",
+ opts:["Creeper","Climber","Herb","Shrub"], correct:1},
+
+{topic:"Habit-based Classification", q:"Which of the following is an example of a shrub?",
+ opts:["Mango tree","Wheat","Grass","Rose"], correct:3},
+
+{topic:"Habit-based Classification", q:"Which of the following is an example of a climber?",
+ opts:["Neem","Grape vine","Wheat","Grass"], correct:1},
+
+{topic:"Habit-based Classification", q:"Which of the following is an example of a creeper?",
+ opts:["Pumpkin","Mango","Neem","Coconut palm"], correct:0},
+
+/* ---------- Root & Stem Types ---------- */
+
+{topic:"Root & Stem Types", q:"A root system with one main, thick root growing straight down, with thinner side (lateral) roots branching off it, is called a:",
+ opts:["Fibrous root system","Adventitious root system","Aerial root system","Tap root system"], correct:3},
+
+{topic:"Root & Stem Types", q:"A root system made up of many thin roots of roughly equal size, with no single main root, commonly seen in grasses, is called a:",
+ opts:["Tap root system","Prop root system","Fibrous root system","Stilt root system"], correct:2},
+
+{topic:"Root & Stem Types", q:"Which of the following plants typically has a tap root system?",
+ opts:["Wheat","Mango","Grass","Maize"], correct:1},
+
+{topic:"Root & Stem Types", q:"Which of the following plants typically has a fibrous root system?",
+ opts:["Wheat","Mango","Neem","Rose"], correct:0},
+
+{topic:"Root & Stem Types", q:"Roots that arise from parts of the plant other than the main root — such as from the stem or leaves — are called:",
+ opts:["Adventitious roots","Tap roots","Primary roots","Lateral roots"], correct:0},
+
+{topic:"Root & Stem Types", q:"A stem that is hard, thick and woody, as seen in trees and most shrubs, is described as a:",
+ opts:["Herbaceous stem","Underground stem","Aquatic stem","Woody stem"], correct:3},
+
+{topic:"Root & Stem Types", q:"A stem that is soft, thin, green and flexible, as seen in most herbs, is described as a:",
+ opts:["Woody stem","Prop stem","Climbing stem","Herbaceous stem"], correct:3},
+
+{topic:"Root & Stem Types", q:"The pattern in which veins are arranged across the surface of a leaf is called its:",
+ opts:["Germination","Venation","Transpiration","Pollination"], correct:1},
+
+/* ---------- Major Plant Groups ---------- */
+
+{topic:"Major Plant Groups", q:"Simple plants that do not produce flowers or seeds and reproduce mainly through spores are grouped together as:",
+ opts:["Cryptogams","Phanerogams","Angiosperms","Gymnosperms"], correct:0},
+
+{topic:"Major Plant Groups", q:"Plants that produce seeds — whether covered or uncovered — are grouped together as:",
+ opts:["Phanerogams","Cryptogams","Thallophytes","Bryophytes"], correct:0},
+
+{topic:"Major Plant Groups", q:"Simple, chlorophyll-containing plants without true roots, stems or leaves, mostly found in water, belong to the group:",
+ opts:["Thallophyta (algae)","Bryophyta (mosses)","Pteridophyta (ferns)","Gymnosperms"], correct:0},
+
+{topic:"Major Plant Groups", q:"Which of the following is an example of a thallophyte (alga)?",
+ opts:["Spirogyra","Moss","Fern","Pine"], correct:0},
+
+{topic:"Major Plant Groups", q:"Small green plants that grow in moist, shady places, have simple root-like structures but lack proper water-conducting (vascular) tissue, belong to the group:",
+ opts:["Thallophyta (algae)","Bryophyta (mosses)","Pteridophyta (ferns)","Angiosperms"], correct:1},
+
+{topic:"Major Plant Groups", q:"Which of the following is an example of a bryophyte?",
+ opts:["Spirogyra","Moss (Funaria)","Fern","Cycas"], correct:1},
+
+{topic:"Major Plant Groups", q:"Plants with well-developed roots, stems and leaves and proper vascular tissue, which reproduce by spores usually found on the underside of their leaves, belong to the group:",
+ opts:["Pteridophyta (ferns)","Bryophyta (mosses)","Thallophyta (algae)","Gymnosperms"], correct:0},
+
+{topic:"Major Plant Groups", q:"Which of the following is an example of a pteridophyte?",
+ opts:["Moss","Pine","Mango","Fern"], correct:3},
+
+{topic:"Major Plant Groups", q:"Seed-bearing plants whose seeds are “naked” — that is, not enclosed inside a fruit — belong to the group:",
+ opts:["Angiosperms","Pteridophyta","Gymnosperms","Bryophyta"], correct:2},
+
+{topic:"Major Plant Groups", q:"Which of the following is an example of a gymnosperm?",
+ opts:["Mango","Wheat","Fern","Pine (Pinus)"], correct:3},
+
+{topic:"Major Plant Groups", q:"Seed-bearing plants whose seeds develop enclosed inside a fruit are grouped together as:",
+ opts:["Gymnosperms","Angiosperms","Pteridophyta","Thallophyta"], correct:1},
+
+{topic:"Major Plant Groups", q:"Which of the following is true of angiosperms but not of gymnosperms?",
+ opts:["They never produce flowers","Their seeds are enclosed inside a fruit","They reproduce only by spores, never by seeds","They have no roots, stems or leaves at all"], correct:1},
+
+{topic:"Major Plant Groups", q:"A student finds a plant that reproduces by spores rather than seeds, but unlike a moss, has well-developed roots, stems, leaves and vascular tissue. This plant most likely belongs to the group:",
+ opts:["Thallophyta","Bryophyta","Pteridophyta","Angiosperms"], correct:2},
+
+{topic:"Major Plant Groups", q:"Which of the following correctly orders these plant groups from the simplest body structure to the most complex?",
+ opts:["Angiosperms → Pteridophyta → Bryophyta → Thallophyta","Bryophyta → Thallophyta → Angiosperms → Pteridophyta","All four groups have equally complex body structures","Thallophyta → Bryophyta → Pteridophyta → Angiosperms"], correct:3},
+
+/* ---------- Monocots & Dicots ---------- */
+
+{topic:"Monocots & Dicots", q:"A flowering plant (angiosperm) whose seed contains only one cotyledon (seed leaf) is called a:",
+ opts:["Monocotyledon (monocot)","Dicotyledon (dicot)","Gymnosperm","Bryophyte"], correct:0},
+
+{topic:"Monocots & Dicots", q:"A flowering plant (angiosperm) whose seed contains two cotyledons (seed leaves) is called a:",
+ opts:["Dicotyledon (dicot)","Monocotyledon (monocot)","Pteridophyte","Thallophyte"], correct:0},
+
+{topic:"Monocots & Dicots", q:"Leaves with veins running parallel to one another, rarely crossing, are typically seen in which type of plant?",
+ opts:["Dicots","Gymnosperms","Bryophytes","Monocots"], correct:3},
+
+{topic:"Monocots & Dicots", q:"Leaves with veins forming a branching, net-like pattern are typically seen in which type of plant?",
+ opts:["Monocots","Thallophytes","Dicots","Pteridophytes"], correct:2},
+
+{topic:"Monocots & Dicots", q:"Monocot plants, such as grasses and wheat, usually have which type of root system?",
+ opts:["Tap root system","Adventitious prop roots only","No true root system","Fibrous root system"], correct:3},
+
+{topic:"Monocots & Dicots", q:"Dicot plants, such as gram and mango, usually have which type of root system?",
+ opts:["Tap root system","Fibrous root system","Stilt root system","No true root system"], correct:0},
+
+{topic:"Monocots & Dicots", q:"Which of the following is an example of a monocot plant?",
+ opts:["Mango","Rose","Maize","Gram (chickpea)"], correct:2},
+
+{topic:"Monocots & Dicots", q:"Which of the following is an example of a dicot plant?",
+ opts:["Wheat","Maize","Gram (chickpea)","Onion"], correct:2},
+
+{topic:"Monocots & Dicots", q:"A gardener finds a plant whose leaves show parallel veins and whose flower parts occur in multiples of three. This plant is most likely a:",
+ opts:["Dicot","Monocot","Gymnosperm","Bryophyte"], correct:1},
+
+{topic:"Monocots & Dicots", q:"A gardener finds a plant with a net-like (reticulate) leaf vein pattern, a tap root, and flower parts occurring in multiples of four or five. This plant is most likely a:",
+ opts:["Monocot","Pteridophyte","Dicot","Thallophyte"], correct:2}
+];
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 1800;   /* 30 minutes */
+const MARKS_PER_QUESTION  = 1;     /* 1 mark each, no negative marking */
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+/* =====================================================================
+   RENDER QUESTIONS — one continuous block, topic-focused paper
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+QUESTIONS.forEach((item, qi) => {
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  if(item.diagram){
+    const d = document.createElement('div');
+    d.className = 'diagram';
+    d.innerHTML = item.diagram;
+    block.appendChild(d);
+  }
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 120){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING — 1 mark per question, no negative marking, plus a
+   sub-topic breakdown. (No persistence — nothing is saved anywhere.)
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let score = 0;
+  const byTopic = {};
+
+  QUESTIONS.forEach((item, qi) => {
+    const t = item.topic;
+    if(!byTopic[t]) byTopic[t] = {correct:0, total:0};
+    byTopic[t].total++;
+
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selIdx = selected ? parseInt(selected.value,10) : null;
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    optLabels[item.correct].classList.add('correct-answer');
+
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+
+    if(selIdx === item.correct){
+      score++;
+      byTopic[t].correct++;
+      note.textContent = '✓ Correct';
+    } else {
+      if(selIdx !== null) optLabels[selIdx].classList.add('wrong-answer');
+      note.textContent = selIdx === null
+        ? '— Not answered'
+        : '✗ Correct answer highlighted in green';
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const marks = score * MARKS_PER_QUESTION;
+  const totalMarks = total * MARKS_PER_QUESTION;
+  const pct = Math.round(score/total*100);
+  document.getElementById('score-readout').innerHTML =
+    `Score: <b>${marks} / ${totalMarks}</b> marks (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  let rows = '';
+  Object.keys(byTopic).forEach(t => {
+    const d = byTopic[t];
+    const p = Math.round(d.correct/d.total*100);
+    rows += `<tr><td>${t}</td><td>${d.correct} / ${d.total}</td><td>${p}%</td></tr>`;
+  });
+  rows += `<tr><td>Total</td><td>${score} / ${total}</td><td>${pct}%</td></tr>`;
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = `<h3>Sub-topic breakdown</h3>
+    <table><tr><th>Sub-topic</th><th>Correct</th><th>Score</th></tr>${rows}</table>`;
+  bd.classList.add('show');
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${marks} out of ${totalMarks} marks. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${marks} out of ${totalMarks} marks. Check the sub-topic breakdown to see where to focus next.`
+        : `${marks} out of ${totalMarks} marks. Use the sub-topic breakdown below to see which area needs another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>

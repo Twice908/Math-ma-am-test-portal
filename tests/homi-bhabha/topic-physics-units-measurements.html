@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Units and Measurements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Physics — Units and Measurements</h1>
+    <p class="subtitle">Standard VI · English Medium · Questions 1–40 · Std 5–8 syllabus, mid-to-hard difficulty</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>40</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>30:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> A focused topic test covering <b>Units and Measurements</b> only — fundamental and
+    derived quantities, SI units and conversions, measuring instruments and precision, and numerical
+    application. Questions are drawn from the Std 5 to Std 8 syllabus and pitched <b>mid-to-hard</b> —
+    mostly reasoning and calculation rather than plain recall, with numericals included wherever the
+    concept calls for one. One mark each, <b>no negative marking</b>. Select one option per question by
+    tapping its bubble. The timer started as soon as this page loaded. When you're ready, tap
+    <b>Check My Score</b> — correct answers turn green, wrong picks turn red, and you'll get a breakdown by
+    sub-topic. The test auto-submits when the timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">30:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   QUESTION DATA — Topic Practice: Units and Measurements (Physics)
+   40 questions · 1 mark each · 30 minutes · no negative marking.
+   Std 5–8 syllabus, mid-to-hard difficulty (reasoning/application-led,
+   numericals included wherever the concept calls for one).
+   Each question carries a `topic` used only for the sub-topic breakdown.
+   ===================================================================== */
+const QUESTIONS = [
+
+/* ---------- Fundamental & Derived Quantities ---------- */
+
+{topic:"Fundamental & Derived Quantities", q:"Which of the following is a <b>fundamental</b> (base) physical quantity, not derived from any other quantity?",
+ opts:["Speed","Area","Length","Density"], correct:2},
+
+{topic:"Fundamental & Derived Quantities", q:"Which of the following is a <b>derived</b> physical quantity, obtained by combining two or more fundamental quantities?",
+ opts:["Mass","Volume","Time","Length"], correct:1},
+
+{topic:"Fundamental & Derived Quantities", q:"Which pair below correctly names two fundamental (base) quantities recognised in the SI system?",
+ opts:["Speed and Area","Density and Volume","Force and Pressure","Mass and Time"], correct:3},
+
+{topic:"Fundamental & Derived Quantities", q:"Area is a derived quantity because it is obtained by:",
+ opts:["multiplying two lengths together","adding a length and a time","dividing a mass by a volume","multiplying a mass by an acceleration"], correct:0},
+
+{topic:"Fundamental & Derived Quantities", q:"Which of the following quantities has a unit that can be expressed as (unit of length)³?",
+ opts:["Volume","Area","Density","Speed"], correct:0},
+
+{topic:"Fundamental & Derived Quantities", q:"Speed is a derived quantity obtained by:",
+ opts:["dividing the distance travelled by the time taken","multiplying distance by time","adding distance and time","dividing time by distance"], correct:0},
+
+{topic:"Fundamental & Derived Quantities", q:"Density is a derived quantity obtained by:",
+ opts:["multiplying mass by volume","adding mass and volume","dividing the mass of a substance by its volume","dividing volume by mass"], correct:2},
+
+{topic:"Fundamental & Derived Quantities", q:"Which of the following best explains why a fixed, agreed-upon “standard unit” is necessary for measurement?",
+ opts:["It lets everyone, everywhere, compare measurements against exactly the same reference","It simply makes the numbers look bigger","It is only needed by scientists, never in everyday life","It removes the need to measure anything at all"], correct:0},
+
+/* ---------- SI Units & Conversions ---------- */
+
+{topic:"SI Units & Conversions", q:"What is the SI unit of length?",
+ opts:["Centimetre","Metre","Foot","Inch"], correct:1},
+
+{topic:"SI Units & Conversions", q:"What is the SI unit of mass?",
+ opts:["Kilogram","Gram","Pound","Tonne"], correct:0},
+
+{topic:"SI Units & Conversions", q:"What is the SI unit of time?",
+ opts:["Second","Minute","Hour","Day"], correct:0},
+
+{topic:"SI Units & Conversions", q:"The SI unit of volume, built directly from the base unit of length, is the:",
+ opts:["litre","gallon","square metre (m²)","cubic metre (m³)"], correct:3},
+
+{topic:"SI Units & Conversions", q:"1 kilometre is equal to:",
+ opts:["100 metres","10 metres","10,000 metres","1000 metres"], correct:3},
+
+{topic:"SI Units & Conversions", q:"A rope measures 2.5 kilometres in length. What is this length in metres?",
+ opts:["2500 m","250 m","25000 m","0.25 m"], correct:0},
+
+{topic:"SI Units & Conversions", q:"A bag of rice has a mass of 3400 grams. What is its mass in kilograms?",
+ opts:["34 kg","3.4 kg","0.34 kg","340 kg"], correct:1},
+
+{topic:"SI Units & Conversions", q:"A water tank holds 4500 millilitres of water. How many litres is this?",
+ opts:["4.5 L","45 L","0.45 L","450 L"], correct:0},
+
+{topic:"SI Units & Conversions", q:"A classroom wall is measured as 320 centimetres long. What is this length in metres?",
+ opts:["32 m","0.32 m","3200 m","3.2 m"], correct:3},
+
+{topic:"SI Units & Conversions", q:"How many milligrams are there in 2.5 grams?",
+ opts:["2500 mg","250 mg","25 mg","25000 mg"], correct:0},
+
+{topic:"SI Units & Conversions", q:"A train journey takes 2 hours and 45 minutes. What is this duration in minutes?",
+ opts:["165 minutes","145 minutes","185 minutes","125 minutes"], correct:0},
+
+{topic:"SI Units & Conversions", q:"Normal human body temperature, about 37 °C, when converted to the Kelvin scale, is closest to:",
+ opts:["37 K","310 K","273 K","0 K"], correct:1},
+
+/* ---------- Measuring Instruments & Precision ---------- */
+
+{topic:"Measuring Instruments & Precision", q:"Which instrument would be most suitable for accurately measuring the small internal diameter of a test tube?",
+ opts:["Vernier callipers","An ordinary metre scale","A measuring tape","A stopwatch"], correct:0},
+
+{topic:"Measuring Instruments & Precision", q:"The smallest measurement that a given instrument can read is called its:",
+ opts:["significant figure","zero error","standard error","least count"], correct:3},
+
+{topic:"Measuring Instruments & Precision", q:"Which instrument is used to measure very short time intervals, such as an athlete's time in a 100-metre sprint?",
+ opts:["Stopwatch","Sundial","Barometer","Hygrometer"], correct:0},
+
+{topic:"Measuring Instruments & Precision", q:"To find the volume of an irregularly shaped stone that sinks in water, the most suitable method is to:",
+ opts:["measure its length, breadth and height with a ruler","measure the volume of water it displaces when fully submerged","weigh it on a beam balance","measure the area of its outer surface"], correct:1},
+
+{topic:"Measuring Instruments & Precision", q:"A beam balance compares the mass of an object with standard weights until the beam becomes level. This instrument works on the principle of:",
+ opts:["balancing the turning effect (moment) on either side of a central pivot","measuring the pull of gravity directly, in newtons","measuring the volume of liquid displaced by the object","reflecting light off the object's surface"], correct:0},
+
+{topic:"Measuring Instruments & Precision", q:"Which of these lists three instruments used to measure the thickness of a coin in order of <b>increasing</b> precision — least precise first, most precise last?",
+ opts:["Screw gauge → Vernier callipers → Ordinary ruler","Ordinary ruler → Vernier callipers → Screw gauge","Vernier callipers → Screw gauge → Ordinary ruler","All three give equally precise readings"], correct:1},
+
+{topic:"Measuring Instruments & Precision", q:"A student measures the same length five times and gets slightly different readings each time. Taking the average of these readings mainly helps to:",
+ opts:["actually change the true length of the object","increase the least count of the measuring instrument","reduce the effect of small random errors made while taking each reading","remove the need for a measuring instrument altogether"], correct:2},
+
+{topic:"Measuring Instruments & Precision", q:"Why should a measuring tape be held level and read straight-on at eye level, rather than at an angle?",
+ opts:["It has no real effect on the accuracy of the reading","It changes the least count of the tape","It only matters when measuring liquids, not lengths","Reading at an angle causes a parallax error and gives an inaccurate value"], correct:3},
+
+{topic:"Measuring Instruments & Precision", q:"When reading the level of a liquid in a measuring cylinder, the correct reading is taken at the:",
+ opts:["topmost point of the liquid surface","bottom of the curved meniscus, viewed at eye level","point where the liquid touches the glass wall","exact centre of the cylinder, ignoring the meniscus"], correct:1},
+
+{topic:"Measuring Instruments & Precision", q:"Repeating a measurement several times and getting readings that are all very close to one another shows that the measurement is:",
+ opts:["precise","automatically accurate as well","impossible to repeat reliably","being made using the wrong unit"], correct:0},
+
+/* ---------- Numerical Application ---------- */
+
+{topic:"Numerical Application", q:"A rectangular table top measures 1.5 m in length and 0.8 m in width. What is its area?",
+ opts:["2.3 m²","1.5 m²","1.2 m²","0.7 m²"], correct:2},
+
+{topic:"Numerical Application", q:"A cuboidal box has length 20 cm, breadth 10 cm and height 5 cm. What is its volume?",
+ opts:["350 cm³","1000 cm³","200 cm³","500 cm³"], correct:1},
+
+{topic:"Numerical Application", q:"A metal block has a mass of 270 g and a volume of 30 cm³. What is its density?",
+ opts:["9 g/cm³","90 g/cm³","0.9 g/cm³","300 g/cm³"], correct:0},
+
+{topic:"Numerical Application", q:"A car travels 150 km in 3 hours at a constant speed. What is its average speed?",
+ opts:["450 km/h","50 km/h","147 km/h","153 km/h"], correct:1},
+
+{topic:"Numerical Application", q:"Ramesh buys 2.5 kg of sugar and 1750 g of rice. What is the total mass he is carrying, in kilograms?",
+ opts:["4 kg","4.75 kg","4.25 kg","3.75 kg"], correct:2},
+
+{topic:"Numerical Application", q:"A tap fills a tank at the rate of 2 litres every minute. How long will it take to fill a 30-litre tank?",
+ opts:["15 minutes","30 minutes","60 minutes","2 minutes"], correct:0},
+
+{topic:"Numerical Application", q:"The length of a pencil is measured as 14.3 cm using a ruler. This length, expressed in millimetres, is:",
+ opts:["143 mm","14.3 mm","1.43 mm","1430 mm"], correct:0},
+
+{topic:"Numerical Application", q:"Two students measure the same wall and get readings of 4.85 m and 4.83 m. What is the average (mean) of their two readings?",
+ opts:["4.84 m","4.85 m","4.83 m","9.68 m"], correct:0},
+
+{topic:"Numerical Application", q:"A wire of length 8.4 m is cut into 7 equal pieces. What is the length of each piece?",
+ opts:["0.84 m","1.2 m","12 m","7 m"], correct:1},
+
+{topic:"Numerical Application", q:"A recipe needs 250 mL of milk per serving. How much milk, in litres, is needed to prepare 6 servings?",
+ opts:["1.25 L","1.8 L","1 L","1.5 L"], correct:3}
+];
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 1800;   /* 30 minutes */
+const MARKS_PER_QUESTION  = 1;     /* 1 mark each, no negative marking */
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+/* =====================================================================
+   RENDER QUESTIONS — one continuous block, topic-focused paper
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+QUESTIONS.forEach((item, qi) => {
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  if(item.diagram){
+    const d = document.createElement('div');
+    d.className = 'diagram';
+    d.innerHTML = item.diagram;
+    block.appendChild(d);
+  }
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 120){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING — 1 mark per question, no negative marking, plus a
+   sub-topic breakdown. (No persistence — nothing is saved anywhere.)
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let score = 0;
+  const byTopic = {};
+
+  QUESTIONS.forEach((item, qi) => {
+    const t = item.topic;
+    if(!byTopic[t]) byTopic[t] = {correct:0, total:0};
+    byTopic[t].total++;
+
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selIdx = selected ? parseInt(selected.value,10) : null;
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    optLabels[item.correct].classList.add('correct-answer');
+
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+
+    if(selIdx === item.correct){
+      score++;
+      byTopic[t].correct++;
+      note.textContent = '✓ Correct';
+    } else {
+      if(selIdx !== null) optLabels[selIdx].classList.add('wrong-answer');
+      note.textContent = selIdx === null
+        ? '— Not answered'
+        : '✗ Correct answer highlighted in green';
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const marks = score * MARKS_PER_QUESTION;
+  const totalMarks = total * MARKS_PER_QUESTION;
+  const pct = Math.round(score/total*100);
+  document.getElementById('score-readout').innerHTML =
+    `Score: <b>${marks} / ${totalMarks}</b> marks (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  let rows = '';
+  Object.keys(byTopic).forEach(t => {
+    const d = byTopic[t];
+    const p = Math.round(d.correct/d.total*100);
+    rows += `<tr><td>${t}</td><td>${d.correct} / ${d.total}</td><td>${p}%</td></tr>`;
+  });
+  rows += `<tr><td>Total</td><td>${score} / ${total}</td><td>${pct}%</td></tr>`;
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = `<h3>Sub-topic breakdown</h3>
+    <table><tr><th>Sub-topic</th><th>Correct</th><th>Score</th></tr>${rows}</table>`;
+  bd.classList.add('show');
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${marks} out of ${totalMarks} marks. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${marks} out of ${totalMarks} marks. Check the sub-topic breakdown to see where to focus next.`
+        : `${marks} out of ${totalMarks} marks. Use the sub-topic breakdown below to see which area needs another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>
