@@ -271,10 +271,16 @@
                   40 Marks
                 </span>
               </div>
-              <a class="start-link cool" href="./tests/homi-bhabha/topic-physics-units-measurements.html">
-                Start Test
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
-              </a>
+              <div class="card-actions">
+                <a class="start-link cool" href="./tests/homi-bhabha/topic-physics-units-measurements.html">
+                  Start Test
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                </a>
+                <button class="notes-link" type="button" disabled data-notes-href="./notes/topic-physics-units-measurements.pdf" title="Notes coming soon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+                  Download Notes
+                </button>
+              </div>
             </div>
           </div>
 
@@ -298,10 +304,16 @@
                   40 Marks
                 </span>
               </div>
-              <a class="start-link cool" href="./tests/homi-bhabha/topic-chemistry-state-of-matter.html">
-                Start Test
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
-              </a>
+              <div class="card-actions">
+                <a class="start-link cool" href="./tests/homi-bhabha/topic-chemistry-state-of-matter.html">
+                  Start Test
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                </a>
+                <button class="notes-link" type="button" data-notes-href="./assets/notes/mathmaam_6th_std_homi_bhabha_states_of_matter_notes.pdf" title="Notes coming soon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+                  Download Notes
+                </button>
+              </div>
             </div>
           </div>
 
@@ -325,10 +337,16 @@
                   40 Marks
                 </span>
               </div>
-              <a class="start-link cool" href="./tests/homi-bhabha/topic-biology-classification-of-plants.html">
-                Start Test
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
-              </a>
+              <div class="card-actions">
+                <a class="start-link cool" href="./tests/homi-bhabha/topic-biology-classification-of-plants.html">
+                  Start Test
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                </a>
+                <button class="notes-link" type="button" data-notes-href="./assets/notes/mathmaam_6th_std_homi_bhabha_classification_of_plants_notes.pdf" title="Notes coming soon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+                  Download Notes
+                </button>
+              </div>
             </div>
           </div>
 
@@ -791,6 +809,23 @@
 
       showExam(saved.value);
     })();
+  </script>
+
+  <script>
+    /* Wires up every "Download Notes" button. A button stays inert until its
+       PDF exists — just remove the `disabled` attribute in the HTML once the
+       file is added at the path in data-notes-href, no other change needed. */
+    document.querySelectorAll('.notes-link[data-notes-href]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if(btn.disabled) return;
+        const link = document.createElement('a');
+        link.href = btn.dataset.notesHref;
+        link.download = '';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      });
+    });
   </script>
 
   <footer class="site-footer">Math ma'am Academy · Where Every Subject Clicks</footer>
