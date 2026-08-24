@@ -63,6 +63,7 @@
               </div>
               <ul class="exam-group-sub">
                 <li role="option" onclick="selectSub('imo-4', 'Maths Olympiad (IMO) — 4th Std', this)">4th Std</li>
+                <li role="option" onclick="selectSub('imo-5', 'Maths Olympiad (IMO) — 5th Std', this)">5th Std</li>
                 <li role="option" onclick="selectSub('imo-6', 'Maths Olympiad (IMO) — 6th Std', this)">6th Std</li>
                 <li role="option" onclick="selectSub('imo-7', 'Maths Olympiad (IMO) — 7th Std', this)">7th Std</li>
                 <li role="option" onclick="selectSub('imo-9', 'Maths Olympiad (IMO) — 9th Std', this)">9th Std</li>
@@ -76,6 +77,7 @@
               </div>
               <ul class="exam-group-sub">
                 <li role="option" onclick="selectSub('nso-4', 'Science Olympiad (NSO) — 4th Std', this)">4th Std</li>
+                <li role="option" onclick="selectSub('nso-5', 'Science Olympiad (NSO) — 5th Std', this)">5th Std</li>
                 <li role="option" onclick="selectSub('nso-6', 'Science Olympiad (NSO) — 6th Std', this)">6th Std</li>
                 <li role="option" onclick="selectSub('nso-7', 'Science Olympiad (NSO) — 7th Std', this)">7th Std</li>
                 <li role="option" onclick="selectSub('nso-9', 'Science Olympiad (NSO) — 9th Std', this)">9th Std</li>
@@ -115,6 +117,99 @@
                 <li role="option" onclick="selectSub('languages-german', 'International Languages — German (Deutsch)', this)">German (Deutsch)</li>
                 <li role="option" onclick="selectSub('languages-french', 'International Languages — French', this)">French</li>
                 <li role="option" onclick="selectSub('languages-japanese', 'International Languages — Japanese', this)">Japanese</li>
+              </ul>
+            </li>
+
+
+            <li class="exam-group" data-group="stateboard">
+              <div class="exam-group-head" onclick="toggleGroup(this.parentElement)">
+                Maharashtra State Board
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <ul class="exam-group-sub">
+                <li role="option" onclick="selectSub('stateboard-lkg', 'Maharashtra State Board — LKG', this)">LKG</li>
+                <li role="option" onclick="selectSub('stateboard-ukg', 'Maharashtra State Board — UKG', this)">UKG</li>
+                <li role="option" onclick="selectSub('stateboard-std1', 'Maharashtra State Board — Std 1', this)">Std 1</li>
+                <li role="option" onclick="selectSub('stateboard-std2', 'Maharashtra State Board — Std 2', this)">Std 2</li>
+                <li role="option" onclick="selectSub('stateboard-std3', 'Maharashtra State Board — Std 3', this)">Std 3</li>
+                <li role="option" onclick="selectSub('stateboard-std4', 'Maharashtra State Board — Std 4', this)">Std 4</li>
+                <li role="option" onclick="selectSub('stateboard-std5', 'Maharashtra State Board — Std 5', this)">Std 5</li>
+                <li role="option" onclick="selectSub('stateboard-std6', 'Maharashtra State Board — Std 6', this)">Std 6</li>
+                <li role="option" onclick="selectSub('stateboard-std7', 'Maharashtra State Board — Std 7', this)">Std 7</li>
+                <li role="option" onclick="selectSub('stateboard-std8', 'Maharashtra State Board — Std 8', this)">Std 8</li>
+                <li role="option" onclick="selectSub('stateboard-std9', 'Maharashtra State Board — Std 9', this)">Std 9</li>
+                <li role="option" onclick="selectSub('stateboard-std10', 'Maharashtra State Board — Std 10', this)">Std 10</li>
+                <li role="option" onclick="selectSub('stateboard-std11', 'Maharashtra State Board — Std 11', this)">Std 11</li>
+                <li role="option" onclick="selectSub('stateboard-std12', 'Maharashtra State Board — Std 12', this)">Std 12</li>
+              </ul>
+            </li>
+
+            <li class="exam-group" data-group="cbse">
+              <div class="exam-group-head" onclick="toggleGroup(this.parentElement)">
+                CBSE
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <ul class="exam-group-sub">
+                <li role="option" onclick="selectSub('cbse-lkg', 'CBSE — LKG', this)">LKG</li>
+                <li role="option" onclick="selectSub('cbse-ukg', 'CBSE — UKG', this)">UKG</li>
+                <li role="option" onclick="selectSub('cbse-std1', 'CBSE — Std 1', this)">Std 1</li>
+                <li role="option" onclick="selectSub('cbse-std2', 'CBSE — Std 2', this)">Std 2</li>
+                <li role="option" onclick="selectSub('cbse-std3', 'CBSE — Std 3', this)">Std 3</li>
+                <li role="option" onclick="selectSub('cbse-std4', 'CBSE — Std 4', this)">Std 4</li>
+                <li role="option" onclick="selectSub('cbse-std5', 'CBSE — Std 5', this)">Std 5</li>
+                <li role="option" onclick="selectSub('cbse-std6', 'CBSE — Std 6', this)">Std 6</li>
+                <li role="option" onclick="selectSub('cbse-std7', 'CBSE — Std 7', this)">Std 7</li>
+                <li role="option" onclick="selectSub('cbse-std8', 'CBSE — Std 8', this)">Std 8</li>
+                <li role="option" onclick="selectSub('cbse-std9', 'CBSE — Std 9', this)">Std 9</li>
+                <li role="option" onclick="selectSub('cbse-std10', 'CBSE — Std 10', this)">Std 10</li>
+                <li role="option" onclick="selectSub('cbse-std11', 'CBSE — Std 11', this)">Std 11</li>
+                <li role="option" onclick="selectSub('cbse-std12', 'CBSE — Std 12', this)">Std 12</li>
+              </ul>
+            </li>
+
+            <li class="exam-group" data-group="icse">
+              <div class="exam-group-head" onclick="toggleGroup(this.parentElement)">
+                ICSE / ISC
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <ul class="exam-group-sub">
+                <li role="option" onclick="selectSub('icse-lkg', 'ICSE / ISC — LKG', this)">LKG</li>
+                <li role="option" onclick="selectSub('icse-ukg', 'ICSE / ISC — UKG', this)">UKG</li>
+                <li role="option" onclick="selectSub('icse-std1', 'ICSE / ISC — Std 1', this)">Std 1</li>
+                <li role="option" onclick="selectSub('icse-std2', 'ICSE / ISC — Std 2', this)">Std 2</li>
+                <li role="option" onclick="selectSub('icse-std3', 'ICSE / ISC — Std 3', this)">Std 3</li>
+                <li role="option" onclick="selectSub('icse-std4', 'ICSE / ISC — Std 4', this)">Std 4</li>
+                <li role="option" onclick="selectSub('icse-std5', 'ICSE / ISC — Std 5', this)">Std 5</li>
+                <li role="option" onclick="selectSub('icse-std6', 'ICSE / ISC — Std 6', this)">Std 6</li>
+                <li role="option" onclick="selectSub('icse-std7', 'ICSE / ISC — Std 7', this)">Std 7</li>
+                <li role="option" onclick="selectSub('icse-std8', 'ICSE / ISC — Std 8', this)">Std 8</li>
+                <li role="option" onclick="selectSub('icse-std9', 'ICSE / ISC — Std 9', this)">Std 9</li>
+                <li role="option" onclick="selectSub('icse-std10', 'ICSE / ISC — Std 10', this)">Std 10</li>
+                <li role="option" onclick="selectSub('icse-std11', 'ICSE / ISC — Std 11', this)">Std 11</li>
+                <li role="option" onclick="selectSub('icse-std12', 'ICSE / ISC — Std 12', this)">Std 12</li>
+              </ul>
+            </li>
+
+            <li class="exam-group" data-group="otherboards">
+              <div class="exam-group-head" onclick="toggleGroup(this.parentElement)">
+                Other Boards
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <ul class="exam-group-sub">
+                <li role="option" onclick="selectSub('otherboards-lkg', 'Other Boards — LKG', this)">LKG</li>
+                <li role="option" onclick="selectSub('otherboards-ukg', 'Other Boards — UKG', this)">UKG</li>
+                <li role="option" onclick="selectSub('otherboards-std1', 'Other Boards — Std 1', this)">Std 1</li>
+                <li role="option" onclick="selectSub('otherboards-std2', 'Other Boards — Std 2', this)">Std 2</li>
+                <li role="option" onclick="selectSub('otherboards-std3', 'Other Boards — Std 3', this)">Std 3</li>
+                <li role="option" onclick="selectSub('otherboards-std4', 'Other Boards — Std 4', this)">Std 4</li>
+                <li role="option" onclick="selectSub('otherboards-std5', 'Other Boards — Std 5', this)">Std 5</li>
+                <li role="option" onclick="selectSub('otherboards-std6', 'Other Boards — Std 6', this)">Std 6</li>
+                <li role="option" onclick="selectSub('otherboards-std7', 'Other Boards — Std 7', this)">Std 7</li>
+                <li role="option" onclick="selectSub('otherboards-std8', 'Other Boards — Std 8', this)">Std 8</li>
+                <li role="option" onclick="selectSub('otherboards-std9', 'Other Boards — Std 9', this)">Std 9</li>
+                <li role="option" onclick="selectSub('otherboards-std10', 'Other Boards — Std 10', this)">Std 10</li>
+                <li role="option" onclick="selectSub('otherboards-std11', 'Other Boards — Std 11', this)">Std 11</li>
+                <li role="option" onclick="selectSub('otherboards-std12', 'Other Boards — Std 12', this)">Std 12</li>
               </ul>
             </li>
 
@@ -246,7 +341,7 @@
 
         <div class="section-head" style="margin-top:2.5rem;">
           <h2>Topic-wise Practice</h2>
-          <span>3 tests ready</span>
+          <span>4 tests ready</span>
         </div>
 
         <div class="test-grid">
@@ -343,6 +438,39 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
                 </a>
                 <button class="notes-link" type="button" data-notes-href="./assets/notes/mathmaam_6th_std_homi_bhabha_classification_of_plants_notes.pdf" title="Notes coming soon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+                  Download Notes
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="test-card">
+            <div class="test-card-band cool"></div>
+            <div class="test-card-body">
+              <span class="test-card-tag cool">Physics · Topic Test</span>
+              <h3>Work and Energy</h3>
+              <p>A focused 40-question test on Work and Energy alone — the scientific meaning of work and how to calculate it, forms of energy and the Law of Conservation of Energy, power, and simple machines with mechanical advantage. Std 5–8 syllabus, mid-to-hard difficulty.</p>
+              <div class="card-meta">
+                <span class="meta-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  40 Questions
+                </span>
+                <span class="meta-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  30 min
+                </span>
+                <span class="meta-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6-6.3 4.6L7.9 13.8 2 9.4h7.6z"/></svg>
+                  40 Marks
+                </span>
+              </div>
+              <div class="card-actions">
+                <a class="start-link cool" href="./tests/homi-bhabha/topic-physics-work-and-energy.html">
+                  Start Test
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                </a>
+                <button class="notes-link" type="button" data-notes-href="./assets/notes/Homi_Bhabha_Std6_Work_and_Energy_Notes.pdf" title="Notes coming soon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
                   Download Notes
                 </button>
@@ -699,6 +827,938 @@
         </div>
       </div>
 
+
+      <div id="exam-stateboard" class="exam-section" style="display:none;">
+        <div class="exam-subsection" data-sub="stateboard-lkg" style="display:none;">
+          <div class="section-head"><h2>Maharashtra State Board — LKG</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for LKG (Maharashtra State Board) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-ukg" style="display:none;">
+          <div class="section-head"><h2>Maharashtra State Board — UKG</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for UKG (Maharashtra State Board) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-std1" style="display:none;">
+          <div class="section-head"><h2>Maharashtra State Board — Std 1</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 1 (Maharashtra State Board) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-std2" style="display:none;">
+          <div class="section-head"><h2>Maharashtra State Board — Std 2</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 2 (Maharashtra State Board) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-std3" style="display:none;">
+          <div class="section-head"><h2>Maharashtra State Board — Std 3</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 3 (Maharashtra State Board) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-std4" style="display:none;">
+          <div class="section-head"><h2>Maharashtra State Board — Std 4</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 4 (Maharashtra State Board) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-std5" style="display:none;">
+          <div class="section-head"><h2>Maharashtra State Board — Std 5</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 5 (Maharashtra State Board) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-std6" style="display:none;">
+          <div class="section-head"><h2>Maharashtra State Board — Std 6</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 6 (Maharashtra State Board) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-std7" style="display:none;">
+          <div class="section-head"><h2>Maharashtra State Board — Std 7</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 7 (Maharashtra State Board) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-std8" style="display:none;">
+          <div class="section-head"><h2>Maharashtra State Board — Std 8</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 8 (Maharashtra State Board) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-std9" style="display:none;">
+          <div class="section-head"><h2>Maharashtra State Board — Std 9</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 9 (Maharashtra State Board) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-std10" style="display:none;">
+          <div class="section-head"><h2>Maharashtra State Board — Std 10</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 10 (Maharashtra State Board) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-std11" style="display:none;">
+          <div class="section-head">
+            <h2>Maharashtra State Board — Std 11</h2>
+            <span>Pick a stream</span>
+          </div>
+          <div class="stream-tabs">
+            <button type="button" class="stream-tab active" onclick="showStream('stateboard-std11', 'science', this)">Science</button>
+            <button type="button" class="stream-tab" onclick="showStream('stateboard-std11', 'commerce', this)">Commerce</button>
+            <button type="button" class="stream-tab" onclick="showStream('stateboard-std11', 'arts', this)">Arts / Humanities</button>
+          </div>
+          <div class="stream-panel" data-stream="science" style="display:block;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Physics</span>
+                <span class="meta-pill">Chemistry</span>
+                <span class="meta-pill">Maths</span>
+                <span class="meta-pill">Biology</span>
+                <span class="meta-pill">Computer Science</span>
+                <span class="meta-pill">Information Technology</span>
+                <span class="meta-pill">Electronics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Marathi</span>
+                <span class="meta-pill">Hindi</span>
+                <span class="meta-pill">Sanskrit</span>
+            </div>
+
+                 
+            <div class="test-grid">
+              <div class="test-card">
+                <div class="test-card-band cool"></div>
+                <div class="test-card-body">
+                  <span class="test-card-tag cool">Maths · Concept Check</span>
+                  <h3>Complex Numbers</h3>
+                  <p>A concept-check test on Complex Numbers — iota, algebra of complex numbers, modulus &amp; argument, and the Argand plane.</p>
+                  <div class="card-actions">
+                    <a class="start-link cool" href="./tests/stateboard/std11-complex-numbers.html">
+                      Start Test
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="test-card">
+                <div class="test-card-band cool"></div>
+                <div class="test-card-body">
+                  <span class="test-card-tag cool">Maths · Concept Check</span>
+                  <h3>Complex Numbers Test - 02</h3>
+                  <p>A concept-check test on Complex Numbers — iota, algebra of complex numbers, modulus &amp; argument, and the Argand plane, cube roots of unity.</p>
+                  <div class="card-actions">
+                    <a class="start-link cool" href="./tests/stateboard/std11-complex-numbers-difficult-test.html">
+                      Start Test
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>More Science subjects for Std 11 are being added — Maths has one test ready above.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="commerce" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Accountancy</span>
+                <span class="meta-pill">Book Keeping</span>
+                <span class="meta-pill">Organisation of Commerce &amp; Management (OCM)</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Maths &amp; Statistics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Secretarial Practice</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Commerce subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="arts" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">History</span>
+                <span class="meta-pill">Political Science</span>
+                <span class="meta-pill">Geography</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Psychology</span>
+                <span class="meta-pill">Sociology</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Hindi/Marathi Literature</span>
+                <span class="meta-pill">Logic</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Arts / Humanities subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="stateboard-std12" style="display:none;">
+          <div class="section-head">
+            <h2>Maharashtra State Board — Std 12</h2>
+            <span>Pick a stream</span>
+          </div>
+          <div class="stream-tabs">
+            <button type="button" class="stream-tab active" onclick="showStream('stateboard-std12', 'science', this)">Science</button>
+            <button type="button" class="stream-tab" onclick="showStream('stateboard-std12', 'commerce', this)">Commerce</button>
+            <button type="button" class="stream-tab" onclick="showStream('stateboard-std12', 'arts', this)">Arts / Humanities</button>
+          </div>
+          <div class="stream-panel" data-stream="science" style="display:block;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Physics</span>
+                <span class="meta-pill">Chemistry</span>
+                <span class="meta-pill">Maths</span>
+                <span class="meta-pill">Biology</span>
+                <span class="meta-pill">Computer Science</span>
+                <span class="meta-pill">Information Technology</span>
+                <span class="meta-pill">Electronics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Marathi</span>
+                <span class="meta-pill">Hindi</span>
+                <span class="meta-pill">Sanskrit</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Science subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="commerce" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Accountancy</span>
+                <span class="meta-pill">Book Keeping</span>
+                <span class="meta-pill">Organisation of Commerce &amp; Management (OCM)</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Maths &amp; Statistics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Secretarial Practice</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Commerce subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="arts" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">History</span>
+                <span class="meta-pill">Political Science</span>
+                <span class="meta-pill">Geography</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Psychology</span>
+                <span class="meta-pill">Sociology</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Hindi/Marathi Literature</span>
+                <span class="meta-pill">Logic</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Arts / Humanities subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="exam-cbse" class="exam-section" style="display:none;">
+        <div class="exam-subsection" data-sub="cbse-lkg" style="display:none;">
+          <div class="section-head"><h2>CBSE — LKG</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for LKG (CBSE) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-ukg" style="display:none;">
+          <div class="section-head"><h2>CBSE — UKG</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for UKG (CBSE) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-std1" style="display:none;">
+          <div class="section-head"><h2>CBSE — Std 1</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 1 (CBSE) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-std2" style="display:none;">
+          <div class="section-head"><h2>CBSE — Std 2</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 2 (CBSE) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-std3" style="display:none;">
+          <div class="section-head"><h2>CBSE — Std 3</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 3 (CBSE) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-std4" style="display:none;">
+          <div class="section-head"><h2>CBSE — Std 4</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 4 (CBSE) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-std5" style="display:none;">
+          <div class="section-head"><h2>CBSE — Std 5</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 5 (CBSE) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-std6" style="display:none;">
+          <div class="section-head"><h2>CBSE — Std 6</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 6 (CBSE) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-std7" style="display:none;">
+          <div class="section-head"><h2>CBSE — Std 7</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 7 (CBSE) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-std8" style="display:none;">
+          <div class="section-head"><h2>CBSE — Std 8</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 8 (CBSE) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-std9" style="display:none;">
+          <div class="section-head"><h2>CBSE — Std 9</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 9 (CBSE) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-std10" style="display:none;">
+          <div class="section-head"><h2>CBSE — Std 10</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 10 (CBSE) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-std11" style="display:none;">
+          <div class="section-head">
+            <h2>CBSE — Std 11</h2>
+            <span>Pick a stream</span>
+          </div>
+          <div class="stream-tabs">
+            <button type="button" class="stream-tab active" onclick="showStream('cbse-std11', 'science', this)">Science</button>
+            <button type="button" class="stream-tab" onclick="showStream('cbse-std11', 'commerce', this)">Commerce</button>
+            <button type="button" class="stream-tab" onclick="showStream('cbse-std11', 'arts', this)">Arts / Humanities</button>
+          </div>
+          <div class="stream-panel" data-stream="science" style="display:block;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Physics</span>
+                <span class="meta-pill">Chemistry</span>
+                <span class="meta-pill">Maths</span>
+                <span class="meta-pill">Biology</span>
+                <span class="meta-pill">Computer Science</span>
+                <span class="meta-pill">Information Technology</span>
+                <span class="meta-pill">Electronics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Marathi</span>
+                <span class="meta-pill">Hindi</span>
+                <span class="meta-pill">Sanskrit</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Science subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="commerce" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Accountancy</span>
+                <span class="meta-pill">Book Keeping</span>
+                <span class="meta-pill">Organisation of Commerce &amp; Management (OCM)</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Maths &amp; Statistics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Secretarial Practice</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Commerce subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="arts" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">History</span>
+                <span class="meta-pill">Political Science</span>
+                <span class="meta-pill">Geography</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Psychology</span>
+                <span class="meta-pill">Sociology</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Hindi/Marathi Literature</span>
+                <span class="meta-pill">Logic</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Arts / Humanities subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="cbse-std12" style="display:none;">
+          <div class="section-head">
+            <h2>CBSE — Std 12</h2>
+            <span>Pick a stream</span>
+          </div>
+          <div class="stream-tabs">
+            <button type="button" class="stream-tab active" onclick="showStream('cbse-std12', 'science', this)">Science</button>
+            <button type="button" class="stream-tab" onclick="showStream('cbse-std12', 'commerce', this)">Commerce</button>
+            <button type="button" class="stream-tab" onclick="showStream('cbse-std12', 'arts', this)">Arts / Humanities</button>
+          </div>
+          <div class="stream-panel" data-stream="science" style="display:block;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Physics</span>
+                <span class="meta-pill">Chemistry</span>
+                <span class="meta-pill">Maths</span>
+                <span class="meta-pill">Biology</span>
+                <span class="meta-pill">Computer Science</span>
+                <span class="meta-pill">Information Technology</span>
+                <span class="meta-pill">Electronics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Marathi</span>
+                <span class="meta-pill">Hindi</span>
+                <span class="meta-pill">Sanskrit</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Science subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="commerce" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Accountancy</span>
+                <span class="meta-pill">Book Keeping</span>
+                <span class="meta-pill">Organisation of Commerce &amp; Management (OCM)</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Maths &amp; Statistics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Secretarial Practice</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Commerce subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="arts" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">History</span>
+                <span class="meta-pill">Political Science</span>
+                <span class="meta-pill">Geography</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Psychology</span>
+                <span class="meta-pill">Sociology</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Hindi/Marathi Literature</span>
+                <span class="meta-pill">Logic</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Arts / Humanities subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="exam-icse" class="exam-section" style="display:none;">
+        <div class="exam-subsection" data-sub="icse-lkg" style="display:none;">
+          <div class="section-head"><h2>ICSE / ISC — LKG</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for LKG (ICSE / ISC) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-ukg" style="display:none;">
+          <div class="section-head"><h2>ICSE / ISC — UKG</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for UKG (ICSE / ISC) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-std1" style="display:none;">
+          <div class="section-head"><h2>ICSE / ISC — Std 1</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 1 (ICSE / ISC) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-std2" style="display:none;">
+          <div class="section-head"><h2>ICSE / ISC — Std 2</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 2 (ICSE / ISC) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-std3" style="display:none;">
+          <div class="section-head"><h2>ICSE / ISC — Std 3</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 3 (ICSE / ISC) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-std4" style="display:none;">
+          <div class="section-head"><h2>ICSE / ISC — Std 4</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 4 (ICSE / ISC) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-std5" style="display:none;">
+          <div class="section-head"><h2>ICSE / ISC — Std 5</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 5 (ICSE / ISC) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-std6" style="display:none;">
+          <div class="section-head"><h2>ICSE / ISC — Std 6</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 6 (ICSE / ISC) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-std7" style="display:none;">
+          <div class="section-head"><h2>ICSE / ISC — Std 7</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 7 (ICSE / ISC) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-std8" style="display:none;">
+          <div class="section-head"><h2>ICSE / ISC — Std 8</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 8 (ICSE / ISC) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-std9" style="display:none;">
+          <div class="section-head"><h2>ICSE / ISC — Std 9</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 9 (ICSE / ISC) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-std10" style="display:none;">
+          <div class="section-head"><h2>ICSE / ISC — Std 10</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 10 (ICSE / ISC) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-std11" style="display:none;">
+          <div class="section-head">
+            <h2>ICSE / ISC — Std 11</h2>
+            <span>Pick a stream</span>
+          </div>
+          <div class="stream-tabs">
+            <button type="button" class="stream-tab active" onclick="showStream('icse-std11', 'science', this)">Science</button>
+            <button type="button" class="stream-tab" onclick="showStream('icse-std11', 'commerce', this)">Commerce</button>
+            <button type="button" class="stream-tab" onclick="showStream('icse-std11', 'arts', this)">Arts / Humanities</button>
+          </div>
+          <div class="stream-panel" data-stream="science" style="display:block;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Physics</span>
+                <span class="meta-pill">Chemistry</span>
+                <span class="meta-pill">Maths</span>
+                <span class="meta-pill">Biology</span>
+                <span class="meta-pill">Computer Science</span>
+                <span class="meta-pill">Information Technology</span>
+                <span class="meta-pill">Electronics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Marathi</span>
+                <span class="meta-pill">Hindi</span>
+                <span class="meta-pill">Sanskrit</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Science subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="commerce" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Accountancy</span>
+                <span class="meta-pill">Book Keeping</span>
+                <span class="meta-pill">Organisation of Commerce &amp; Management (OCM)</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Maths &amp; Statistics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Secretarial Practice</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Commerce subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="arts" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">History</span>
+                <span class="meta-pill">Political Science</span>
+                <span class="meta-pill">Geography</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Psychology</span>
+                <span class="meta-pill">Sociology</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Hindi/Marathi Literature</span>
+                <span class="meta-pill">Logic</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Arts / Humanities subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="icse-std12" style="display:none;">
+          <div class="section-head">
+            <h2>ICSE / ISC — Std 12</h2>
+            <span>Pick a stream</span>
+          </div>
+          <div class="stream-tabs">
+            <button type="button" class="stream-tab active" onclick="showStream('icse-std12', 'science', this)">Science</button>
+            <button type="button" class="stream-tab" onclick="showStream('icse-std12', 'commerce', this)">Commerce</button>
+            <button type="button" class="stream-tab" onclick="showStream('icse-std12', 'arts', this)">Arts / Humanities</button>
+          </div>
+          <div class="stream-panel" data-stream="science" style="display:block;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Physics</span>
+                <span class="meta-pill">Chemistry</span>
+                <span class="meta-pill">Maths</span>
+                <span class="meta-pill">Biology</span>
+                <span class="meta-pill">Computer Science</span>
+                <span class="meta-pill">Information Technology</span>
+                <span class="meta-pill">Electronics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Marathi</span>
+                <span class="meta-pill">Hindi</span>
+                <span class="meta-pill">Sanskrit</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Science subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="commerce" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Accountancy</span>
+                <span class="meta-pill">Book Keeping</span>
+                <span class="meta-pill">Organisation of Commerce &amp; Management (OCM)</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Maths &amp; Statistics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Secretarial Practice</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Commerce subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="arts" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">History</span>
+                <span class="meta-pill">Political Science</span>
+                <span class="meta-pill">Geography</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Psychology</span>
+                <span class="meta-pill">Sociology</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Hindi/Marathi Literature</span>
+                <span class="meta-pill">Logic</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Arts / Humanities subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="exam-otherboards" class="exam-section" style="display:none;">
+        <div class="exam-subsection" data-sub="otherboards-lkg" style="display:none;">
+          <div class="section-head"><h2>Other Boards — LKG</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for LKG (Other Boards) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-ukg" style="display:none;">
+          <div class="section-head"><h2>Other Boards — UKG</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for UKG (Other Boards) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-std1" style="display:none;">
+          <div class="section-head"><h2>Other Boards — Std 1</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 1 (Other Boards) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-std2" style="display:none;">
+          <div class="section-head"><h2>Other Boards — Std 2</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 2 (Other Boards) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-std3" style="display:none;">
+          <div class="section-head"><h2>Other Boards — Std 3</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 3 (Other Boards) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-std4" style="display:none;">
+          <div class="section-head"><h2>Other Boards — Std 4</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 4 (Other Boards) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-std5" style="display:none;">
+          <div class="section-head"><h2>Other Boards — Std 5</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 5 (Other Boards) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-std6" style="display:none;">
+          <div class="section-head"><h2>Other Boards — Std 6</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 6 (Other Boards) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-std7" style="display:none;">
+          <div class="section-head"><h2>Other Boards — Std 7</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 7 (Other Boards) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-std8" style="display:none;">
+          <div class="section-head"><h2>Other Boards — Std 8</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 8 (Other Boards) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-std9" style="display:none;">
+          <div class="section-head"><h2>Other Boards — Std 9</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 9 (Other Boards) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-std10" style="display:none;">
+          <div class="section-head"><h2>Other Boards — Std 10</h2><span>Coming soon</span></div>
+          <div class="footer-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Practice tests for Std 10 (Other Boards) are being prepared and will appear here soon.</span>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-std11" style="display:none;">
+          <div class="section-head">
+            <h2>Other Boards — Std 11</h2>
+            <span>Pick a stream</span>
+          </div>
+          <div class="stream-tabs">
+            <button type="button" class="stream-tab active" onclick="showStream('otherboards-std11', 'science', this)">Science</button>
+            <button type="button" class="stream-tab" onclick="showStream('otherboards-std11', 'commerce', this)">Commerce</button>
+            <button type="button" class="stream-tab" onclick="showStream('otherboards-std11', 'arts', this)">Arts / Humanities</button>
+          </div>
+          <div class="stream-panel" data-stream="science" style="display:block;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Physics</span>
+                <span class="meta-pill">Chemistry</span>
+                <span class="meta-pill">Maths</span>
+                <span class="meta-pill">Biology</span>
+                <span class="meta-pill">Computer Science</span>
+                <span class="meta-pill">Information Technology</span>
+                <span class="meta-pill">Electronics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Marathi</span>
+                <span class="meta-pill">Hindi</span>
+                <span class="meta-pill">Sanskrit</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Science subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="commerce" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Accountancy</span>
+                <span class="meta-pill">Book Keeping</span>
+                <span class="meta-pill">Organisation of Commerce &amp; Management (OCM)</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Maths &amp; Statistics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Secretarial Practice</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Commerce subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="arts" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">History</span>
+                <span class="meta-pill">Political Science</span>
+                <span class="meta-pill">Geography</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Psychology</span>
+                <span class="meta-pill">Sociology</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Hindi/Marathi Literature</span>
+                <span class="meta-pill">Logic</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Arts / Humanities subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exam-subsection" data-sub="otherboards-std12" style="display:none;">
+          <div class="section-head">
+            <h2>Other Boards — Std 12</h2>
+            <span>Pick a stream</span>
+          </div>
+          <div class="stream-tabs">
+            <button type="button" class="stream-tab active" onclick="showStream('otherboards-std12', 'science', this)">Science</button>
+            <button type="button" class="stream-tab" onclick="showStream('otherboards-std12', 'commerce', this)">Commerce</button>
+            <button type="button" class="stream-tab" onclick="showStream('otherboards-std12', 'arts', this)">Arts / Humanities</button>
+          </div>
+          <div class="stream-panel" data-stream="science" style="display:block;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Physics</span>
+                <span class="meta-pill">Chemistry</span>
+                <span class="meta-pill">Maths</span>
+                <span class="meta-pill">Biology</span>
+                <span class="meta-pill">Computer Science</span>
+                <span class="meta-pill">Information Technology</span>
+                <span class="meta-pill">Electronics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Marathi</span>
+                <span class="meta-pill">Hindi</span>
+                <span class="meta-pill">Sanskrit</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Science subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="commerce" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">Accountancy</span>
+                <span class="meta-pill">Book Keeping</span>
+                <span class="meta-pill">Organisation of Commerce &amp; Management (OCM)</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Maths &amp; Statistics</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Secretarial Practice</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Commerce subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+          <div class="stream-panel" data-stream="arts" style="display:none;">
+            <div class="subject-chip-row">
+                <span class="meta-pill">History</span>
+                <span class="meta-pill">Political Science</span>
+                <span class="meta-pill">Geography</span>
+                <span class="meta-pill">Economics</span>
+                <span class="meta-pill">Psychology</span>
+                <span class="meta-pill">Sociology</span>
+                <span class="meta-pill">English</span>
+                <span class="meta-pill">Hindi/Marathi Literature</span>
+                <span class="meta-pill">Logic</span>
+            </div>
+            <div class="footer-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Tests for Arts / Humanities subjects are being prepared and will appear here soon.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </main>
 
@@ -728,7 +1788,63 @@
       'homibhabha-9':    "Standard IX · English Medium — 100 questions in 90 minutes, no negative marking. Top 7.5% qualify for the practical round.",
       'languages-german':  "German (Deutsch) — pick a test below to begin.",
       'languages-french':  "French — pick a test below to begin.",
-      'languages-japanese':"Japanese — pick a test below to begin."
+      'languages-japanese':"Japanese — pick a test below to begin.",
+      'stateboard-lkg': "Maharashtra State Board · LKG — pick a subject below once tests are added.",
+      'stateboard-ukg': "Maharashtra State Board · UKG — pick a subject below once tests are added.",
+      'stateboard-std1': "Maharashtra State Board · Std 1 — pick a subject below once tests are added.",
+      'stateboard-std2': "Maharashtra State Board · Std 2 — pick a subject below once tests are added.",
+      'stateboard-std3': "Maharashtra State Board · Std 3 — pick a subject below once tests are added.",
+      'stateboard-std4': "Maharashtra State Board · Std 4 — pick a subject below once tests are added.",
+      'stateboard-std5': "Maharashtra State Board · Std 5 — pick a subject below once tests are added.",
+      'stateboard-std6': "Maharashtra State Board · Std 6 — pick a subject below once tests are added.",
+      'stateboard-std7': "Maharashtra State Board · Std 7 — pick a subject below once tests are added.",
+      'stateboard-std8': "Maharashtra State Board · Std 8 — pick a subject below once tests are added.",
+      'stateboard-std9': "Maharashtra State Board · Std 9 — pick a subject below once tests are added.",
+      'stateboard-std10': "Maharashtra State Board · Std 10 — pick a subject below once tests are added.",
+      'stateboard-std11': "Maharashtra State Board · Std 11 — pick a stream (Science, Commerce or Arts) to see subjects.",
+      'stateboard-std12': "Maharashtra State Board · Std 12 — pick a stream (Science, Commerce or Arts) to see subjects.",
+      'cbse-lkg': "CBSE · LKG — pick a subject below once tests are added.",
+      'cbse-ukg': "CBSE · UKG — pick a subject below once tests are added.",
+      'cbse-std1': "CBSE · Std 1 — pick a subject below once tests are added.",
+      'cbse-std2': "CBSE · Std 2 — pick a subject below once tests are added.",
+      'cbse-std3': "CBSE · Std 3 — pick a subject below once tests are added.",
+      'cbse-std4': "CBSE · Std 4 — pick a subject below once tests are added.",
+      'cbse-std5': "CBSE · Std 5 — pick a subject below once tests are added.",
+      'cbse-std6': "CBSE · Std 6 — pick a subject below once tests are added.",
+      'cbse-std7': "CBSE · Std 7 — pick a subject below once tests are added.",
+      'cbse-std8': "CBSE · Std 8 — pick a subject below once tests are added.",
+      'cbse-std9': "CBSE · Std 9 — pick a subject below once tests are added.",
+      'cbse-std10': "CBSE · Std 10 — pick a subject below once tests are added.",
+      'cbse-std11': "CBSE · Std 11 — pick a stream (Science, Commerce or Arts) to see subjects.",
+      'cbse-std12': "CBSE · Std 12 — pick a stream (Science, Commerce or Arts) to see subjects.",
+      'icse-lkg': "ICSE / ISC · LKG — pick a subject below once tests are added.",
+      'icse-ukg': "ICSE / ISC · UKG — pick a subject below once tests are added.",
+      'icse-std1': "ICSE / ISC · Std 1 — pick a subject below once tests are added.",
+      'icse-std2': "ICSE / ISC · Std 2 — pick a subject below once tests are added.",
+      'icse-std3': "ICSE / ISC · Std 3 — pick a subject below once tests are added.",
+      'icse-std4': "ICSE / ISC · Std 4 — pick a subject below once tests are added.",
+      'icse-std5': "ICSE / ISC · Std 5 — pick a subject below once tests are added.",
+      'icse-std6': "ICSE / ISC · Std 6 — pick a subject below once tests are added.",
+      'icse-std7': "ICSE / ISC · Std 7 — pick a subject below once tests are added.",
+      'icse-std8': "ICSE / ISC · Std 8 — pick a subject below once tests are added.",
+      'icse-std9': "ICSE / ISC · Std 9 — pick a subject below once tests are added.",
+      'icse-std10': "ICSE / ISC · Std 10 — pick a subject below once tests are added.",
+      'icse-std11': "ICSE / ISC · Std 11 — pick a stream (Science, Commerce or Arts) to see subjects.",
+      'icse-std12': "ICSE / ISC · Std 12 — pick a stream (Science, Commerce or Arts) to see subjects.",
+      'otherboards-lkg': "Other Boards · LKG — pick a subject below once tests are added.",
+      'otherboards-ukg': "Other Boards · UKG — pick a subject below once tests are added.",
+      'otherboards-std1': "Other Boards · Std 1 — pick a subject below once tests are added.",
+      'otherboards-std2': "Other Boards · Std 2 — pick a subject below once tests are added.",
+      'otherboards-std3': "Other Boards · Std 3 — pick a subject below once tests are added.",
+      'otherboards-std4': "Other Boards · Std 4 — pick a subject below once tests are added.",
+      'otherboards-std5': "Other Boards · Std 5 — pick a subject below once tests are added.",
+      'otherboards-std6': "Other Boards · Std 6 — pick a subject below once tests are added.",
+      'otherboards-std7': "Other Boards · Std 7 — pick a subject below once tests are added.",
+      'otherboards-std8': "Other Boards · Std 8 — pick a subject below once tests are added.",
+      'otherboards-std9': "Other Boards · Std 9 — pick a subject below once tests are added.",
+      'otherboards-std10': "Other Boards · Std 10 — pick a subject below once tests are added.",
+      'otherboards-std11': "Other Boards · Std 11 — pick a stream (Science, Commerce or Arts) to see subjects.",
+      'otherboards-std12': "Other Boards · Std 12 — pick a stream (Science, Commerce or Arts) to see subjects.",
     };
 
     const SELECTED_EXAM_KEY = 'mm_selected_exam';
@@ -743,6 +1859,18 @@
         el.style.display = (el.dataset.sub === value) ? '' : 'none';
       });
       document.getElementById('exam-note').innerHTML = SUB_NOTES[value] || '';
+    }
+
+    function showStream(subValue, streamKey, btn){
+      const sub = document.querySelector('.exam-subsection[data-sub="' + subValue + '"]');
+      if(!sub) return;
+      sub.querySelectorAll('.stream-panel').forEach(function(el){
+        el.style.display = (el.dataset.stream === streamKey) ? '' : 'none';
+      });
+      sub.querySelectorAll('.stream-tab').forEach(function(el){
+        el.classList.remove('active');
+      });
+      btn.classList.add('active');
     }
 
     const examDropdown = document.getElementById('exam-dropdown');

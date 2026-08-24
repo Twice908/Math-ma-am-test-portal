@@ -31,6 +31,7 @@ tests/
     topic-chemistry-state-of-matter.html   Topic test — State of Matter — 40 Q / 40 marks
     topic-physics-units-measurements.html  Topic test — Units and Measurements — 40 Q / 40 marks
     topic-biology-classification-of-plants.html   Topic test — Classification of Plants — 40 Q / 40 marks
+    topic-physics-work-and-energy.html     Topic test — Work and Energy — 40 Q / 40 marks
   scholarship/
     pup-std4-test1.html    MSCE PUP Paper 1 — 75 Q / 150 marks
     pss-std7-test1.html    MSCE PSS Paper 1 — 75 Q / 150 marks

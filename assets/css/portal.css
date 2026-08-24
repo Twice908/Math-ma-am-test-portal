@@ -200,7 +200,7 @@
   max-height:0;
   overflow:hidden;
 }
-.exam-group.open .exam-group-sub{max-height:220px;}
+.exam-group.open .exam-group-sub{max-height:1000px;}
 .exam-group-sub li{
   font-size:13.5px;
   font-weight:500;
@@ -416,6 +416,41 @@ main{padding:48px 0 64px;}
 .notes-link:disabled{
   opacity:.55;
   cursor:not-allowed;
+}
+
+.stream-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:20px;
+}
+.stream-tab{
+  font-family:'Poppins',system-ui,sans-serif;
+  font-weight:600;
+  font-size:13.5px;
+  padding:9px 16px;
+  border-radius:999px;
+  border:1.5px solid var(--border);
+  background:transparent;
+  color:var(--ink-soft);
+  cursor:pointer;
+  transition:background .15s ease, color .15s ease, border-color .15s ease;
+}
+.stream-tab:hover{border-color:var(--ink-soft);color:var(--ink);}
+.stream-tab.active{
+  background:var(--gradient-cool);
+  border-color:transparent;
+  color:#fff;
+}
+
+.subject-chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:20px;
+}
+.subject-chip-row .meta-pill{
+  background:var(--card,#fff);
 }
 
 .footer-note{

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Work and Energy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Physics — Work and Energy</h1>
+    <p class="subtitle">Standard VI · English Medium · Questions 1–40 · Std 6 Homi Bhabha syllabus, mid-to-hard difficulty</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>40</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>30:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> A focused topic test covering <b>Work and Energy</b> only — the scientific meaning
+    of work and how to calculate it (W = F × d), kinetic energy (KE = ½mv²), gravitational potential energy
+    (PE = mgh), and the forms, conversion, and conservation of energy. Questions are pitched
+    <b>mid-to-hard</b> with a strong emphasis on numericals — calculating and comparing work, kinetic energy
+    and potential energy — rather than plain recall. One mark each, <b>no negative marking</b>. Select one
+    option per question by tapping its bubble. The timer started as soon as this page loaded. When you're
+    ready, tap <b>Check My Score</b> — correct answers turn green, wrong picks turn red, and you'll get a
+    breakdown by sub-topic. The test auto-submits when the timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">30:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   QUESTION DATA — Topic Practice: Work and Energy (Physics)
+   40 questions · 1 mark each · 30 minutes · no negative marking.
+   Std 6 Homi Bhabha syllabus, mid-to-hard, numerical-heavy on KE/PE.
+   Each question carries a `topic` used only for the sub-topic breakdown.
+   ===================================================================== */
+const QUESTIONS = [
+
+/* ---------- Work – Concept & Calculation ---------- */
+
+{topic:"Work – Concept & Calculation", q:"In the scientific sense, work is said to be done on an object only when a force acts on it and:",
+ opts:["it experiences the force but does not move at all","it stays completely still while the force acts","it moves through some distance in the direction of the force","its shape changes without any motion at all"], correct:2},
+
+{topic:"Work – Concept & Calculation", q:"The SI unit of work is the:",
+ opts:["Joule","Newton","Watt","Pascal"], correct:0},
+
+{topic:"Work – Concept & Calculation", q:"A worker pushes a crate with a steady force of 15 N and moves it 6 m in the direction of the push. How much work does he do?",
+ opts:["21 J","90 J","9 J","2.5 J"], correct:1},
+
+{topic:"Work – Concept & Calculation", q:"A trolley is pulled with a force of 35 N through a distance of 4 m in the direction of the force. Calculate the work done.",
+ opts:["39 J","31 J","140 J","8.75 J"], correct:2},
+
+{topic:"Work – Concept & Calculation", q:"A man pushes hard against a parked truck with a force of 200 N, but the truck does not move at all. How much work is done on the truck, in the scientific sense?",
+ opts:["200 J, since a large force is applied","A small but positive amount of work","Cannot be found without knowing the truck's mass","Zero, because there is no displacement"], correct:3},
+
+{topic:"Work – Concept & Calculation", q:"A porter carries a heavy suitcase on his head and walks a long distance across a level platform without lifting it any higher. According to the scientific definition of work, the work he does against gravity while walking is:",
+ opts:["very large, because carrying it clearly tires him out","equal to the suitcase's weight multiplied by the distance walked","impossible to determine without knowing his walking speed","zero, because the supporting force is perpendicular to the horizontal motion"], correct:3},
+
+{topic:"Work – Concept & Calculation", q:"A certain force does 180 J of work while moving an object through 9 m in the direction of the force. What is the magnitude of the force?",
+ opts:["20 N","1620 N","171 N","0.05 N"], correct:0},
+
+{topic:"Work – Concept & Calculation", q:"A force of 25 N does 300 J of work on an object. Through what distance was the object moved in the direction of the force?",
+ opts:["275 m","7500 m","12 m","0.083 m"], correct:2},
+
+/* ---------- Energy – Forms, Conversion & Conservation ---------- */
+
+{topic:"Energy – Forms, Conversion & Conservation", q:"Energy is best defined as:",
+ opts:["the force acting on a body","the distance a body moves","the speed at which a body moves","the capacity of a body to do work"], correct:3},
+
+{topic:"Energy – Forms, Conversion & Conservation", q:"Since energy is the capacity to do work, the SI unit of energy is the same as that of work, namely the:",
+ opts:["Joule","Watt","Newton","Kelvin"], correct:0},
+
+{topic:"Energy – Forms, Conversion & Conservation", q:"Which of the following is <b>not</b> generally listed as a basic form of energy?",
+ opts:["Chemical energy","Sound energy","Distance energy","Wind energy"], correct:2},
+
+{topic:"Energy – Forms, Conversion & Conservation", q:"The Law of Conservation of Energy states that energy:",
+ opts:["can be created out of nothing under special conditions","can be destroyed completely if enough time passes","is always eventually lost and can never be converted","can neither be created nor destroyed, only transformed from one form to another"], correct:3},
+
+{topic:"Energy – Forms, Conservation & Conversion", q:"When an electric bulb is switched on and glows, the electrical energy supplied to it is mainly converted into:",
+ opts:["only sound energy","only chemical energy","only kinetic energy","light energy and heat energy"], correct:3},
+
+{topic:"Energy – Forms, Conservation & Conversion", q:"A battery-powered toy car starts moving as soon as its switch is turned on. What is the correct main sequence of energy conversions inside it?",
+ opts:["Chemical energy → Electrical energy → Kinetic energy (+ sound and heat)","Kinetic energy → Chemical energy → Electrical energy","Electrical energy → Chemical energy → Sound energy only","Potential energy → Chemical energy → Kinetic energy"], correct:0},
+
+{topic:"Energy – Forms, Conservation & Conversion", q:"In a hydroelectric power station, water stored at a height is allowed to fall and drive turbines. What is the correct sequence of energy conversion?",
+ opts:["Electrical energy → Kinetic energy → Potential energy","Potential energy → Kinetic energy → Mechanical energy → Electrical energy","Kinetic energy → Potential energy → Electrical energy","Chemical energy → Potential energy → Electrical energy"], correct:1},
+
+{topic:"Energy – Forms, Conservation & Conversion", q:"A ball is thrown vertically upward. At the very highest point of its path, just before it starts to fall back:",
+ opts:["its kinetic energy is at its maximum and potential energy is zero","its potential energy is at its maximum and kinetic energy is (almost) zero","both kinetic and potential energy are zero","both kinetic and potential energy are at their maximum together"], correct:1},
+
+/* ---------- Kinetic Energy ---------- */
+
+{topic:"Kinetic Energy", q:"Kinetic energy is the energy possessed by a body because of its:",
+ opts:["position above the ground","motion","temperature","chemical composition"], correct:1},
+
+{topic:"Kinetic Energy", q:"The kinetic energy of a moving object of mass m and velocity v is given by:",
+ opts:["KE = mv","KE = ½mv","KE = ½mv²","KE = mv²"], correct:2},
+
+{topic:"Kinetic Energy", q:"A ball of mass 6 kg moves with a velocity of 4 m/s. What is its kinetic energy?",
+ opts:["24 J","48 J","96 J","12 J"], correct:1},
+
+{topic:"Kinetic Energy", q:"An object of mass 3 kg moves at a velocity of 6 m/s. Find its kinetic energy.",
+ opts:["18 J","54 J","108 J","9 J"], correct:1},
+
+{topic:"Kinetic Energy", q:"Two objects move at the same speed, but object B has twice the mass of object A. Compared with the kinetic energy of A, the kinetic energy of B is:",
+ opts:["the same as A's","half of A's","twice A's","four times A's"], correct:2},
+
+{topic:"Kinetic Energy", q:"Two objects have exactly the same mass. If the velocity of object B is exactly double the velocity of object A, the kinetic energy of B compared with A is:",
+ opts:["twice as much","the same","four times as much","half as much"], correct:2},
+
+{topic:"Kinetic Energy", q:"If the velocity of a moving object is tripled while its mass stays the same, its kinetic energy becomes:",
+ opts:["3 times as much","6 times as much","9 times as much","unchanged"], correct:2},
+
+{topic:"Kinetic Energy", q:"If the velocity of a moving object is reduced to half its original value while its mass stays the same, its kinetic energy becomes:",
+ opts:["half of the original","one-quarter of the original","one-eighth of the original","unchanged"], correct:1},
+
+{topic:"Kinetic Energy", q:"Object A has a mass of 3 kg and moves at 4 m/s. Object B has a mass of 6 kg and moves at the same 4 m/s. How many times greater is the kinetic energy of B compared with A?",
+ opts:["2 times","4 times","6 times","Equal to A"], correct:0},
+
+{topic:"Kinetic Energy", q:"Object A has a mass of 1 kg and moves at 3 m/s. Object B has a mass of 1 kg and moves at 9 m/s. How many times greater is the kinetic energy of B compared with A?",
+ opts:["3 times","6 times","9 times","81 times"], correct:2},
+
+{topic:"Kinetic Energy", q:"Object A has mass 5 kg and velocity 2 m/s. Object B has mass 5 kg and velocity 4 m/s. Which object has the greater kinetic energy, and by what factor?",
+ opts:["A; twice as much as B","B; twice as much as A","B; four times as much as A","Both have equal kinetic energy"], correct:2},
+
+{topic:"Kinetic Energy", q:"A car parked with its engine switched off, standing completely still, has a kinetic energy of:",
+ opts:["a small but positive value","zero, since it has no velocity","a value equal to its weight","a value that depends only on its mass"], correct:1},
+
+/* ---------- Potential Energy ---------- */
+
+{topic:"Potential Energy", q:"Potential energy is the energy possessed by a body because of its:",
+ opts:["motion or speed","position, height, or configuration","temperature","electric charge"], correct:1},
+
+{topic:"Potential Energy", q:"Which of the following does <b>not</b> normally illustrate potential energy?",
+ opts:["A stretched bow ready to shoot an arrow","A stone held at the top of a wall","A ball rolling steadily along flat ground","Water stored behind a dam"], correct:2},
+
+{topic:"Potential Energy", q:"For school-level numericals, gravitational potential energy is calculated using the formula:",
+ opts:["PE = mg + h","PE = mgh","PE = m + g + h","PE = ½mgh"], correct:1},
+
+{topic:"Potential Energy", q:"A 4 kg object is held at a height of 5 m above the ground. Taking g = 10 m/s², find its gravitational potential energy.",
+ opts:["20 J","200 J","9 J","400 J"], correct:1},
+
+{topic:"Potential Energy", q:"A 6 kg object is raised to a height of 3 m. Taking g = 10 m/s², find its potential energy.",
+ opts:["18 J","180 J","60 J","30 J"], correct:1},
+
+{topic:"Potential Energy", q:"Object A has a mass of 3 kg and is kept at a height of 4 m. Object B has a mass of 9 kg and is kept at the same height. Compared with A, the potential energy of B is:",
+ opts:["the same as A's","twice A's","three times A's","nine times A's"], correct:2},
+
+{topic:"Potential Energy", q:"Two objects have exactly the same mass. Object A is kept at a height of 2 m, and object B is kept at a height of 8 m. Compared with A, the potential energy of B is:",
+ opts:["twice as much","four times as much","eight times as much","the same"], correct:1},
+
+{topic:"Potential Energy", q:"Object A has mass 2 kg and height 3 m. Object B has mass 6 kg and height 9 m, compared with A. How many times greater is the potential energy of B than that of A?",
+ opts:["3 times","9 times","18 times","27 times"], correct:2},
+
+{topic:"Potential Energy", q:"Gravitational potential energy (PE = mgh) does <b>not</b> depend on:",
+ opts:["the mass of the object","the height of the object above the reference level","the acceleration due to gravity, g","the speed at which the object is moving"], correct:3},
+
+{topic:"Potential Energy", q:"An object at rest at a certain height above the ground has:",
+ opts:["zero potential energy and zero kinetic energy","positive potential energy but zero kinetic energy","zero potential energy but positive kinetic energy","positive potential energy and positive kinetic energy"], correct:1},
+
+{topic:"Potential Energy", q:"Which of the following correctly compares kinetic and potential energy?",
+ opts:["Kinetic energy depends on position; potential energy depends on motion","Kinetic energy requires motion, while potential energy can exist without any motion at all","Both always exist together and can never exist alone","Potential energy always requires motion, just like kinetic energy"], correct:1},
+
+{topic:"Potential Energy", q:"A stone is dropped from the top of a tower and falls freely toward the ground. As it falls, its potential energy:",
+ opts:["increases while its kinetic energy also increases","decreases while its kinetic energy increases","stays constant while its kinetic energy increases","decreases while its kinetic energy also decreases"], correct:1}
+];
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 1800;   /* 30 minutes */
+const MARKS_PER_QUESTION  = 1;     /* 1 mark each, no negative marking */
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+/* =====================================================================
+   RENDER QUESTIONS — one continuous block, topic-focused paper
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+QUESTIONS.forEach((item, qi) => {
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  if(item.diagram){
+    const d = document.createElement('div');
+    d.className = 'diagram';
+    d.innerHTML = item.diagram;
+    block.appendChild(d);
+  }
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 120){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING — 1 mark per question, no negative marking, plus a
+   sub-topic breakdown. (No persistence — nothing is saved anywhere.)
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let score = 0;
+  const byTopic = {};
+
+  QUESTIONS.forEach((item, qi) => {
+    const t = item.topic;
+    if(!byTopic[t]) byTopic[t] = {correct:0, total:0};
+    byTopic[t].total++;
+
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selIdx = selected ? parseInt(selected.value,10) : null;
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    optLabels[item.correct].classList.add('correct-answer');
+
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+
+    if(selIdx === item.correct){
+      score++;
+      byTopic[t].correct++;
+      note.textContent = '✓ Correct';
+    } else {
+      if(selIdx !== null) optLabels[selIdx].classList.add('wrong-answer');
+      note.textContent = selIdx === null
+        ? '— Not answered'
+        : '✗ Correct answer highlighted in green';
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const marks = score * MARKS_PER_QUESTION;
+  const totalMarks = total * MARKS_PER_QUESTION;
+  const pct = Math.round(score/total*100);
+  document.getElementById('score-readout').innerHTML =
+    `Score: <b>${marks} / ${totalMarks}</b> marks (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  let rows = '';
+  Object.keys(byTopic).forEach(t => {
+    const d = byTopic[t];
+    const p = Math.round(d.correct/d.total*100);
+    rows += `<tr><td>${t}</td><td>${d.correct} / ${d.total}</td><td>${p}%</td></tr>`;
+  });
+  rows += `<tr><td>Total</td><td>${score} / ${total}</td><td>${pct}%</td></tr>`;
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = `<h3>Sub-topic breakdown</h3>
+    <table><tr><th>Sub-topic</th><th>Correct</th><th>Score</th></tr>${rows}</table>`;
+  bd.classList.add('show');
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${marks} out of ${totalMarks} marks. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${marks} out of ${totalMarks} marks. Check the sub-topic breakdown to see where to focus next.`
+        : `${marks} out of ${totalMarks} marks. Use the sub-topic breakdown below to see which area needs another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>

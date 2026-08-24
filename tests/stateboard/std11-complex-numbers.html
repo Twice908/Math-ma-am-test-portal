@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Complex Numbers — Concept Check Test</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$'], ['\\(','\\)']] },
+    chtml: { fontURL: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2' }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --bg:#faf8f5;
+    --card:#ffffff;
+    --ink:#2b2620;
+    --sub:#6b6358;
+    --accent:#8a5a3f;
+    --accent-soft:#f1e4da;
+    --line:#e7ded3;
+    --good:#4a7c59;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Georgia', 'Iowan Old Style', serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.55;
+    padding:24px 16px 60px;
+  }
+  .wrap{max-width:720px;margin:0 auto;}
+  header{
+    border-bottom:2px solid var(--accent);
+    padding-bottom:16px;
+    margin-bottom:24px;
+  }
+  header h1{
+    font-size:1.5rem;
+    margin:0 0 4px;
+    letter-spacing:0.3px;
+  }
+  header p{
+    margin:0;
+    color:var(--sub);
+    font-size:0.92rem;
+  }
+  .qcard{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  .qmeta{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:8px;
+  }
+  .qnum{
+    font-weight:bold;
+    color:var(--accent);
+    font-size:0.95rem;
+  }
+  .qtopic{
+    font-size:0.78rem;
+    color:var(--sub);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+  .qtext{font-size:1.02rem;margin-bottom:12px;}
+  textarea{
+    width:100%;
+    min-height:70px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:10px 12px;
+    font-family:'Georgia', serif;
+    font-size:0.95rem;
+    resize:vertical;
+    background:#fffefc;
+    color:var(--ink);
+  }
+  textarea:focus{outline:2px solid var(--accent-soft);border-color:var(--accent);}
+  .proverow textarea{min-height:100px;}
+  .footer-actions{
+    position:sticky;
+    bottom:0;
+    background:linear-gradient(to top, var(--bg) 70%, transparent);
+    padding:16px 0 4px;
+    display:flex;
+    gap:10px;
+    justify-content:center;
+  }
+  button{
+    font-family:'Georgia', serif;
+    font-size:0.95rem;
+    padding:12px 24px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+  }
+  #submitBtn{
+    background:var(--accent);
+    color:white;
+  }
+  #submitBtn:hover{background:#764a33;}
+  #resetBtn{
+    background:transparent;
+    color:var(--sub);
+    border:1px solid var(--line);
+  }
+  #resetBtn:hover{background:var(--accent-soft);}
+  #results{
+    display:none;
+    background:var(--accent-soft);
+    border:1px solid var(--accent);
+    border-radius:10px;
+    padding:20px;
+    margin-top:20px;
+    text-align:center;
+  }
+  #results h2{margin-top:0;color:var(--accent);}
+  #results .score{font-size:2rem;font-weight:bold;color:var(--ink);}
+  #results p{color:var(--sub);font-size:0.9rem;}
+  .savedNote{
+    text-align:center;
+    font-size:0.78rem;
+    color:var(--sub);
+    margin-top:4px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Complex Numbers — Concept Check</h1>
+    <p>Foundations through Cube Roots of Unity · MSBSHSE Std XI, Ch. 1</p>
+  </header>
+
+  <form id="testForm">
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q1</span><span class="qtopic">Definition</span></div>
+      <div class="qtext">Write the complex number $-3 + \sqrt{-16}$ in the standard form $a+ib$.</div>
+      <textarea data-qid="q1" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q2</span><span class="qtopic">Conjugate</span></div>
+      <div class="qtext">Find the conjugate of $z = 4 - 5i$, and write the value of $z \cdot \bar z$.</div>
+      <textarea data-qid="q2" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q3</span><span class="qtopic">Properties of Conjugate</span></div>
+      <div class="qtext">State whether true or false, with one line of reasoning: "The conjugate of $z_1+z_2$ equals $\bar z_1 + \bar z_2$."</div>
+      <textarea data-qid="q3" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q4</span><span class="qtopic">Modulus</span></div>
+      <div class="qtext">Find the modulus $|z|$ of $z = 3 - 4i$.</div>
+      <textarea data-qid="q4" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q5</span><span class="qtopic">Argument (Amplitude)</span></div>
+      <div class="qtext">Find the amplitude (argument) of $z = 1 + i$.</div>
+      <textarea data-qid="q5" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q6</span><span class="qtopic">Polar Form</span></div>
+      <div class="qtext">Express $z = 1 + i\sqrt3$ in polar form $r(\cos\theta + i\sin\theta)$.</div>
+      <textarea data-qid="q6" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q7</span><span class="qtopic">Exponential Form</span></div>
+      <div class="qtext">Write $z = 2\left(\cos\dfrac{\pi}{3} + i\sin\dfrac{\pi}{3}\right)$ in exponential form $re^{i\theta}$.</div>
+      <textarea data-qid="q7" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q8</span><span class="qtopic">Argand Diagram</span></div>
+      <div class="qtext">Plot $z = -2 + 3i$ on the Argand diagram (describe the point's position — which quadrant, and its coordinates).</div>
+      <textarea data-qid="q8" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q9</span><span class="qtopic">Addition &amp; Subtraction</span></div>
+      <div class="qtext">If $z_1 = 2+3i$ and $z_2 = 1-4i$, find $z_1+z_2$ and $z_1-z_2$.</div>
+      <textarea data-qid="q9" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q10</span><span class="qtopic">Multiplication</span></div>
+      <div class="qtext">Find the product $(2+i)(3-2i)$.</div>
+      <textarea data-qid="q10" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q11</span><span class="qtopic">Division</span></div>
+      <div class="qtext">Simplify $\dfrac{3+2i}{1-i}$ by rationalising the denominator.</div>
+      <textarea data-qid="q11" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">Q12</span><span class="qtopic">Prove That — Modulus/Conjugate</span></div>
+      <div class="qtext">Prove that: $z \cdot \bar z = |z|^2$ for any complex number $z = a+ib$.</div>
+      <textarea data-qid="q12" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">Q13</span><span class="qtopic">Prove That — Cube Roots of Unity</span></div>
+      <div class="qtext">If $\omega$ is a complex cube root of unity, prove that: $1+\omega+\omega^2 = 0$.</div>
+      <textarea data-qid="q13" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">Q14</span><span class="qtopic">Prove That — Cube Roots of Unity</span></div>
+      <div class="qtext">If $\omega$ is a complex cube root of unity, prove that: $(2-\omega)(2-\omega^2) = 7$.</div>
+      <textarea data-qid="q14" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="footer-actions">
+      <button type="button" id="submitBtn">Submit Test</button>
+      <button type="button" id="resetBtn">Clear</button>
+    </div>
+  </form>
+
+  <div id="results">
+    <h2>Test Submitted</h2>
+    <div class="score" id="scoreDisplay">14 / 14 answered</div>
+    <p>Your answers have been recorded. Share them with your instructor for scoring against the MSBSHSE mark scheme.</p>
+  </div>
+  <p class="savedNote" id="savedNote"></p>
+</div>
+
+<script>
+const STORAGE_KEY = 'complexnum-test-v1';
+
+async function loadSaved(){
+  try{
+    const result = await window.storage.get(STORAGE_KEY);
+    if(result && result.value){
+      const data = JSON.parse(result.value);
+      document.querySelectorAll('textarea[data-qid]').forEach(ta=>{
+        if(data[ta.dataset.qid]) ta.value = data[ta.dataset.qid];
+      });
+      document.getElementById('savedNote').textContent = 'Previously saved answers loaded.';
+    }
+  }catch(e){
+    // no saved data yet, ignore
+  }
+}
+
+async function saveAnswers(){
+  const data = {};
+  document.querySelectorAll('textarea[data-qid]').forEach(ta=>{
+    data[ta.dataset.qid] = ta.value;
+  });
+  try{
+    await window.storage.set(STORAGE_KEY, JSON.stringify(data));
+  }catch(e){
+    console.error('Save failed', e);
+  }
+  return data;
+}
+
+document.getElementById('submitBtn').addEventListener('click', async ()=>{
+  const data = await saveAnswers();
+  const total = Object.keys(data).length;
+  const answered = Object.values(data).filter(v => v.trim().length>0).length;
+  document.getElementById('scoreDisplay').textContent = answered + ' / ' + total + ' answered';
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+});
+
+document.getElementById('resetBtn').addEventListener('click', async ()=>{
+  document.querySelectorAll('textarea[data-qid]').forEach(ta=> ta.value = '');
+  document.getElementById('results').style.display = 'none';
+  try{ await window.storage.delete(STORAGE_KEY); }catch(e){}
+});
+
+// autosave on input, debounced
+let saveTimer;
+document.querySelectorAll('textarea[data-qid]').forEach(ta=>{
+  ta.addEventListener('input', ()=>{
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveAnswers, 800);
+  });
+});
+
+loadSaved();
+</script>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Complex Numbers — Full Syllabus Test</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$'], ['\\(','\\)']] },
+    chtml: { fontURL: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2' }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --bg:#faf8f5;
+    --card:#ffffff;
+    --ink:#2b2620;
+    --sub:#6b6358;
+    --accent:#8a5a3f;
+    --accent-soft:#f1e4da;
+    --line:#e7ded3;
+    --good:#4a7c59;
+    --good-soft:#e9f2ea;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Georgia', 'Iowan Old Style', serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.55;
+    padding:24px 16px 60px;
+  }
+  .wrap{max-width:740px;margin:0 auto;}
+  header{
+    border-bottom:2px solid var(--accent);
+    padding-bottom:16px;
+    margin-bottom:24px;
+  }
+  header h1{font-size:1.5rem;margin:0 0 4px;letter-spacing:0.3px;}
+  header p{margin:0;color:var(--sub);font-size:0.92rem;}
+  .badge{
+    display:inline-block;
+    background:var(--accent-soft);
+    color:var(--accent);
+    font-size:0.72rem;
+    padding:3px 10px;
+    border-radius:20px;
+    margin-top:8px;
+    letter-spacing:0.3px;
+  }
+  .qcard{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  .qmeta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+  .qnum{font-weight:bold;color:var(--accent);font-size:0.95rem;}
+  .qtopic{font-size:0.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:0.5px;}
+  .qtext{font-size:1.02rem;margin-bottom:12px;}
+  textarea{
+    width:100%;min-height:80px;border:1px solid var(--line);border-radius:6px;
+    padding:10px 12px;font-family:'Georgia', serif;font-size:0.95rem;
+    resize:vertical;background:#fffefc;color:var(--ink);
+  }
+  textarea:focus{outline:2px solid var(--accent-soft);border-color:var(--accent);}
+  .footer-actions{
+    position:sticky;bottom:0;
+    background:linear-gradient(to top, var(--bg) 70%, transparent);
+    padding:16px 0 4px;display:flex;gap:10px;justify-content:center;
+  }
+  button{
+    font-family:'Georgia', serif;font-size:0.95rem;padding:12px 24px;
+    border-radius:8px;border:none;cursor:pointer;font-weight:bold;
+  }
+  #submitBtn{background:var(--accent);color:white;}
+  #submitBtn:hover{background:#764a33;}
+  #resetBtn{background:transparent;color:var(--sub);border:1px solid var(--line);}
+  #resetBtn:hover{background:var(--accent-soft);}
+  #results{
+    display:none;background:var(--accent-soft);border:1px solid var(--accent);
+    border-radius:10px;padding:20px;margin-top:20px;text-align:center;
+  }
+  #results h2{margin-top:0;color:var(--accent);}
+  #results .score{font-size:1.6rem;font-weight:bold;color:var(--ink);}
+  #results p{color:var(--sub);font-size:0.9rem;}
+
+  #solutions{display:none;margin-top:32px;}
+  #solutions > h2{
+    border-bottom:2px solid var(--good);
+    color:var(--good);
+    padding-bottom:10px;
+  }
+  .solcard{
+    background:var(--good-soft);
+    border:1px solid var(--good);
+    border-radius:10px;
+    padding:18px 20px;
+    margin-bottom:14px;
+  }
+  .solcard .qtopic{color:var(--good);}
+  .yourans{
+    background:#fffefc;
+    border:1px dashed var(--line);
+    border-radius:6px;
+    padding:8px 12px;
+    margin:10px 0;
+    font-size:0.88rem;
+    color:var(--sub);
+    font-style:italic;
+  }
+  .yourans span{color:var(--ink);font-style:normal;}
+  .soltext{font-size:0.95rem;}
+  .soltext p{margin:6px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Complex Numbers — Full Syllabus Test</h1>
+    <p>Complete chapter: definition through Cube Roots of Unity · MSBSHSE Std XI</p>
+    <span class="badge">Mid-difficulty · Exercises 1.1–1.4 &amp; Miscellaneous</span>
+  </header>
+
+  <form id="testForm">
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q1</span><span class="qtopic">Simplification (Ex 1.1)</span></div>
+      <div class="qtext">Simplify: $\sqrt{-16} + 3\sqrt{-25} + \sqrt{-36} - \sqrt{-625}$</div>
+      <textarea data-qid="q1" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q2</span><span class="qtopic">Standard Form (Ex 1.1)</span></div>
+      <div class="qtext">Find $a$ and $b$ if $a + 2b + 2ai = 4 + 6i$, where $a, b \in \mathbb{R}$.</div>
+      <textarea data-qid="q2" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q3</span><span class="qtopic">Conjugate (Ex 1.1)</span></div>
+      <div class="qtext">Write the conjugate of $\sqrt{-5} - \sqrt7\,i$.</div>
+      <textarea data-qid="q3" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q4</span><span class="qtopic">Prove That — Conjugate/Powers of i (Ex 1.1)</span></div>
+      <div class="qtext">Prove that: $(1+i)^4 \times \left(1+\dfrac{1}{i}\right)^4 = 16$</div>
+      <textarea data-qid="q4" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q5</span><span class="qtopic">Square Root of Complex Number (Ex 1.2)</span></div>
+      <div class="qtext">Find the square root of $-8 - 6i$.</div>
+      <textarea data-qid="q5" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q6</span><span class="qtopic">Quadratic with Complex Roots (Ex 1.2)</span></div>
+      <div class="qtext">Solve: $3x^2 - 7x + 5 = 0$</div>
+      <textarea data-qid="q6" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q7</span><span class="qtopic">Modulus (Ex 1.3)</span></div>
+      <div class="qtext">Find the modulus of $z = \dfrac{2-i}{1+i}$.</div>
+      <textarea data-qid="q7" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q8</span><span class="qtopic">Argument (Ex 1.3)</span></div>
+      <div class="qtext">Find the argument of $z = -1 - i$.</div>
+      <textarea data-qid="q8" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q9</span><span class="qtopic">Polar &amp; Exponential Form (Ex 1.3)</span></div>
+      <div class="qtext">Express $z = -1 + i\sqrt3$ in polar form, and hence write it in exponential form.</div>
+      <textarea data-qid="q9" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q10</span><span class="qtopic">Argand Diagram + Operations (Ex 1.3)</span></div>
+      <div class="qtext">If $z_1 = 3 - 2i$ and $z_2 = -1 + 4i$, find $z_1 \cdot z_2$ and locate the resulting point's quadrant on the Argand diagram.</div>
+      <textarea data-qid="q10" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q11</span><span class="qtopic">Division (Ex 1.3)</span></div>
+      <div class="qtext">Simplify $\dfrac{3+2i}{1-i}$ by rationalising the denominator, and find its modulus.</div>
+      <textarea data-qid="q11" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q12</span><span class="qtopic">Cube Roots of Unity — Powers (Ex 1.4)</span></div>
+      <div class="qtext">If $\omega$ is a complex cube root of unity, find the value of $\omega^{-105}$.</div>
+      <textarea data-qid="q12" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q13</span><span class="qtopic">Prove That — Cube Roots of Unity (Ex 1.4)</span></div>
+      <div class="qtext">If $\omega$ is a complex cube root of unity, prove that: $(1+\omega-\omega^2)^6 = 64$</div>
+      <textarea data-qid="q13" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q14</span><span class="qtopic">Prove That — Cube Roots, General (Ex 1.4)</span></div>
+      <div class="qtext">If $\omega$ is a complex cube root of unity, prove that: $(a+b\omega+c\omega^2)(a+b\omega^2+c\omega) = a^2+b^2+c^2-ab-bc-ca$</div>
+      <textarea data-qid="q14" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">Q15</span><span class="qtopic">Prove That — Binomial + i (Miscellaneous)</span></div>
+      <div class="qtext">If $x+iy = (a+ib)^3$, show that $\dfrac{x}{a}+\dfrac{y}{b} = 4(a^2-b^2)$.</div>
+      <textarea data-qid="q15" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="footer-actions">
+      <button type="button" id="submitBtn">Submit Test &amp; View Solutions</button>
+      <button type="button" id="resetBtn">Clear</button>
+    </div>
+  </form>
+
+  <div id="results">
+    <h2>Test Submitted</h2>
+    <div class="score" id="scoreDisplay">15 / 15 answered</div>
+    <p>Scroll down to review detailed solutions for every question against your own answers.</p>
+  </div>
+
+  <div id="solutions">
+    <h2>Solutions</h2>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q1</span><span class="qtopic">Simplification</span></div>
+      <div class="yourans">Your answer: <span data-show="q1"></span></div>
+      <div class="soltext">
+        <p>$\sqrt{-16}=4i,\ \ 3\sqrt{-25}=3(5i)=15i,\ \ \sqrt{-36}=6i,\ \ \sqrt{-625}=25i$</p>
+        <p>Sum: $4i+15i+6i-25i = 25i-25i = 0$</p>
+        <p><strong>Answer: 0</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q2</span><span class="qtopic">Standard Form</span></div>
+      <div class="yourans">Your answer: <span data-show="q2"></span></div>
+      <div class="soltext">
+        <p>Equating real and imaginary parts of $a+2b+2ai = 4+6i$:</p>
+        <p>$2a = 6 \Rightarrow a=3$</p>
+        <p>$a+2b=4 \Rightarrow 3+2b=4 \Rightarrow b=\dfrac{1}{2}$</p>
+        <p><strong>Answer: $a=3,\ b=\dfrac12$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q3</span><span class="qtopic">Conjugate</span></div>
+      <div class="yourans">Your answer: <span data-show="q3"></span></div>
+      <div class="soltext">
+        <p>$\sqrt{-5}-\sqrt7\,i = \sqrt5\,i-\sqrt7\,i$ (writing $\sqrt{-5}$ as $\sqrt5\,i$)</p>
+        <p>Conjugate flips the sign of the imaginary part only.</p>
+        <p><strong>Answer: conjugate is $\sqrt5\,i+\sqrt7\,i$, i.e. $\sqrt{-5}+\sqrt7\,i$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q4</span><span class="qtopic">Prove That — Powers of i</span></div>
+      <div class="yourans">Your answer: <span data-show="q4"></span></div>
+      <div class="soltext">
+        <p>$(1+i)^2 = 1+2i+i^2 = 2i$ (since $i^2=-1$), so $(1+i)^4 = (2i)^2 = -4$</p>
+        <p>$1+\dfrac1i = 1+\dfrac{1}{i}\cdot\dfrac{i}{i} = 1-i$ (since $\dfrac1i=-i$)</p>
+        <p>$(1-i)^2 = -2i \Rightarrow (1-i)^4 = (-2i)^2 = -4$</p>
+        <p>Product: $(-4)\times(-4) = 16$ &nbsp; <strong>Hence proved.</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q5</span><span class="qtopic">Square Root of Complex Number</span></div>
+      <div class="yourans">Your answer: <span data-show="q5"></span></div>
+      <div class="soltext">
+        <p>Let $\sqrt{-8-6i}=a+bi$. Squaring: $-8-6i = (a^2-b^2)+2abi$</p>
+        <p>So $a^2-b^2=-8$ and $2ab=-6 \Rightarrow ab=-3$</p>
+        <p>Using $a^2+b^2=\sqrt{(a^2-b^2)^2+(2ab)^2}=\sqrt{64+36}=10$</p>
+        <p>$a^2-b^2=-8,\ a^2+b^2=10 \Rightarrow a^2=1,\ b^2=9 \Rightarrow a=\pm1,\ b=\mp3$ (signs matched via $ab=-3$)</p>
+        <p><strong>Answer: $\pm(1-3i)$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q6</span><span class="qtopic">Quadratic with Complex Roots</span></div>
+      <div class="yourans">Your answer: <span data-show="q6"></span></div>
+      <div class="soltext">
+        <p>$a=3,\ b=-7,\ c=5$. Discriminant $=49-60=-11<0$</p>
+        <p>$x=\dfrac{7\pm\sqrt{11}\,i}{6}$</p>
+        <p><strong>Answer: $x=\dfrac{7+\sqrt{11}i}{6}$ or $x=\dfrac{7-\sqrt{11}i}{6}$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q7</span><span class="qtopic">Modulus</span></div>
+      <div class="yourans">Your answer: <span data-show="q7"></span></div>
+      <div class="soltext">
+        <p>Rationalise: $\dfrac{2-i}{1+i}\cdot\dfrac{1-i}{1-i} = \dfrac{(2-i)(1-i)}{2} = \dfrac{2-2i-i+i^2}{2}=\dfrac{1-3i}{2}$</p>
+        <p>$|z| = \dfrac{\sqrt{1^2+3^2}}{2} = \dfrac{\sqrt{10}}{2}$</p>
+        <p><strong>Answer: $\dfrac{\sqrt{10}}{2}$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q8</span><span class="qtopic">Argument</span></div>
+      <div class="yourans">Your answer: <span data-show="q8"></span></div>
+      <div class="soltext">
+        <p>$z=-1-i$ lies in the third quadrant. Reference angle: $\tan^{-1}\left|\dfrac{-1}{-1}\right| = \dfrac{\pi}{4}$</p>
+        <p>Third quadrant argument $= -\left(\pi-\dfrac{\pi}{4}\right) = -\dfrac{3\pi}{4}$</p>
+        <p><strong>Answer: $\arg(z) = -\dfrac{3\pi}{4}$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q9</span><span class="qtopic">Polar &amp; Exponential Form</span></div>
+      <div class="yourans">Your answer: <span data-show="q9"></span></div>
+      <div class="soltext">
+        <p>$r=\sqrt{(-1)^2+(\sqrt3)^2}=\sqrt{1+3}=2$</p>
+        <p>Second quadrant: $\theta = \pi-\tan^{-1}\left(\dfrac{\sqrt3}{1}\right) = \pi-\dfrac{\pi}{3}=\dfrac{2\pi}{3}$</p>
+        <p>Polar form: $2\left(\cos\dfrac{2\pi}{3}+i\sin\dfrac{2\pi}{3}\right)$</p>
+        <p><strong>Exponential form: $2e^{i2\pi/3}$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q10</span><span class="qtopic">Argand Diagram + Operations</span></div>
+      <div class="yourans">Your answer: <span data-show="q10"></span></div>
+      <div class="soltext">
+        <p>$z_1z_2=(3-2i)(-1+4i) = -3+12i+2i-8i^2 = -3+14i+8 = 5+14i$</p>
+        <p>Real part positive, imaginary part positive $\Rightarrow$ point $(5,14)$ lies in the <strong>first quadrant</strong>.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q11</span><span class="qtopic">Division</span></div>
+      <div class="yourans">Your answer: <span data-show="q11"></span></div>
+      <div class="soltext">
+        <p>$\dfrac{3+2i}{1-i}\cdot\dfrac{1+i}{1+i} = \dfrac{(3+2i)(1+i)}{2} = \dfrac{3+3i+2i+2i^2}{2}=\dfrac{1+5i}{2}$</p>
+        <p>$|z| = \dfrac{\sqrt{1^2+5^2}}{2} = \dfrac{\sqrt{26}}{2}$</p>
+        <p><strong>Answer: $z=\dfrac{1+5i}{2}$, $|z|=\dfrac{\sqrt{26}}{2}$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q12</span><span class="qtopic">Cube Roots of Unity — Powers</span></div>
+      <div class="yourans">Your answer: <span data-show="q12"></span></div>
+      <div class="soltext">
+        <p>$-105 \div 3 = -35$ exactly, so $-105$ is a multiple of 3.</p>
+        <p>$\omega^{-105} = (\omega^3)^{-35} = 1^{-35} = 1$</p>
+        <p><strong>Answer: 1</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q13</span><span class="qtopic">Prove That — Cube Roots of Unity</span></div>
+      <div class="yourans">Your answer: <span data-show="q13"></span></div>
+      <div class="soltext">
+        <p>Using $1+\omega+\omega^2=0 \Rightarrow 1-\omega^2 = 2\omega$... instead directly: $1+\omega-\omega^2 = (1+\omega+\omega^2)-2\omega^2 = -2\omega^2$</p>
+        <p>So $(1+\omega-\omega^2)^6 = (-2\omega^2)^6 = 64\cdot\omega^{12} = 64\cdot(\omega^3)^4 = 64\cdot1 = 64$</p>
+        <p><strong>Hence proved.</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q14</span><span class="qtopic">Prove That — Cube Roots, General</span></div>
+      <div class="yourans">Your answer: <span data-show="q14"></span></div>
+      <div class="soltext">
+        <p>Expand $(a+b\omega+c\omega^2)(a+b\omega^2+c\omega)$ term by term, then substitute $\omega^3=1$ and $1+\omega+\omega^2=0$ wherever $\omega^3, \omega^4$ appear.</p>
+        <p>After collecting terms: $a^2+b^2\omega^3+c^2\omega^3 + ab(\omega^2+\omega) + bc(\omega^4+\omega^2) + ac(\omega+\omega^2)$</p>
+        <p>Since $\omega^3=1$ and $\omega+\omega^2=-1$: this simplifies to $a^2+b^2+c^2-ab-bc-ca$</p>
+        <p><strong>Hence proved.</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Q15</span><span class="qtopic">Prove That — Binomial + i</span></div>
+      <div class="yourans">Your answer: <span data-show="q15"></span></div>
+      <div class="soltext">
+        <p>$(a+ib)^3 = a^3+3a^2(ib)+3a(ib)^2+(ib)^3 = a^3+3a^2bi-3ab^2-b^3i$</p>
+        <p>$= (a^3-3ab^2) + (3a^2b-b^3)i$</p>
+        <p>Equate: $x=a^3-3ab^2,\ \ y=3a^2b-b^3$</p>
+        <p>$\dfrac{x}{a}=a^2-3b^2,\ \ \dfrac{y}{b}=3a^2-b^2$</p>
+        <p>Sum: $4a^2-4b^2 = 4(a^2-b^2)$ &nbsp; <strong>Hence proved.</strong></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'complexnum-test-advanced-v1';
+
+async function loadSaved(){
+  try{
+    const result = await window.storage.get(STORAGE_KEY);
+    if(result && result.value){
+      const data = JSON.parse(result.value);
+      document.querySelectorAll('textarea[data-qid]').forEach(ta=>{
+        if(data[ta.dataset.qid]) ta.value = data[ta.dataset.qid];
+      });
+    }
+  }catch(e){}
+}
+
+async function saveAnswers(){
+  const data = {};
+  document.querySelectorAll('textarea[data-qid]').forEach(ta=>{
+    data[ta.dataset.qid] = ta.value;
+  });
+  try{ await window.storage.set(STORAGE_KEY, JSON.stringify(data)); }catch(e){}
+  return data;
+}
+
+document.getElementById('submitBtn').addEventListener('click', async ()=>{
+  const data = await saveAnswers();
+  const total = Object.keys(data).length;
+  const answered = Object.values(data).filter(v => v.trim().length>0).length;
+  document.getElementById('scoreDisplay').textContent = answered + ' / ' + total + ' answered';
+  document.getElementById('results').style.display = 'block';
+
+  // populate "your answer" snippets in solutions section
+  document.querySelectorAll('[data-show]').forEach(el=>{
+    const qid = el.dataset.show;
+    const val = data[qid] && data[qid].trim().length>0 ? data[qid] : '(left blank)';
+    el.textContent = val;
+  });
+
+  document.getElementById('solutions').style.display = 'block';
+  if(window.MathJax && window.MathJax.typesetPromise){
+    window.MathJax.typesetPromise();
+  }
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+});
+
+document.getElementById('resetBtn').addEventListener('click', async ()=>{
+  document.querySelectorAll('textarea[data-qid]').forEach(ta=> ta.value = '');
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('solutions').style.display = 'none';
+  try{ await window.storage.delete(STORAGE_KEY); }catch(e){}
+});
+
+let saveTimer;
+document.querySelectorAll('textarea[data-qid]').forEach(ta=>{
+  ta.addEventListener('input', ()=>{
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveAnswers, 800);
+  });
+});
+
+loadSaved();
+</script>
+</body>
+</html>
