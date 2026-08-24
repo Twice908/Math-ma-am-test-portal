@@ -393,6 +393,17 @@ main{padding:48px 0 64px;}
   margin-top:0;
 }
 
+@media (max-width:600px){
+  .card-actions{
+    flex-direction:column;
+  }
+  .card-actions .start-link,
+  .card-actions .notes-link{
+    flex:1;
+    width:100%;
+  }
+}
+
 .notes-link{
   display:inline-flex;
   align-items:center;
