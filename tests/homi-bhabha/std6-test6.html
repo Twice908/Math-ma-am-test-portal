@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Homi Bhabha Std VI · Full Syllabus Paper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Dr. Homi Bhabha Balvaidnyanik Competition</p>
+    <h1>Std VI — Full Syllabus Paper</h1>
+    <p class="subtitle">Standard VI · English Medium · Questions 1–100 · Case-based, mid-to-hard difficulty</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>100</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>90:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> A full-length paper of <b>100 questions in 90 minutes</b>, drawn from across the
+    Std VI syllabus — Units and Measurements, Types of Motion, Force, Work and Energy, Heat, States of
+    Matter, Composition of Substances, Separation Techniques, Types of Changes, Classification of Plants,
+    Morphology of Flowering Plants, and Food and Nutrition. Questions are <b>case-based and application-led</b>
+    rather than plain recall, and are deliberately <b>mixed in random order</b> — just like the real paper,
+    consecutive questions may come from completely different topics, so read each one carefully. Several
+    questions are numerical, including ratio-based comparisons. One mark each, <b>no negative marking</b>,
+    so attempt every question. Select one option per question by tapping its bubble. The timer started as
+    soon as this page loaded. When you're ready, tap <b>Check My Score</b> — correct answers turn green and
+    wrong picks turn red. The test auto-submits when the timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">90:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   QUESTION DATA — Homi Bhabha Std VI · Full Syllabus Paper
+   100 questions · 1 mark each · 90 minutes · no negative marking.
+   Case-based, mid-to-hard. Questions are deliberately presented in
+   RANDOM topic order to mirror the real paper. The `topic` field is NEVER
+   rendered while attempting — it is used only for the post-submit breakdown.
+   ===================================================================== */
+const QUESTIONS = [
+
+{topic:"Heat", q:"A metal rod and a wooden rod of the same size are left in the sun. The metal rod feels much hotter. What does this suggest?",
+ opts:["Both conduct heat equally well","Wood conducts heat better than metal","Metals are generally better conductors of heat than wood","Metals absorb no heat at all"], correct:2},
+
+{topic:"Units and Measurements", q:"A liquid in a beaker is heated so that its temperature rises from 27 &deg;C to 77 &deg;C. What is the rise in temperature expressed on the Kelvin scale?",
+ opts:["350 K","50 K","323 K","104 K"], correct:1},
+
+{topic:"Classification of Plants", q:"A mango tree has one main woody trunk that branches only well above the ground. How is its habit classified?",
+ opts:["Herb","Shrub","Creeper","Tree"], correct:3},
+
+{topic:"Types of Changes", q:"Milk left out of the refrigerator turns sour and curdles, and cannot become fresh milk again. What type of change is this?",
+ opts:["Not a change at all","Physical and reversible","Chemical and irreversible","Physical but irreversible only"], correct:2},
+
+{topic:"Units and Measurements", q:"Riya measures a pencil using a broken ruler that starts at the 2 cm mark. The other end of the pencil reads 14 cm. What is the pencil's actual length?",
+ opts:["14 cm","16 cm","2 cm","12 cm"], correct:3},
+
+{topic:"States of Matter", q:"An ice cube left on a table slowly turns into a puddle of water. What is this change called?",
+ opts:["Freezing","Evaporation","Sublimation","Melting"], correct:3},
+
+{topic:"Food and Nutrition", q:"A person whose diet consists mostly of rice and bread is consuming a diet rich mainly in which nutrient, the body's chief source of energy?",
+ opts:["Vitamins","Proteins","Carbohydrates","Minerals"], correct:2},
+
+{topic:"Force", q:"After being run through dry hair, a plastic comb picks up small bits of paper. Which force is responsible?",
+ opts:["Electrostatic force","Magnetic force","Frictional force","Gravitational force"], correct:0},
+
+{topic:"Types of Motion", q:"The pendulum of a wall clock swings back and forth about a fixed point. What type of motion is this?",
+ opts:["Circular motion","Linear motion","Rotatory motion","Oscillatory motion"], correct:3},
+
+{topic:"Separation Techniques", q:"A mixture of sand and small stones is separated according to particle size using a mesh. What is this method called?",
+ opts:["Winnowing","Sublimation","Decantation","Sieving"], correct:3},
+
+{topic:"Food and Nutrition", q:"A growing child is advised to eat eggs, pulses and milk regularly. Which nutrient do these mainly provide, essential for growth and repair of tissues?",
+ opts:["Vitamins","Fats","Carbohydrates","Proteins"], correct:3},
+
+{topic:"Classification of Plants", q:"A fern reproduces by spores borne on the underside of its leaves, and has well-developed roots, stems and leaves. To which group does it belong?",
+ opts:["Angiosperms","Pteridophyta","Thallophyta","Bryophyta"], correct:1},
+
+{topic:"Force", q:"Two children push a box from opposite sides with equal and opposite forces. What happens to the box?",
+ opts:["It moves in the direction of the stronger push","It does not move, because the forces balance each other","It moves in both directions at once","Its shape changes permanently"], correct:1},
+
+{topic:"Force", q:"An apple falls straight down from a tree instead of floating away. Which force is responsible for this?",
+ opts:["Gravitational force","Magnetic force","Frictional force","Muscular force"], correct:0},
+
+{topic:"Morphology of Flowering Plants", q:"The part of a plant that bears leaves, flowers and branches, and generally grows upward towards light, is the:",
+ opts:["Stem","Sepal","Petal","Root"], correct:0},
+
+{topic:"Force", q:"A goalkeeper catches a fast-moving football and brings it to rest. Which effect of force is shown here?",
+ opts:["It set the ball into motion","It stopped a moving object","It changed the ball's shape permanently","It increased the ball's speed"], correct:1},
+
+{topic:"States of Matter", q:"Ice is heated steadily, but its temperature does not rise while it is melting, even though heat is still being supplied. Where does this heat energy go?",
+ opts:["It is destroyed","It is converted into light","It is used to overcome the forces holding the particles in place as the state changes","It escapes without being used at all"], correct:2},
+
+{topic:"Food and Nutrition", q:"A balanced diet is one that provides the body with:",
+ opts:["only carbohydrates and fats in large amounts","all the necessary nutrients &mdash; carbohydrates, proteins, fats, vitamins, minerals, fibre and water &mdash; in the right proportions","only proteins","only water and vitamins"], correct:1},
+
+{topic:"Food and Nutrition", q:"A sailor who goes without fresh fruit and vegetables on a long voyage develops bleeding gums, a condition called scurvy. Deficiency of which vitamin causes this?",
+ opts:["Vitamin K","Vitamin D","Vitamin A","Vitamin C"], correct:3},
+
+{topic:"Composition of Substances", q:"Sand is mixed with water and stirred. The sand remains visible and later settles at the bottom. What type of mixture is this?",
+ opts:["Solution","Heterogeneous mixture","Homogeneous mixture","Pure compound"], correct:1},
+
+{topic:"Units and Measurements", q:"Which SI unit is correct for measuring the volume of milk in a bottle?",
+ opts:["Second","Kilogram","Litre","Metre"], correct:2},
+
+{topic:"States of Matter", q:"Which of the following correctly describes a key property of the gaseous state?",
+ opts:["It cannot be compressed at all","Neither a fixed shape nor a fixed volume","No fixed shape but a fixed volume","Fixed shape and fixed volume"], correct:1},
+
+{topic:"Morphology of Flowering Plants", q:"The underground part of a plant that absorbs water and minerals and anchors the plant firmly is the:",
+ opts:["Flower","Leaf","Stem","Root"], correct:3},
+
+{topic:"Units and Measurements", q:"Two students measure the same door and record 198 cm and 199 cm. What does this small difference most likely indicate?",
+ opts:["It is impossible for two people to get different readings","A small reading error by one student","The height of the door changed","The tapes were made of different materials"], correct:1},
+
+{topic:"Work and Energy", q:"Sanjay pushes hard against a locked door, but it does not budge at all. How much scientific work does he do on the door?",
+ opts:["Zero, because there is no displacement","It cannot be determined","A large amount of work","A small amount of work"], correct:0},
+
+{topic:"Heat", q:"Cooking utensils often have metal bodies but wooden or plastic handles. Why?",
+ opts:["Wood and plastic are poor conductors of heat, so the handle stays cool","Metal handles rust very easily","To make them lighter","To make them cheaper to manufacture"], correct:0},
+
+{topic:"Separation Techniques", q:"Muddy river water must be made clear before drinking. Which technique separates the suspended mud particles?",
+ opts:["Filtration","Magnetic separation","Distillation only","Sublimation"], correct:0},
+
+{topic:"Food and Nutrition", q:"A child who rarely gets sunlight develops weak, soft bones, a condition called rickets. Deficiency of which vitamin is the likely cause?",
+ opts:["Vitamin E","Vitamin C","Vitamin D","Vitamin B"], correct:2},
+
+{topic:"Composition of Substances", q:"Brass is made by mixing copper and zinc in varying proportions, and its properties depend on the ratio used. What type of substance is brass?",
+ opts:["An element","A compound","A pure substance with a fixed composition","A mixture (alloy)"], correct:3},
+
+{topic:"Composition of Substances", q:"Which of the following is a pure substance rather than a mixture?",
+ opts:["Air","Lemonade","Muddy water","Distilled water"], correct:3},
+
+{topic:"Separation Techniques", q:"Farmers separate lighter husk from heavier wheat grains by tossing the mixture in the wind. What is this method called?",
+ opts:["Decantation","Winnowing","Sieving","Sedimentation"], correct:1},
+
+{topic:"Morphology of Flowering Plants", q:"The green, flat, broad part of a plant that carries out photosynthesis is the:",
+ opts:["Stem","Root","Flower","Leaf"], correct:3},
+
+{topic:"Types of Changes", q:"Baking soda mixed with vinegar fizzes and produces a gas, and the original substances cannot be recovered. What type of change is this?",
+ opts:["Physical change","A change of state only","No change has occurred","Chemical change"], correct:3},
+
+{topic:"Force", q:"Rohit kicks a stationary football and it starts rolling across the ground. Which effect of force is shown here?",
+ opts:["It set a stationary object into motion","It stopped a moving object","It changed the shape of the ball","It had no effect at all"], correct:0},
+
+{topic:"Work and Energy", q:"Two bodies of masses in the ratio 2 : 3 are raised to heights above the ground in the ratio 3 : 4. What is the ratio of their gravitational potential energies?",
+ opts:["1 : 2","2 : 3","3 : 4","8 : 9"], correct:0},
+
+{topic:"Food and Nutrition", q:"Which nutrient provides the most concentrated energy per gram, more than carbohydrates or proteins?",
+ opts:["Fats","Minerals","Water","Vitamins"], correct:0},
+
+{topic:"Morphology of Flowering Plants", q:"In a flower, the female reproductive part, made up of the ovary, style and stigma, is the:",
+ opts:["Petal","Stamen","Sepal","Pistil (carpel)"], correct:3},
+
+{topic:"Morphology of Flowering Plants", q:"In a flower, the male reproductive part that produces pollen grains is the:",
+ opts:["Sepal","Pistil","Petal","Stamen"], correct:3},
+
+{topic:"States of Matter", q:"A steel almirah keeps the same shape and size no matter which room it is placed in. Which state of matter does this best illustrate?",
+ opts:["Gas","Solid","Liquid","Plasma"], correct:1},
+
+{topic:"Types of Motion", q:"A child on a merry-go-round moves in a circular path around a fixed centre. What type of motion is this?",
+ opts:["Oscillatory motion","Circular motion","Rectilinear motion","Random motion"], correct:1},
+
+{topic:"Work and Energy", q:"Two bodies A and B have masses in the ratio 1 : 2 and are moving with velocities in the ratio 2 : 1. What is the ratio of their kinetic energies?",
+ opts:["1 : 1","4 : 1","1 : 2","2 : 1"], correct:3},
+
+{topic:"Classification of Plants", q:"A rose bush has a hard, woody stem with several branches arising close to the ground, and is shorter than a tree. How is it classified?",
+ opts:["Herb","Creeper","Tree","Shrub"], correct:3},
+
+{topic:"Heat", q:"Which instrument is used to measure the temperature of the human body?",
+ opts:["Anemometer","Hygrometer","Clinical thermometer","Barometer"], correct:2},
+
+{topic:"Work and Energy", q:"A porter lifts a 20 kg suitcase through a vertical height of 1 m onto a trolley. Taking g = 10 m/s&sup2;, how much work does he do against gravity?",
+ opts:["2000 J","200 J","2 J","20 J"], correct:1},
+
+{topic:"Units and Measurements", q:"Priya needs to measure a few millilitres of medicine accurately. Which instrument should she use?",
+ opts:["Bucket","Metre scale","Bathroom scale","Measuring cylinder"], correct:3},
+
+{topic:"Work and Energy", q:"In a hydroelectric power station, falling water turns a turbine which generates electricity. What is the correct sequence of energy conversion?",
+ opts:["Electrical &rarr; Potential &rarr; Kinetic","Chemical &rarr; Potential &rarr; Electrical","Kinetic &rarr; Electrical &rarr; Potential","Potential &rarr; Kinetic &rarr; Electrical"], correct:3},
+
+{topic:"Separation Techniques", q:"A mixture of iron filings and sulphur powder needs to be separated. Which is the best method?",
+ opts:["Sublimation","Evaporation","Filtration","Using a magnet"], correct:3},
+
+{topic:"Types of Changes", q:"Burning paper turns it into ash and smoke. Can this change be reversed?",
+ opts:["No, but it is only a physical change","Yes, easily","No, it is an irreversible chemical change in which new substances are formed","Yes, by cooling the ash"], correct:2},
+
+{topic:"Force", q:"A weightlifter lifts a barbell off the ground using his arm muscles. Which type of force is being applied?",
+ opts:["Electrostatic force","Muscular force","Frictional force","Magnetic force"], correct:1},
+
+{topic:"Morphology of Flowering Plants", q:"After pollination and fertilisation, the ovary of a flower develops into a fruit, while the ovules develop into:",
+ opts:["Sepals","Roots","Petals","Seeds"], correct:3},
+
+{topic:"Morphology of Flowering Plants", q:"The outermost green, leaf-like parts that protect a flower bud before it opens are the:",
+ opts:["Petals","Stamens","Carpels","Sepals"], correct:3},
+
+{topic:"Force", q:"A block needs a much bigger push to move across a rough floor than across a smooth one. Which force explains this difference?",
+ opts:["Frictional force","Magnetic force","Gravitational force","Electrostatic force"], correct:0},
+
+{topic:"Classification of Plants", q:"A pine tree produces seeds that are not enclosed inside any fruit. To which group of plants does it belong?",
+ opts:["Thallophytes","Angiosperms","Gymnosperms","Bryophytes"], correct:2},
+
+{topic:"Composition of Substances", q:"Which of the following is an element, made up of only one type of atom?",
+ opts:["Oxygen","Salt","Water","Air"], correct:0},
+
+{topic:"Types of Changes", q:"Ice melts into water on heating, and the water can be frozen back into ice. What type of change is this?",
+ opts:["Chemical, because a new substance forms","Physical and reversible, because no new substance is formed","An irreversible change","Both physical and chemical equally"], correct:1},
+
+{topic:"Heat", q:"Woollen clothes keep us warm in winter mainly because they:",
+ opts:["generate heat on their own","reflect all heat away from the body","trap air, a poor conductor, close to the body","absorb heat from the surroundings and pass it to the body"], correct:2},
+
+{topic:"Morphology of Flowering Plants", q:"The veins of a leaf branch out in a net-like pattern rather than running parallel. What is this called?",
+ opts:["Reticulate venation","Radial venation","Parallel venation","Linear venation"], correct:0},
+
+{topic:"Types of Changes", q:"A sheet of paper is torn into small pieces. Can it be restored to a single sheet, and what type of change is it?",
+ opts:["No, because it is an irreversible chemical change","Yes, because it is a chemical change","Yes, and it is a chemical change","No, but it is still a physical change since no new substance is formed"], correct:3},
+
+{topic:"Work and Energy", q:"The Law of Conservation of Energy states that energy:",
+ opts:["can neither be created nor destroyed, only converted from one form to another","can be destroyed but not created","is always lost completely over time","can be created but not destroyed"], correct:0},
+
+{topic:"Separation Techniques", q:"Salt needs to be recovered from salt water, and the water need not be collected. Which method should be used?",
+ opts:["Evaporation","Winnowing","Filtration","Magnetic separation"], correct:0},
+
+{topic:"Force", q:"Squeezing a rubber ball changes its shape temporarily, and it returns to normal when released. Which effect of force does this show?",
+ opts:["Force can only start motion","Force can only stop motion","Force can change the shape of an object","Force has no effect on shape"], correct:2},
+
+{topic:"Heat", q:"Touching a metal spoon that has been left standing in hot tea, Riya finds the handle is warm. How did heat travel to the handle?",
+ opts:["Convection","Radiation","Conduction","Evaporation"], correct:2},
+
+{topic:"Heat", q:"Water in a pot heats evenly because hot water rises while cooler water sinks to replace it. Which mode of heat transfer is this?",
+ opts:["Insulation","Conduction","Convection","Radiation"], correct:2},
+
+{topic:"Types of Motion", q:"Smoke particles released into still air are seen to move haphazardly in all directions. What is this type of motion called?",
+ opts:["Random motion","Rotatory motion","Periodic motion","Rectilinear motion"], correct:0},
+
+{topic:"States of Matter", q:"Wet clothes hung out in the sun become dry after a few hours. Which change is chiefly responsible?",
+ opts:["Melting","Freezing","Condensation","Evaporation"], correct:3},
+
+{topic:"Types of Motion", q:"A car travels straight down a highway without turning. What is this type of motion called?",
+ opts:["Rectilinear motion","Rotatory motion","Periodic motion","Curvilinear motion"], correct:0},
+
+{topic:"Food and Nutrition", q:"A person finds it difficult to see clearly in dim light, a condition called night blindness. Deficiency of which vitamin commonly causes this?",
+ opts:["Vitamin C","Vitamin D","Vitamin A","Vitamin B"], correct:2},
+
+{topic:"States of Matter", q:"Comparing the particles of a solid, a liquid and a gas of the same substance, which state has the most loosely packed, freely moving particles?",
+ opts:["Liquid","All three are packed equally","Gas","Solid"], correct:2},
+
+{topic:"States of Matter", q:"Naphthalene balls kept in a cupboard shrink and disappear over several weeks, without ever forming a liquid. Which process explains this?",
+ opts:["Sublimation","Melting","Condensation","Evaporation"], correct:0},
+
+{topic:"States of Matter", q:"Water droplets form on the outside of a chilled glass on a humid day. What causes this?",
+ opts:["Evaporation of water from inside the glass","Condensation of water vapour present in the air","Melting of the glass","Sublimation of the glass surface"], correct:1},
+
+{topic:"Work and Energy", q:"Two forces acting on two different bodies are in the ratio 3 : 2, and the displacements produced in the direction of the forces are in the ratio 2 : 5. What is the ratio of the work done by the two forces?",
+ opts:["6 : 5","5 : 3","15 : 4","3 : 5"], correct:3},
+
+{topic:"Composition of Substances", q:"Salt dissolves completely in water to form a clear solution with no visible salt particles. What type of mixture is this?",
+ opts:["Suspension","Heterogeneous mixture","Homogeneous mixture","Compound"], correct:2},
+
+{topic:"Work and Energy", q:"The key of a toy car is wound up, storing energy in its spring, before the car is released to move. What form of energy was stored in the wound spring?",
+ opts:["Kinetic energy","Sound energy","Chemical energy","Potential energy"], correct:3},
+
+{topic:"Food and Nutrition", q:"A diet lacking fibre-rich foods such as fruits, vegetables and whole grains commonly leads to which digestive problem?",
+ opts:["Constipation","Night blindness","Rickets","Scurvy"], correct:0},
+
+{topic:"Morphology of Flowering Plants", q:"The colourful, often fragrant parts of a flower that attract insects for pollination are the:",
+ opts:["Petals","Sepals","Anthers","Ovary"], correct:0},
+
+{topic:"Units and Measurements", q:"Arjun wants to measure the exact time a marble takes to roll down a ramp. Which instrument should he use?",
+ opts:["Sundial","Calendar","Stopwatch","Wall clock"], correct:2},
+
+{topic:"Composition of Substances", q:"Sugar dissolved in tea cannot be seen once dissolved, and every sip tastes equally sweet. This shows that the solution is:",
+ opts:["A suspension","Heterogeneous","Homogeneous","A compound"], correct:2},
+
+{topic:"Types of Motion", q:"Motion that repeats itself after equal intervals of time, such as a swinging pendulum or the Earth's revolution, is called:",
+ opts:["Periodic motion","Random motion","Uniform motion only","Non-uniform motion"], correct:0},
+
+{topic:"Heat", q:"We feel the warmth of a bonfire from a few metres away, without touching it and without moving air. Which mode of heat transfer explains this?",
+ opts:["Conduction","Radiation","Convection","Diffusion"], correct:1},
+
+{topic:"Types of Motion", q:"A cyclist covers equal distances in equal intervals of time on a straight, flat road. What type of motion is this?",
+ opts:["Uniform motion","Oscillatory motion","Non-uniform motion","Random motion"], correct:0},
+
+{topic:"Types of Motion", q:"A spinning top rotates rapidly about its own fixed axis while staying almost in one spot. What type of motion is this?",
+ opts:["Rotatory motion","Oscillatory motion","Circular motion around another object","Translatory motion"], correct:0},
+
+{topic:"Classification of Plants", q:"A wheat plant has many thin roots of similar size, with no single main root. What type of root system is this?",
+ opts:["Adventitious root system","Prop root system","Fibrous root system","Tap root system"], correct:2},
+
+{topic:"Units and Measurements", q:"Meera measures the length of her study table with a metre scale and records it as 90 cm. What is this length in metres?",
+ opts:["0.9 m","9 m","90 m","900 m"], correct:0},
+
+{topic:"Work and Energy", q:"A boy carries a bucket of water 10 m across level ground without lifting it any higher. What is the work done against gravity?",
+ opts:["It cannot be found without knowing the bucket's shape","It depends on his walking speed","Zero, because there is no vertical displacement","The weight of the bucket multiplied by 10 m"], correct:2},
+
+{topic:"Composition of Substances", q:"The smallest particle of an element that can take part in a chemical reaction is called a/an:",
+ opts:["Molecule","Mixture","Compound","Atom"], correct:3},
+
+{topic:"Classification of Plants", q:"A pumpkin plant spreads its weak stem along the ground rather than standing upright. What is such a plant called?",
+ opts:["Shrub","Creeper","Tree","Climber"], correct:1},
+
+{topic:"Separation Techniques", q:"A mixture of camphor and sand must be separated. Camphor turns directly into vapour on heating. Which method should be used?",
+ opts:["Sublimation","Magnetic separation","Evaporation","Filtration"], correct:0},
+
+{topic:"Types of Changes", q:"Iron left in humid air slowly develops a reddish-brown coating of rust. What type of change is rusting?",
+ opts:["Physical and reversible","Temporary, since no new substance is formed","Chemical and irreversible, because a new substance is formed","A change of state only"], correct:2},
+
+{topic:"Types of Changes", q:"A rubber band is stretched and then released, returning to its original shape. What type of change is this?",
+ opts:["Physical and reversible","Physical but irreversible","Chemical and reversible","Chemical and irreversible"], correct:0},
+
+{topic:"Composition of Substances", q:"Water is made of hydrogen and oxygen combined in a fixed ratio, and cannot be separated by simple physical means. Water is therefore an example of:",
+ opts:["a solution","an element","a mixture","a compound"], correct:3},
+
+{topic:"Types of Changes", q:"Which of the following is an example of a purely physical change?",
+ opts:["Burning wood","Digestion of food","Melting of wax","Rusting of iron"], correct:2},
+
+{topic:"Classification of Plants", q:"A mango sapling, when uprooted, shows one thick main root with thinner roots branching from it. What type of root system is this?",
+ opts:["Aerial root system","Tap root system","Stilt root system","Fibrous root system"], correct:1},
+
+{topic:"Classification of Plants", q:"A grape vine climbs up a support using tendrils that coil around it. What type of plant is this?",
+ opts:["Herb","Creeper","Climber","Tree"], correct:2},
+
+{topic:"Work and Energy", q:"A study lamp lights up and its bulb feels slightly warm after some time. Into which forms of energy is the electrical energy mainly converted?",
+ opts:["Light energy and heat energy","Only sound energy","Only kinetic energy","Only chemical energy"], correct:0},
+
+{topic:"Types of Motion", q:"A ball thrown straight upward slows down while rising and speeds up while falling. Is this uniform or non-uniform motion?",
+ opts:["Uniform, because gravity is constant","Non-uniform, because its speed keeps changing","Uniform, because it returns to the same spot","It cannot be determined"], correct:1},
+
+{topic:"Classification of Plants", q:"A plant has leaves with parallel venation and a fibrous root system. Which type of plant is it most likely to be?",
+ opts:["Bryophyte","Monocot","Dicot","Gymnosperm"], correct:1},
+
+{topic:"Separation Techniques", q:"Pure water is to be obtained from sea water by evaporating it and then condensing the vapour. Which method is this?",
+ opts:["Sieving","Filtration","Winnowing","Distillation"], correct:3},
+
+{topic:"Separation Techniques", q:"After sand has settled at the bottom of a jar of muddy water, the clear water above is carefully poured off. What is this process called?",
+ opts:["Filtration","Decantation","Evaporation","Sublimation"], correct:1},
+
+{topic:"Heat", q:"On which temperature scale does water freeze at 0&deg; and boil at 100&deg; under normal atmospheric pressure?",
+ opts:["Fahrenheit scale","Kelvin scale","Celsius scale","Richter scale"], correct:2},
+
+{topic:"Force", q:"A magnet attracts an iron nail lying a few centimetres away, without touching it. What type of force is this?",
+ opts:["Frictional force","Muscular force","Non-contact (magnetic) force","Contact force"], correct:2}
+];
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 5400;   /* 90 minutes */
+const MARKS_PER_QUESTION  = 1;     /* 1 mark each, no negative marking */
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+/* =====================================================================
+   RENDER QUESTIONS
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+QUESTIONS.forEach((item, qi) => {
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 300){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING — 1 mark per question, no negative marking.
+   (No persistence — nothing is saved anywhere.)
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let score = 0;
+  const byTopic = {};
+
+  QUESTIONS.forEach((item, qi) => {
+    const t = item.topic;
+    if(!byTopic[t]) byTopic[t] = {correct:0, total:0};
+    byTopic[t].total++;
+
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selIdx = selected ? parseInt(selected.value,10) : null;
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    optLabels[item.correct].classList.add('correct-answer');
+
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+
+    if(selIdx === item.correct){
+      score++;
+      byTopic[t].correct++;
+      note.textContent = '✓ Correct';
+    } else {
+      if(selIdx !== null) optLabels[selIdx].classList.add('wrong-answer');
+      note.textContent = selIdx === null
+        ? '— Not answered'
+        : '✗ Correct answer highlighted in green';
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const marks = score * MARKS_PER_QUESTION;
+  const totalMarks = total * MARKS_PER_QUESTION;
+  const pct = Math.round(score/total*100);
+  document.getElementById('score-readout').innerHTML =
+    `Score: <b>${marks} / ${totalMarks}</b> marks (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  let rows = '';
+  Object.keys(byTopic).sort().forEach(t => {
+    const d = byTopic[t];
+    const p = Math.round(d.correct/d.total*100);
+    rows += `<tr><td>${t}</td><td>${d.correct} / ${d.total}</td><td>${p}%</td></tr>`;
+  });
+  rows += `<tr><td>Total</td><td>${score} / ${total}</td><td>${pct}%</td></tr>`;
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = `<h3>Topic-wise breakdown</h3>
+    <table><tr><th>Topic</th><th>Correct</th><th>Score</th></tr>${rows}</table>`;
+  bd.classList.add('show');
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${marks} out of ${totalMarks} marks. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${marks} out of ${totalMarks} marks. Check the topic-wise breakdown to see where to focus next.`
+        : `${marks} out of ${totalMarks} marks. Use the topic-wise breakdown below to see which topics need another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>

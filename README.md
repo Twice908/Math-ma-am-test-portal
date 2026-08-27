@@ -27,6 +27,7 @@ tests/
     std6-test2.html        Practice set — 40 Q
     std6-test3.html        Practice set — 50 Q
     std6-test5.html        2024 pattern paper — 100 Q / 100 marks
+    std6-test6.html        Full syllabus paper (12 topics, scrambled) — 100 Q / 100 marks
     std9-test1.html        Theory round — 100 Q / 100 marks
     topic-chemistry-state-of-matter.html   Topic test — State of Matter — 40 Q / 40 marks
     topic-physics-units-measurements.html  Topic test — Units and Measurements — 40 Q / 40 marks
