@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sequences and Series — Full Test</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$'], ['\\(','\\)']] },
+    chtml: { fontURL: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woof-v2' }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --bg:#faf8f5;
+    --card:#ffffff;
+    --ink:#2b2620;
+    --sub:#6b6358;
+    --accent:#8a5a3f;
+    --accent-soft:#f1e4da;
+    --line:#e7ded3;
+    --good:#4a7c59;
+    --good-soft:#e9f2ea;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Georgia', 'Iowan Old Style', serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.55;
+    padding:24px 16px 60px;
+  }
+  .wrap{max-width:720px;margin:0 auto;}
+  header{
+    border-bottom:2px solid var(--accent);
+    padding-bottom:16px;
+    margin-bottom:24px;
+  }
+  header h1{
+    font-size:1.5rem;
+    margin:0 0 4px;
+    letter-spacing:0.3px;
+  }
+  header p{
+    margin:0;
+    color:var(--sub);
+    font-size:0.92rem;
+  }
+  .testmeta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:var(--accent-soft);
+    padding:12px 16px;
+    border-radius:8px;
+    margin-bottom:20px;
+    font-size:0.9rem;
+    color:var(--sub);
+  }
+  .section-header{
+    background:var(--accent);
+    color:white;
+    padding:12px 16px;
+    border-radius:8px;
+    margin-top:20px;
+    margin-bottom:12px;
+    font-weight:bold;
+    font-size:0.95rem;
+    letter-spacing:0.5px;
+  }
+  .qcard{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  .qmeta{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:8px;
+  }
+  .qnum{
+    font-weight:bold;
+    color:var(--accent);
+    font-size:0.95rem;
+  }
+  .qtopic{
+    font-size:0.78rem;
+    color:var(--sub);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+  .qtext{font-size:1.02rem;margin-bottom:12px;}
+  textarea{
+    width:100%;
+    min-height:70px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:10px 12px;
+    font-family:'Georgia', serif;
+    font-size:0.95rem;
+    resize:vertical;
+    background:#fffefc;
+    color:var(--ink);
+  }
+  textarea:focus{outline:2px solid var(--accent-soft);border-color:var(--accent);}
+  .proverow textarea{min-height:100px;}
+  .footer-actions{
+    position:sticky;
+    bottom:0;
+    background:linear-gradient(to top, var(--bg) 70%, transparent);
+    padding:16px 0 4px;
+    display:flex;
+    gap:10px;
+    justify-content:center;
+  }
+  button{
+    font-family:'Georgia', serif;
+    font-size:0.95rem;
+    padding:12px 24px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+  }
+  #submitBtn{
+    background:var(--accent);
+    color:white;
+  }
+  #submitBtn:hover{background:#764a33;}
+  #resetBtn{
+    background:transparent;
+    color:var(--sub);
+    border:1px solid var(--line);
+  }
+  #resetBtn:hover{background:var(--accent-soft);}
+  #results{
+    display:none;
+    background:var(--accent-soft);
+    border:1px solid var(--accent);
+    border-radius:10px;
+    padding:20px;
+    margin-top:20px;
+    text-align:center;
+  }
+  #results h2{margin-top:0;color:var(--accent);}
+  #results .score{font-size:1.6rem;font-weight:bold;color:var(--ink);}
+  #results p{color:var(--sub);font-size:0.9rem;}
+
+  #solutions{
+    display:none;
+    margin-top:32px;
+  }
+  #solutions > h2{
+    border-bottom:2px solid var(--good);
+    color:var(--good);
+    padding-bottom:10px;
+  }
+  .solcard{
+    background:var(--good-soft);
+    border:1px solid var(--good);
+    border-radius:10px;
+    padding:18px 20px;
+    margin-bottom:14px;
+  }
+  .solcard .qtopic{color:var(--good);}
+  .yourans{
+    background:#fffefc;
+    border:1px dashed var(--line);
+    border-radius:6px;
+    padding:8px 12px;
+    margin:10px 0;
+    font-size:0.88rem;
+    color:var(--sub);
+    font-style:italic;
+  }
+  .yourans span{color:var(--ink);font-style:normal;}
+  .soltext{font-size:0.95rem;}
+  .soltext p{margin:6px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Sequences and Series — Full Test</h1>
+    <p>MSBSHSE Std XI Mathematics Part I · Chapter 5</p>
+  </header>
+
+  <div class="testmeta">
+    <span><strong>Time:</strong> 40 minutes</span>
+    <span><strong>Total Marks:</strong> 40</span>
+  </div>
+
+  <form id="testForm">
+
+    <!-- SECTION A: Sequence, Series & A.P. -->
+    <div class="section-header">Section A — Sequence, Series & A.P. (2 marks each)</div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A1</span><span class="qtopic">Definition</span></div>
+      <div class="qtext">Define a sequence and a series. State the general term formula for an A.P.</div>
+      <textarea data-qid="a1" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A2</span><span class="qtopic">A.P. — nth Term</span></div>
+      <div class="qtext">Find the 12th term of the A.P.: $5, 9, 13, 17, \ldots$</div>
+      <textarea data-qid="a2" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A3</span><span class="qtopic">A.P. — Sum Formula</span></div>
+      <div class="qtext">Find the sum of the first 30 terms of the A.P. whose first term is $4$ and common difference is $5$.</div>
+      <textarea data-qid="a3" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A4</span><span class="qtopic">A.P. — Finding $a$ and $d$</span></div>
+      <div class="qtext">If the 7th term of an A.P. is $34$ and the 13th term is $64$, find the first term and common difference.</div>
+      <textarea data-qid="a4" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A5</span><span class="qtopic">A.P. — Solving for $n$</span></div>
+      <div class="qtext">How many terms of the A.P. $2, 5, 8, 11, \ldots$ add up to $155$?</div>
+      <textarea data-qid="a5" placeholder="Your answer..."></textarea>
+    </div>
+
+    <!-- SECTION B: Geometric Progression -->
+    <div class="section-header">Section B — Geometric Progression (2 marks each)</div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">B1</span><span class="qtopic">G.P. — nth Term</span></div>
+      <div class="qtext">Find the 9th term of the G.P.: $4, 8, 16, 32, \ldots$</div>
+      <textarea data-qid="b1" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">B2</span><span class="qtopic">G.P. — Sum of $n$ Terms</span></div>
+      <div class="qtext">Find the sum of the first 8 terms of the G.P.: $3, 9, 27, \ldots$</div>
+      <textarea data-qid="b2" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">B3</span><span class="qtopic">G.P. — Sum to Infinity</span></div>
+      <div class="qtext">State the condition under which the sum to infinity of a G.P. exists, and write the formula.</div>
+      <textarea data-qid="b3" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">B4</span><span class="qtopic">G.P. — Sum to Infinity (Calculation)</span></div>
+      <div class="qtext">Find $S_\infty$ for the G.P.: $12, 4, \dfrac{4}{3}, \dfrac{4}{9}, \ldots$</div>
+      <textarea data-qid="b4" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">B5</span><span class="qtopic">G.P. — Finding Terms</span></div>
+      <div class="qtext">The 4th term of a G.P. is $24$ and the 7th term is $192$. Find the G.P.</div>
+      <textarea data-qid="b5" placeholder="Your answer..."></textarea>
+    </div>
+
+    <!-- SECTION C: Harmonic Progression & Means -->
+    <div class="section-header">Section C — Harmonic Progression & Means (2 marks each)</div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">C1</span><span class="qtopic">Harmonic Progression</span></div>
+      <div class="qtext">Define a Harmonic Progression. If the 3rd and 6th terms of an H.P. correspond to $\dfrac{1}{9}$ and $\dfrac{1}{18}$ in the associated A.P., find the H.P.'s first three terms.</div>
+      <textarea data-qid="c1" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">C2</span><span class="qtopic">A.M. & G.M.</span></div>
+      <div class="qtext">Find the Arithmetic Mean and Geometric Mean of $9$ and $25$.</div>
+      <textarea data-qid="c2" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">C3</span><span class="qtopic">Harmonic Mean</span></div>
+      <div class="qtext">Find the Harmonic Mean of $6$ and $10$.</div>
+      <textarea data-qid="c3" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">C4</span><span class="qtopic">Relation Among Means</span></div>
+      <div class="qtext">State the relation connecting A.M., G.M. and H.M. of two positive numbers, and verify it for the numbers $4$ and $16$.</div>
+      <textarea data-qid="c4" placeholder="Your answer..."></textarea>
+    </div>
+
+    <!-- SECTION D: Arithmetico-Geometric Series -->
+    <div class="section-header">Section D — Arithmetico-Geometric Series (3 marks each)</div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">D1</span><span class="qtopic">A.G.P. — First Terms</span></div>
+      <div class="qtext">Write the first four terms of an A.G.P. whose associated A.P. has first term $2$, common difference $3$, and associated G.P. has first term $1$, common ratio $\dfrac{1}{2}$.</div>
+      <textarea data-qid="d1" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">D2</span><span class="qtopic">A.G.P. — Sum Formula</span></div>
+      <div class="qtext">Find the sum to $n$ terms of the series: $1 + 3x + 5x^2 + 7x^3 + \cdots$ (where $x \neq 1$).</div>
+      <textarea data-qid="d2" placeholder="Show your working..."></textarea>
+    </div>
+
+    <!-- SECTION E: Sigma Notation & Special Series -->
+    <div class="section-header">Section E — Sigma Notation & Special Series (3 marks each)</div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">E1</span><span class="qtopic">Standard Formulas</span></div>
+      <div class="qtext">State the standard formulas for $\sum_{k=1}^n k$, $\sum_{k=1}^n k^2$, and $\sum_{k=1}^n k^3$.</div>
+      <textarea data-qid="e1" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">E2</span><span class="qtopic">Sum of Squares</span></div>
+      <div class="qtext">Find $\sum_{k=1}^{25} k^2$.</div>
+      <textarea data-qid="e2" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">E3</span><span class="qtopic">Sum of Cubes</span></div>
+      <div class="qtext">Find $\sum_{k=1}^{12} k^3$.</div>
+      <textarea data-qid="e3" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">E4</span><span class="qtopic">Special Series</span></div>
+      <div class="qtext">Find the sum to $n$ terms of the series: $1 \cdot 2 + 2 \cdot 3 + 3 \cdot 4 + \cdots + n(n+1)$.</div>
+      <textarea data-qid="e4" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">E5</span><span class="qtopic">General Term Method</span></div>
+      <div class="qtext">Find the sum to $n$ terms of the series whose general term is $t_n = n^2 + 2n$. Hence find the sum of the first 10 terms.</div>
+      <textarea data-qid="e5" placeholder="Show your working..."></textarea>
+    </div>
+
+    <!-- SECTION F: HOTS / Mixed Applications -->
+    <div class="section-header">Section F — HOTS / Mixed Applications (4 marks each)</div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">F1</span><span class="qtopic">Prove That — G.P. Property</span></div>
+      <div class="qtext">If $p, q, r, s$ are in G.P., prove that $(p+q), (q+r), (r+s)$ are also in G.P.</div>
+      <textarea data-qid="f1" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">F2</span><span class="qtopic">Mixed Series Application</span></div>
+      <div class="qtext">Find $n$ if: $\dfrac{1 \cdot 2 + 2 \cdot 3 + 3 \cdot 4 + \cdots n \text{ terms}}{1 + 2 + 3 + \cdots + n \text{ terms}} = \dfrac{100}{3}$.</div>
+      <textarea data-qid="f2" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">F3</span><span class="qtopic">A.P. Application</span></div>
+      <div class="qtext">The sum of three numbers in A.P. is $24$ and their product is $440$. Find the numbers.</div>
+      <textarea data-qid="f3" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">F4</span><span class="qtopic">Inserting Means</span></div>
+      <div class="qtext">Insert 4 arithmetic means between $3$ and $33$.</div>
+      <textarea data-qid="f4" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">F5</span><span class="qtopic">Series from S(n)</span></div>
+      <div class="qtext">If the sum of the first $n$ terms of a series is given by $S_n = 3n^2 + 2n$, find the $n$th term $t_n$. Identify what type of progression this series is.</div>
+      <textarea data-qid="f5" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="footer-actions">
+      <button type="button" id="submitBtn">Submit Test &amp; View Solutions</button>
+      <button type="button" id="resetBtn">Clear</button>
+    </div>
+  </form>
+
+  <div id="results">
+    <h2>Test Submitted</h2>
+    <div class="score" id="scoreDisplay">30 / 30 answered</div>
+    <p>Scroll down to review detailed solutions for every question against your own answers.</p>
+  </div>
+
+  <div id="solutions">
+    <h2>Solutions</h2>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">A1</span><span class="qtopic">Definition</span></div>
+      <div class="yourans">Your answer: <span data-show="a1"></span></div>
+      <div class="soltext">
+        <p>A <strong>sequence</strong> is a function whose domain is the set of natural numbers; each output is a term $t_n$.</p>
+        <p>A <strong>series</strong> is the sum of the terms of a sequence: $S_n = t_1 + t_2 + \cdots + t_n$</p>
+        <p><strong>General term of A.P.:</strong> $t_n = a + (n-1)d$, where $a$ is the first term and $d$ is the common difference.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">A2</span><span class="qtopic">A.P. — nth Term</span></div>
+      <div class="yourans">Your answer: <span data-show="a2"></span></div>
+      <div class="soltext">
+        <p>Given: $a = 5$, $d = 4$, $n = 12$</p>
+        <p>$t_{12} = 5 + (11)(4) = 5 + 44 = 49$</p>
+        <p><strong>Answer: 49</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">A3</span><span class="qtopic">A.P. — Sum Formula</span></div>
+      <div class="yourans">Your answer: <span data-show="a3"></span></div>
+      <div class="soltext">
+        <p>Given: $a = 4$, $d = 5$, $n = 30$</p>
+        <p>$S_{30} = \dfrac{30}{2}[2(4) + 29(5)] = 15[8+145] = 15 \times 153 = 2295$</p>
+        <p><strong>Answer: 2295</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">A4</span><span class="qtopic">A.P. — Finding $a$ and $d$</span></div>
+      <div class="yourans">Your answer: <span data-show="a4"></span></div>
+      <div class="soltext">
+        <p>$t_7 = a + 6d = 34$ ... (1), $t_{13} = a + 12d = 64$ ... (2)</p>
+        <p>Subtract (1) from (2): $6d = 30 \Rightarrow d = 5$</p>
+        <p>From (1): $a = 34 - 30 = 4$</p>
+        <p><strong>Answer: $a = 4$, $d = 5$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">A5</span><span class="qtopic">A.P. — Solving for $n$</span></div>
+      <div class="yourans">Your answer: <span data-show="a5"></span></div>
+      <div class="soltext">
+        <p>$S_n = \dfrac{n}{2}[2(2) + (n-1)(3)] = 155$</p>
+        <p>$\dfrac{n}{2}[4 + 3n - 3] = 155 \Rightarrow n(3n + 1) = 310$</p>
+        <p>$3n^2 + n - 310 = 0 \Rightarrow n = \dfrac{-1 + 61}{6} = 10$</p>
+        <p><strong>Answer: $n = 10$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">B1</span><span class="qtopic">G.P. — nth Term</span></div>
+      <div class="yourans">Your answer: <span data-show="b1"></span></div>
+      <div class="soltext">
+        <p>$a = 4$, $r = 2$, $n = 9$</p>
+        <p>$t_9 = 4 \times 2^8 = 4 \times 256 = 1024$</p>
+        <p><strong>Answer: 1024</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">B2</span><span class="qtopic">G.P. — Sum of $n$ Terms</span></div>
+      <div class="yourans">Your answer: <span data-show="b2"></span></div>
+      <div class="soltext">
+        <p>$a = 3$, $r = 3$, $n = 8$</p>
+        <p>$S_8 = \dfrac{3(3^8 - 1)}{3 - 1} = \dfrac{3(6560)}{2} = 9840$</p>
+        <p><strong>Answer: 9840</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">B3</span><span class="qtopic">G.P. — Sum to Infinity</span></div>
+      <div class="yourans">Your answer: <span data-show="b3"></span></div>
+      <div class="soltext">
+        <p><strong>Condition:</strong> $|r| < 1$</p>
+        <p><strong>Formula:</strong> $S_\infty = \dfrac{a}{1 - r}$</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">B4</span><span class="qtopic">G.P. — Sum to Infinity</span></div>
+      <div class="yourans">Your answer: <span data-show="b4"></span></div>
+      <div class="soltext">
+        <p>$a = 12$, $r = \dfrac{1}{3}$</p>
+        <p>$S_\infty = \dfrac{12}{1 - \frac{1}{3}} = \dfrac{12}{\frac{2}{3}} = 18$</p>
+        <p><strong>Answer: 18</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">B5</span><span class="qtopic">G.P. — Finding Terms</span></div>
+      <div class="yourans">Your answer: <span data-show="b5"></span></div>
+      <div class="soltext">
+        <p>$ar^3 = 24$, $ar^6 = 192$</p>
+        <p>$r^3 = 8 \Rightarrow r = 2$; $a = 3$</p>
+        <p><strong>Answer: G.P. is $3, 6, 12, 24, \ldots$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">C1</span><span class="qtopic">Harmonic Progression</span></div>
+      <div class="yourans">Your answer: <span data-show="c1"></span></div>
+      <div class="soltext">
+        <p>H.P. is a sequence whose reciprocals form an A.P.</p>
+        <p>$d = \dfrac{\frac{1}{18} - \frac{1}{9}}{3} = -\dfrac{1}{54}$; $a = \dfrac{4}{27}$</p>
+        <p><strong>Answer: H.P. first three terms = $\dfrac{27}{4}, \dfrac{54}{7}, 9$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">C2</span><span class="qtopic">A.M. & G.M.</span></div>
+      <div class="yourans">Your answer: <span data-show="c2"></span></div>
+      <div class="soltext">
+        <p>$A.M. = \dfrac{9+25}{2} = 17$</p>
+        <p>$G.M. = \sqrt{9 \times 25} = 15$</p>
+        <p><strong>Answer: A.M. = 17, G.M. = 15</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">C3</span><span class="qtopic">Harmonic Mean</span></div>
+      <div class="yourans">Your answer: <span data-show="c3"></span></div>
+      <div class="soltext">
+        <p>$H.M. = \dfrac{2 \times 6 \times 10}{6 + 10} = \dfrac{120}{16} = 7.5$</p>
+        <p><strong>Answer: 7.5</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">C4</span><span class="qtopic">Relation Among Means</span></div>
+      <div class="yourans">Your answer: <span data-show="c4"></span></div>
+      <div class="soltext">
+        <p><strong>Relation:</strong> $(G.M.)^2 = A.M. \times H.M.$</p>
+        <p>For 4, 16: $A.M. = 10$, $G.M. = 8$, $H.M. = 6.4$</p>
+        <p>$8^2 = 64 = 10 \times 6.4$ ✓</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">D1</span><span class="qtopic">A.G.P. — First Terms</span></div>
+      <div class="yourans">Your answer: <span data-show="d1"></span></div>
+      <div class="soltext">
+        <p>A.P.: $2, 5, 8, 11$; G.P.: $1, \dfrac{1}{2}, \dfrac{1}{4}, \dfrac{1}{8}$</p>
+        <p>A.G.P. (product): $2, \dfrac{5}{2}, 2, \dfrac{11}{8}$</p>
+        <p><strong>Answer: $2, \dfrac{5}{2}, 2, \dfrac{11}{8}$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">D2</span><span class="qtopic">A.G.P. — Sum Formula</span></div>
+      <div class="yourans">Your answer: <span data-show="d2"></span></div>
+      <div class="soltext">
+        <p>Let $S = 1 + 3x + 5x^2 + \cdots + (2n-1)x^{n-1}$</p>
+        <p>$xS = x + 3x^2 + 5x^3 + \cdots + (2n-1)x^n$</p>
+        <p>$(1-x)S = 1 + 2(x + x^2 + \cdots + x^{n-1}) - (2n-1)x^n$</p>
+        <p><strong>Answer:</strong> $S_n = \dfrac{1 + 2x(1-x^{n-1})/(1-x) - (2n-1)x^n}{1-x}$</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">E1</span><span class="qtopic">Standard Formulas</span></div>
+      <div class="yourans">Your answer: <span data-show="e1"></span></div>
+      <div class="soltext">
+        <p>$\sum_{k=1}^n k = \dfrac{n(n+1)}{2}$</p>
+        <p>$\sum_{k=1}^n k^2 = \dfrac{n(n+1)(2n+1)}{6}$</p>
+        <p>$\sum_{k=1}^n k^3 = \left[\dfrac{n(n+1)}{2}\right]^2$</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">E2</span><span class="qtopic">Sum of Squares</span></div>
+      <div class="yourans">Your answer: <span data-show="e2"></span></div>
+      <div class="soltext">
+        <p>$\sum_{k=1}^{25} k^2 = \dfrac{25 \times 26 \times 51}{6} = \dfrac{33150}{6} = 5525$</p>
+        <p><strong>Answer: 5525</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">E3</span><span class="qtopic">Sum of Cubes</span></div>
+      <div class="yourans">Your answer: <span data-show="e3"></span></div>
+      <div class="soltext">
+        <p>$\sum_{k=1}^{12} k^3 = \left[\dfrac{12 \times 13}{2}\right]^2 = 78^2 = 6084$</p>
+        <p><strong>Answer: 6084</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">E4</span><span class="qtopic">Special Series</span></div>
+      <div class="yourans">Your answer: <span data-show="e4"></span></div>
+      <div class="soltext">
+        <p>$S_n = \sum_{k=1}^n k^2 + \sum_{k=1}^n k = \dfrac{n(n+1)(2n+1)}{6} + \dfrac{n(n+1)}{2}$</p>
+        <p>$= \dfrac{n(n+1)(n+2)}{3}$</p>
+        <p><strong>Answer: $S_n = \dfrac{n(n+1)(n+2)}{3}$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">E5</span><span class="qtopic">General Term Method</span></div>
+      <div class="yourans">Your answer: <span data-show="e5"></span></div>
+      <div class="soltext">
+        <p>$S_n = \sum_{k=1}^n (k^2 + 2k) = \dfrac{n(n+1)(2n+1)}{6} + n(n+1) = \dfrac{n(n+1)(2n+7)}{6}$</p>
+        <p>$S_{10} = \dfrac{10 \times 11 \times 27}{6} = 495$</p>
+        <p><strong>Answer: $S_n = \dfrac{n(n+1)(2n+7)}{6}$; $S_{10} = 495$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">F1</span><span class="qtopic">Prove That — G.P. Property</span></div>
+      <div class="yourans">Your answer: <span data-show="f1"></span></div>
+      <div class="soltext">
+        <p>Let $q = pk$, $r = pk^2$, $s = pk^3$</p>
+        <p>$(p+q) = p(1+k)$, $(q+r) = pk(1+k)$, $(r+s) = pk^2(1+k)$</p>
+        <p>Common ratio: $k$. Hence $(p+q), (q+r), (r+s)$ are in G.P.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">F2</span><span class="qtopic">Mixed Series Application</span></div>
+      <div class="yourans">Your answer: <span data-show="f2"></span></div>
+      <div class="soltext">
+        <p>Ratio: $\dfrac{n(n+1)(n+2)/3}{n(n+1)/2} = \dfrac{2(n+2)}{3} = \dfrac{100}{3}$</p>
+        <p>$2(n+2) = 100 \Rightarrow n = 48$</p>
+        <p><strong>Answer: $n = 48$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">F3</span><span class="qtopic">A.P. Application</span></div>
+      <div class="yourans">Your answer: <span data-show="f3"></span></div>
+      <div class="soltext">
+        <p>Let numbers be $a-d$, $a$, $a+d$</p>
+        <p>Sum: $3a = 24 \Rightarrow a = 8$</p>
+        <p>Product: $8(64 - d^2) = 440 \Rightarrow d = 3$</p>
+        <p><strong>Answer: 5, 8, 11</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">F4</span><span class="qtopic">Inserting Means</span></div>
+      <div class="yourans">Your answer: <span data-show="f4"></span></div>
+      <div class="soltext">
+        <p>Total 6 terms: $d = \dfrac{33-3}{5} = 6$</p>
+        <p>A.P.: $3, 9, 15, 21, 27, 33$</p>
+        <p><strong>Answer: 9, 15, 21, 27</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">F5</span><span class="qtopic">Series from S(n)</span></div>
+      <div class="yourans">Your answer: <span data-show="f5"></span></div>
+      <div class="soltext">
+        <p>$t_n = S_n - S_{n-1} = (3n^2 + 2n) - (3(n-1)^2 + 2(n-1)) = 6n - 1$</p>
+        <p>First term $a = 5$, common difference $d = 6$</p>
+        <p><strong>Answer: $t_n = 6n - 1$; Series is A.P. with $a = 5$, $d = 6$</strong></p>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+const STORAGE_KEY = 'sequences-series-test-v1';
+
+async function loadSaved(){
+  try{
+    const result = await window.storage.get(STORAGE_KEY);
+    if(result && result.value){
+      const data = JSON.parse(result.value);
+      document.querySelectorAll('textarea[data-qid]').forEach(ta=>{
+        if(data[ta.dataset.qid]) ta.value = data[ta.dataset.qid];
+      });
+    }
+  }catch(e){}
+}
+
+async function saveAnswers(){
+  const data = {};
+  document.querySelectorAll('textarea[data-qid]').forEach(ta=>{
+    data[ta.dataset.qid] = ta.value;
+  });
+  try{ await window.storage.set(STORAGE_KEY, JSON.stringify(data)); }catch(e){}
+  return data;
+}
+
+document.getElementById('submitBtn').addEventListener('click', async ()=>{
+  const data = await saveAnswers();
+  const total = Object.keys(data).length;
+  const answered = Object.values(data).filter(v => v.trim().length>0).length;
+  document.getElementById('scoreDisplay').textContent = answered + ' / ' + total + ' answered';
+  document.getElementById('results').style.display = 'block';
+
+  // populate "your answer" snippets in solutions section
+  document.querySelectorAll('[data-show]').forEach(el=>{
+    const qid = el.dataset.show;
+    const val = data[qid] && data[qid].trim().length>0 ? data[qid] : '(left blank)';
+    el.textContent = val;
+  });
+
+  document.getElementById('solutions').style.display = 'block';
+  if(window.MathJax && window.MathJax.typesetPromise){
+    window.MathJax.typesetPromise();
+  }
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+});
+
+document.getElementById('resetBtn').addEventListener('click', async ()=>{
+  document.querySelectorAll('textarea[data-qid]').forEach(ta=> ta.value = '');
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('solutions').style.display = 'none';
+  try{ await window.storage.delete(STORAGE_KEY); }catch(e){}
+});
+
+let saveTimer;
+document.querySelectorAll('textarea[data-qid]').forEach(ta=>{
+  ta.addEventListener('input', ()=>{
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveAnswers, 800);
+  });
+});
+
+loadSaved();
+</script>
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Math ma'am Academy — Std VI Homi Bhabha — Full Syllabus Paper (Print)</title>
+<style>
+  @page {
+    size: A4;
+    margin: 14mm 10mm 13mm 10mm;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Times New Roman", Times, serif;
+    color: #000;
+    background: #fff;
+  }
+
+  body {
+    font-size: 8.6pt;
+    line-height: 1.28;
+  }
+
+  /* ---------- WATERMARK (repeats on every printed page) ---------- */
+  .watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 62pt;
+    font-weight: bold;
+    color: #000;
+    opacity: 0.055;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .watermark small {
+    display: block;
+    font-size: 26pt;
+    letter-spacing: 6px;
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  /* ---------- RUNNING FOOTER (repeats on every printed page) ---------- */
+  .runfoot {
+    position: fixed;
+    bottom: -9mm;
+    left: 0;
+    right: 0;
+    height: 8mm;
+    border-top: 0.6pt solid #000;
+    padding-top: 1.5mm;
+    font-size: 7pt;
+    z-index: 2;
+    background: #fff;
+  }
+  .runfoot table { width: 100%; border-collapse: collapse; }
+  .runfoot td { border: none; padding: 0; vertical-align: middle; }
+  .rf-l { text-align: left; width: 42%; }
+  .rf-c { text-align: center; width: 30%; font-weight: bold; letter-spacing: .4px; }
+  .rf-r { text-align: right; width: 28%; }
+
+  .content { position: relative; z-index: 1; }
+
+  /* ---------- HEADER ---------- */
+  .head {
+    border: 1.1pt solid #000;
+    padding: 3mm 3.5mm;
+    margin-bottom: 3mm;
+    display: flex;
+    gap: 4mm;
+    align-items: center;
+  }
+  .head-main { flex: 1; text-align: center; }
+  .inst {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16pt;
+    font-weight: bold;
+    letter-spacing: .5px;
+    line-height: 1.1;
+  }
+  .inst-sub {
+    font-size: 7.2pt;
+    letter-spacing: 2.6px;
+    text-transform: uppercase;
+    margin-top: .6mm;
+  }
+  .exam {
+    font-size: 10pt;
+    font-weight: bold;
+    margin-top: 1.8mm;
+    padding-top: 1.4mm;
+    border-top: .5pt solid #000;
+  }
+  .topics {
+    font-size: 6.9pt;
+    margin-top: 1.2mm;
+    text-align: justify;
+    text-align-last: center;
+    line-height: 1.25;
+  }
+  .topics b { text-transform: uppercase; letter-spacing: .4px; }
+  .tm {
+    display: flex;
+    justify-content: center;
+    gap: 8mm;
+    margin-top: 1.6mm;
+    padding-top: 1.4mm;
+    border-top: .5pt solid #000;
+    font-size: 8.6pt;
+    font-weight: bold;
+  }
+
+  /* ---------- QR ---------- */
+  .qr-box { width: 20mm; text-align: center; flex-shrink: 0; }
+  .qr-slot {
+    width: 20mm; height: 20mm;
+    border: 0.5pt solid #000;
+    background: #fff;
+    padding: 0.7mm;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .qr-slot img { width: 100%; height: 100%; object-fit: contain; }
+  .qr-cap { font-size: 5.6pt; margin-top: .8mm; line-height: 1.15; }
+
+  /* ---------- INSTRUCTIONS ---------- */
+  .instr {
+    border: .6pt solid #000;
+    padding: 1.8mm 2.5mm;
+    margin-bottom: 2.5mm;
+    font-size: 7.3pt;
+    line-height: 1.3;
+  }
+  .instr b { text-transform: uppercase; letter-spacing: .3px; }
+
+  /* ---------- QUESTIONS (compact) ---------- */
+  .q {
+    margin-bottom: 1.5mm;
+    padding-bottom: 1.1mm;
+    border-bottom: 0.3pt solid #ccc;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .qt { text-align: justify; }
+  .qn { font-weight: bold; margin-right: 1.2mm; }
+  .opts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 5mm;
+    margin-top: .5mm;
+    padding-left: 5mm;
+    font-size: 8.3pt;
+  }
+  .opt b { margin-right: .6mm; }
+
+  .endnote {
+    margin-top: 3mm;
+    text-align: center;
+    font-size: 8pt;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+  }
+
+  /* ---------- OMR SHEET ---------- */
+  .omr-page { page-break-before: always; break-before: page; }
+
+  .omr-head {
+    border: 1.1pt solid #000;
+    padding: 3mm 3.5mm;
+    margin-bottom: 3mm;
+    display: flex;
+    gap: 4mm;
+    align-items: center;
+  }
+  .omr-title {
+    font-size: 11pt;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    margin-top: 1.6mm;
+    padding-top: 1.4mm;
+    border-top: .5pt solid #000;
+  }
+
+  .fields {
+    border: .6pt solid #000;
+    padding: 2.6mm 3mm;
+    margin-bottom: 3mm;
+    font-size: 8.6pt;
+  }
+  .frow { display: flex; gap: 6mm; margin-bottom: 3.2mm; }
+  .frow:last-child { margin-bottom: 0; }
+  .f { flex: 1; display: flex; align-items: flex-end; gap: 1.5mm; }
+  .f .lbl { white-space: nowrap; font-weight: bold; }
+  .f .line { flex: 1; border-bottom: .7pt solid #000; height: 4.6mm; }
+
+  .omr-instr {
+    border: .6pt solid #000;
+    padding: 1.8mm 2.5mm;
+    margin-bottom: 3mm;
+    font-size: 7.2pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4mm;
+  }
+  .fillex { display: flex; align-items: center; gap: 2mm; white-space: nowrap; }
+  .fillex .bub { margin: 0; }
+  .bub.filled { background: #000; color: #fff; }
+
+  table.omr {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  table.omr td {
+    border: .5pt solid #000;
+    padding: 0.9mm 1mm;
+    vertical-align: middle;
+  }
+  .omr-n {
+    width: 7mm;
+    text-align: center;
+    font-size: 7.4pt;
+    font-weight: bold;
+    background: #f0f0f0;
+  }
+  .omr-b { width: 17mm; }
+  .bub {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5mm;
+    height: 3.5mm;
+    border: .6pt solid #000;
+    border-radius: 50%;
+    font-size: 5.4pt;
+    line-height: 1;
+    margin-right: 1.1mm;
+    color: #444;
+  }
+  .bub:last-child { margin-right: 0; }
+
+  .sign-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5mm;
+    font-size: 8.4pt;
+  }
+  .sign-row .sbox { width: 46%; }
+  .sign-row .sline { border-bottom: .7pt solid #000; height: 7mm; }
+  .sign-row .scap { font-size: 7.4pt; margin-top: 1mm; }
+
+  @media screen {
+    body { background: #e9e9e9; }
+    .content {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 8mm auto;
+      padding: 14mm 10mm;
+      background: #fff;
+      box-shadow: 0 1px 6px rgba(0,0,0,.25);
+    }
+    .runfoot { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="watermark">MATH MA'AM ACADEMY<small>WHERE EVERY SUBJECT CLICKS</small></div>
+
+<div class="runfoot">
+  <table><tr>
+    <td class="rf-l">Math ma'am Academy &mdash; Std VI Homi Bhabha, Full Syllabus Paper</td>
+    <td class="rf-c">100 Marks &middot; 90 Minutes</td>
+    <td class="rf-r">All the best!</td>
+  </tr></table>
+</div>
+
+<div class="content">
+
+  <!-- ===================== QUESTION PAPER ===================== -->
+  <div class="head">
+    <div class="head-main">
+      <div class="inst">Math ma'am Academy</div>
+      <div class="inst-sub">Where Every Subject Clicks</div>
+      <div class="exam">Std VI &mdash; Dr. Homi Bhabha Balvaidnyanik Competition</div>
+      <div class="topics"><b>Topics:</b> Units and Measurements &middot; Types of Motion &middot; Force &middot; Work and Energy &middot; Heat &middot; States of Matter &middot; Composition of Substances &middot; Separation Techniques &middot; Types of Changes &middot; Classification of Plants &middot; Morphology of Flowering Plants &middot; Food and Nutrition</div>
+      <div class="tm">
+        <span>Time: 90 Minutes</span>
+        <span>Marks: 100</span>
+        <span>Questions: 100</span>
+      </div>
+    </div>
+    <div class="qr-box">
+        <div class="qr-slot"><img src="../assets/img/Qr/webQR_mathmaam_print.png" alt="Scan to attempt online"></div>
+        <div class="qr-cap">Scan to attempt<br>online</div>
+      </div>
+  </div>
+
+  <div class="instr">
+    <b>Instructions:</b> &nbsp;1. All questions are compulsory. Each question carries <b>1 mark</b>; there is
+    <b>no negative marking</b>, so attempt every question. &nbsp;2. Each question has <b>four</b> alternatives &mdash;
+    exactly <b>one</b> is correct. &nbsp;3. Mark all answers on the <b>OMR sheet</b> provided at the end by
+    completely darkening the appropriate circle with a blue or black ball pen. &nbsp;4. Questions are set in
+    <b>mixed topic order</b>; read each question carefully before answering. &nbsp;5. Rough work may be done on
+    the blank space of the question paper. &nbsp;6. Use of calculators or electronic devices is <b>not permitted</b>.
+  </div>
+
+<div class="q"><div class="qt"><span class="qn">1.</span>A metal rod and a wooden rod of the same size are left in the sun. The metal rod feels much hotter. What does this suggest?</div><div class="opts"><span class="opt"><b>A)</b> Both conduct heat equally well</span><span class="opt"><b>B)</b> Wood conducts heat better than metal</span><span class="opt"><b>C)</b> Metals are generally better conductors of heat than wood</span><span class="opt"><b>D)</b> Metals absorb no heat at all</span></div></div>
+<div class="q"><div class="qt"><span class="qn">2.</span>A liquid in a beaker is heated so that its temperature rises from 27 &deg;C to 77 &deg;C. What is the rise in temperature expressed on the Kelvin scale?</div><div class="opts"><span class="opt"><b>A)</b> 350 K</span><span class="opt"><b>B)</b> 50 K</span><span class="opt"><b>C)</b> 323 K</span><span class="opt"><b>D)</b> 104 K</span></div></div>
+<div class="q"><div class="qt"><span class="qn">3.</span>A mango tree has one main woody trunk that branches only well above the ground. How is its habit classified?</div><div class="opts"><span class="opt"><b>A)</b> Herb</span><span class="opt"><b>B)</b> Shrub</span><span class="opt"><b>C)</b> Creeper</span><span class="opt"><b>D)</b> Tree</span></div></div>
+<div class="q"><div class="qt"><span class="qn">4.</span>Milk left out of the refrigerator turns sour and curdles, and cannot become fresh milk again. What type of change is this?</div><div class="opts"><span class="opt"><b>A)</b> Not a change at all</span><span class="opt"><b>B)</b> Physical and reversible</span><span class="opt"><b>C)</b> Chemical and irreversible</span><span class="opt"><b>D)</b> Physical but irreversible only</span></div></div>
+<div class="q"><div class="qt"><span class="qn">5.</span>Riya measures a pencil using a broken ruler that starts at the 2 cm mark. The other end of the pencil reads 14 cm. What is the pencil's actual length?</div><div class="opts"><span class="opt"><b>A)</b> 14 cm</span><span class="opt"><b>B)</b> 16 cm</span><span class="opt"><b>C)</b> 2 cm</span><span class="opt"><b>D)</b> 12 cm</span></div></div>
+<div class="q"><div class="qt"><span class="qn">6.</span>An ice cube left on a table slowly turns into a puddle of water. What is this change called?</div><div class="opts"><span class="opt"><b>A)</b> Freezing</span><span class="opt"><b>B)</b> Evaporation</span><span class="opt"><b>C)</b> Sublimation</span><span class="opt"><b>D)</b> Melting</span></div></div>
+<div class="q"><div class="qt"><span class="qn">7.</span>A person whose diet consists mostly of rice and bread is consuming a diet rich mainly in which nutrient, the body's chief source of energy?</div><div class="opts"><span class="opt"><b>A)</b> Vitamins</span><span class="opt"><b>B)</b> Proteins</span><span class="opt"><b>C)</b> Carbohydrates</span><span class="opt"><b>D)</b> Minerals</span></div></div>
+<div class="q"><div class="qt"><span class="qn">8.</span>After being run through dry hair, a plastic comb picks up small bits of paper. Which force is responsible?</div><div class="opts"><span class="opt"><b>A)</b> Electrostatic force</span><span class="opt"><b>B)</b> Magnetic force</span><span class="opt"><b>C)</b> Frictional force</span><span class="opt"><b>D)</b> Gravitational force</span></div></div>
+<div class="q"><div class="qt"><span class="qn">9.</span>The pendulum of a wall clock swings back and forth about a fixed point. What type of motion is this?</div><div class="opts"><span class="opt"><b>A)</b> Circular motion</span><span class="opt"><b>B)</b> Linear motion</span><span class="opt"><b>C)</b> Rotatory motion</span><span class="opt"><b>D)</b> Oscillatory motion</span></div></div>
+<div class="q"><div class="qt"><span class="qn">10.</span>A mixture of sand and small stones is separated according to particle size using a mesh. What is this method called?</div><div class="opts"><span class="opt"><b>A)</b> Winnowing</span><span class="opt"><b>B)</b> Sublimation</span><span class="opt"><b>C)</b> Decantation</span><span class="opt"><b>D)</b> Sieving</span></div></div>
+<div class="q"><div class="qt"><span class="qn">11.</span>A growing child is advised to eat eggs, pulses and milk regularly. Which nutrient do these mainly provide, essential for growth and repair of tissues?</div><div class="opts"><span class="opt"><b>A)</b> Vitamins</span><span class="opt"><b>B)</b> Fats</span><span class="opt"><b>C)</b> Carbohydrates</span><span class="opt"><b>D)</b> Proteins</span></div></div>
+<div class="q"><div class="qt"><span class="qn">12.</span>A fern reproduces by spores borne on the underside of its leaves, and has well-developed roots, stems and leaves. To which group does it belong?</div><div class="opts"><span class="opt"><b>A)</b> Angiosperms</span><span class="opt"><b>B)</b> Pteridophyta</span><span class="opt"><b>C)</b> Thallophyta</span><span class="opt"><b>D)</b> Bryophyta</span></div></div>
+<div class="q"><div class="qt"><span class="qn">13.</span>Two children push a box from opposite sides with equal and opposite forces. What happens to the box?</div><div class="opts"><span class="opt"><b>A)</b> It moves in the direction of the stronger push</span><span class="opt"><b>B)</b> It does not move, because the forces balance each other</span><span class="opt"><b>C)</b> It moves in both directions at once</span><span class="opt"><b>D)</b> Its shape changes permanently</span></div></div>
+<div class="q"><div class="qt"><span class="qn">14.</span>An apple falls straight down from a tree instead of floating away. Which force is responsible for this?</div><div class="opts"><span class="opt"><b>A)</b> Gravitational force</span><span class="opt"><b>B)</b> Magnetic force</span><span class="opt"><b>C)</b> Frictional force</span><span class="opt"><b>D)</b> Muscular force</span></div></div>
+<div class="q"><div class="qt"><span class="qn">15.</span>The part of a plant that bears leaves, flowers and branches, and generally grows upward towards light, is the:</div><div class="opts"><span class="opt"><b>A)</b> Stem</span><span class="opt"><b>B)</b> Sepal</span><span class="opt"><b>C)</b> Petal</span><span class="opt"><b>D)</b> Root</span></div></div>
+<div class="q"><div class="qt"><span class="qn">16.</span>A goalkeeper catches a fast-moving football and brings it to rest. Which effect of force is shown here?</div><div class="opts"><span class="opt"><b>A)</b> It set the ball into motion</span><span class="opt"><b>B)</b> It stopped a moving object</span><span class="opt"><b>C)</b> It changed the ball's shape permanently</span><span class="opt"><b>D)</b> It increased the ball's speed</span></div></div>
+<div class="q"><div class="qt"><span class="qn">17.</span>Ice is heated steadily, but its temperature does not rise while it is melting, even though heat is still being supplied. Where does this heat energy go?</div><div class="opts"><span class="opt"><b>A)</b> It is destroyed</span><span class="opt"><b>B)</b> It is converted into light</span><span class="opt"><b>C)</b> It is used to overcome the forces holding the particles in place as the state changes</span><span class="opt"><b>D)</b> It escapes without being used at all</span></div></div>
+<div class="q"><div class="qt"><span class="qn">18.</span>A balanced diet is one that provides the body with:</div><div class="opts"><span class="opt"><b>A)</b> only carbohydrates and fats in large amounts</span><span class="opt"><b>B)</b> all the necessary nutrients &mdash; carbohydrates, proteins, fats, vitamins, minerals, fibre and water &mdash; in the right proportions</span><span class="opt"><b>C)</b> only proteins</span><span class="opt"><b>D)</b> only water and vitamins</span></div></div>
+<div class="q"><div class="qt"><span class="qn">19.</span>A sailor who goes without fresh fruit and vegetables on a long voyage develops bleeding gums, a condition called scurvy. Deficiency of which vitamin causes this?</div><div class="opts"><span class="opt"><b>A)</b> Vitamin K</span><span class="opt"><b>B)</b> Vitamin D</span><span class="opt"><b>C)</b> Vitamin A</span><span class="opt"><b>D)</b> Vitamin C</span></div></div>
+<div class="q"><div class="qt"><span class="qn">20.</span>Sand is mixed with water and stirred. The sand remains visible and later settles at the bottom. What type of mixture is this?</div><div class="opts"><span class="opt"><b>A)</b> Solution</span><span class="opt"><b>B)</b> Heterogeneous mixture</span><span class="opt"><b>C)</b> Homogeneous mixture</span><span class="opt"><b>D)</b> Pure compound</span></div></div>
+<div class="q"><div class="qt"><span class="qn">21.</span>Which SI unit is correct for measuring the volume of milk in a bottle?</div><div class="opts"><span class="opt"><b>A)</b> Second</span><span class="opt"><b>B)</b> Kilogram</span><span class="opt"><b>C)</b> Litre</span><span class="opt"><b>D)</b> Metre</span></div></div>
+<div class="q"><div class="qt"><span class="qn">22.</span>Which of the following correctly describes a key property of the gaseous state?</div><div class="opts"><span class="opt"><b>A)</b> It cannot be compressed at all</span><span class="opt"><b>B)</b> Neither a fixed shape nor a fixed volume</span><span class="opt"><b>C)</b> No fixed shape but a fixed volume</span><span class="opt"><b>D)</b> Fixed shape and fixed volume</span></div></div>
+<div class="q"><div class="qt"><span class="qn">23.</span>The underground part of a plant that absorbs water and minerals and anchors the plant firmly is the:</div><div class="opts"><span class="opt"><b>A)</b> Flower</span><span class="opt"><b>B)</b> Leaf</span><span class="opt"><b>C)</b> Stem</span><span class="opt"><b>D)</b> Root</span></div></div>
+<div class="q"><div class="qt"><span class="qn">24.</span>Two students measure the same door and record 198 cm and 199 cm. What does this small difference most likely indicate?</div><div class="opts"><span class="opt"><b>A)</b> It is impossible for two people to get different readings</span><span class="opt"><b>B)</b> A small reading error by one student</span><span class="opt"><b>C)</b> The height of the door changed</span><span class="opt"><b>D)</b> The tapes were made of different materials</span></div></div>
+<div class="q"><div class="qt"><span class="qn">25.</span>Sanjay pushes hard against a locked door, but it does not budge at all. How much scientific work does he do on the door?</div><div class="opts"><span class="opt"><b>A)</b> Zero, because there is no displacement</span><span class="opt"><b>B)</b> It cannot be determined</span><span class="opt"><b>C)</b> A large amount of work</span><span class="opt"><b>D)</b> A small amount of work</span></div></div>
+<div class="q"><div class="qt"><span class="qn">26.</span>Cooking utensils often have metal bodies but wooden or plastic handles. Why?</div><div class="opts"><span class="opt"><b>A)</b> Wood and plastic are poor conductors of heat, so the handle stays cool</span><span class="opt"><b>B)</b> Metal handles rust very easily</span><span class="opt"><b>C)</b> To make them lighter</span><span class="opt"><b>D)</b> To make them cheaper to manufacture</span></div></div>
+<div class="q"><div class="qt"><span class="qn">27.</span>Muddy river water must be made clear before drinking. Which technique separates the suspended mud particles?</div><div class="opts"><span class="opt"><b>A)</b> Filtration</span><span class="opt"><b>B)</b> Magnetic separation</span><span class="opt"><b>C)</b> Distillation only</span><span class="opt"><b>D)</b> Sublimation</span></div></div>
+<div class="q"><div class="qt"><span class="qn">28.</span>A child who rarely gets sunlight develops weak, soft bones, a condition called rickets. Deficiency of which vitamin is the likely cause?</div><div class="opts"><span class="opt"><b>A)</b> Vitamin E</span><span class="opt"><b>B)</b> Vitamin C</span><span class="opt"><b>C)</b> Vitamin D</span><span class="opt"><b>D)</b> Vitamin B</span></div></div>
+<div class="q"><div class="qt"><span class="qn">29.</span>Brass is made by mixing copper and zinc in varying proportions, and its properties depend on the ratio used. What type of substance is brass?</div><div class="opts"><span class="opt"><b>A)</b> An element</span><span class="opt"><b>B)</b> A compound</span><span class="opt"><b>C)</b> A pure substance with a fixed composition</span><span class="opt"><b>D)</b> A mixture (alloy)</span></div></div>
+<div class="q"><div class="qt"><span class="qn">30.</span>Which of the following is a pure substance rather than a mixture?</div><div class="opts"><span class="opt"><b>A)</b> Air</span><span class="opt"><b>B)</b> Lemonade</span><span class="opt"><b>C)</b> Muddy water</span><span class="opt"><b>D)</b> Distilled water</span></div></div>
+<div class="q"><div class="qt"><span class="qn">31.</span>Farmers separate lighter husk from heavier wheat grains by tossing the mixture in the wind. What is this method called?</div><div class="opts"><span class="opt"><b>A)</b> Decantation</span><span class="opt"><b>B)</b> Winnowing</span><span class="opt"><b>C)</b> Sieving</span><span class="opt"><b>D)</b> Sedimentation</span></div></div>
+<div class="q"><div class="qt"><span class="qn">32.</span>The green, flat, broad part of a plant that carries out photosynthesis is the:</div><div class="opts"><span class="opt"><b>A)</b> Stem</span><span class="opt"><b>B)</b> Root</span><span class="opt"><b>C)</b> Flower</span><span class="opt"><b>D)</b> Leaf</span></div></div>
+<div class="q"><div class="qt"><span class="qn">33.</span>Baking soda mixed with vinegar fizzes and produces a gas, and the original substances cannot be recovered. What type of change is this?</div><div class="opts"><span class="opt"><b>A)</b> Physical change</span><span class="opt"><b>B)</b> A change of state only</span><span class="opt"><b>C)</b> No change has occurred</span><span class="opt"><b>D)</b> Chemical change</span></div></div>
+<div class="q"><div class="qt"><span class="qn">34.</span>Rohit kicks a stationary football and it starts rolling across the ground. Which effect of force is shown here?</div><div class="opts"><span class="opt"><b>A)</b> It set a stationary object into motion</span><span class="opt"><b>B)</b> It stopped a moving object</span><span class="opt"><b>C)</b> It changed the shape of the ball</span><span class="opt"><b>D)</b> It had no effect at all</span></div></div>
+<div class="q"><div class="qt"><span class="qn">35.</span>Two bodies of masses in the ratio 2 : 3 are raised to heights above the ground in the ratio 3 : 4. What is the ratio of their gravitational potential energies?</div><div class="opts"><span class="opt"><b>A)</b> 1 : 2</span><span class="opt"><b>B)</b> 2 : 3</span><span class="opt"><b>C)</b> 3 : 4</span><span class="opt"><b>D)</b> 8 : 9</span></div></div>
+<div class="q"><div class="qt"><span class="qn">36.</span>Which nutrient provides the most concentrated energy per gram, more than carbohydrates or proteins?</div><div class="opts"><span class="opt"><b>A)</b> Fats</span><span class="opt"><b>B)</b> Minerals</span><span class="opt"><b>C)</b> Water</span><span class="opt"><b>D)</b> Vitamins</span></div></div>
+<div class="q"><div class="qt"><span class="qn">37.</span>In a flower, the female reproductive part, made up of the ovary, style and stigma, is the:</div><div class="opts"><span class="opt"><b>A)</b> Petal</span><span class="opt"><b>B)</b> Stamen</span><span class="opt"><b>C)</b> Sepal</span><span class="opt"><b>D)</b> Pistil (carpel)</span></div></div>
+<div class="q"><div class="qt"><span class="qn">38.</span>In a flower, the male reproductive part that produces pollen grains is the:</div><div class="opts"><span class="opt"><b>A)</b> Sepal</span><span class="opt"><b>B)</b> Pistil</span><span class="opt"><b>C)</b> Petal</span><span class="opt"><b>D)</b> Stamen</span></div></div>
+<div class="q"><div class="qt"><span class="qn">39.</span>A steel almirah keeps the same shape and size no matter which room it is placed in. Which state of matter does this best illustrate?</div><div class="opts"><span class="opt"><b>A)</b> Gas</span><span class="opt"><b>B)</b> Solid</span><span class="opt"><b>C)</b> Liquid</span><span class="opt"><b>D)</b> Plasma</span></div></div>
+<div class="q"><div class="qt"><span class="qn">40.</span>A child on a merry-go-round moves in a circular path around a fixed centre. What type of motion is this?</div><div class="opts"><span class="opt"><b>A)</b> Oscillatory motion</span><span class="opt"><b>B)</b> Circular motion</span><span class="opt"><b>C)</b> Rectilinear motion</span><span class="opt"><b>D)</b> Random motion</span></div></div>
+<div class="q"><div class="qt"><span class="qn">41.</span>Two bodies A and B have masses in the ratio 1 : 2 and are moving with velocities in the ratio 2 : 1. What is the ratio of their kinetic energies?</div><div class="opts"><span class="opt"><b>A)</b> 1 : 1</span><span class="opt"><b>B)</b> 4 : 1</span><span class="opt"><b>C)</b> 1 : 2</span><span class="opt"><b>D)</b> 2 : 1</span></div></div>
+<div class="q"><div class="qt"><span class="qn">42.</span>A rose bush has a hard, woody stem with several branches arising close to the ground, and is shorter than a tree. How is it classified?</div><div class="opts"><span class="opt"><b>A)</b> Herb</span><span class="opt"><b>B)</b> Creeper</span><span class="opt"><b>C)</b> Tree</span><span class="opt"><b>D)</b> Shrub</span></div></div>
+<div class="q"><div class="qt"><span class="qn">43.</span>Which instrument is used to measure the temperature of the human body?</div><div class="opts"><span class="opt"><b>A)</b> Anemometer</span><span class="opt"><b>B)</b> Hygrometer</span><span class="opt"><b>C)</b> Clinical thermometer</span><span class="opt"><b>D)</b> Barometer</span></div></div>
+<div class="q"><div class="qt"><span class="qn">44.</span>A porter lifts a 20 kg suitcase through a vertical height of 1 m onto a trolley. Taking g = 10 m/s&sup2;, how much work does he do against gravity?</div><div class="opts"><span class="opt"><b>A)</b> 2000 J</span><span class="opt"><b>B)</b> 200 J</span><span class="opt"><b>C)</b> 2 J</span><span class="opt"><b>D)</b> 20 J</span></div></div>
+<div class="q"><div class="qt"><span class="qn">45.</span>Priya needs to measure a few millilitres of medicine accurately. Which instrument should she use?</div><div class="opts"><span class="opt"><b>A)</b> Bucket</span><span class="opt"><b>B)</b> Metre scale</span><span class="opt"><b>C)</b> Bathroom scale</span><span class="opt"><b>D)</b> Measuring cylinder</span></div></div>
+<div class="q"><div class="qt"><span class="qn">46.</span>In a hydroelectric power station, falling water turns a turbine which generates electricity. What is the correct sequence of energy conversion?</div><div class="opts"><span class="opt"><b>A)</b> Electrical &rarr; Potential &rarr; Kinetic</span><span class="opt"><b>B)</b> Chemical &rarr; Potential &rarr; Electrical</span><span class="opt"><b>C)</b> Kinetic &rarr; Electrical &rarr; Potential</span><span class="opt"><b>D)</b> Potential &rarr; Kinetic &rarr; Electrical</span></div></div>
+<div class="q"><div class="qt"><span class="qn">47.</span>A mixture of iron filings and sulphur powder needs to be separated. Which is the best method?</div><div class="opts"><span class="opt"><b>A)</b> Sublimation</span><span class="opt"><b>B)</b> Evaporation</span><span class="opt"><b>C)</b> Filtration</span><span class="opt"><b>D)</b> Using a magnet</span></div></div>
+<div class="q"><div class="qt"><span class="qn">48.</span>Burning paper turns it into ash and smoke. Can this change be reversed?</div><div class="opts"><span class="opt"><b>A)</b> No, but it is only a physical change</span><span class="opt"><b>B)</b> Yes, easily</span><span class="opt"><b>C)</b> No, it is an irreversible chemical change in which new substances are formed</span><span class="opt"><b>D)</b> Yes, by cooling the ash</span></div></div>
+<div class="q"><div class="qt"><span class="qn">49.</span>A weightlifter lifts a barbell off the ground using his arm muscles. Which type of force is being applied?</div><div class="opts"><span class="opt"><b>A)</b> Electrostatic force</span><span class="opt"><b>B)</b> Muscular force</span><span class="opt"><b>C)</b> Frictional force</span><span class="opt"><b>D)</b> Magnetic force</span></div></div>
+<div class="q"><div class="qt"><span class="qn">50.</span>After pollination and fertilisation, the ovary of a flower develops into a fruit, while the ovules develop into:</div><div class="opts"><span class="opt"><b>A)</b> Sepals</span><span class="opt"><b>B)</b> Roots</span><span class="opt"><b>C)</b> Petals</span><span class="opt"><b>D)</b> Seeds</span></div></div>
+<div class="q"><div class="qt"><span class="qn">51.</span>The outermost green, leaf-like parts that protect a flower bud before it opens are the:</div><div class="opts"><span class="opt"><b>A)</b> Petals</span><span class="opt"><b>B)</b> Stamens</span><span class="opt"><b>C)</b> Carpels</span><span class="opt"><b>D)</b> Sepals</span></div></div>
+<div class="q"><div class="qt"><span class="qn">52.</span>A block needs a much bigger push to move across a rough floor than across a smooth one. Which force explains this difference?</div><div class="opts"><span class="opt"><b>A)</b> Frictional force</span><span class="opt"><b>B)</b> Magnetic force</span><span class="opt"><b>C)</b> Gravitational force</span><span class="opt"><b>D)</b> Electrostatic force</span></div></div>
+<div class="q"><div class="qt"><span class="qn">53.</span>A pine tree produces seeds that are not enclosed inside any fruit. To which group of plants does it belong?</div><div class="opts"><span class="opt"><b>A)</b> Thallophytes</span><span class="opt"><b>B)</b> Angiosperms</span><span class="opt"><b>C)</b> Gymnosperms</span><span class="opt"><b>D)</b> Bryophytes</span></div></div>
+<div class="q"><div class="qt"><span class="qn">54.</span>Which of the following is an element, made up of only one type of atom?</div><div class="opts"><span class="opt"><b>A)</b> Oxygen</span><span class="opt"><b>B)</b> Salt</span><span class="opt"><b>C)</b> Water</span><span class="opt"><b>D)</b> Air</span></div></div>
+<div class="q"><div class="qt"><span class="qn">55.</span>Ice melts into water on heating, and the water can be frozen back into ice. What type of change is this?</div><div class="opts"><span class="opt"><b>A)</b> Chemical, because a new substance forms</span><span class="opt"><b>B)</b> Physical and reversible, because no new substance is formed</span><span class="opt"><b>C)</b> An irreversible change</span><span class="opt"><b>D)</b> Both physical and chemical equally</span></div></div>
+<div class="q"><div class="qt"><span class="qn">56.</span>Woollen clothes keep us warm in winter mainly because they:</div><div class="opts"><span class="opt"><b>A)</b> generate heat on their own</span><span class="opt"><b>B)</b> reflect all heat away from the body</span><span class="opt"><b>C)</b> trap air, a poor conductor, close to the body</span><span class="opt"><b>D)</b> absorb heat from the surroundings and pass it to the body</span></div></div>
+<div class="q"><div class="qt"><span class="qn">57.</span>The veins of a leaf branch out in a net-like pattern rather than running parallel. What is this called?</div><div class="opts"><span class="opt"><b>A)</b> Reticulate venation</span><span class="opt"><b>B)</b> Radial venation</span><span class="opt"><b>C)</b> Parallel venation</span><span class="opt"><b>D)</b> Linear venation</span></div></div>
+<div class="q"><div class="qt"><span class="qn">58.</span>A sheet of paper is torn into small pieces. Can it be restored to a single sheet, and what type of change is it?</div><div class="opts"><span class="opt"><b>A)</b> No, because it is an irreversible chemical change</span><span class="opt"><b>B)</b> Yes, because it is a chemical change</span><span class="opt"><b>C)</b> Yes, and it is a chemical change</span><span class="opt"><b>D)</b> No, but it is still a physical change since no new substance is formed</span></div></div>
+<div class="q"><div class="qt"><span class="qn">59.</span>The Law of Conservation of Energy states that energy:</div><div class="opts"><span class="opt"><b>A)</b> can neither be created nor destroyed, only converted from one form to another</span><span class="opt"><b>B)</b> can be destroyed but not created</span><span class="opt"><b>C)</b> is always lost completely over time</span><span class="opt"><b>D)</b> can be created but not destroyed</span></div></div>
+<div class="q"><div class="qt"><span class="qn">60.</span>Salt needs to be recovered from salt water, and the water need not be collected. Which method should be used?</div><div class="opts"><span class="opt"><b>A)</b> Evaporation</span><span class="opt"><b>B)</b> Winnowing</span><span class="opt"><b>C)</b> Filtration</span><span class="opt"><b>D)</b> Magnetic separation</span></div></div>
+<div class="q"><div class="qt"><span class="qn">61.</span>Squeezing a rubber ball changes its shape temporarily, and it returns to normal when released. Which effect of force does this show?</div><div class="opts"><span class="opt"><b>A)</b> Force can only start motion</span><span class="opt"><b>B)</b> Force can only stop motion</span><span class="opt"><b>C)</b> Force can change the shape of an object</span><span class="opt"><b>D)</b> Force has no effect on shape</span></div></div>
+<div class="q"><div class="qt"><span class="qn">62.</span>Touching a metal spoon that has been left standing in hot tea, Riya finds the handle is warm. How did heat travel to the handle?</div><div class="opts"><span class="opt"><b>A)</b> Convection</span><span class="opt"><b>B)</b> Radiation</span><span class="opt"><b>C)</b> Conduction</span><span class="opt"><b>D)</b> Evaporation</span></div></div>
+<div class="q"><div class="qt"><span class="qn">63.</span>Water in a pot heats evenly because hot water rises while cooler water sinks to replace it. Which mode of heat transfer is this?</div><div class="opts"><span class="opt"><b>A)</b> Insulation</span><span class="opt"><b>B)</b> Conduction</span><span class="opt"><b>C)</b> Convection</span><span class="opt"><b>D)</b> Radiation</span></div></div>
+<div class="q"><div class="qt"><span class="qn">64.</span>Smoke particles released into still air are seen to move haphazardly in all directions. What is this type of motion called?</div><div class="opts"><span class="opt"><b>A)</b> Random motion</span><span class="opt"><b>B)</b> Rotatory motion</span><span class="opt"><b>C)</b> Periodic motion</span><span class="opt"><b>D)</b> Rectilinear motion</span></div></div>
+<div class="q"><div class="qt"><span class="qn">65.</span>Wet clothes hung out in the sun become dry after a few hours. Which change is chiefly responsible?</div><div class="opts"><span class="opt"><b>A)</b> Melting</span><span class="opt"><b>B)</b> Freezing</span><span class="opt"><b>C)</b> Condensation</span><span class="opt"><b>D)</b> Evaporation</span></div></div>
+<div class="q"><div class="qt"><span class="qn">66.</span>A car travels straight down a highway without turning. What is this type of motion called?</div><div class="opts"><span class="opt"><b>A)</b> Rectilinear motion</span><span class="opt"><b>B)</b> Rotatory motion</span><span class="opt"><b>C)</b> Periodic motion</span><span class="opt"><b>D)</b> Curvilinear motion</span></div></div>
+<div class="q"><div class="qt"><span class="qn">67.</span>A person finds it difficult to see clearly in dim light, a condition called night blindness. Deficiency of which vitamin commonly causes this?</div><div class="opts"><span class="opt"><b>A)</b> Vitamin C</span><span class="opt"><b>B)</b> Vitamin D</span><span class="opt"><b>C)</b> Vitamin A</span><span class="opt"><b>D)</b> Vitamin B</span></div></div>
+<div class="q"><div class="qt"><span class="qn">68.</span>Comparing the particles of a solid, a liquid and a gas of the same substance, which state has the most loosely packed, freely moving particles?</div><div class="opts"><span class="opt"><b>A)</b> Liquid</span><span class="opt"><b>B)</b> All three are packed equally</span><span class="opt"><b>C)</b> Gas</span><span class="opt"><b>D)</b> Solid</span></div></div>
+<div class="q"><div class="qt"><span class="qn">69.</span>Naphthalene balls kept in a cupboard shrink and disappear over several weeks, without ever forming a liquid. Which process explains this?</div><div class="opts"><span class="opt"><b>A)</b> Sublimation</span><span class="opt"><b>B)</b> Melting</span><span class="opt"><b>C)</b> Condensation</span><span class="opt"><b>D)</b> Evaporation</span></div></div>
+<div class="q"><div class="qt"><span class="qn">70.</span>Water droplets form on the outside of a chilled glass on a humid day. What causes this?</div><div class="opts"><span class="opt"><b>A)</b> Evaporation of water from inside the glass</span><span class="opt"><b>B)</b> Condensation of water vapour present in the air</span><span class="opt"><b>C)</b> Melting of the glass</span><span class="opt"><b>D)</b> Sublimation of the glass surface</span></div></div>
+<div class="q"><div class="qt"><span class="qn">71.</span>Two forces acting on two different bodies are in the ratio 3 : 2, and the displacements produced in the direction of the forces are in the ratio 2 : 5. What is the ratio of the work done by the two forces?</div><div class="opts"><span class="opt"><b>A)</b> 6 : 5</span><span class="opt"><b>B)</b> 5 : 3</span><span class="opt"><b>C)</b> 15 : 4</span><span class="opt"><b>D)</b> 3 : 5</span></div></div>
+<div class="q"><div class="qt"><span class="qn">72.</span>Salt dissolves completely in water to form a clear solution with no visible salt particles. What type of mixture is this?</div><div class="opts"><span class="opt"><b>A)</b> Suspension</span><span class="opt"><b>B)</b> Heterogeneous mixture</span><span class="opt"><b>C)</b> Homogeneous mixture</span><span class="opt"><b>D)</b> Compound</span></div></div>
+<div class="q"><div class="qt"><span class="qn">73.</span>The key of a toy car is wound up, storing energy in its spring, before the car is released to move. What form of energy was stored in the wound spring?</div><div class="opts"><span class="opt"><b>A)</b> Kinetic energy</span><span class="opt"><b>B)</b> Sound energy</span><span class="opt"><b>C)</b> Chemical energy</span><span class="opt"><b>D)</b> Potential energy</span></div></div>
+<div class="q"><div class="qt"><span class="qn">74.</span>A diet lacking fibre-rich foods such as fruits, vegetables and whole grains commonly leads to which digestive problem?</div><div class="opts"><span class="opt"><b>A)</b> Constipation</span><span class="opt"><b>B)</b> Night blindness</span><span class="opt"><b>C)</b> Rickets</span><span class="opt"><b>D)</b> Scurvy</span></div></div>
+<div class="q"><div class="qt"><span class="qn">75.</span>The colourful, often fragrant parts of a flower that attract insects for pollination are the:</div><div class="opts"><span class="opt"><b>A)</b> Petals</span><span class="opt"><b>B)</b> Sepals</span><span class="opt"><b>C)</b> Anthers</span><span class="opt"><b>D)</b> Ovary</span></div></div>
+<div class="q"><div class="qt"><span class="qn">76.</span>Arjun wants to measure the exact time a marble takes to roll down a ramp. Which instrument should he use?</div><div class="opts"><span class="opt"><b>A)</b> Sundial</span><span class="opt"><b>B)</b> Calendar</span><span class="opt"><b>C)</b> Stopwatch</span><span class="opt"><b>D)</b> Wall clock</span></div></div>
+<div class="q"><div class="qt"><span class="qn">77.</span>Sugar dissolved in tea cannot be seen once dissolved, and every sip tastes equally sweet. This shows that the solution is:</div><div class="opts"><span class="opt"><b>A)</b> A suspension</span><span class="opt"><b>B)</b> Heterogeneous</span><span class="opt"><b>C)</b> Homogeneous</span><span class="opt"><b>D)</b> A compound</span></div></div>
+<div class="q"><div class="qt"><span class="qn">78.</span>Motion that repeats itself after equal intervals of time, such as a swinging pendulum or the Earth's revolution, is called:</div><div class="opts"><span class="opt"><b>A)</b> Periodic motion</span><span class="opt"><b>B)</b> Random motion</span><span class="opt"><b>C)</b> Uniform motion only</span><span class="opt"><b>D)</b> Non-uniform motion</span></div></div>
+<div class="q"><div class="qt"><span class="qn">79.</span>We feel the warmth of a bonfire from a few metres away, without touching it and without moving air. Which mode of heat transfer explains this?</div><div class="opts"><span class="opt"><b>A)</b> Conduction</span><span class="opt"><b>B)</b> Radiation</span><span class="opt"><b>C)</b> Convection</span><span class="opt"><b>D)</b> Diffusion</span></div></div>
+<div class="q"><div class="qt"><span class="qn">80.</span>A cyclist covers equal distances in equal intervals of time on a straight, flat road. What type of motion is this?</div><div class="opts"><span class="opt"><b>A)</b> Uniform motion</span><span class="opt"><b>B)</b> Oscillatory motion</span><span class="opt"><b>C)</b> Non-uniform motion</span><span class="opt"><b>D)</b> Random motion</span></div></div>
+<div class="q"><div class="qt"><span class="qn">81.</span>A spinning top rotates rapidly about its own fixed axis while staying almost in one spot. What type of motion is this?</div><div class="opts"><span class="opt"><b>A)</b> Rotatory motion</span><span class="opt"><b>B)</b> Oscillatory motion</span><span class="opt"><b>C)</b> Circular motion around another object</span><span class="opt"><b>D)</b> Translatory motion</span></div></div>
+<div class="q"><div class="qt"><span class="qn">82.</span>A wheat plant has many thin roots of similar size, with no single main root. What type of root system is this?</div><div class="opts"><span class="opt"><b>A)</b> Adventitious root system</span><span class="opt"><b>B)</b> Prop root system</span><span class="opt"><b>C)</b> Fibrous root system</span><span class="opt"><b>D)</b> Tap root system</span></div></div>
+<div class="q"><div class="qt"><span class="qn">83.</span>Meera measures the length of her study table with a metre scale and records it as 90 cm. What is this length in metres?</div><div class="opts"><span class="opt"><b>A)</b> 0.9 m</span><span class="opt"><b>B)</b> 9 m</span><span class="opt"><b>C)</b> 90 m</span><span class="opt"><b>D)</b> 900 m</span></div></div>
+<div class="q"><div class="qt"><span class="qn">84.</span>A boy carries a bucket of water 10 m across level ground without lifting it any higher. What is the work done against gravity?</div><div class="opts"><span class="opt"><b>A)</b> It cannot be found without knowing the bucket's shape</span><span class="opt"><b>B)</b> It depends on his walking speed</span><span class="opt"><b>C)</b> Zero, because there is no vertical displacement</span><span class="opt"><b>D)</b> The weight of the bucket multiplied by 10 m</span></div></div>
+<div class="q"><div class="qt"><span class="qn">85.</span>The smallest particle of an element that can take part in a chemical reaction is called a/an:</div><div class="opts"><span class="opt"><b>A)</b> Molecule</span><span class="opt"><b>B)</b> Mixture</span><span class="opt"><b>C)</b> Compound</span><span class="opt"><b>D)</b> Atom</span></div></div>
+<div class="q"><div class="qt"><span class="qn">86.</span>A pumpkin plant spreads its weak stem along the ground rather than standing upright. What is such a plant called?</div><div class="opts"><span class="opt"><b>A)</b> Shrub</span><span class="opt"><b>B)</b> Creeper</span><span class="opt"><b>C)</b> Tree</span><span class="opt"><b>D)</b> Climber</span></div></div>
+<div class="q"><div class="qt"><span class="qn">87.</span>A mixture of camphor and sand must be separated. Camphor turns directly into vapour on heating. Which method should be used?</div><div class="opts"><span class="opt"><b>A)</b> Sublimation</span><span class="opt"><b>B)</b> Magnetic separation</span><span class="opt"><b>C)</b> Evaporation</span><span class="opt"><b>D)</b> Filtration</span></div></div>
+<div class="q"><div class="qt"><span class="qn">88.</span>Iron left in humid air slowly develops a reddish-brown coating of rust. What type of change is rusting?</div><div class="opts"><span class="opt"><b>A)</b> Physical and reversible</span><span class="opt"><b>B)</b> Temporary, since no new substance is formed</span><span class="opt"><b>C)</b> Chemical and irreversible, because a new substance is formed</span><span class="opt"><b>D)</b> A change of state only</span></div></div>
+<div class="q"><div class="qt"><span class="qn">89.</span>A rubber band is stretched and then released, returning to its original shape. What type of change is this?</div><div class="opts"><span class="opt"><b>A)</b> Physical and reversible</span><span class="opt"><b>B)</b> Physical but irreversible</span><span class="opt"><b>C)</b> Chemical and reversible</span><span class="opt"><b>D)</b> Chemical and irreversible</span></div></div>
+<div class="q"><div class="qt"><span class="qn">90.</span>Water is made of hydrogen and oxygen combined in a fixed ratio, and cannot be separated by simple physical means. Water is therefore an example of:</div><div class="opts"><span class="opt"><b>A)</b> a solution</span><span class="opt"><b>B)</b> an element</span><span class="opt"><b>C)</b> a mixture</span><span class="opt"><b>D)</b> a compound</span></div></div>
+<div class="q"><div class="qt"><span class="qn">91.</span>Which of the following is an example of a purely physical change?</div><div class="opts"><span class="opt"><b>A)</b> Burning wood</span><span class="opt"><b>B)</b> Digestion of food</span><span class="opt"><b>C)</b> Melting of wax</span><span class="opt"><b>D)</b> Rusting of iron</span></div></div>
+<div class="q"><div class="qt"><span class="qn">92.</span>A mango sapling, when uprooted, shows one thick main root with thinner roots branching from it. What type of root system is this?</div><div class="opts"><span class="opt"><b>A)</b> Aerial root system</span><span class="opt"><b>B)</b> Tap root system</span><span class="opt"><b>C)</b> Stilt root system</span><span class="opt"><b>D)</b> Fibrous root system</span></div></div>
+<div class="q"><div class="qt"><span class="qn">93.</span>A grape vine climbs up a support using tendrils that coil around it. What type of plant is this?</div><div class="opts"><span class="opt"><b>A)</b> Herb</span><span class="opt"><b>B)</b> Creeper</span><span class="opt"><b>C)</b> Climber</span><span class="opt"><b>D)</b> Tree</span></div></div>
+<div class="q"><div class="qt"><span class="qn">94.</span>A study lamp lights up and its bulb feels slightly warm after some time. Into which forms of energy is the electrical energy mainly converted?</div><div class="opts"><span class="opt"><b>A)</b> Light energy and heat energy</span><span class="opt"><b>B)</b> Only sound energy</span><span class="opt"><b>C)</b> Only kinetic energy</span><span class="opt"><b>D)</b> Only chemical energy</span></div></div>
+<div class="q"><div class="qt"><span class="qn">95.</span>A ball thrown straight upward slows down while rising and speeds up while falling. Is this uniform or non-uniform motion?</div><div class="opts"><span class="opt"><b>A)</b> Uniform, because gravity is constant</span><span class="opt"><b>B)</b> Non-uniform, because its speed keeps changing</span><span class="opt"><b>C)</b> Uniform, because it returns to the same spot</span><span class="opt"><b>D)</b> It cannot be determined</span></div></div>
+<div class="q"><div class="qt"><span class="qn">96.</span>A plant has leaves with parallel venation and a fibrous root system. Which type of plant is it most likely to be?</div><div class="opts"><span class="opt"><b>A)</b> Bryophyte</span><span class="opt"><b>B)</b> Monocot</span><span class="opt"><b>C)</b> Dicot</span><span class="opt"><b>D)</b> Gymnosperm</span></div></div>
+<div class="q"><div class="qt"><span class="qn">97.</span>Pure water is to be obtained from sea water by evaporating it and then condensing the vapour. Which method is this?</div><div class="opts"><span class="opt"><b>A)</b> Sieving</span><span class="opt"><b>B)</b> Filtration</span><span class="opt"><b>C)</b> Winnowing</span><span class="opt"><b>D)</b> Distillation</span></div></div>
+<div class="q"><div class="qt"><span class="qn">98.</span>After sand has settled at the bottom of a jar of muddy water, the clear water above is carefully poured off. What is this process called?</div><div class="opts"><span class="opt"><b>A)</b> Filtration</span><span class="opt"><b>B)</b> Decantation</span><span class="opt"><b>C)</b> Evaporation</span><span class="opt"><b>D)</b> Sublimation</span></div></div>
+<div class="q"><div class="qt"><span class="qn">99.</span>On which temperature scale does water freeze at 0&deg; and boil at 100&deg; under normal atmospheric pressure?</div><div class="opts"><span class="opt"><b>A)</b> Fahrenheit scale</span><span class="opt"><b>B)</b> Kelvin scale</span><span class="opt"><b>C)</b> Celsius scale</span><span class="opt"><b>D)</b> Richter scale</span></div></div>
+<div class="q"><div class="qt"><span class="qn">100.</span>A magnet attracts an iron nail lying a few centimetres away, without touching it. What type of force is this?</div><div class="opts"><span class="opt"><b>A)</b> Frictional force</span><span class="opt"><b>B)</b> Muscular force</span><span class="opt"><b>C)</b> Non-contact (magnetic) force</span><span class="opt"><b>D)</b> Contact force</span></div></div>
+
+  <div class="endnote">&mdash;&mdash;&mdash; END OF QUESTION PAPER &mdash;&mdash;&mdash;</div>
+
+  <!-- ===================== OMR SHEET ===================== -->
+  <div class="omr-page">
+    <div class="omr-head">
+      <div class="head-main">
+        <div class="inst">Math ma'am Academy</div>
+        <div class="inst-sub">Where Every Subject Clicks</div>
+        <div class="omr-title">O M R &nbsp; A N S W E R &nbsp; S H E E T</div>
+      </div>
+      <div class="qr-box">
+        <div class="qr-slot"><img src="../assets/img/Qr/webQR_mathmaam_print.png" alt="Scan to attempt online"></div>
+        <div class="qr-cap">Scan to attempt<br>online</div>
+      </div>
+    </div>
+
+    <div class="fields">
+      <div class="frow">
+        <div class="f" style="flex:2;"><span class="lbl">Student Name :</span><span class="line"></span></div>
+        <div class="f" style="flex:0.8;"><span class="lbl">Std :</span><span class="line"></span></div>
+      </div>
+      <div class="frow">
+        <div class="f" style="flex:2;"><span class="lbl">Exam Name :</span><span class="line"></span></div>
+        <div class="f" style="flex:0.8;"><span class="lbl">Roll No. :</span><span class="line"></span></div>
+      </div>
+      <div class="frow">
+        <div class="f"><span class="lbl">Batch / Division :</span><span class="line"></span></div>
+        <div class="f"><span class="lbl">Date :</span><span class="line"></span></div>
+        <div class="f"><span class="lbl">Marks Obtained :</span><span class="line"></span></div>
+      </div>
+    </div>
+
+    <div class="omr-instr">
+      <span><b>How to mark:</b> Completely darken <b>one</b> circle per question using a blue or black ball pen.
+      Do not use pencil. Overwriting, ticks, crosses or more than one darkened circle will be treated as a
+      wrong answer. Keep the sheet clean and unfolded.</span>
+      <span class="fillex">
+        Correct:
+        <span class="bub filled">A</span>
+        &nbsp;Wrong:
+        <span class="bub">A</span>
+      </span>
+    </div>
+
+    <table class="omr">
+<tr><td class="omr-n">1</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">26</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">51</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">76</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">2</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">27</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">52</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">77</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">3</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">28</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">53</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">78</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">4</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">29</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">54</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">79</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">5</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">30</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">55</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">80</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">6</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">31</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">56</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">81</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">7</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">32</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">57</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">82</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">8</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">33</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">58</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">83</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">9</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">34</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">59</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">84</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">10</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">35</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">60</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">85</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">11</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">36</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">61</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">86</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">12</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">37</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">62</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">87</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">13</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">38</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">63</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">88</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">14</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">39</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">64</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">89</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">15</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">40</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">65</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">90</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">16</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">41</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">66</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">91</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">17</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">42</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">67</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">92</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">18</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">43</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">68</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">93</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">19</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">44</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">69</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">94</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">20</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">45</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">70</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">95</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">21</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">46</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">71</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">96</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">22</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">47</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">72</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">97</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">23</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">48</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">73</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">98</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">24</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">49</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">74</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">99</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+<tr><td class="omr-n">25</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">50</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">75</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td><td class="omr-n">100</td><td class="omr-b"><span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span></td></tr>
+    </table>
+
+    <div class="sign-row">
+      <div class="sbox">
+        <div class="sline"></div>
+        <div class="scap"><b>Student's Signature</b></div>
+      </div>
+      <div class="sbox">
+        <div class="sline"></div>
+        <div class="scap"><b>Invigilator's / Examiner's Signature</b></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
