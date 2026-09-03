@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Diseases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Biology — Diseases</h1>
+    <p class="subtitle">Standard VI · English Medium · Questions 1–50 · Std 5–8 syllabus, mid-to-high difficulty</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>50</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>30:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Choose the <b>most appropriate answer</b> for each question. This focused topic test
+    covers disease classification, pathogens, causative organisms, routes of transmission, vectors, and
+    application-based disease concepts. Questions are based on Std 5 to Std 8 theory and are pitched at
+    <b>mid-to-high difficulty</b>. One mark each, <b>no negative marking</b>. Select one option per question by
+    tapping its bubble. The timer started as soon as this page loaded. When you're ready, tap <b>Check My Score</b>
+    — correct answers turn green, wrong picks turn red, and you'll get a breakdown by sub-topic. The test
+    auto-submits when the timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">30:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   QUESTION DATA — Topic Practice: Diseases (Biology)
+   50 questions · 1 mark each · 30 minutes · no negative marking.
+   Each question carries a `topic` used only for the sub-topic breakdown.
+   ===================================================================== */
+const QUESTIONS = [
+
+/* ---------- Classification & Basic Concepts ---------- */
+{topic:"Classification & Basic Concepts", q:"A disease that is present in an individual right from birth is called:", opts:["Acquired disease","Communicable disease","Congenital disease","Deficiency disease"], correct:2},
+{topic:"Classification & Basic Concepts", q:"Which of the following is NOT an acquired disease?", opts:["Malaria","Tuberculosis","Colour blindness","Influenza"], correct:2},
+{topic:"Classification & Basic Concepts", q:"Which of the following is correctly classified as a non-communicable disease?", opts:["Malaria","Measles","Scurvy","Chickenpox"], correct:2},
+{topic:"Classification & Basic Concepts", q:"A child suffers from a disease because his/her diet lacks an essential nutrient. This disease would most appropriately be classified as:", opts:["Degenerative","Deficiency","Communicable","Congenital"], correct:1},
+{topic:"Classification & Basic Concepts", q:"Which of the following combinations contains only non-communicable diseases?", opts:["Malaria, TB, Cholera","Scurvy, Rickets, Cancer","Measles, Mumps, Polio","Influenza, Malaria, Dengue"], correct:1},
+{topic:"Classification & Basic Concepts", q:"Which of the following is a degenerative disease according to the classification given in the lesson?", opts:["Heart disease","Malaria","Scurvy","Measles"], correct:0},
+{topic:"Classification & Basic Concepts", q:"Which of the following pairs is incorrectly matched?", opts:["Scurvy — Deficiency disease","Hay fever — Allergy","Cancer — Communicable disease","Heart disease — Degenerative disease"], correct:2},
+{topic:"Classification & Basic Concepts", q:"Which statement about acquired diseases is correct according to the given classification?", opts:["They are always present at birth.","They are acquired after birth and are not inherited.","They are always caused by bacteria.","They can always spread from person to person."], correct:1},
+
+/* ---------- Pathogens ---------- */
+{topic:"Pathogens", q:"Which group contains organisms that are unicellular and prokaryotic?", opts:["Protozoa","Fungi","Bacteria","Helminths"], correct:2},
+{topic:"Pathogens", q:"Which of the following is a unicellular eukaryotic infectious agent?", opts:["Bacterium","Protozoan","Fungus","Helminth"], correct:1},
+{topic:"Pathogens", q:"Which of the following correctly describes fungi mentioned in the lesson?", opts:["Unicellular, prokaryotic and autotrophic","Multicellular, eukaryotic and heterotrophic","Unicellular, eukaryotic and photosynthetic","Multicellular, prokaryotic and autotrophic"], correct:1},
+{topic:"Pathogens", q:"Helminths are best described as:", opts:["Unicellular bacteria","Multicellular worms","Unicellular protozoans","Microscopic fungi"], correct:1},
+{topic:"Pathogens", q:"Which pathogen group contains organisms that can reproduce very quickly and are prokaryotic?", opts:["Viruses","Bacteria","Fungi","Protozoa"], correct:1},
+{topic:"Pathogens", q:"Which of the following is NOT an infectious agent listed in the lesson?", opts:["Bacteria","Protozoa","Fungi","Vitamins"], correct:3},
+{topic:"Pathogens", q:"Viruses are described in the textbook as:", opts:["Multicellular animals","Connecting links between living and non-living organisms","Unicellular prokaryotes","Multicellular fungi"], correct:1},
+
+/* ---------- Disease ↔ Causative Agent ---------- */
+{topic:"Disease & Causative Agent", q:"Malaria is caused by:", opts:["Leishmania","Plasmodium","Tapeworm","Amoeba"], correct:1},
+{topic:"Disease & Causative Agent", q:"Black fever or Kala-azar is caused by:", opts:["Plasmodium","Leishmania","Roundworm","Bacterium"], correct:1},
+{topic:"Disease & Causative Agent", q:"Which pair is correctly matched?", opts:["Malaria — Leishmania","Kala-azar — Plasmodium","Malaria — Plasmodium","Scabies — Tapeworm"], correct:2},
+{topic:"Disease & Causative Agent", q:"A patient is diagnosed with taeniasis. Which organism is responsible?", opts:["Roundworm","Tapeworm","Filaria worm","Mite"], correct:1},
+{topic:"Disease & Causative Agent", q:"Ascariasis is caused by:", opts:["Tapeworm","Roundworm","Filaria worm","Fungus"], correct:1},
+{topic:"Disease & Causative Agent", q:"Which disease is caused by a filarial worm?", opts:["Taeniasis","Ascariasis","Filariasis","Scabies"], correct:2},
+{topic:"Disease & Causative Agent", q:"A student sees the disease name ringworm and concludes that it must be caused by a worm. What is wrong with this conclusion?", opts:["Ringworm is caused by bacteria.","Ringworm is caused by a virus.","Ringworm is caused by a fungus.","Ringworm is not a disease."], correct:2},
+{topic:"Disease & Causative Agent", q:"Which of the following is correctly matched?", opts:["Scabies — Mite","Ringworm — Roundworm","Taeniasis — Mite","Filariasis — Fungus"], correct:0},
+{topic:"Disease & Causative Agent", q:"Which set contains diseases caused by protozoans?", opts:["Malaria and Kala-azar","Taeniasis and Ascariasis","Ringworm and Scabies","Tuberculosis and Cholera"], correct:0},
+{topic:"Disease & Causative Agent", q:"Which set contains only diseases caused by worms?", opts:["Malaria, Filariasis, Ascariasis","Taeniasis, Ascariasis, Filariasis","Scabies, Taeniasis, Ringworm","Kala-azar, Taeniasis, Malaria"], correct:1},
+{topic:"Disease & Causative Agent", q:"Which of the following contains only viral diseases?", opts:["Measles, Polio, Rabies","Malaria, Measles, Polio","Typhoid, Cholera, Polio","Ringworm, Mumps, Rabies"], correct:0},
+{topic:"Disease & Causative Agent", q:"Which of the following contains only bacterial diseases?", opts:["Typhoid, Cholera, Tetanus","Malaria, Cholera, Rabies","Measles, Mumps, Tuberculosis","Ringworm, Typhoid, Malaria"], correct:0},
+
+/* ---------- Transmission of Diseases ---------- */
+{topic:"Transmission of Diseases", q:"A disease is transmitted when an infected person comes into direct physical contact with a healthy person. Such a disease is best described as:", opts:["Deficiency disease","Contagious disease","Degenerative disease","Congenital disease"], correct:1},
+{topic:"Transmission of Diseases", q:"Which of the following diseases is given in the lesson as an example of disease spread through physical contact?", opts:["Chickenpox","Malaria","Cholera","Rickets"], correct:0},
+{topic:"Transmission of Diseases", q:"According to the lesson, the infectious agent causing tetanus may enter the body through:", opts:["A mosquito bite","An injury contaminated with soil","Contaminated air only","Drinking milk"], correct:1},
+{topic:"Transmission of Diseases", q:"A child is bitten by a rabid dog. Which disease is of greatest concern?", opts:["Malaria","Rabies","Cholera","Scabies"], correct:1},
+{topic:"Transmission of Diseases", q:"Which statement correctly describes direct transmission?", opts:["A pathogen always requires an insect to reach the host.","A pathogen reaches a healthy person without an intermediate agent.","A disease spreads only through contaminated water.","A disease is always inherited."], correct:1},
+{topic:"Transmission of Diseases", q:"Which of the following is an example of an animal-bite route of transmission?", opts:["Tetanus","Rabies","Scurvy","Rickets"], correct:1},
+{topic:"Transmission of Diseases", q:"Which of the following can increase the spread of diseases by contaminating food and water?", opts:["Proper sewage disposal","Clean drinking water","Improper garbage and sewage disposal","Good sanitation"], correct:2},
+{topic:"Transmission of Diseases", q:"Which of the following is a major route through which communicable diseases may spread?", opts:["Touch","Water","Air","All of these"], correct:3},
+{topic:"Transmission of Diseases", q:"The germs of a gastrointestinal disease are suspected to have spread through contaminated water. Which route of transmission is involved?", opts:["Water-borne transmission","Animal-bite transmission","Soil transmission","Genetic transmission"], correct:0},
+
+/* ---------- Vector, Cause & Transmission ---------- */
+{topic:"Vector, Cause & Transmission", q:"A mosquito transmits Plasmodium from one person to another. Which statement is correct?", opts:["Mosquito is the causative organism of malaria.","Plasmodium is the vector.","Mosquito acts as a vector and Plasmodium is the causative organism.","Both mosquito and Plasmodium are bacteria."], correct:2},
+{topic:"Vector, Cause & Transmission", q:"Which statement best distinguishes a causative organism from a vector?", opts:["A causative organism carries the disease, while a vector causes it.","A causative organism causes disease, while a vector helps transmit it.","Both terms mean exactly the same thing.","Neither is related to infectious diseases."], correct:1},
+{topic:"Vector, Cause & Transmission", q:"A student writes: Malaria → Mosquito → Disease-causing organism. Which correction is most appropriate?", opts:["Mosquito causes malaria directly.","Plasmodium is the causative protozoan, while mosquito acts as a vector.","Malaria is caused by a fungus.","Mosquito is a protozoan."], correct:1},
+{topic:"Vector, Cause & Transmission", q:"Which combination correctly represents the relationship?", opts:["Rabies — Animal bite — Virus","Tetanus — Animal bite — Fungus","Malaria — Soil injury — Bacterium","Ringworm — Mosquito — Protozoan"], correct:0},
+{topic:"Vector, Cause & Transmission", q:"Which route is correctly paired with the disease mentioned in the lesson?", opts:["Animal bite — Rabies","Soil injury — Malaria","Physical contact — Rickets","Nutrient deficiency — Chickenpox"], correct:0},
+
+/* ---------- Application & Higher-Order MCQs ---------- */
+{topic:"Application & Higher-Order", q:"A student has the following four cards: Card P: Plasmodium; Card Q: Tapeworm; Card R: Mite; Card S: Leishmania. Which card should be paired with Kala-azar?", opts:["P","Q","R","S"], correct:3},
+{topic:"Application & Higher-Order", q:"Four students make the following statements: A: Ringworm is caused by a worm. B: Malaria is caused by Plasmodium. C: Scabies is caused by a mite. D: Kala-azar is caused by Leishmania. Which students are correct?", opts:["A and B only","B, C and D only","A, C and D only","All four"], correct:1},
+{topic:"Application & Higher-Order", q:"Which sequence contains the correct progression from broad classification to specific causative organism?", opts:["Infectious → Malaria → Plasmodium","Congenital → Malaria → Plasmodium","Non-communicable → Malaria → Plasmodium","Deficiency → Malaria → Plasmodium"], correct:0},
+{topic:"Application & Higher-Order", q:"A disease is acquired after birth, caused by a pathogen, and capable of spreading to another person. How should it be classified?", opts:["Congenital and non-communicable","Acquired and communicable","Congenital and communicable","Acquired and non-infectious"], correct:1},
+{topic:"Application & Higher-Order", q:"A disease occurs because a person lacks an essential nutrient. There is no pathogen involved and it cannot spread to another person. Which combination is most appropriate?", opts:["Acquired + communicable","Congenital + infectious","Non-communicable + deficiency disease","Communicable + viral disease"], correct:2},
+{topic:"Application & Higher-Order", q:"Which option correctly completes the analogy? Bacteria : Prokaryotic :: Protozoa : ______", opts:["Multicellular","Eukaryotic","Non-living","Acellular"], correct:1},
+{topic:"Application & Higher-Order", q:"Which one of the following groups is arranged from unicellular → multicellular?", opts:["Bacteria → Protozoa → Fungi","Fungi → Bacteria → Protozoa","Helminths → Protozoa → Bacteria","Fungi → Helminths → Protozoa"], correct:0},
+{topic:"Application & Higher-Order", q:"A village has contaminated drinking water, poor sewage disposal and improper garbage disposal. Which conclusion is most scientifically appropriate?", opts:["Only congenital diseases will increase.","The risk of communicable diseases can increase.","Deficiency diseases will disappear.","Infectious diseases cannot spread through water."], correct:1},
+{topic:"Application & Higher-Order", q:"Consider the following pairs: 1. Malaria — Plasmodium; 2. Kala-azar — Leishmania; 3. Taeniasis — Roundworm; 4. Ascariasis — Tapeworm; 5. Scabies — Mite; 6. Ringworm — Fungus. How many pairs are correctly matched?", opts:["2","3","4","6"], correct:2}
+];
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 1800;
+const MARKS_PER_QUESTION  = 1;
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+/* =====================================================================
+   RENDER QUESTIONS — one continuous block, topic-focused paper
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+QUESTIONS.forEach((item, qi) => {
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  if(item.diagram){
+    const d = document.createElement('div');
+    d.className = 'diagram';
+    d.innerHTML = item.diagram;
+    block.appendChild(d);
+  }
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 120){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING — 1 mark per question, no negative marking, plus a
+   sub-topic breakdown. (No persistence — nothing is saved anywhere.)
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let score = 0;
+  const byTopic = {};
+
+  QUESTIONS.forEach((item, qi) => {
+    const t = item.topic;
+    if(!byTopic[t]) byTopic[t] = {correct:0, total:0};
+    byTopic[t].total++;
+
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selIdx = selected ? parseInt(selected.value,10) : null;
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    optLabels[item.correct].classList.add('correct-answer');
+
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+
+    if(selIdx === item.correct){
+      score++;
+      byTopic[t].correct++;
+      note.textContent = '✓ Correct';
+    } else {
+      if(selIdx !== null) optLabels[selIdx].classList.add('wrong-answer');
+      note.textContent = selIdx === null
+        ? '— Not answered'
+        : '✗ Correct answer highlighted in green';
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const marks = score * MARKS_PER_QUESTION;
+  const totalMarks = total * MARKS_PER_QUESTION;
+  const pct = Math.round(score/total*100);
+  document.getElementById('score-readout').innerHTML =
+    `Score: <b>${marks} / ${totalMarks}</b> marks (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  let rows = '';
+  Object.keys(byTopic).forEach(t => {
+    const d = byTopic[t];
+    const p = Math.round(d.correct/d.total*100);
+    rows += `<tr><td>${t}</td><td>${d.correct} / ${d.total}</td><td>${p}%</td></tr>`;
+  });
+  rows += `<tr><td>Total</td><td>${score} / ${total}</td><td>${pct}%</td></tr>`;
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = `<h3>Sub-topic breakdown</h3>
+    <table><tr><th>Sub-topic</th><th>Correct</th><th>Score</th></tr>${rows}</table>`;
+  bd.classList.add('show');
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${marks} out of ${totalMarks} marks. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${marks} out of ${totalMarks} marks. Check the sub-topic breakdown to see where to focus next.`
+        : `${marks} out of ${totalMarks} marks. Use the sub-topic breakdown below to see which area needs another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>
