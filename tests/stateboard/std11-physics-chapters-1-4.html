@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Physics — Chapters 1–4 Test</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$'], ['\\(','\\)']] },
+    chtml: { fontURL: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2' }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --bg:#faf8f5;
+    --card:#ffffff;
+    --ink:#2b2620;
+    --sub:#6b6358;
+    --accent:#8a5a3f;
+    --accent-soft:#f1e4da;
+    --line:#e7ded3;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Georgia', 'Iowan Old Style', serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.55;
+    padding:24px 16px 60px;
+  }
+  .wrap{max-width:740px;margin:0 auto;}
+  header{border-bottom:2px solid var(--accent);padding-bottom:16px;margin-bottom:24px;}
+  header h1{font-size:1.5rem;margin:0 0 4px;letter-spacing:0.3px;}
+  header p{margin:0;color:var(--sub);font-size:0.92rem;}
+  .badge{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:0.72rem;padding:3px 10px;border-radius:20px;margin-top:8px;letter-spacing:0.3px;}
+  .testmeta{display:flex;justify-content:space-between;align-items:center;background:var(--accent-soft);padding:12px 16px;border-radius:8px;margin-bottom:20px;font-size:0.9rem;color:var(--sub);}
+  .instructions{background:#fffefc;border:1px solid var(--line);border-left:3px solid var(--accent);padding:12px 16px;margin-bottom:20px;color:var(--sub);font-size:0.9rem;}
+  .section-header{background:var(--accent);color:white;padding:12px 16px;border-radius:8px;margin-top:20px;margin-bottom:12px;font-weight:bold;font-size:0.95rem;letter-spacing:0.5px;}
+  .qcard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:16px;}
+  .qmeta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+  .qnum{font-weight:bold;color:var(--accent);font-size:0.95rem;}
+  .qtopic{font-size:0.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:0.5px;}
+  .qtext{font-size:1.02rem;margin-bottom:12px;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;}
+  .option{display:flex;align-items:flex-start;gap:8px;border:1px solid var(--line);border-radius:6px;padding:8px 10px;color:var(--ink);font-size:0.95rem;cursor:pointer;}
+  .option:hover{background:var(--accent-soft);}
+  .option input{margin-top:4px;accent-color:var(--accent);}
+  textarea{width:100%;min-height:70px;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-family:'Georgia',serif;font-size:0.95rem;resize:vertical;background:#fffefc;color:var(--ink);}
+  textarea:focus{outline:2px solid var(--accent-soft);border-color:var(--accent);}
+  .proverow textarea{min-height:110px;}
+  .footer-actions{position:sticky;bottom:0;background:linear-gradient(to top,var(--bg) 70%,transparent);padding:16px 0 4px;display:flex;gap:10px;justify-content:center;}
+  button{font-family:'Georgia',serif;font-size:0.95rem;padding:12px 24px;border-radius:8px;border:none;cursor:pointer;font-weight:bold;}
+  #submitBtn{background:var(--accent);color:white;}
+  #submitBtn:hover{background:#764a33;}
+  #resetBtn{background:transparent;color:var(--sub);border:1px solid var(--line);}
+  #resetBtn:hover{background:var(--accent-soft);}
+  #results{display:none;background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:20px;margin-top:20px;text-align:center;}
+  #results h2{margin-top:0;color:var(--accent);}
+  #results .score{font-size:1.6rem;font-weight:bold;color:var(--ink);}
+  #results p{color:var(--sub);font-size:0.9rem;}
+  #solutions{display:none;margin-top:32px;}
+  #solutions > h2{border-bottom:2px solid #4a7c59;color:#4a7c59;padding-bottom:10px;}
+  .solcard{background:#e9f2ea;border:1px solid #4a7c59;border-radius:10px;padding:18px 20px;margin-bottom:14px;}
+  .solcard .qtopic{color:#4a7c59;}
+  .soltext{font-size:0.95rem;}
+  .soltext p{margin:6px 0;}
+  @media (max-width:560px){.options{grid-template-columns:1fr;}.testmeta{align-items:flex-start;gap:8px;flex-direction:column;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Physics — Chapters 1–4 Test</h1>
+    <p>Units and Measurements · Mathematical Methods · Motion in a Plane · Laws of Motion · MSBSHSE Std XI Science</p>
+    <span class="badge">All questions compulsory · Use $g=10\,\text{m/s}^2$ unless stated otherwise</span>
+  </header>
+
+  <div class="testmeta">
+    <span><strong>Time:</strong> 1.5 hours</span>
+    <span><strong>Total Marks:</strong> 40</span>
+  </div>
+
+  <div class="instructions"><strong>Instructions:</strong> Select one option in Section A. Write complete answers and show necessary working in Sections B, C and D.</div>
+
+  <form id="testForm">
+    <div class="section-header">Section A — Multiple Choice Questions (1 mark each) · 8 marks</div>
+
+    <div class="qcard"><div class="qmeta"><span class="qnum">A1</span><span class="qtopic">Significant Figures</span></div><div class="qtext">The number of significant figures in $0.00602$ is:</div><div class="options"><label class="option"><input type="radio" name="a1" value="a"><span>(a) 2</span></label><label class="option"><input type="radio" name="a1" value="b"><span>(b) 3</span></label><label class="option"><input type="radio" name="a1" value="c"><span>(c) 4</span></label><label class="option"><input type="radio" name="a1" value="d"><span>(d) 6</span></label></div></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">A2</span><span class="qtopic">Dimensions</span></div><div class="qtext">The dimensional formula for force is:</div><div class="options"><label class="option"><input type="radio" name="a2" value="a"><span>(a) $[MLT^{-1}]$</span></label><label class="option"><input type="radio" name="a2" value="b"><span>(b) $[MLT^{-2}]$</span></label><label class="option"><input type="radio" name="a2" value="c"><span>(c) $[ML^2T^{-2}]$</span></label><label class="option"><input type="radio" name="a2" value="d"><span>(d) $[ML^{-1}T^{-2}]$</span></label></div></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">A3</span><span class="qtopic">Scalar Product</span></div><div class="qtext">The scalar product $\mathbf A\cdot\mathbf B$ of two vectors is maximum when the angle between them is:</div><div class="options"><label class="option"><input type="radio" name="a3" value="a"><span>(a) $0^\circ$</span></label><label class="option"><input type="radio" name="a3" value="b"><span>(b) $90^\circ$</span></label><label class="option"><input type="radio" name="a3" value="c"><span>(c) $180^\circ$</span></label><label class="option"><input type="radio" name="a3" value="d"><span>(d) $45^\circ$</span></label></div></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">A4</span><span class="qtopic">Cross Product</span></div><div class="qtext">The magnitude of the cross product of two vectors of magnitudes $3$ units and $4$ units, inclined at $90^\circ$ to each other, is:</div><div class="options"><label class="option"><input type="radio" name="a4" value="a"><span>(a) 7</span></label><label class="option"><input type="radio" name="a4" value="b"><span>(b) 12</span></label><label class="option"><input type="radio" name="a4" value="c"><span>(c) 1</span></label><label class="option"><input type="radio" name="a4" value="d"><span>(d) 0</span></label></div></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">A5</span><span class="qtopic">Projectile Motion</span></div><div class="qtext">For a projectile launched at angle $\theta$ with speed $u$, the time of flight is:</div><div class="options"><label class="option"><input type="radio" name="a5" value="a"><span>(a) $\dfrac{u\sin\theta}{g}$</span></label><label class="option"><input type="radio" name="a5" value="b"><span>(b) $\dfrac{2u\sin\theta}{g}$</span></label><label class="option"><input type="radio" name="a5" value="c"><span>(c) $\dfrac{u\cos\theta}{g}$</span></label><label class="option"><input type="radio" name="a5" value="d"><span>(d) $\dfrac{2u\cos\theta}{g}$</span></label></div></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">A6</span><span class="qtopic">Circular Motion</span></div><div class="qtext">In uniform circular motion, the centripetal acceleration is directed:</div><div class="options"><label class="option"><input type="radio" name="a6" value="a"><span>(a) along the velocity</span></label><label class="option"><input type="radio" name="a6" value="b"><span>(b) tangentially</span></label><label class="option"><input type="radio" name="a6" value="c"><span>(c) towards the centre</span></label><label class="option"><input type="radio" name="a6" value="d"><span>(d) away from the centre</span></label></div></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">A7</span><span class="qtopic">Impulse</span></div><div class="qtext">The SI unit of impulse is the same as that of:</div><div class="options"><label class="option"><input type="radio" name="a7" value="a"><span>(a) Force</span></label><label class="option"><input type="radio" name="a7" value="b"><span>(b) Momentum</span></label><label class="option"><input type="radio" name="a7" value="c"><span>(c) Energy</span></label><label class="option"><input type="radio" name="a7" value="d"><span>(d) Power</span></label></div></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">A8</span><span class="qtopic">Elastic Collision</span></div><div class="qtext">In a perfectly elastic collision between two bodies, which quantity/quantities are conserved?</div><div class="options"><label class="option"><input type="radio" name="a8" value="a"><span>(a) Only momentum</span></label><label class="option"><input type="radio" name="a8" value="b"><span>(b) Only kinetic energy</span></label><label class="option"><input type="radio" name="a8" value="c"><span>(c) Both momentum and kinetic energy</span></label><label class="option"><input type="radio" name="a8" value="d"><span>(d) Neither</span></label></div></div>
+
+    <div class="section-header">Section B — Answer in Brief (1 mark each) · 4 marks</div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">B1</span><span class="qtopic">Dimensions</span></div><div class="qtext">State the principle of homogeneity of dimensions.</div><textarea data-qid="b1" placeholder="Your answer..."></textarea></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">B2</span><span class="qtopic">Vectors</span></div><div class="qtext">State the triangle law of vector addition.</div><textarea data-qid="b2" placeholder="Your answer..."></textarea></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">B3</span><span class="qtopic">Relative Motion</span></div><div class="qtext">Define relative velocity.</div><textarea data-qid="b3" placeholder="Your answer..."></textarea></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">B4</span><span class="qtopic">Impulse</span></div><div class="qtext">Define impulse of a force.</div><textarea data-qid="b4" placeholder="Your answer..."></textarea></div>
+
+    <div class="section-header">Section C — Short Answer Questions (2 marks each) · 16 marks</div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">C1</span><span class="qtopic">Significant Figures</span></div><div class="qtext">A cube has each side measured as $7.203\,\text{cm}$. Calculate its volume, expressing the answer to the correct number of significant figures.</div><textarea data-qid="c1" placeholder="Show your working..."></textarea></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">C2</span><span class="qtopic">Dimensional Analysis</span></div><div class="qtext">Check the correctness of the equation $v^2=u^2+2as$ using dimensional analysis.</div><textarea data-qid="c2" placeholder="Show your working..."></textarea></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">C3</span><span class="qtopic">Vector Addition</span></div><div class="qtext">Find the resultant of two vectors of magnitudes $3$ units and $4$ units acting at right angles to each other, using the analytical method.</div><textarea data-qid="c3" placeholder="Show your working..."></textarea></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">C4</span><span class="qtopic">Scalar Product</span></div><div class="qtext">Explain the physical significance of the scalar (dot) product with one example from physics.</div><textarea data-qid="c4" placeholder="Your answer..."></textarea></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">C5</span><span class="qtopic">Projectile Motion</span></div><div class="qtext">A ball is thrown horizontally with a speed of $10\,\text{m/s}$ from the top of a tower $20\,\text{m}$ high. Find (i) the time taken to reach the ground, and (ii) the horizontal distance covered.</div><textarea data-qid="c5" placeholder="Show your working..."></textarea></div>
+    <div class="qcard proverow"><div class="qmeta"><span class="qnum">C6</span><span class="qtopic">Circular Motion</span></div><div class="qtext">Derive the expression for centripetal acceleration in uniform circular motion.</div><textarea data-qid="c6" placeholder="Show your working..."></textarea></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">C7</span><span class="qtopic">Newton's Laws</span></div><div class="qtext">State Newton's second law of motion and show how $F=ma$ follows from it.</div><textarea data-qid="c7" placeholder="Show your working..."></textarea></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">C8</span><span class="qtopic">Collision</span></div><div class="qtext">Two bodies of masses $2\,\text{kg}$ and $3\,\text{kg}$, moving in opposite directions with speeds $4\,\text{m/s}$ and $2\,\text{m/s}$ respectively, collide and stick together. Find the velocity of the combined mass after collision.</div><textarea data-qid="c8" placeholder="Show your working..."></textarea></div>
+
+    <div class="section-header">Section D — Long Answer Questions (3 marks each) · 12 marks</div>
+    <div class="qcard proverow"><div class="qmeta"><span class="qnum">D1</span><span class="qtopic">Errors in Measurement</span></div><div class="qtext">Explain systematic and random errors in measurement with examples. How can random errors be minimised?</div><textarea data-qid="d1" placeholder="Show your working..."></textarea></div>
+    <div class="qcard proverow"><div class="qmeta"><span class="qnum">D2</span><span class="qtopic">Parallelogram Law</span></div><div class="qtext">State and prove the parallelogram law of vector addition. Derive expressions for the magnitude and direction of the resultant vector.</div><textarea data-qid="d2" placeholder="Show your working..."></textarea></div>
+    <div class="qcard"><div class="qmeta"><span class="qnum">D3</span><span class="qtopic">Projectile Motion</span></div><div class="qtext">A projectile is fired at an angle of $30^\circ$ with the horizontal with an initial velocity of $40\,\text{m/s}$. Calculate: (i) the maximum height attained, (ii) the horizontal range, and (iii) the time of flight.</div><textarea data-qid="d3" placeholder="Show your working..."></textarea></div>
+    <div class="qcard proverow"><div class="qmeta"><span class="qnum">D4</span><span class="qtopic">Conservation of Momentum</span></div><div class="qtext">State the law of conservation of linear momentum. Using it, derive the expressions for the final velocities of two bodies undergoing a one-dimensional perfectly elastic collision.</div><textarea data-qid="d4" placeholder="Show your working..."></textarea></div>
+
+    <div class="footer-actions"><button type="button" id="submitBtn">Submit Test</button><button type="button" id="resetBtn">Clear</button></div>
+  </form>
+
+  <div id="results"><h2>Test Submitted</h2><div class="score" id="scoreDisplay">0 / 24 answered</div><p>Your responses have been saved. Scroll down to review the answer key and worked solutions.</p></div>
+
+  <div id="solutions">
+    <h2>Answer Key &amp; Worked Solutions</h2>
+
+    <div class="solcard"><div class="qmeta"><span class="qnum">Section A</span><span class="qtopic">MCQ Answer Key</span></div><div class="soltext"><p><strong>A1.</strong> (b) 3 &nbsp; <strong>A2.</strong> (b) $[MLT^{-2}]$ &nbsp; <strong>A3.</strong> (a) $0^\circ$ &nbsp; <strong>A4.</strong> (b) 12</p><p><strong>A5.</strong> (b) $\dfrac{2u\sin\theta}{g}$ &nbsp; <strong>A6.</strong> (c) Towards the centre &nbsp; <strong>A7.</strong> (b) Momentum &nbsp; <strong>A8.</strong> (c) Both momentum and kinetic energy</p></div></div>
+
+    <div class="solcard"><div class="qmeta"><span class="qnum">Section B</span><span class="qtopic">Very Short Answers</span></div><div class="soltext"><p><strong>B1.</strong> An equation is dimensionally correct only if the dimensions of every term on both sides, including terms being added or subtracted, are identical.</p><p><strong>B2.</strong> If two vectors are represented in magnitude and direction by two sides of a triangle taken in order, their resultant is represented by the third side taken in the opposite order.</p><p><strong>B3.</strong> Relative velocity is the velocity of one object with respect to another: $\mathbf v_{AB}=\mathbf v_A-\mathbf v_B$.</p><p><strong>B4.</strong> Impulse is the product of force and the time for which it acts, $J=F\Delta t$. It equals the change in momentum, $\Delta p$.</p></div></div>
+
+    <div class="solcard"><div class="qmeta"><span class="qnum">C1</span><span class="qtopic">Significant Figures</span></div><div class="soltext"><p>$V=a^3=(7.203)^3=373.714\ldots\,\text{cm}^3$</p><p>To 4 significant figures: <strong>$V=373.7\,\text{cm}^3$</strong></p></div></div>
+    <div class="solcard"><div class="qmeta"><span class="qnum">C2</span><span class="qtopic">Dimensional Analysis</span></div><div class="soltext"><p>$[v^2]=[u^2]=[LT^{-1}]^2=[L^2T^{-2}]$ and $[2as]=[LT^{-2}][L]=[L^2T^{-2}]$.</p><p>All three terms have identical dimensions, so the equation is dimensionally consistent.</p></div></div>
+    <div class="solcard"><div class="qmeta"><span class="qnum">C3</span><span class="qtopic">Vector Addition</span></div><div class="soltext"><p>$R=\sqrt{3^2+4^2+2(3)(4)\cos90^\circ}=\sqrt{25}=5$ units.</p><p>$\tan\phi=\dfrac{4\sin90^\circ}{3+4\cos90^\circ}=\dfrac43$, hence $\phi\approx53.1^\circ$ from the 3-unit vector.</p></div></div>
+    <div class="solcard"><div class="qmeta"><span class="qnum">C4</span><span class="qtopic">Scalar Product</span></div><div class="soltext"><p>$\mathbf A\cdot\mathbf B=|\mathbf A||\mathbf B|\cos\theta$ is a scalar equal to one vector times the component of the other along it. For example, work is $W=\mathbf F\cdot\mathbf d=Fd\cos\theta$.</p></div></div>
+    <div class="solcard"><div class="qmeta"><span class="qnum">C5</span><span class="qtopic">Projectile Motion</span></div><div class="soltext"><p>Vertical fall: $20=\frac12(10)t^2$, so $t=2\,\text{s}$. Horizontal distance: $x=ut=10\times2=20\,\text{m}$.</p></div></div>
+    <div class="solcard"><div class="qmeta"><span class="qnum">C6</span><span class="qtopic">Circular Motion</span></div><div class="soltext"><p>$\mathbf r=r(\cos\omega t\,\hat i+\sin\omega t\,\hat j)$, so $\mathbf v=\dfrac{d\mathbf r}{dt}$ and $\mathbf a=\dfrac{d\mathbf v}{dt}=-\omega^2\mathbf r$.</p><p>Therefore, $|\mathbf a|=\omega^2r=\dfrac{v^2}{r}$, directed towards the centre.</p></div></div>
+    <div class="solcard"><div class="qmeta"><span class="qnum">C7</span><span class="qtopic">Newton's Second Law</span></div><div class="soltext"><p>The rate of change of momentum is proportional to the applied force and is in its direction: $F\propto\dfrac{dp}{dt}=\dfrac{d(mv)}{dt}$.</p><p>For constant mass, $F\propto m\dfrac{dv}{dt}=ma$. In SI units, the proportionality constant is 1, hence <strong>$F=ma$</strong>.</p></div></div>
+    <div class="solcard"><div class="qmeta"><span class="qnum">C8</span><span class="qtopic">Collision</span></div><div class="soltext"><p>Taking the 2 kg body's direction as positive: $2(4)+3(-2)=5v$, so $v=0.4\,\text{m/s}$, in the initial direction of the 2 kg body.</p></div></div>
+
+    <div class="solcard"><div class="qmeta"><span class="qnum">D1</span><span class="qtopic">Errors in Measurement</span></div><div class="soltext"><p><strong>Systematic errors</strong> are consistent and one-directional, such as an instrument zero error, calibration defect, personal bias or temperature drift. They are reduced by correction, calibration and improved technique.</p><p><strong>Random errors</strong> are unpredictable fluctuations, such as small changes in reaction time. They are minimised by taking many readings, finding their mean and applying statistical treatment.</p></div></div>
+    <div class="solcard"><div class="qmeta"><span class="qnum">D2</span><span class="qtopic">Parallelogram Law</span></div><div class="soltext"><p>If two vectors acting at a point are represented by adjacent sides of a parallelogram, their resultant is represented by the diagonal through that point. For vectors $A$ and $B$ at angle $\theta$, resolve the diagonal into $A+B\cos\theta$ and $B\sin\theta$.</p><p>$R^2=(A+B\cos\theta)^2+(B\sin\theta)^2=A^2+B^2+2AB\cos\theta$, hence $R=\sqrt{A^2+B^2+2AB\cos\theta}$.</p><p>The direction $\phi$ from $A$ is $\tan\phi=\dfrac{B\sin\theta}{A+B\cos\theta}$.</p></div></div>
+    <div class="solcard"><div class="qmeta"><span class="qnum">D3</span><span class="qtopic">Projectile Motion</span></div><div class="soltext"><p>$u_x=40\cos30^\circ=20\sqrt3$ and $u_y=40\sin30^\circ=20\,\text{m/s}$.</p><p>Maximum height: $H=\dfrac{u_y^2}{2g}=20\,\text{m}$. Time of flight: $T=\dfrac{2u_y}{g}=4\,\text{s}$. Range: $R=u_xT=80\sqrt3\approx138.6\,\text{m}$.</p></div></div>
+    <div class="solcard"><div class="qmeta"><span class="qnum">D4</span><span class="qtopic">Elastic Collision</span></div><div class="soltext"><p>In the absence of external force, total linear momentum remains constant. Thus $m_1u_1+m_2u_2=m_1v_1+m_2v_2$.</p><p>Conservation of kinetic energy gives $m_1(u_1^2-v_1^2)=m_2(v_2^2-u_2^2)$. Dividing by the momentum relation gives $u_1-u_2=v_2-v_1$.</p><p>Solving: <strong>$v_1=\dfrac{(m_1-m_2)u_1+2m_2u_2}{m_1+m_2}$</strong>, <strong>$v_2=\dfrac{(m_2-m_1)u_2+2m_1u_1}{m_1+m_2}$</strong>.</p></div></div>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'physics-std11-chapters-1-4-v1';
+const answerKey = ['b', 'b', 'a', 'b', 'b', 'c', 'b', 'c'];
+
+async function saveAnswers(){
+  const data = {};
+  document.querySelectorAll('textarea[data-qid]').forEach(ta => { data[ta.dataset.qid] = ta.value; });
+  document.querySelectorAll('input[type="radio"]:checked').forEach(input => { data[input.name] = input.value; });
+  try{ await window.storage.set(STORAGE_KEY, JSON.stringify(data)); }catch(e){ console.error('Save failed', e); }
+  return data;
+}
+
+async function loadSaved(){
+  try{
+    const result = await window.storage.get(STORAGE_KEY);
+    if(result && result.value){
+      const data = JSON.parse(result.value);
+      document.querySelectorAll('textarea[data-qid]').forEach(ta => { if(data[ta.dataset.qid]) ta.value = data[ta.dataset.qid]; });
+      Object.keys(data).filter(key => key.startsWith('a')).forEach(key => {
+        const input = document.querySelector('input[name="' + key + '"][value="' + data[key] + '"]');
+        if(input) input.checked = true;
+      });
+    }
+  }catch(e){}
+}
+
+document.getElementById('submitBtn').addEventListener('click', async () => {
+  const data = await saveAnswers();
+  const total = document.querySelectorAll('textarea[data-qid]').length + document.querySelectorAll('input[type="radio"][name^="a"]').length / 4;
+  const answered = Object.values(data).filter(value => value.trim().length > 0).length;
+  document.getElementById('scoreDisplay').textContent = answered + ' / ' + total + ' answered';
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('solutions').style.display = 'block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+});
+
+document.getElementById('resetBtn').addEventListener('click', async () => {
+  document.querySelectorAll('textarea[data-qid]').forEach(ta => { ta.value = ''; });
+  document.querySelectorAll('input[type="radio"]').forEach(input => { input.checked = false; });
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('solutions').style.display = 'none';
+  try{ await window.storage.delete(STORAGE_KEY); }catch(e){}
+});
+
+let saveTimer;
+document.querySelectorAll('textarea[data-qid], input[type="radio"]').forEach(control => {
+  control.addEventListener('input', () => { clearTimeout(saveTimer); saveTimer = setTimeout(saveAnswers, 800); });
+});
+loadSaved();
+</script>
+</body>
+</html>

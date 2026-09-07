@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') window.location.replace('../../login.html');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy - Homi Bhabha Std 6 - All Topics Combined</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Dr. Homi Bhabha Balvaidnyanik Competition</p>
+    <h1>Test 7 - All Topics Combined</h1>
+    <p class="subtitle">Standard VI &middot; English Medium &middot; Questions 1-100 &middot; Homi Bhabha level</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">-</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>100</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>90:00</b></span>
+    </div>
+  </header>
+  <div class="instructions"><b>Instructions:</b> All questions are compulsory. Each question carries 1 mark. Choose the most appropriate answer. This 100-question paper combines all listed Std VI science topics and is designed at a slightly higher level than regular textbook MCQs, with emphasis on reasoning, application, correlation and observation. The timer starts when this page loads. Select one option per question and tap <b>Check My Score</b> to view your result and topic-wise breakdown.</div>
+  <div id="timer-wrap"><span id="timer-clock">90:00</span></div>
+  <div id="progress-wrap"><div id="progress-bar-track"><div id="progress-bar-fill"></div></div><div id="progress-label">0 / 0 answered</div></div>
+  <main id="quiz-root"></main>
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+  <footer class="action-bar"><div id="score-readout">Not submitted yet</div><button id="submit-btn">Check My Score</button></footer>
+</div>
+<script>
+const QUESTIONS = [
+{t:'Plant Classification and Morphology',q:'A plant has a soft green stem, completes its life cycle within a short period and is generally small in height. It is most likely a:',o:['Tree','Herb','Shrub','Climber'],a:1},
+{t:'Plant Classification and Morphology',q:'Which combination correctly represents a dicot plant?',o:['Parallel venation + fibrous root + 1 cotyledon','Reticulate venation + tap root + 2 cotyledons','Parallel venation + tap root + 2 cotyledons','Reticulate venation + fibrous root + 1 cotyledon'],a:1},
+{t:'Plant Classification and Morphology',q:'A plant has parallel venation but its roots are accidentally damaged. Which feature would provide the strongest additional evidence that it is a monocot?',o:['Presence of flowers','Fibrous root system','Green leaves','Presence of stem'],a:1},
+{t:'Plant Classification and Morphology',q:'Which sequence represents increasing complexity of the plant groups?',o:['Angiosperms -> Gymnosperms -> Pteridophytes -> Bryophytes','Bryophytes -> Pteridophytes -> Gymnosperms -> Angiosperms','Pteridophytes -> Bryophytes -> Angiosperms -> Gymnosperms','Bryophytes -> Gymnosperms -> Pteridophytes -> Angiosperms'],a:1},
+{t:'Plant Classification and Morphology',q:'Which pair is incorrectly matched?',o:['Bryophyta - Moss','Pteridophyta - Fern','Gymnosperm - Mango','Angiosperm - Rose'],a:2},
+{t:'Plant Classification and Morphology',q:'A plant possesses seeds but does not produce flowers or fruits. It is most likely a:',o:['Bryophyte','Pteridophyte','Gymnosperm','Angiosperm'],a:2},
+{t:'Plant Classification and Morphology',q:'Which feature most clearly distinguishes angiosperms from gymnosperms?',o:['Presence of roots','Presence of stems','Seeds enclosed within fruits','Ability to perform photosynthesis'],a:2},
+{t:'Plant Classification and Morphology',q:'Which of the following is correctly arranged?',o:['Herb -> Neem, Shrub -> Rose, Tree -> Wheat','Herb -> Wheat, Shrub -> Rose, Tree -> Neem','Herb -> Mango, Shrub -> Grass, Tree -> Rose','Herb -> Rose, Shrub -> Wheat, Tree -> Grass'],a:1},
+{t:'Plant Classification and Morphology',q:'A climber generally differs from a creeper because a climber:',o:['Has no stem','Grows only underground','Uses support to grow upward','Always has a woody stem'],a:2},
+{t:'Plant Classification and Morphology',q:'Which combination contains only monocot characteristics?',o:['Two cotyledons, tap root, reticulate venation','One cotyledon, fibrous root, parallel venation','Two cotyledons, fibrous root, parallel venation','One cotyledon, tap root, reticulate venation'],a:1},
+{t:'Plant Classification and Morphology',q:'Which part of a flower receives pollen grains during pollination?',o:['Anther','Filament','Stigma','Ovary'],a:2},
+{t:'Plant Classification and Morphology',q:'Which sequence correctly represents the male reproductive part of a flower?',o:['Stigma -> Style -> Ovary','Anther -> Filament','Ovary -> Ovule -> Stigma','Sepal -> Petal -> Anther'],a:1},
+{t:'Plant Classification and Morphology',q:'If the anthers of a flower are removed before maturity, which process is directly affected?',o:['Formation of ovules','Production of pollen grains','Formation of sepals','Absorption of water'],a:1},
+{t:'Plant Classification and Morphology',q:'Which statement about annual, biennial and perennial plants is correct?',o:['Annual plants live for exactly two years','Biennial plants complete their life cycle in one year','Perennial plants can live for several years','All perennial plants are trees'],a:2},
+{t:'Animal Classification and Body Functions',q:'Which characteristic is common to all vertebrates?',o:['They have lungs','They have a backbone','They lay eggs','They are warm-blooded'],a:1},
+{t:'Animal Classification and Body Functions',q:'Which pair contains only warm-blooded animals?',o:['Frog and lizard','Fish and snake','Birds and mammals','Crocodile and fish'],a:2},
+{t:'Animal Classification and Body Functions',q:'Which pair contains animals that are both generally oviparous?',o:['Cow and dog','Hen and frog','Human and whale','Cat and rabbit'],a:1},
+{t:'Animal Classification and Body Functions',q:'Which statement correctly distinguishes oviparous and viviparous animals?',o:['Oviparous animals always have scales','Viviparous animals give birth to young ones','Oviparous animals are always cold-blooded','Viviparous animals never have eggs'],a:1},
+{t:'Animal Classification and Body Functions',q:'Which of the following is an example of a cold-blooded vertebrate?',o:['Sparrow','Human','Lizard','Cow'],a:2},
+{t:'Respiration',q:'Which statement best describes external respiration?',o:['Breakdown of glucose inside cells','Exchange of gases between respiratory surface and surroundings/blood','Production of ATP inside mitochondria only','Movement of food through the alimentary canal'],a:1},
+{t:'Respiration',q:'During aerobic respiration, glucose is broken down mainly in the presence of:',o:['Nitrogen','Carbon dioxide','Oxygen','Hydrogen'],a:2},
+{t:'Respiration',q:'Which is a correct comparison?',o:['Aerobic respiration occurs without oxygen and always produces alcohol','Anaerobic respiration requires more oxygen than aerobic respiration','Aerobic respiration generally releases more energy than anaerobic respiration','Both always produce exactly the same products'],a:2},
+{t:'Respiration',q:'A muscle cell temporarily does not receive sufficient oxygen during strenuous activity. Which process can increase?',o:['Photosynthesis','Anaerobic respiration','Transpiration','Digestion'],a:1},
+{t:'Respiration',q:'Which gas is mainly taken in during aerobic respiration?',o:['Oxygen','Nitrogen','Carbon monoxide','Hydrogen'],a:0},
+{t:'Matter and Changes of State',q:'According to the particle theory of matter, increasing the temperature of a substance generally causes its particles to:',o:['Stop moving','Lose all kinetic energy','Gain kinetic energy','Become completely weightless'],a:2},
+{t:'Matter and Changes of State',q:'Which change involves absorption of heat?',o:['Freezing','Condensation','Melting','Deposition'],a:2},
+{t:'Matter and Changes of State',q:'A wet cloth dries faster on a hot, windy day mainly because:',o:['Water changes directly into ice','Evaporation becomes faster','Condensation becomes faster','Water particles stop moving'],a:1},
+{t:'Matter and Changes of State',q:'Which pair represents opposite changes of state?',o:['Melting and freezing','Melting and evaporation','Condensation and evaporation','Both A and C'],a:3},
+{t:'Matter and Changes of State',q:'When water vapour changes into liquid water, the process is:',o:['Sublimation','Evaporation','Condensation','Melting'],a:2},
+{t:'Matter and Changes of State',q:'A substance changes directly from solid to gas without becoming liquid. This process is:',o:['Freezing','Sublimation','Condensation','Vaporisation'],a:1},
+{t:'Matter and Changes of State',q:'Which observation provides the strongest evidence that particles of matter are continuously moving?',o:['A stone has fixed shape','Perfume smell spreads throughout a room','A metal spoon has mass','Water occupies space'],a:1},
+{t:'Force, Work and Energy',q:'A ball thrown vertically upward continues to move upward for some time after leaving the hand. During this upward motion, the main force acting on it is:',o:['Muscular force upward','Gravitational force downward','Frictional force upward','Magnetic force downward'],a:1},
+{t:'Force, Work and Energy',q:'Work is said to be done on an object when:',o:['Force acts but there is no displacement','Displacement occurs in a direction having a component along the force','The object has mass','The object is stationary'],a:1},
+{t:'Force, Work and Energy',q:'Which situation involves no mechanical work on the object, despite a force being applied?',o:['Pushing a box and moving it forward','Lifting a bag upward','Holding a heavy bag stationary','Kicking a football'],a:2},
+{t:'Force, Work and Energy',q:'A 2 kg object and a 5 kg object move with the same velocity. Which has greater kinetic energy?',o:['2 kg object','5 kg object','Both have equal kinetic energy','Cannot be determined'],a:1},
+{t:'Force, Work and Energy',q:'If the velocity of an object is doubled while its mass remains constant, its kinetic energy becomes:',o:['Half','Double','Four times','Eight times'],a:2},
+{t:'Force, Work and Energy',q:'Which object has the greatest gravitational potential energy, assuming all are on Earth?',o:['2 kg object at 1 m','1 kg object at 4 m','4 kg object at 1 m','1 kg object at 2 m'],a:1},
+{t:'Force, Work and Energy',q:'A stretched rubber band stores mainly:',o:['Chemical energy','Elastic potential energy','Sound energy','Nuclear energy'],a:1},
+{t:'Force, Work and Energy',q:'Which conversion mainly occurs in an electric fan?',o:['Electrical -> mechanical','Mechanical -> electrical','Chemical -> light','Heat -> chemical'],a:0},
+{t:'Force, Work and Energy',q:'A falling object changes its energy mainly from:',o:['Kinetic to potential','Potential to kinetic','Chemical to electrical','Sound to light'],a:1},
+{t:'Force, Work and Energy',q:'Which object possesses both kinetic and potential energy?',o:['A stationary object lying on the ground','A moving object at a height above the ground','A stationary object at sea level only','An object with no mass'],a:1},
+{t:'Units and Measurements',q:'Which is the correct SI unit of length?',o:['Centimetre','Metre','Kilometre','Millimetre'],a:1},
+{t:'Units and Measurements',q:'A student measures the length of a pencil as 12.5 cm. This is equal to:',o:['1.25 m','0.125 m','125 m','0.0125 m'],a:1},
+{t:'Units and Measurements',q:'Which instrument is most appropriate for measuring the temperature of a liquid in a school experiment?',o:['Measuring cylinder','Thermometer','Spring balance','Stopwatch'],a:1},
+{t:'Units and Measurements',q:'Which measurement is most likely to require a stopwatch?',o:['Mass of an object','Temperature of water','Time taken by a pendulum to complete oscillations','Volume of milk'],a:2},
+{t:'Units and Measurements',q:'A student wants to measure 35 mL of water accurately. Which instrument is most appropriate?',o:['Measuring cylinder','Metre scale','Thermometer','Balance'],a:0},
+{t:'Units and Measurements',q:'Which statement is correct?',o:['1 m = 1000 cm','1 km = 1000 m','1 cm = 1000 mm','1 L = 1000 kg'],a:1},
+{t:'Units and Measurements',q:'A temperature of 0 C corresponds approximately to:',o:['0 K','100 K','273 K','373 K'],a:2},
+{t:'Separation of Substances',q:'A mixture contains iron filings and sand. The most suitable first method of separation is:',o:['Filtration','Magnetic separation','Evaporation','Distillation'],a:1},
+{t:'Separation of Substances',q:'Which method is best suited to separate insoluble solid particles from a liquid?',o:['Filtration','Sublimation','Separating funnel','Magnetic separation'],a:0},
+{t:'Separation of Substances',q:'A mixture contains common salt and sand. Which sequence is most appropriate to obtain dry salt?',o:['Filtration -> add water -> evaporation','Add water -> filtration -> evaporation','Evaporation -> filtration -> add water','Magnetic separation -> evaporation'],a:1},
+{t:'Separation of Substances',q:'Which technique is used to separate different coloured pigments present in ink?',o:['Centrifugation','Paper chromatography','Winnowing','Sedimentation'],a:1},
+{t:'Separation of Substances',q:'Cream can be separated from milk mainly by:',o:['Filtration','Centrifugation','Sieving','Sublimation'],a:1},
+{t:'Separation of Substances',q:'A mixture of two immiscible liquids such as oil and water can best be separated using:',o:['Separating funnel','Filter paper','Evaporating dish','Magnet'],a:0},
+{t:'Separation of Substances',q:'Which method is most suitable for obtaining pure water from salt solution?',o:['Filtration','Distillation','Sieving','Handpicking'],a:1},
+{t:'Separation of Substances',q:'The separation of husk from heavier grains using moving air is:',o:['Threshing','Winnowing','Filtration','Crystallisation'],a:1},
+{t:'Separation of Substances',q:'Which method is used when the components of a mixture have significantly different particle sizes?',o:['Sieving','Distillation','Separating funnel','Chromatography'],a:0},
+{t:'Separation of Substances',q:'Photosynthetic pigments from a leaf can be separated using:',o:['Paper chromatography','Sedimentation','Magnetic separation','Handpicking'],a:0},
+{t:'Metals and Non-metals',q:'Which of the following is a liquid metal at room temperature?',o:['Iron','Mercury','Sodium','Aluminium'],a:1},
+{t:'Metals and Non-metals',q:'Which is a liquid non-metal at room temperature?',o:['Sulphur','Bromine','Carbon','Phosphorus'],a:1},
+{t:'Metals and Non-metals',q:'Which pair contains only metals?',o:['Iron and sulphur','Copper and aluminium','Carbon and oxygen','Phosphorus and chlorine'],a:1},
+{t:'Metals and Non-metals',q:'An alloy is best described as:',o:['A pure metal only','A mixture of two or more metals or a metal with another element','A non-metallic compound only','A naturally occurring mineral only'],a:1},
+{t:'Metals and Non-metals',q:'Which property is generally associated with metals?',o:['Brittleness','Malleability','Poor electrical conductivity','Dull appearance'],a:1},
+{t:'Metals and Non-metals',q:'Which of the following is an allotrope of carbon?',o:['Brass','Diamond','Bronze','Steel'],a:1},
+{t:'Metals and Non-metals',q:'Diamond and graphite are:',o:['Compounds of different metals','Allotropes of carbon','Isotopes of carbon','Mixtures containing carbon'],a:1},
+{t:'Metals and Non-metals',q:'Which element is generally considered a non-metal?',o:['Magnesium','Calcium','Sulphur','Sodium'],a:2},
+{t:'Metals and Non-metals',q:'Which metal is placed above copper in the usual reactivity series?',o:['Silver','Gold','Iron','Platinum'],a:2},
+{t:'Metals and Non-metals',q:'Which sequence is correctly arranged from more reactive to less reactive?',o:['K > Na > Ca > Mg','Mg > Ca > Na > K','Na > K > Mg > Ca','Ca > K > Mg > Na'],a:0},
+{t:'Metals and Non-metals',q:'Which pair represents an important use of metals based on their properties?',o:['Copper - electrical wiring','Sulphur - electrical wiring','Phosphorus - making cooking vessels','Oxygen - making metal wires'],a:0},
+{t:'Types of Changes and Rusting',q:'Which is an example of a chemical change?',o:['Melting ice','Cutting paper','Rusting of iron','Dissolving sugar in water'],a:2},
+{t:'Types of Changes and Rusting',q:'Which observation most strongly indicates that a chemical change has occurred?',o:['Change in shape only','Change in state only','Formation of a new substance','Breaking an object into pieces'],a:2},
+{t:'Types of Changes and Rusting',q:'Rusting of iron requires mainly:',o:['Oxygen only','Water only','Oxygen and moisture','Nitrogen and sunlight'],a:2},
+{t:'Types of Changes and Rusting',q:'Which method protects iron from rusting by providing a protective zinc coating?',o:['Galvanisation','Distillation','Crystallisation','Winnowing'],a:0},
+{t:'Types of Changes and Rusting',q:'Painting an iron object prevents rusting mainly because paint:',o:['Increases the iron content','Prevents contact with air and moisture','Converts iron into a non-metal','Removes oxygen from iron permanently'],a:1},
+{t:'Types of Changes and Rusting',q:'Which condition would generally make iron rust faster?',o:['Dry air','Complete absence of oxygen','Moist air containing oxygen','Coating with oil'],a:2},
+{t:'Waves and Sound',q:'In a transverse wave, particles of the medium vibrate:',o:['Parallel to the direction of wave propagation','Perpendicular to the direction of wave propagation','Only upward','Only downward'],a:1},
+{t:'Waves and Sound',q:'In a longitudinal wave, particles vibrate:',o:['Perpendicular to wave motion','Parallel to wave motion','In circular paths only','Without transferring energy'],a:1},
+{t:'Waves and Sound',q:'Sound travelling through air is an example of:',o:['Transverse mechanical wave','Longitudinal mechanical wave','Electromagnetic transverse wave','Static wave'],a:1},
+{t:'Waves and Sound',q:'Which pair correctly represents a longitudinal wave feature?',o:['Crest and trough','Compression and rarefaction','Peak and valley only','Node and antinode only'],a:1},
+{t:'Nutrition and Deficiency Diseases',q:'A child has poor vision in dim light. Deficiency of which vitamin is most likely involved?',o:['Vitamin A','Vitamin C','Vitamin D','Vitamin K'],a:0},
+{t:'Nutrition and Deficiency Diseases',q:'Which deficiency is associated with scurvy?',o:['Vitamin A','Vitamin B','Vitamin C','Vitamin D'],a:2},
+{t:'Nutrition and Deficiency Diseases',q:'Rickets is mainly associated with deficiency of:',o:['Vitamin A','Vitamin C','Vitamin D','Vitamin B12'],a:2},
+{t:'Nutrition and Deficiency Diseases',q:'A person suffering from anaemia may have a deficiency of:',o:['Iron','Iodine','Calcium','Sodium'],a:0},
+{t:'Nutrition and Deficiency Diseases',q:'Goitre is commonly associated with deficiency of:',o:['Iron','Iodine','Calcium','Potassium'],a:1},
+{t:'Nutrition and Deficiency Diseases',q:'Which pair is incorrectly matched?',o:['Vitamin C - Scurvy','Vitamin D - Rickets','Iodine - Goitre','Iron - Night blindness'],a:3},
+{t:'Nutrition and Deficiency Diseases',q:'Which combination would be most useful in preventing iron-deficiency anaemia?',o:['Iron-rich foods','Iodine-rich foods only','Vitamin D alone','Calcium supplements alone'],a:0},
+{t:'Water and Aquatic Plants',q:"Approximately what percentage of Earth's water is present in oceans and seas?",o:['50%','70%','97%','25%'],a:2},
+{t:'Water and Aquatic Plants',q:"Why is most of Earth's water not directly available for ordinary human use?",o:['Most water is frozen or saline','All water is polluted','Water cannot be transported','Water has no dissolved minerals'],a:0},
+{t:'Water and Aquatic Plants',q:"Which reservoir contains the largest proportion of Earth's freshwater?",o:['Rivers','Atmosphere','Glaciers and ice caps','Living organisms'],a:2},
+{t:'Water and Aquatic Plants',q:'Water hyacinth is scientifically known as:',o:['Eichhornia crassipes','Leishmania donovani','Plasmodium vivax','Bryophyllum pinnatum'],a:0},
+{t:'Water and Aquatic Plants',q:'Water hyacinth is considered harmful in many water bodies mainly because it:',o:['Increases sunlight penetration','Rapidly covers the surface and reduces available oxygen','Converts freshwater into seawater','Prevents all evaporation'],a:1},
+{t:'Water and Aquatic Plants',q:'The rapid spread of water hyacinth is mainly due to:',o:['Slow seed formation only','Rapid vegetative propagation','Absence of leaves','Underground flowering'],a:1},
+{t:'Levers and Simple Machines',q:'In a first-class lever:',o:['Load is always between fulcrum and effort','Effort is always between fulcrum and load','Fulcrum lies between effort and load','Fulcrum is absent'],a:2},
+{t:'Levers and Simple Machines',q:'Which is an example of a second-class lever?',o:['Scissors','Wheelbarrow','Tweezers','Fishing rod'],a:1},
+{t:'Levers and Simple Machines',q:'Which arrangement represents a third-class lever?',o:['Fulcrum - Load - Effort','Fulcrum - Effort - Load','Load - Fulcrum - Effort','Effort - Load - Fulcrum'],a:1},
+{t:'Levers and Simple Machines',q:'A pair of scissors is generally classified as:',o:['First-class lever','Second-class lever','Third-class lever','Not a lever'],a:0},
+{t:'Diseases and Human Health',q:'Which of the following is a congenital disease/condition?',o:['Cholera','Haemophilia','Malaria','Typhoid'],a:1},
+{t:'Diseases and Human Health',q:'Which statement is correct?',o:['Ringworm is caused by a worm','Malaria is caused by a mosquito','Malaria is caused by Plasmodium and transmitted by a mosquito','Kala-azar is caused by a bacterium'],a:2},
+{t:'Diseases and Human Health',q:'Which pair is correctly matched?',o:['Kala-azar - Leishmania','Taeniasis - Roundworm','Ascariasis - Tapeworm','Scabies - Bacterium'],a:0},
+{t:'Diseases and Human Health',q:'Consider the following statements: 1. Bacteria are prokaryotic organisms. 2. Protozoans are generally unicellular eukaryotes. 3. Ringworm is caused by a fungus. 4. A vector is always the causative organism of a disease. Which option is correct?',o:['Only 1 and 2','Only 1, 2 and 3','Only 2, 3 and 4','All four'],a:1}
+];
+
+const TIME_LIMIT_SECONDS = 5400;
+let startDate = new Date(), startPerf = performance.now(), timerInterval, submitted = false;
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+const letters = ['A','B','C','D'];
+QUESTIONS.forEach((item, qi) => {
+  const block = document.createElement('div'); block.className = 'question'; block.dataset.qi = qi;
+  block.innerHTML = `<div class="q-head"><span class="q-num">Q${qi + 1}.</span><span class="q-text">${item.q}</span></div>`;
+  const options = document.createElement('div'); options.className = 'options';
+  item.o.forEach((option, oi) => { options.innerHTML += `<label class="opt"><input type="radio" name="q${qi}" value="${oi}"><span class="bubble">${letters[oi]}</span><span class="opt-text">${option}</span></label>`; });
+  block.appendChild(options); block.innerHTML += `<div class="answer-note" id="note-${qi}"></div>`; root.appendChild(block);
+});
+function updateProgress(){ const count = new Set([...document.querySelectorAll('input:checked')].map(input => input.name)).size; document.getElementById('progress-bar-fill').style.width = `${count / QUESTIONS.length * 100}%`; document.getElementById('progress-label').textContent = `${count} / ${QUESTIONS.length} answered`; }
+root.addEventListener('change', updateProgress); updateProgress();
+function formatClock(seconds){ const value = Math.max(0, Math.round(seconds)); return `${String(Math.floor(value / 60)).padStart(2,'0')}:${String(value % 60).padStart(2,'0')}`; }
+timerInterval = setInterval(() => { const remaining = TIME_LIMIT_SECONDS - (performance.now() - startPerf) / 1000; document.getElementById('timer-clock').textContent = formatClock(remaining); if(remaining <= 300) document.getElementById('timer-clock').classList.add('low'); if(remaining <= 0){ clearInterval(timerInterval); if(!submitted) handleSubmit(true); } }, 250);
+function handleSubmit(autoSubmitted){
+  if(submitted) return; submitted = true; clearInterval(timerInterval); let score = 0, byTopic = {};
+  QUESTIONS.forEach((item, qi) => { byTopic[item.t] = byTopic[item.t] || {correct:0,total:0}; byTopic[item.t].total++; const selected = document.querySelector(`input[name="q${qi}"]:checked`); const selectedIndex = selected ? Number(selected.value) : null; const labels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`); labels[item.a].classList.add('correct-answer'); const note = document.getElementById(`note-${qi}`); if(selectedIndex === item.a){ score++; byTopic[item.t].correct++; note.textContent = 'Correct'; } else { if(selectedIndex !== null) labels[selectedIndex].classList.add('wrong-answer'); note.textContent = selectedIndex === null ? 'Not answered' : 'Correct answer highlighted in green'; note.classList.add('miss'); } note.classList.add('show'); });
+  const pct = Math.round(score / QUESTIONS.length * 100); document.getElementById('score-readout').innerHTML = `Score: <b>${score} / 100</b> marks (${pct}%)`; document.getElementById('submit-btn').disabled = true;
+  let rows = Object.keys(byTopic).sort().map(topic => `<tr><td>${topic}</td><td>${byTopic[topic].correct} / ${byTopic[topic].total}</td><td>${Math.round(byTopic[topic].correct / byTopic[topic].total * 100)}%</td></tr>`).join(''); document.getElementById('breakdown').innerHTML = `<h3>Topic-wise breakdown</h3><table><tr><th>Topic</th><th>Correct</th><th>Score</th></tr>${rows}<tr><td>Total</td><td>${score} / 100</td><td>${pct}%</td></tr></table>`; document.getElementById('breakdown').classList.add('show');
+  const endDate = new Date(), duration = Math.round((endDate - startDate) / 1000); document.getElementById('result-timestamps').innerHTML = `Date: <b>${startDate.toLocaleDateString()}</b> &nbsp;&middot;&nbsp; Start: <b>${startDate.toLocaleTimeString()}</b> &nbsp;&middot;&nbsp; End: <b>${endDate.toLocaleTimeString()}</b> &nbsp;&middot;&nbsp; Duration: <b>${Math.floor(duration / 60)}m ${duration % 60}s</b>`; document.getElementById('result-timestamps').classList.add('show');
+  const banner = document.getElementById('result-banner'); banner.textContent = autoSubmitted ? `Time's up - test auto-submitted. ${score} out of 100 marks.` : `${score} out of 100 marks. Review the topic-wise breakdown below.`; banner.classList.add('show'); banner.scrollIntoView({behavior:'smooth',block:'center'});
+}
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>
