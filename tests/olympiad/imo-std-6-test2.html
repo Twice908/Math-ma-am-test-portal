@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — IMO Class 6 · Squares &amp; Triangles + Equations Mock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">International Mathematics Olympiad · Topic Practice</p>
+    <h1>IMO Class 6 — Squares &amp; Triangles + Equations</h1>
+    <p class="subtitle">Standard VI · English Medium · Questions 1–50 · Higher-level Olympiad practice</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Total marks: <b>70</b></span>
+      <span>Achievers: <b>3 marks each</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>60:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> This mock is a focused topic paper covering two areas — <b>Squares &amp; Triangles</b> and
+    <b>Equations</b> — in three sections: <b>Section 1 — Squares &amp; Triangles (Q1–20)</b>,
+    <b>Section 2 — Equations (Q21–40)</b> and the <b>Achievers Section (Q41–50)</b>. The first two sections carry
+    <b>1 mark</b> per question (40 marks); the Achievers Section carries <b>3 marks</b> per question (30 marks),
+    giving <b>70 marks</b> from 50 questions. There is <b>no negative marking</b>, so attempt every question.
+    Select one option per question by tapping its bubble. The timer started as soon as this page loaded. When
+    you're ready, tap <b>Check My Score</b> at the bottom — correct answers turn green and any option you picked
+    incorrectly turns red. The test auto-submits when the timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">60:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   QUESTION DATA — Topic paper: Squares & Triangles (Q1-20, 1 mark),
+   Equations (Q21-40, 1 mark), Achievers/HOTS mixed (Q41-50, 3 marks)
+     Section 1  Squares & Triangles   20 Q x 1 mark = 20
+     Section 2  Equations             20 Q x 1 mark = 20
+     Section 3  Achievers Section     10 Q x 3 marks = 30
+                                       --------------------
+                                       50 Q            70 marks
+   ===================================================================== */
+const QUESTIONS = [
+
+/* ---------- SECTION 1 — SQUARES & TRIANGLES · Q1-20 · 1 mark ---------- */
+
+{section:{title:"Section 1 — Squares & Triangles", note:"Questions 1 to 20 · 1 mark each · 20 marks"}, marks:1,
+ q:"The perimeter of a square is <b>48 cm</b>. Find its area.",
+ opts:["121 cm²","196 cm²","144 cm²","169 cm²"], correct:2},
+
+{marks:1, q:"The area of a square is <b>169 cm²</b>. Find its perimeter.",
+ opts:["52 cm","44 cm","56 cm","48 cm"], correct:0},
+
+{marks:1, q:"The diagonal of a square is <b>8√2 cm</b>. Find its area.",
+ opts:["32 cm²","128 cm²","16 cm²","64 cm²"], correct:3},
+
+{marks:1, q:"The diagonal of a square is <b>10√2 cm</b>. Find its perimeter.",
+ opts:["80 cm","40 cm","20 cm","100 cm"], correct:1},
+
+{marks:1, q:"The side of a square is increased by <b>50%</b>. Find the percentage increase in its area.",
+ opts:["50%","100%","150%","125%"], correct:3},
+
+{marks:1, q:"The side of a square is decreased by <b>25%</b>. Find the percentage decrease in its area.",
+ opts:["43.75%","25%","50%","37.5%"], correct:0},
+
+{marks:1, q:"A square field has an area of <b>2500 m²</b>. Find the cost of fencing it at <b>₹15</b> per metre.",
+ opts:["₹2,500","₹3,000","₹3,500","₹4,000"], correct:1},
+
+{marks:1, q:"The perimeter of an equilateral triangle is <b>45 cm</b>. Find its side.",
+ opts:["15 cm","9 cm","13.5 cm","22.5 cm"], correct:0},
+
+{marks:1, q:"Two sides of a triangle are <b>6 cm</b> and <b>10 cm</b>. Between which values must the third side lie?",
+ opts:["3 and 17","5 and 15","4 and 16","6 and 10"], correct:2},
+
+{marks:1, q:"In a triangle, the angles are <b>(x+10)°, (2x)°</b> and <b>(3x−10)°</b>. Find x.",
+ opts:["25","40","35","30"], correct:3},
+
+{marks:1, q:"The angles of a triangle are in the ratio <b>3 : 4 : 5</b>. Find the smallest angle.",
+ opts:["60°","45°","75°","30°"], correct:1},
+
+{marks:1, q:"In an isosceles triangle, the vertex angle is <b>50°</b>. Find each base angle.",
+ opts:["70°","55°","65°","60°"], correct:2},
+
+{marks:1, q:"The legs of a right triangle are <b>9 cm</b> and <b>12 cm</b>. Find the hypotenuse.",
+ opts:["21 cm","18 cm","13 cm","15 cm"], correct:3},
+
+{marks:1, q:"The hypotenuse of a right triangle is <b>13 cm</b> and one leg is <b>5 cm</b>. Find the other leg.",
+ opts:["12 cm","8 cm","18 cm","14 cm"], correct:0},
+
+{marks:1, q:"A square and an equilateral triangle have equal perimeters. If the side of the square is <b>15 cm</b>, find the side of the triangle.",
+ opts:["15 cm","20 cm","18 cm","22.5 cm"], correct:1},
+
+{marks:1, q:"If the side of a square is doubled, by what factor does its area increase?",
+ opts:["2","3","4","8"], correct:2},
+
+{marks:1, q:"The area of an equilateral triangle is given by <b>(√3/4) × side²</b>. Find the area of an equilateral triangle of side <b>8 cm</b>.",
+ opts:["32√3 cm²","8√3 cm²","64√3 cm²","16√3 cm²"], correct:3},
+
+{marks:1, q:"A square has the same area as a rectangle of length <b>25 cm</b> and breadth <b>16 cm</b>. Find the side of the square.",
+ opts:["20 cm","18 cm","22 cm","25 cm"], correct:0},
+
+{marks:1, q:"Both diagonals of a square are drawn. How many triangles (of all sizes) are formed in total in the figure?",
+ opts:["4","8","6","10"], correct:1},
+
+{marks:1, q:"A triangular garden has sides <b>20 m, 21 m, 29 m</b> and is a right triangle. Find its area.",
+ opts:["200 m²","220 m²","210 m²","190 m²"], correct:2},
+
+/* ---------- SECTION 2 — EQUATIONS · Q21-40 · 1 mark ---------- */
+
+{section:{title:"Section 2 — Equations", note:"Questions 21 to 40 · 1 mark each · 20 marks"}, marks:1,
+ q:"Solve: <b>3x + 7 = 22</b>",
+ opts:["6","5","7","4"], correct:1},
+
+{marks:1, q:"Solve: <b>5(x − 2) = 3x + 4</b>",
+ opts:["6","8","7","9"], correct:2},
+
+{marks:1, q:"If <b>2x/3 − 1 = 5</b>, find x.",
+ opts:["9","6","12","8"], correct:0},
+
+{marks:1, q:"The sum of two numbers is <b>45</b> and their difference is <b>9</b>. Find the larger number.",
+ opts:["18","24","25","27"], correct:3},
+
+{marks:1, q:"Three times a number decreased by 8 equals 25. Find the number.",
+ opts:["9","11","10","12"], correct:1},
+
+{marks:1, q:"A number is 5 more than another number. Their sum is 37. Find the <b>smaller</b> number.",
+ opts:["18","21","16","15"], correct:2},
+
+{marks:1, q:"If <b>x/4 + x/6 = 10</b>, find x.",
+ opts:["24","20","18","30"], correct:0},
+
+{marks:1, q:"The perimeter of a rectangle is <b>54 cm</b>. The length is 3 cm more than the breadth. Find the breadth.",
+ opts:["9 cm","12 cm","15 cm","13 cm"], correct:1},
+
+{marks:1, q:"A father's age is 4 times his son's age. After 5 years, the father's age will be 3 times the son's age then. Find the son's present age.",
+ opts:["12 years","15 years","10 years","8 years"], correct:2},
+
+{marks:1, q:"The sum of three consecutive <b>even</b> numbers is 90. Find the largest number.",
+ opts:["32","30","34","28"], correct:0},
+
+{marks:1, q:"Solve: <b>7x − 4 = 4x + 17</b>",
+ opts:["6","9","8","7"], correct:3},
+
+{marks:1, q:"Twice a number added to 15 gives 35. Find the number.",
+ opts:["12","10","8","15"], correct:1},
+
+{marks:1, q:"A number when multiplied by 6 and increased by 9 gives 63. Find the number.",
+ opts:["8","7","9","10"], correct:2},
+
+{marks:1, q:"If <b>(x + 3)/5 = 4</b>, find x.",
+ opts:["17","15","20","12"], correct:0},
+
+{marks:1, q:"The length of a rectangle is twice its breadth. If the perimeter is <b>60 cm</b>, find the length.",
+ opts:["15 cm","25 cm","30 cm","20 cm"], correct:3},
+
+{marks:1, q:"Solve: <b>3(x + 4) = 5(x − 2)</b>",
+ opts:["9","11","10","12"], correct:1},
+
+{marks:1, q:"A number decreased by 7 equals 3 times the number decreased by 27. Find the number.",
+ opts:["12","8","10","15"], correct:2},
+
+{marks:1, q:"If <b>x + (x+1) + (x+2) = 42</b>, find x.",
+ opts:["13","12","14","15"], correct:0},
+
+{marks:1, q:"Half of a number added to one-third of the same number gives 25. Find the number.",
+ opts:["25","36","45","30"], correct:3},
+
+{marks:1, q:"If <b>x + 2(x+1) = 38</b>, find the smaller number, x.",
+ opts:["13","12","11","14"], correct:1},
+
+/* ---------- SECTION 3 — ACHIEVERS SECTION / HOTS · Q41-50 · 3 marks ---------- */
+
+{section:{title:"Section 3 — Achievers Section", note:"Questions 41 to 50 · 3 marks each · 30 marks · Higher order thinking", achievers:true}, marks:3,
+ q:"The side of a square is <b>(2x + 3) cm</b> and its perimeter is <b>60 cm</b>. Find x.",
+ opts:["5","7","6","8"], correct:2},
+
+{marks:3, q:"The angles of a triangle are <b>x°, 2x°</b> and <b>(3x − 30)°</b>. Find the largest angle.",
+ opts:["75°","70°","80°","65°"], correct:0},
+
+{marks:3, q:"The area of a square exceeds the area of another square by <b>39 cm²</b>. Their sides differ by 3 cm. Find the side of the smaller square.",
+ opts:["6 cm","4 cm","7 cm","5 cm"], correct:3},
+
+{marks:3, q:"A rectangular field's length is 4 m more than 3 times its breadth. If the perimeter is <b>96 m</b>, find the breadth.",
+ opts:["10 m","11 m","12 m","9 m"], correct:1},
+
+{marks:3, q:"Twice the square of a number is <b>50</b>. Find the positive value of the number.",
+ opts:["25","10","5","7"], correct:2},
+
+{marks:3, q:"In an isosceles triangle, the equal sides are each <b>(3x − 2) cm</b> and the base is <b>(2x + 5) cm</b>. If the perimeter is <b>49 cm</b>, find the base.",
+ opts:["17 cm","16 cm","15 cm","18 cm"], correct:0},
+
+{marks:3, q:"The diagonal of a square field is <b>24√2 m</b>. The field is cut along this diagonal to form a triangular garden. Find the area of the triangular garden.",
+ opts:["576 m²","144 m²","432 m²","288 m²"], correct:3},
+
+{marks:3, q:"The perimeter of an equilateral triangle equals the perimeter of a square of side <b>18 cm</b>. Find the side of the triangle.",
+ opts:["18 cm","24 cm","20 cm","22 cm"], correct:1},
+
+{marks:3, q:"The sum of the ages of a father and son is <b>56 years</b>. Four years ago, the father's age was 5 times the son's age. Find the son's present age.",
+ opts:["10 years","14 years","12 years","16 years"], correct:2},
+
+{marks:3, q:"The sides of a triangle are <b>(x+2), (x+4)</b> and <b>(2x−2) cm</b>. If the perimeter is <b>40 cm</b>, find the largest side.",
+ opts:["16 cm","13 cm","11 cm","18 cm"], correct:0}
+];
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 3600;   /* 60 minutes */
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+const TOTAL_MARKS = QUESTIONS.reduce((t,q) => t + q.marks, 0);
+
+/* =====================================================================
+   RENDER QUESTIONS
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+let currentSection = null;
+const sectionOf = [];
+
+QUESTIONS.forEach((item, qi) => {
+  if(item.section){
+    const sec = document.createElement('div');
+    sec.className = 'section-divider' + (item.section.achievers ? ' achievers' : '');
+    sec.innerHTML = `<h2>${item.section.title}</h2><p>${item.section.note}</p>`;
+    root.appendChild(sec);
+    currentSection = item.section.title;
+  }
+  sectionOf[qi] = currentSection;
+
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  if(item.marks === 3){
+    const tag = document.createElement('div');
+    tag.className = 'marks-tag';
+    tag.textContent = '3 marks';
+    block.appendChild(tag);
+  }
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 300){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING — weighted: 1 mark for Sections 1-2, 3 marks for Achievers.
+   No negative marking. Nothing is saved anywhere.
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let correctCount = 0;
+  let marks = 0;
+  const bySection = {};
+
+  QUESTIONS.forEach((item, qi) => {
+    const sec = sectionOf[qi];
+    if(!bySection[sec]) bySection[sec] = {correct:0, total:0, marks:0, maxMarks:0};
+    bySection[sec].total++;
+    bySection[sec].maxMarks += item.marks;
+
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selIdx = selected ? parseInt(selected.value,10) : null;
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    optLabels[item.correct].classList.add('correct-answer');
+
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+
+    if(selIdx === item.correct){
+      correctCount++;
+      marks += item.marks;
+      bySection[sec].correct++;
+      bySection[sec].marks += item.marks;
+      note.textContent = `✓ Correct — +${item.marks} mark${item.marks > 1 ? 's' : ''}`;
+    } else {
+      if(selIdx !== null) optLabels[selIdx].classList.add('wrong-answer');
+      note.textContent = selIdx === null
+        ? '— Not answered'
+        : '✗ Correct answer highlighted in green';
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const pct = Math.round(marks/TOTAL_MARKS*100);
+  document.getElementById('score-readout').innerHTML =
+    `Score: <b>${marks} / ${TOTAL_MARKS}</b> marks &nbsp;·&nbsp; ${correctCount} of ${total} correct (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  let rows = '';
+  Object.keys(bySection).forEach(sec => {
+    const d = bySection[sec];
+    rows += `<tr><td>${sec.replace(/^Section \d+ — /,'')}</td><td>${d.correct} / ${d.total}</td><td>${d.marks} / ${d.maxMarks}</td></tr>`;
+  });
+  rows += `<tr><td>Total</td><td>${correctCount} / ${total}</td><td>${marks} / ${TOTAL_MARKS}</td></tr>`;
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = `<h3>Section-wise breakdown</h3>
+    <table><tr><th>Section</th><th>Correct</th><th>Marks</th></tr>${rows}</table>`;
+  bd.classList.add('show');
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${marks} out of ${TOTAL_MARKS} marks. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${marks} out of ${TOTAL_MARKS} marks. Scroll up to review any marked in red.`
+        : `${marks} out of ${TOTAL_MARKS} marks. Scroll through to review the green highlights — worth another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>

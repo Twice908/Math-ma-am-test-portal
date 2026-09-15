@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Light and Reflection of Light</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Physics — Light and Reflection of Light</h1>
+    <p class="subtitle">Standard VI · English Medium · Questions 1–50 · Std 5–8 syllabus, mid-to-hard difficulty</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>50</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>45:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> A focused topic test covering <b>Light and Reflection of Light</b> only — natural and
+    artificial sources of light, rectilinear propagation of light, shadows, eclipses and the pinhole camera,
+    the laws of reflection and the terms related to them, images formed by plane mirrors including lateral
+    inversion, and the properties and everyday uses of concave and convex mirrors. Questions are drawn from the
+    Std 5 to Std 8 syllabus and pitched <b>mid-to-hard</b> — mostly reasoning and application rather than plain
+    recall. One mark each, <b>no negative marking</b>. Select one option per question by tapping its bubble. The
+    timer started as soon as this page loaded. When you're ready, tap <b>Check My Score</b> — correct answers
+    turn green, wrong picks turn red, and you'll get a breakdown by sub-topic. The test auto-submits when the
+    timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">45:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   QUESTION DATA — Topic Practice: Light and Reflection of Light (Physics)
+   50 questions · 1 mark each · 45 minutes · no negative marking.
+   Std 5–8 syllabus, mid-to-hard difficulty (reasoning/application-led).
+   Each question carries a `topic` used only for the sub-topic breakdown.
+   ===================================================================== */
+const QUESTIONS = [
+
+/* ---------- Sources & Nature of Light ---------- */
+
+{topic:"Sources & Nature of Light", q:"Which of the following is a natural source of light?",
+ opts:["Candle","Sun","Torch","Bulb"], correct:1},
+
+{topic:"Sources & Nature of Light", q:"Light travels in a:",
+ opts:["Curved path","Zigzag path","Straight line","Circular path"], correct:2},
+
+{topic:"Sources & Nature of Light", q:"The speed of light in vacuum is approximately:",
+ opts:["3×10^5 km/s","3×10^8 m/s","3×10^3 m/s","Both a and b are correct"], correct:3},
+
+{topic:"Sources & Nature of Light", q:"A shadow is formed because light:",
+ opts:["Bends around objects","Cannot pass through opaque objects","Gets absorbed completely by air","Travels in curved paths"], correct:1},
+
+{topic:"Sources & Nature of Light", q:"Which of these is a luminous object?",
+ opts:["Moon","Mirror","Burning candle","Book"], correct:2},
+
+{topic:"Sources & Nature of Light", q:"During a solar eclipse, the shadow of which body falls on Earth?",
+ opts:["Sun","Moon","Mars","Venus"], correct:1},
+
+{topic:"Sources & Nature of Light", q:"A pinhole camera works on the principle that light travels:",
+ opts:["In a circular path","In a straight line","In a wave-like path","Only during daytime"], correct:1},
+
+{topic:"Sources & Nature of Light", q:"The image formed by a pinhole camera is:",
+ opts:["Erect and same size","Inverted and smaller","Inverted and real","Both b and c"], correct:3},
+
+{topic:"Sources & Nature of Light", q:"Why can we not see objects in a completely dark room?",
+ opts:["Objects lose their colour in the dark","There is no light to reflect off the objects into our eyes","Our eyes stop working in the dark","Objects become transparent"], correct:1},
+
+{topic:"Sources & Nature of Light", q:"Which of the following is a non-luminous object?",
+ opts:["The Sun","A burning matchstick","The Moon","A firefly"], correct:2},
+
+/* ---------- Reflection Basics & Laws ---------- */
+
+{topic:"Reflection Basics & Laws", q:"The ray of light that falls on a mirror is called the:",
+ opts:["Normal","Reflected ray","Incident ray","Refracted ray"], correct:2},
+
+{topic:"Reflection Basics & Laws", q:"The imaginary line drawn perpendicular to the mirror at the point of incidence is called the:",
+ opts:["Incident ray","Normal","Reflected ray","Axis"], correct:1},
+
+{topic:"Reflection Basics & Laws", q:"The angle between the incident ray and the normal is called the:",
+ opts:["Angle of reflection","Angle of incidence","Angle of deviation","Critical angle"], correct:1},
+
+{topic:"Reflection Basics & Laws", q:"According to the laws of reflection, the angle of incidence is:",
+ opts:["Always greater than the angle of reflection","Always less than the angle of reflection","Always equal to the angle of reflection","Not related to the angle of reflection"], correct:2},
+
+{topic:"Reflection Basics & Laws", q:"The incident ray, the reflected ray, and the normal all lie:",
+ opts:["On opposite sides of the mirror","In the same plane","At 90 degrees to each other always","In different planes"], correct:1},
+
+{topic:"Reflection Basics & Laws", q:"If a ray of light falls on a mirror exactly along the normal, the angle of incidence is:",
+ opts:["90 degrees","45 degrees","0 degrees","180 degrees"], correct:2},
+
+{topic:"Reflection Basics & Laws", q:"If the angle of incidence is 35 degrees, what is the angle of reflection?",
+ opts:["35 degrees","55 degrees","70 degrees","90 degrees"], correct:0},
+
+{topic:"Reflection Basics & Laws", q:"If a ray strikes a plane mirror at an angle of incidence of 40 degrees, the angle between the incident ray and the mirror surface is:",
+ opts:["40 degrees","50 degrees","90 degrees","130 degrees"], correct:1},
+
+{topic:"Reflection Basics & Laws", q:"Which surface produces regular (clear) reflection?",
+ opts:["A rough wall","A polished mirror","A piece of paper","A cloth surface"], correct:1},
+
+{topic:"Reflection Basics & Laws", q:"Reflection from a rough surface, where parallel rays scatter in different directions, is called:",
+ opts:["Regular reflection","Diffuse reflection","Total reflection","Specular reflection"], correct:1},
+
+/* ---------- Plane Mirrors & Images ---------- */
+
+{topic:"Plane Mirrors & Images", q:"The image formed by a plane mirror is:",
+ opts:["Real and inverted","Virtual and erect","Real and erect","Virtual and inverted"], correct:1},
+
+{topic:"Plane Mirrors & Images", q:"In a plane mirror, the image distance from the mirror is:",
+ opts:["Twice the object distance","Half the object distance","Equal to the object distance","Always fixed at 1 metre"], correct:2},
+
+{topic:"Plane Mirrors & Images", q:"The left-right reversal seen in a plane mirror image is called:",
+ opts:["Magnification","Lateral inversion","Diffusion","Refraction"], correct:1},
+
+{topic:"Plane Mirrors & Images", q:"The word AMBULANCE is often written mirror-reversed on the front of a vehicle so that:",
+ opts:["It looks more attractive","Drivers ahead can read it correctly in their rear-view mirrors","It saves paint","It confuses other drivers"], correct:1},
+
+{topic:"Plane Mirrors & Images", q:"If you stand 2 metres in front of a plane mirror, your image appears to be:",
+ opts:["1 metre behind the mirror","2 metres behind the mirror","4 metres behind the mirror","At the surface of the mirror"], correct:1},
+
+{topic:"Plane Mirrors & Images", q:"How many images are formed when two plane mirrors are placed at 90 degrees to each other?",
+ opts:["1","2","3","4"], correct:2},
+
+{topic:"Plane Mirrors & Images", q:"Two plane mirrors placed parallel and facing each other will produce:",
+ opts:["Only 2 images","No images at all","A large but finite number of images","Exactly 4 images always"], correct:2},
+
+{topic:"Plane Mirrors & Images", q:"A kaleidoscope, a popular toy, works using:",
+ opts:["A single concave mirror","Multiple plane mirrors arranged at an angle","A convex lens","A prism only"], correct:1},
+
+{topic:"Plane Mirrors & Images", q:"Periscopes used in submarines use plane mirrors placed at:",
+ opts:["30 degrees","45 degrees","60 degrees","90 degrees"], correct:1},
+
+{topic:"Plane Mirrors & Images", q:"If the angle between two plane mirrors is reduced, the number of images formed:",
+ opts:["Decreases","Increases","Stays the same","Becomes zero"], correct:1},
+
+/* ---------- Curved Mirrors ---------- */
+
+{topic:"Curved Mirrors", q:"A mirror whose reflecting surface is curved inward (like the inside of a spoon) is called a:",
+ opts:["Convex mirror","Concave mirror","Plane mirror","Cylindrical mirror"], correct:1},
+
+{topic:"Curved Mirrors", q:"A mirror whose reflecting surface bulges outward is called a:",
+ opts:["Concave mirror","Convex mirror","Plane mirror","Parabolic mirror"], correct:1},
+
+{topic:"Curved Mirrors", q:"Concave mirrors are also called:",
+ opts:["Diverging mirrors","Converging mirrors","Flat mirrors","Diffusing mirrors"], correct:1},
+
+{topic:"Curved Mirrors", q:"Convex mirrors are also called:",
+ opts:["Converging mirrors","Diverging mirrors","Focusing mirrors","Concentrating mirrors"], correct:1},
+
+{topic:"Curved Mirrors", q:"Which type of mirror is used by dentists to see an enlarged image of teeth?",
+ opts:["Plane mirror","Convex mirror","Concave mirror","Cylindrical mirror"], correct:2},
+
+{topic:"Curved Mirrors", q:"Which type of mirror is commonly used as a side mirror in cars and motorbikes to give a wider field of view?",
+ opts:["Concave mirror","Convex mirror","Plane mirror","Cylindrical mirror"], correct:1},
+
+{topic:"Curved Mirrors", q:"Convex mirrors are preferred for vehicle side mirrors mainly because they:",
+ opts:["Form larger images than plane mirrors","Give a wider field of view, helping the driver see more of the road behind","Are cheaper to manufacture than plane mirrors","Always form inverted images"], correct:1},
+
+{topic:"Curved Mirrors", q:"Concave mirrors are used in torches and headlights mainly to:",
+ opts:["Diverge light rays widely in all directions","Converge and focus light rays into a powerful parallel beam","Reduce the brightness of the bulb","Reverse the direction of light only"], correct:1},
+
+{topic:"Curved Mirrors", q:"Solar cookers use concave mirrors because they can:",
+ opts:["Spread sunlight over a wide area to cool food","Converge sunlight to a focal point, concentrating heat","Reflect sunlight away from the cooking vessel","Change sunlight into a different colour"], correct:1},
+
+{topic:"Curved Mirrors", q:"Which mirror is used by ENT doctors as a head mirror to focus light into a patient's ear, nose, or throat?",
+ opts:["Plane mirror","Convex mirror","Concave mirror","Cylindrical mirror"], correct:2},
+
+{topic:"Curved Mirrors", q:"Large convex mirrors are often installed at blind turns on hilly roads because they:",
+ opts:["Show a magnified image of approaching vehicles","Allow drivers to see a wide area and spot vehicles coming from the other side","Block sunlight from oncoming vehicles","Work only at night"], correct:1},
+
+{topic:"Plane Mirrors & Images", q:"A ray of light strikes a plane mirror at an angle of incidence of 25 degrees. If the mirror is rotated by 10 degrees while the incident ray stays fixed, the new angle of incidence becomes:",
+ opts:["15 degrees","25 degrees","35 degrees","45 degrees"], correct:2},
+
+{topic:"Plane Mirrors & Images", q:"In the situation above, the reflected ray rotates by:",
+ opts:["5 degrees","10 degrees","20 degrees","It does not rotate at all"], correct:2},
+
+{topic:"Plane Mirrors & Images", q:"A student places a pencil in front of a plane mirror and notices the image is exactly as far behind the mirror as the pencil is in front of it. This shows that in a plane mirror:",
+ opts:["Image distance is always greater than object distance","Image distance equals object distance","The image is always smaller than the object","No image is formed unless the pencil touches the mirror"], correct:1},
+
+{topic:"Plane Mirrors & Images", q:"To see your full height in a plane mirror, the minimum length of mirror required is:",
+ opts:["Equal to your full height","Half your height","Twice your height","One-fourth your height"], correct:1},
+
+{topic:"Curved Mirrors", q:"A ray of light travelling parallel to the principal axis, after reflecting from a concave mirror, passes through:",
+ opts:["The pole of the mirror","The centre of curvature","The focus of the mirror","Infinity"], correct:2},
+
+{topic:"Curved Mirrors", q:"A dish antenna used for satellite TV reception has a curved shape similar to a:",
+ opts:["Plane mirror","Convex mirror","Concave (parabolic) reflector","Cylindrical mirror"], correct:2},
+
+{topic:"Curved Mirrors", q:"Street light reflectors behind the bulb are usually shaped like a concave mirror so that they:",
+ opts:["Scatter light randomly in all directions","Direct and spread light efficiently over the road below","Reduce the light output of the bulb","Create multiple images of the bulb"], correct:1},
+
+{topic:"Curved Mirrors", q:"A shopkeeper installs a convex mirror in the corner of the shop mainly to:",
+ opts:["Make the shop look bigger","Get a wide-angle view of the entire shop to prevent theft","Increase the brightness of the shop","Reflect sunlight onto shelves"], correct:1},
+
+{topic:"Curved Mirrors", q:"Which of the following correctly lists mirrors in order of field of view, from narrowest to widest?",
+ opts:["Convex mirror, Plane mirror, Concave mirror","Concave mirror, Plane mirror, Convex mirror","Plane mirror, Convex mirror, Concave mirror","Concave mirror, Convex mirror, Plane mirror"], correct:1}
+];
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 2700;   /* 45 minutes */
+const MARKS_PER_QUESTION  = 1;     /* 1 mark each, no negative marking */
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+/* =====================================================================
+   RENDER QUESTIONS — one continuous block, topic-focused paper
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+QUESTIONS.forEach((item, qi) => {
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  if(item.diagram){
+    const d = document.createElement('div');
+    d.className = 'diagram';
+    d.innerHTML = item.diagram;
+    block.appendChild(d);
+  }
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 120){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING — 1 mark per question, no negative marking, plus a
+   sub-topic breakdown. (No persistence — nothing is saved anywhere.)
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let score = 0;
+  const byTopic = {};
+
+  QUESTIONS.forEach((item, qi) => {
+    const t = item.topic;
+    if(!byTopic[t]) byTopic[t] = {correct:0, total:0};
+    byTopic[t].total++;
+
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selIdx = selected ? parseInt(selected.value,10) : null;
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    optLabels[item.correct].classList.add('correct-answer');
+
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+
+    if(selIdx === item.correct){
+      score++;
+      byTopic[t].correct++;
+      note.textContent = '✓ Correct';
+    } else {
+      if(selIdx !== null) optLabels[selIdx].classList.add('wrong-answer');
+      note.textContent = selIdx === null
+        ? '— Not answered'
+        : '✗ Correct answer highlighted in green';
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const marks = score * MARKS_PER_QUESTION;
+  const totalMarks = total * MARKS_PER_QUESTION;
+  const pct = Math.round(score/total*100);
+  document.getElementById('score-readout').innerHTML =
+    `Score: <b>${marks} / ${totalMarks}</b> marks (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  let rows = '';
+  Object.keys(byTopic).forEach(t => {
+    const d = byTopic[t];
+    const p = Math.round(d.correct/d.total*100);
+    rows += `<tr><td>${t}</td><td>${d.correct} / ${d.total}</td><td>${p}%</td></tr>`;
+  });
+  rows += `<tr><td>Total</td><td>${score} / ${total}</td><td>${pct}%</td></tr>`;
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = `<h3>Sub-topic breakdown</h3>
+    <table><tr><th>Sub-topic</th><th>Correct</th><th>Score</th></tr>${rows}</table>`;
+  bd.classList.add('show');
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${marks} out of ${totalMarks} marks. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${marks} out of ${totalMarks} marks. Check the sub-topic breakdown to see where to focus next.`
+        : `${marks} out of ${totalMarks} marks. Use the sub-topic breakdown below to see which area needs another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>
