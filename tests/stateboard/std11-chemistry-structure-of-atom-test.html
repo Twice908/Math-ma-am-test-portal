@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chemistry — Structure of Atom Test</title>
+
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$'], ['\\(','\\)']] },
+    chtml: { fontURL: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2' }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" id="MathJax-script" async></script>
+
+<!--
+  This HTML intentionally uses the same class names as the supplied reference:
+  wrap, header, badge, testmeta, instructions, section-header, qcard, qmeta,
+  qnum, qtopic, qtext, options, option, proverow, footer-actions, results,
+  solutions, solcard and soltext.
+
+  No CSS is duplicated here. Your existing shared stylesheet should provide
+  the styles for these classes.
+-->
+
+<style>
+  :root{
+    --bg:#faf8f5;
+    --card:#ffffff;
+    --ink:#2b2620;
+    --sub:#6b6358;
+    --accent:#8a5a3f;
+    --accent-soft:#f1e4da;
+    --line:#e7ded3;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Georgia', 'Iowan Old Style', serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.55;
+    padding:24px 16px 60px;
+  }
+  .wrap{max-width:740px;margin:0 auto;}
+  header{border-bottom:2px solid var(--accent);padding-bottom:16px;margin-bottom:24px;}
+  header h1{font-size:1.5rem;margin:0 0 4px;letter-spacing:0.3px;}
+  header p{margin:0;color:var(--sub);font-size:0.92rem;}
+  .badge{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:0.72rem;padding:3px 10px;border-radius:20px;margin-top:8px;letter-spacing:0.3px;}
+  .testmeta{display:flex;justify-content:space-between;align-items:center;background:var(--accent-soft);padding:12px 16px;border-radius:8px;margin-bottom:20px;font-size:0.9rem;color:var(--sub);}
+  .instructions{background:#fffefc;border:1px solid var(--line);border-left:3px solid var(--accent);padding:12px 16px;margin-bottom:20px;color:var(--sub);font-size:0.9rem;}
+  .section-header{background:var(--accent);color:white;padding:12px 16px;border-radius:8px;margin-top:20px;margin-bottom:12px;font-weight:bold;font-size:0.95rem;letter-spacing:0.5px;}
+  .qcard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:16px;}
+  .qmeta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+  .qnum{font-weight:bold;color:var(--accent);font-size:0.95rem;}
+  .qtopic{font-size:0.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:0.5px;}
+  .qtext{font-size:1.02rem;margin-bottom:12px;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;}
+  .option{display:flex;align-items:flex-start;gap:8px;border:1px solid var(--line);border-radius:6px;padding:8px 10px;color:var(--ink);font-size:0.95rem;cursor:pointer;}
+  .option:hover{background:var(--accent-soft);}
+  .option input{margin-top:4px;accent-color:var(--accent);}
+  textarea{width:100%;min-height:70px;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-family:'Georgia',serif;font-size:0.95rem;resize:vertical;background:#fffefc;color:var(--ink);}
+  textarea:focus{outline:2px solid var(--accent-soft);border-color:var(--accent);}
+  .proverow textarea{min-height:110px;}
+  .footer-actions{position:sticky;bottom:0;background:linear-gradient(to top,var(--bg) 70%,transparent);padding:16px 0 4px;display:flex;gap:10px;justify-content:center;}
+  button{font-family:'Georgia',serif;font-size:0.95rem;padding:12px 24px;border-radius:8px;border:none;cursor:pointer;font-weight:bold;}
+  #submitBtn{background:var(--accent);color:white;}
+  #submitBtn:hover{background:#764a33;}
+  #resetBtn{background:transparent;color:var(--sub);border:1px solid var(--line);}
+  #resetBtn:hover{background:var(--accent-soft);}
+  #results{display:none;background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:20px;margin-top:20px;text-align:center;}
+  #results h2{margin-top:0;color:var(--accent);}
+  #results .score{font-size:1.6rem;font-weight:bold;color:var(--ink);}
+  #results p{color:var(--sub);font-size:0.9rem;}
+  #solutions{display:none;margin-top:32px;}
+  #solutions > h2{border-bottom:2px solid #4a7c59;color:#4a7c59;padding-bottom:10px;}
+  .solcard{background:#e9f2ea;border:1px solid #4a7c59;border-radius:10px;padding:18px 20px;margin-bottom:14px;}
+  .solcard .qtopic{color:#4a7c59;}
+  .soltext{font-size:0.95rem;}
+  .soltext p{margin:6px 0;}
+  @media (max-width:560px){.options{grid-template-columns:1fr;}.testmeta{align-items:flex-start;gap:8px;flex-direction:column;}}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Chemistry — Structure of Atom Test</h1>
+    <p>Structure of Atom · MSBSHSE Std XI Science</p>
+    <span class="badge">All questions compulsory</span>
+  </header>
+
+  <div class="testmeta">
+    <span><strong>Time:</strong> 1 hour</span>
+    <span><strong>Total Marks:</strong> 40</span>
+  </div>
+
+  <div class="instructions">
+    <strong>Instructions:</strong> Select one option in Section A. Write complete answers and show necessary working in Sections B, C and D.
+  </div>
+
+  <form id="testForm">
+
+    <div class="section-header">Section A — Multiple Choice Questions (1 mark each) · 8 marks</div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A1</span><span class="qtopic">Subatomic Particles</span></div>
+      <div class="qtext">Which of the following subatomic particles was discovered by J. J. Thomson?</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="a1" value="a"><span>(a) Proton</span></label>
+        <label class="option"><input type="radio" name="a1" value="b"><span>(b) Neutron</span></label>
+        <label class="option"><input type="radio" name="a1" value="c"><span>(c) Electron</span></label>
+        <label class="option"><input type="radio" name="a1" value="d"><span>(d) Nucleus</span></label>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A2</span><span class="qtopic">Atomic Number</span></div>
+      <div class="qtext">The atomic number of an element is equal to the number of:</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="a2" value="a"><span>(a) Neutrons</span></label>
+        <label class="option"><input type="radio" name="a2" value="b"><span>(b) Protons</span></label>
+        <label class="option"><input type="radio" name="a2" value="c"><span>(c) Nucleons</span></label>
+        <label class="option"><input type="radio" name="a2" value="d"><span>(d) Protons + neutrons</span></label>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A3</span><span class="qtopic">Isotopes</span></div>
+      <div class="qtext">Atoms having the same atomic number but different mass numbers are called:</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="a3" value="a"><span>(a) Isobars</span></label>
+        <label class="option"><input type="radio" name="a3" value="b"><span>(b) Isotones</span></label>
+        <label class="option"><input type="radio" name="a3" value="c"><span>(c) Isotopes</span></label>
+        <label class="option"><input type="radio" name="a3" value="d"><span>(d) Isoelectronic species</span></label>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A4</span><span class="qtopic">Bohr Model</span></div>
+      <div class="qtext">According to Bohr's model, the angular momentum of an electron in a permitted orbit is:</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="a4" value="a"><span>(a) $mvr = nh$</span></label>
+        <label class="option"><input type="radio" name="a4" value="b"><span>(b) $mvr = \dfrac{nh}{2\pi}$</span></label>
+        <label class="option"><input type="radio" name="a4" value="c"><span>(c) $mvr = 2\pi nh$</span></label>
+        <label class="option"><input type="radio" name="a4" value="d"><span>(d) $mvr = \dfrac{h}{n}$</span></label>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A5</span><span class="qtopic">Hydrogen Spectrum</span></div>
+      <div class="qtext">Which hydrogen spectral series lies in the visible region?</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="a5" value="a"><span>(a) Lyman series</span></label>
+        <label class="option"><input type="radio" name="a5" value="b"><span>(b) Balmer series</span></label>
+        <label class="option"><input type="radio" name="a5" value="c"><span>(c) Paschen series</span></label>
+        <label class="option"><input type="radio" name="a5" value="d"><span>(d) Pfund series</span></label>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A6</span><span class="qtopic">Quantum Mechanical Model</span></div>
+      <div class="qtext">The maximum number of orbitals in a shell having principal quantum number $n$ is:</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="a6" value="a"><span>(a) $n$</span></label>
+        <label class="option"><input type="radio" name="a6" value="b"><span>(b) $2n$</span></label>
+        <label class="option"><input type="radio" name="a6" value="c"><span>(c) $n^2$</span></label>
+        <label class="option"><input type="radio" name="a6" value="d"><span>(d) $2n^2$</span></label>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A7</span><span class="qtopic">Atomic Orbitals</span></div>
+      <div class="qtext">The shape of an s-orbital is:</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="a7" value="a"><span>(a) Dumb-bell</span></label>
+        <label class="option"><input type="radio" name="a7" value="b"><span>(b) Spherical</span></label>
+        <label class="option"><input type="radio" name="a7" value="c"><span>(c) Double dumb-bell</span></label>
+        <label class="option"><input type="radio" name="a7" value="d"><span>(d) Linear</span></label>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">A8</span><span class="qtopic">Pauli Exclusion Principle</span></div>
+      <div class="qtext">According to Pauli's exclusion principle:</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="a8" value="a"><span>(a) An orbital can accommodate only one electron</span></label>
+        <label class="option"><input type="radio" name="a8" value="b"><span>(b) An orbital can accommodate maximum two electrons with opposite spins</span></label>
+        <label class="option"><input type="radio" name="a8" value="c"><span>(c) Electrons occupy degenerate orbitals singly before pairing</span></label>
+        <label class="option"><input type="radio" name="a8" value="d"><span>(d) Electrons always occupy the lowest shell first</span></label>
+      </div>
+    </div>
+
+    <div class="section-header">Section B — Answer in Brief (1 mark each) · 4 marks</div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">B1</span><span class="qtopic">Atomic Number &amp; Mass Number</span></div>
+      <div class="qtext">Define atomic number and mass number.</div>
+      <textarea data-qid="b1" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">B2</span><span class="qtopic">Isotones</span></div>
+      <div class="qtext">What are isotones? Give one example.</div>
+      <textarea data-qid="b2" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">B3</span><span class="qtopic">Rutherford Model</span></div>
+      <div class="qtext">State any one drawback of Rutherford's atomic model.</div>
+      <textarea data-qid="b3" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">B4</span><span class="qtopic">Atomic Orbital</span></div>
+      <div class="qtext">What is meant by an atomic orbital?</div>
+      <textarea data-qid="b4" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="section-header">Section C — Short Answer Questions (2 marks each) · 16 marks</div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">C1</span><span class="qtopic">Subatomic Particles</span></div>
+      <div class="qtext">State the relative charges and approximate relative masses of an electron, proton and neutron.</div>
+      <textarea data-qid="c1" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">C2</span><span class="qtopic">Atomic Structure</span></div>
+      <div class="qtext">An atom is represented as $^{35}_{17}Cl$. Calculate the number of:<br>1. Protons<br>2. Electrons<br>3. Neutrons</div>
+      <textarea data-qid="c2" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">C3</span><span class="qtopic">Isotopes and Isobars</span></div>
+      <div class="qtext">Distinguish between isotopes and isobars with one example each.</div>
+      <textarea data-qid="c3" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">C4</span><span class="qtopic">Rutherford Model</span></div>
+      <div class="qtext">Explain why Rutherford's atomic model could not account for the stability of an atom.</div>
+      <textarea data-qid="c4" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">C5</span><span class="qtopic">Bohr Model</span></div>
+      <div class="qtext">State the main postulates of Bohr's atomic model for hydrogen atom.</div>
+      <textarea data-qid="c5" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">C6</span><span class="qtopic">Bohr Model</span></div>
+      <div class="qtext">Calculate the energy of an electron in the first orbit of a hydrogen atom using:<br><br>$E_n=-\dfrac{2.18\times10^{-18}}{n^2}\;J$</div>
+      <textarea data-qid="c6" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">C7</span><span class="qtopic">de Broglie Relationship</span></div>
+      <div class="qtext">State de Broglie's relationship and explain the meaning of the terms used in it.</div>
+      <textarea data-qid="c7" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">C8</span><span class="qtopic">Quantum Numbers</span></div>
+      <div class="qtext">For an electron in a <strong>3p orbital</strong>, write the possible values of:<br>1. Principal quantum number $n$<br>2. Azimuthal quantum number $l$<br>3. Possible values of magnetic quantum number $m_l$</div>
+      <textarea data-qid="c8" placeholder="Your answer..."></textarea>
+    </div>
+
+    <div class="section-header">Section D — Long Answer Questions (3 marks each) · 12 marks</div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">D1</span><span class="qtopic">Subatomic Particles</span></div>
+      <div class="qtext">Explain the discovery of electron, proton and neutron with reference to the experiments involved.</div>
+      <textarea data-qid="d1" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">D2</span><span class="qtopic">Bohr Model</span></div>
+      <div class="qtext">Explain Bohr's model of hydrogen atom. State the important postulates and write the expression for the energy of an electron in the nth orbit.</div>
+      <textarea data-qid="d2" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard">
+      <div class="qmeta"><span class="qnum">D3</span><span class="qtopic">Quantum Numbers</span></div>
+      <div class="qtext">Explain the four quantum numbers:<br>1. Principal quantum number<br>2. Azimuthal quantum number<br>3. Magnetic quantum number<br>4. Spin quantum number<br><br>Also state the significance and allowed values of each.</div>
+      <textarea data-qid="d3" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="qcard proverow">
+      <div class="qmeta"><span class="qnum">D4</span><span class="qtopic">Electronic Configuration</span></div>
+      <div class="qtext">Explain the following rules used for writing electronic configurations:<br><br>1. Aufbau principle<br>2. Pauli's exclusion principle<br>3. Hund's rule of maximum multiplicity<br><br>Write the electronic configuration of <strong>nitrogen (Z = 7)</strong> and <strong>oxygen (Z = 8)</strong> using orbital notation.</div>
+      <textarea data-qid="d4" placeholder="Show your working..."></textarea>
+    </div>
+
+    <div class="footer-actions">
+      <button type="button" id="submitBtn">Submit Test</button>
+      <button type="button" id="resetBtn">Clear</button>
+    </div>
+
+  </form>
+
+  <div id="results">
+    <h2>Test Submitted</h2>
+    <div class="score" id="scoreDisplay">0 / 20 answered</div>
+    <p>Your responses have been saved. Scroll down to review the answer key and worked solutions.</p>
+  </div>
+
+  <div id="solutions">
+    <h2>Answer Key &amp; Worked Solutions</h2>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Section A</span><span class="qtopic">MCQ Answer Key</span></div>
+      <div class="soltext">
+        <p><strong>A1.</strong> (c) Electron &nbsp;
+        <strong>A2.</strong> (b) Protons &nbsp;
+        <strong>A3.</strong> (c) Isotopes &nbsp;
+        <strong>A4.</strong> (b) $mvr = \dfrac{nh}{2\pi}$</p>
+        <p><strong>A5.</strong> (b) Balmer series &nbsp;
+        <strong>A6.</strong> (c) $n^2$ &nbsp;
+        <strong>A7.</strong> (b) Spherical &nbsp;
+        <strong>A8.</strong> (b) An orbital can accommodate maximum two electrons with opposite spins</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">Section B</span><span class="qtopic">Very Short Answers</span></div>
+      <div class="soltext">
+        <p><strong>B1.</strong> Atomic number ($Z$) is the number of protons present in the nucleus of an atom. Mass number ($A$) is the total number of protons and neutrons present in the nucleus.</p>
+        <p><strong>B2.</strong> Isotones are atoms of different elements having the same number of neutrons but different atomic numbers. Example: $^{14}_{6}C$ and $^{15}_{7}N$.</p>
+        <p><strong>B3.</strong> Rutherford's model could not explain the stability of an atom. According to classical theory, a revolving electron should continuously lose energy and eventually fall into the nucleus.</p>
+        <p><strong>B4.</strong> An atomic orbital is a region of space around the nucleus where the probability of finding an electron is maximum.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">C1</span><span class="qtopic">Subatomic Particles</span></div>
+      <div class="soltext">
+        <p>Electron: relative charge $-1$, relative mass approximately $1/1837$.</p>
+        <p>Proton: relative charge $+1$, relative mass approximately $1$.</p>
+        <p>Neutron: relative charge $0$, relative mass approximately $1$.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">C2</span><span class="qtopic">Atomic Structure</span></div>
+      <div class="soltext">
+        <p>For $^{35}_{17}Cl$: atomic number $Z=17$ and mass number $A=35$.</p>
+        <p>Protons $=17$.</p>
+        <p>For a neutral atom, electrons $=17$.</p>
+        <p>Neutrons $=A-Z=35-17=18$.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">C3</span><span class="qtopic">Isotopes and Isobars</span></div>
+      <div class="soltext">
+        <p><strong>Isotopes:</strong> atoms of the same element having the same atomic number but different mass numbers. Example: $^{1}_{1}H$, $^{2}_{1}H$, $^{3}_{1}H$.</p>
+        <p><strong>Isobars:</strong> atoms of different elements having the same mass number but different atomic numbers. Example: $^{40}_{18}Ar$ and $^{40}_{20}Ca$.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">C4</span><span class="qtopic">Rutherford Model</span></div>
+      <div class="soltext">
+        <p>According to Rutherford's model, electrons revolve around the nucleus. A revolving charged particle should continuously radiate energy. Therefore, the electron would lose energy, its orbit would shrink and it would eventually fall into the nucleus. Thus, the model could not explain atomic stability.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">C5</span><span class="qtopic">Bohr Model</span></div>
+      <div class="soltext">
+        <p>Electrons revolve around the nucleus only in certain permitted circular orbits called stationary orbits. Electrons in these orbits do not radiate energy. The angular momentum is quantised: $mvr=\dfrac{nh}{2\pi}$. Energy is emitted or absorbed only when an electron moves from one permitted orbit to another.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">C6</span><span class="qtopic">Bohr Energy</span></div>
+      <div class="soltext">
+        <p>For the first orbit, $n=1$.</p>
+        <p>$E_1=-\dfrac{2.18\times10^{-18}}{1^2}$</p>
+        <p><strong>$E_1=-2.18\times10^{-18}\,J$</strong></p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">C7</span><span class="qtopic">de Broglie Relationship</span></div>
+      <div class="soltext">
+        <p>de Broglie's relationship is $\lambda=\dfrac{h}{mv}=\dfrac{h}{p}$.</p>
+        <p>Here, $\lambda$ is the wavelength associated with the moving particle, $h$ is Planck's constant, $m$ is the mass of the particle, $v$ is its velocity and $p$ is its momentum.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">C8</span><span class="qtopic">Quantum Numbers</span></div>
+      <div class="soltext">
+        <p>For a 3p orbital:</p>
+        <p>$n=3$.</p>
+        <p>For a p-subshell, $l=1$.</p>
+        <p>$m_l=-1,0,+1$.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">D1</span><span class="qtopic">Subatomic Particles</span></div>
+      <div class="soltext">
+        <p><strong>Electron:</strong> J. J. Thomson discovered the electron through cathode ray experiments and established that cathode rays consist of negatively charged particles.</p>
+        <p><strong>Proton:</strong> Positive rays were studied by E. Goldstein. The positively charged particles were later identified as protons.</p>
+        <p><strong>Neutron:</strong> James Chadwick discovered the neutron in 1932 through experiments involving the bombardment of beryllium with alpha particles.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">D2</span><span class="qtopic">Bohr Model</span></div>
+      <div class="soltext">
+        <p>Bohr proposed that electrons revolve around the nucleus only in certain permitted stationary orbits. Electrons in stationary orbits do not radiate energy. The angular momentum of an electron is quantised according to $mvr=\dfrac{nh}{2\pi}$.</p>
+        <p>Energy is emitted or absorbed when an electron jumps between two stationary orbits. The energy of an electron in the nth orbit is expressed as $E_n=-\dfrac{2.18\times10^{-18}}{n^2}\,J$ for hydrogen.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">D3</span><span class="qtopic">Quantum Numbers</span></div>
+      <div class="soltext">
+        <p><strong>Principal quantum number ($n$):</strong> specifies the main shell and energy level. Allowed values are $n=1,2,3,\ldots$.</p>
+        <p><strong>Azimuthal quantum number ($l$):</strong> specifies the subshell and shape of the orbital. For a given $n$, $l=0$ to $(n-1)$.</p>
+        <p><strong>Magnetic quantum number ($m_l$):</strong> specifies the orientation of an orbital. For a given $l$, $m_l=-l$ to $+l$.</p>
+        <p><strong>Spin quantum number ($m_s$):</strong> specifies the spin of the electron. Its allowed values are $+\dfrac12$ and $-\dfrac12$.</p>
+      </div>
+    </div>
+
+    <div class="solcard">
+      <div class="qmeta"><span class="qnum">D4</span><span class="qtopic">Electronic Configuration</span></div>
+      <div class="soltext">
+        <p><strong>Aufbau principle:</strong> Electrons are filled in orbitals in order of increasing energy.</p>
+        <p><strong>Pauli's exclusion principle:</strong> An orbital can contain a maximum of two electrons and they must have opposite spins.</p>
+        <p><strong>Hund's rule:</strong> Electrons occupy degenerate orbitals singly with parallel spins before pairing.</p>
+        <p><strong>Nitrogen (Z = 7):</strong> $1s^2\,2s^2\,2p^3$ → $1s(\uparrow\downarrow)\;2s(\uparrow\downarrow)\;2p(\uparrow)(\uparrow)(\uparrow)$.</p>
+        <p><strong>Oxygen (Z = 8):</strong> $1s^2\,2s^2\,2p^4$ → $1s(\uparrow\downarrow)\;2s(\uparrow\downarrow)\;2p(\uparrow\downarrow)(\uparrow)(\uparrow)$.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'chemistry-std11-structure-of-atom-v1';
+const answerKey = ['c', 'b', 'c', 'b', 'b', 'c', 'b', 'b'];
+
+async function saveAnswers(){
+  const data = {};
+  document.querySelectorAll('textarea[data-qid]').forEach(ta => {
+    data[ta.dataset.qid] = ta.value;
+  });
+  document.querySelectorAll('input[type="radio"]:checked').forEach(input => {
+    data[input.name] = input.value;
+  });
+  try{
+    await window.storage.set(STORAGE_KEY, JSON.stringify(data));
+  }catch(e){
+    console.error('Save failed', e);
+  }
+  return data;
+}
+
+async function loadSaved(){
+  try{
+    const result = await window.storage.get(STORAGE_KEY);
+    if(result && result.value){
+      const data = JSON.parse(result.value);
+
+      document.querySelectorAll('textarea[data-qid]').forEach(ta => {
+        if(data[ta.dataset.qid]) ta.value = data[ta.dataset.qid];
+      });
+
+      Object.keys(data).filter(key => key.startsWith('a')).forEach(key => {
+        const input = document.querySelector(
+          'input[name="' + key + '"][value="' + data[key] + '"]'
+        );
+        if(input) input.checked = true;
+      });
+    }
+  }catch(e){}
+}
+
+document.getElementById('submitBtn').addEventListener('click', async () => {
+  const data = await saveAnswers();
+  const total =
+    document.querySelectorAll('textarea[data-qid]').length +
+    document.querySelectorAll('input[type="radio"][name^="a"]').length / 4;
+
+  const answered = Object.values(data).filter(value =>
+    typeof value === 'string' && value.trim().length > 0
+  ).length;
+
+  document.getElementById('scoreDisplay').textContent =
+    answered + ' / ' + total + ' answered';
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('solutions').style.display = 'block';
+
+  document.getElementById('results').scrollIntoView({
+    behavior:'smooth'
+  });
+});
+
+document.getElementById('resetBtn').addEventListener('click', async () => {
+  document.querySelectorAll('textarea[data-qid]').forEach(ta => {
+    ta.value = '';
+  });
+
+  document.querySelectorAll('input[type="radio"]').forEach(input => {
+    input.checked = false;
+  });
+
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('solutions').style.display = 'none';
+
+  try{
+    await window.storage.delete(STORAGE_KEY);
+  }catch(e){}
+});
+
+let saveTimer;
+
+document.querySelectorAll('textarea[data-qid], input[type="radio"]').forEach(control => {
+  control.addEventListener('input', () => {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveAnswers, 800);
+  });
+});
+
+loadSaved();
+</script>
+
+</body>
+</html>
