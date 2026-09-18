@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Test 8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Dr. Homi Bhabha Balvaidnyanik Competition</p>
+    <h1>Test 8 — Full Practice Set</h1>
+    <p class="subtitle">Standard VI · English Medium · Questions 1–122</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>90:00</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Select one option per question by tapping its bubble. Your progress is tracked below.
+    The timer started as soon as this page loaded. When you're ready, tap <b>Check My Score</b> at the bottom —
+    correct answers turn green and any option you picked incorrectly turns red. The test auto-submits when the timer reaches zero.
+  </div>
+
+  <div id="timer-wrap">
+    <span id="timer-clock">90:00</span>
+  </div>
+
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 0 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   INLINE DIAGRAM LIBRARY
+   ===================================================================== */
+/* =====================================================================
+   INLINE DIAGRAM LIBRARY — merged from both source papers
+   ===================================================================== */
+const DEFS = `<svg width="0" height="0"><defs>
+  <marker id="arrF" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#A6342A"/></marker>
+  <marker id="arrD" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1E2B3C"/></marker>
+  <marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1E2B3C"/></marker>
+  <marker id="arrR" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#A6342A"/></marker>
+</defs></svg>`;
+
+/* --- Set A diagrams (from paper 1) --- */
+const A1 = {
+  q9_icons: {
+    P: `<svg width="70" height="70" viewBox="0 0 70 70"><rect x="8" y="30" width="54" height="28" fill="none" stroke="#4B5768" stroke-width="2"/><rect x="14" y="14" width="10" height="16" fill="#8A7F63"/><rect x="30" y="14" width="10" height="16" fill="#8A7F63"/><rect x="46" y="14" width="10" height="16" fill="#8A7F63"/><path d="M6 30 Q35 10 64 30" fill="none" stroke="#A6342A" stroke-width="2"/><text x="35" y="66" font-size="8" text-anchor="middle" fill="#4B5768">factory / smoke</text></svg>`,
+    Q: `<svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="24" r="8" fill="#B4863C"/><circle cx="20" cy="34" r="8" fill="#B4863C"/><circle cx="50" cy="34" r="8" fill="#B4863C"/><line x1="35" y1="32" x2="35" y2="58" stroke="#2F6B4F" stroke-width="2"/><text x="35" y="66" font-size="8" text-anchor="middle" fill="#4B5768">flowers / biomass</text></svg>`,
+    R: `<svg width="70" height="70" viewBox="0 0 70 70"><circle cx="55" cy="14" r="7" fill="#B4863C"/><rect x="10" y="30" width="46" height="26" fill="none" stroke="#4B5768" stroke-width="2"/><line x1="14" y1="36" x2="52" y2="36" stroke="#4B5768"/><line x1="14" y1="44" x2="52" y2="44" stroke="#4B5768"/><line x1="14" y1="50" x2="52" y2="50" stroke="#4B5768"/><text x="35" y="66" font-size="8" text-anchor="middle" fill="#4B5768">solar building</text></svg>`,
+    S: `<svg width="70" height="70" viewBox="0 0 70 70"><line x1="35" y1="60" x2="35" y2="24" stroke="#4B5768" stroke-width="3"/><g transform="translate(35,24)"><line x1="0" y1="0" x2="18" y2="10" stroke="#4B5768" stroke-width="3"/><line x1="0" y1="0" x2="-18" y2="6" stroke="#4B5768" stroke-width="3"/><line x1="0" y1="0" x2="2" y2="-20" stroke="#4B5768" stroke-width="3"/></g><text x="35" y="66" font-size="8" text-anchor="middle" fill="#4B5768">windmill</text></svg>`
+  },
+  q15_pies: {
+    A: `<svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="28" fill="#fff" stroke="#4B5768" stroke-width="1.5"/><path d="M35 35 L35 7 A28 28 0 0 1 62 40 Z" fill="#8A7F63"/></svg>`,
+    B: `<svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="28" fill="#fff" stroke="#4B5768" stroke-width="1.5"/><path d="M35 35 L35 7 A28 28 0 0 1 50 12 Z" fill="#8A7F63"/></svg>`,
+    C: `<svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="28" fill="#fff" stroke="#4B5768" stroke-width="1.5"/><path d="M35 35 L35 7 A28 28 0 0 1 55 20 Z" fill="#8A7F63"/></svg>`,
+    D: `<svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="28" fill="#fff" stroke="#4B5768" stroke-width="1.5"/><path d="M35 35 L35 7 A28 28 0 1 1 12 50 Z" fill="#8A7F63"/></svg>`
+  },
+  q22_force: {
+    A: `<svg width="120" height="80" viewBox="0 0 120 80"><line x1="20" y1="70" x2="20" y2="10" stroke="#A6342A" stroke-width="2" marker-end="url(#arrF)"/><line x1="55" y1="70" x2="55" y2="10" stroke="#1E2B3C" stroke-width="2" marker-end="url(#arrD)"/><text x="8" y="78" font-size="9">Force</text><text x="45" y="78" font-size="9">Displ.</text></svg>`,
+    B: `<svg width="120" height="80" viewBox="0 0 120 80"><line x1="20" y1="70" x2="20" y2="10" stroke="#A6342A" stroke-width="2" marker-end="url(#arrF)"/><line x1="60" y1="70" x2="90" y2="10" stroke="#1E2B3C" stroke-width="2" marker-end="url(#arrD)"/><text x="8" y="78" font-size="9">Force</text><text x="65" y="78" font-size="9">Displ.</text></svg>`,
+    C: `<svg width="120" height="80" viewBox="0 0 120 80"><line x1="60" y1="70" x2="30" y2="10" stroke="#A6342A" stroke-width="2" marker-end="url(#arrF)"/><line x1="60" y1="70" x2="90" y2="10" stroke="#1E2B3C" stroke-width="2" marker-end="url(#arrD)"/><text x="18" y="78" font-size="9">Force</text><text x="65" y="78" font-size="9">Displ.</text></svg>`,
+    D: `<svg width="120" height="80" viewBox="0 0 120 80"><line x1="20" y1="60" x2="90" y2="60" stroke="#A6342A" stroke-width="2" marker-end="url(#arrF)"/><line x1="20" y1="60" x2="20" y2="10" stroke="#1E2B3C" stroke-width="2" marker-end="url(#arrD)"/><text x="55" y="72" font-size="9">Force</text><text x="24" y="14" font-size="9">Displ.</text></svg>`
+  },
+  q32_leaf: `<svg width="220" height="110" viewBox="0 0 220 110">
+      <ellipse cx="60" cy="55" rx="46" ry="24" fill="none" stroke="#2F6B4F" stroke-width="2"/>
+      <line x1="16" y1="55" x2="106" y2="55" stroke="#2F6B4F" stroke-width="1.5"/>
+      <circle cx="30" cy="30" r="5" fill="#B4863C"/>
+      <circle cx="55" cy="20" r="5" fill="#B4863C"/>
+      <circle cx="80" cy="30" r="5" fill="#B4863C"/>
+      <text x="55" y="98" font-size="10" text-anchor="middle" fill="#4B5768">E — leaf with flower buds</text>
+      <circle cx="165" cy="55" r="36" fill="none" stroke="#4B5768" stroke-width="1.5"/>
+      <ellipse cx="150" cy="50" rx="9" ry="5" fill="none" stroke="#1E2B3C" stroke-width="1.5"/>
+      <ellipse cx="178" cy="60" rx="9" ry="5" fill="none" stroke="#1E2B3C" stroke-width="1.5"/>
+      <ellipse cx="165" cy="38" rx="9" ry="5" fill="none" stroke="#1E2B3C" stroke-width="1.5"/>
+      <text x="165" y="98" font-size="10" text-anchor="middle" fill="#4B5768">F — stomata (magnified)</text>
+    </svg>`,
+  q35_nas: `<svg width="180" height="60" viewBox="0 0 180 60">
+      <rect x="4" y="4" width="172" height="52" fill="none" stroke="#1E2B3C" stroke-width="2"/>
+      <line x1="60" y1="4" x2="60" y2="56" stroke="#1E2B3C" stroke-width="1"/>
+      <line x1="120" y1="4" x2="120" y2="56" stroke="#1E2B3C" stroke-width="1"/>
+      <text x="30" y="34" font-size="16" text-anchor="middle" font-weight="700">N</text>
+      <text x="90" y="34" font-size="16" text-anchor="middle" font-weight="700">A</text>
+      <text x="150" y="34" font-size="16" text-anchor="middle" font-weight="700">S</text>
+    </svg>`
+};
+
+/* --- Set B diagrams (from paper 2) --- */
+const B2 = {
+  respGraphs: {
+    A: `<svg width="80" height="70" viewBox="0 0 80 70"><line x1="10" y1="60" x2="10" y2="6" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/><line x1="10" y1="60" x2="74" y2="60" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/><line x1="10" y1="60" x2="55" y2="18" stroke="#A6342A" stroke-width="2"/></svg>`,
+    B: `<svg width="80" height="70" viewBox="0 0 80 70"><line x1="10" y1="60" x2="10" y2="6" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/><line x1="10" y1="60" x2="74" y2="60" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/><path d="M10 24 H55" stroke="#A6342A" stroke-width="2" fill="none"/></svg>`,
+    C: `<svg width="80" height="70" viewBox="0 0 80 70"><line x1="10" y1="60" x2="10" y2="6" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/><line x1="10" y1="60" x2="74" y2="60" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/><path d="M10 24 H28 L38 40 L46 20 L54 36 H62" stroke="#A6342A" stroke-width="2" fill="none"/></svg>`,
+    D: `<svg width="80" height="70" viewBox="0 0 80 70"><line x1="10" y1="60" x2="10" y2="6" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/><line x1="10" y1="60" x2="74" y2="60" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/><path d="M14 16 L48 44" stroke="#A6342A" stroke-width="2" fill="none" marker-end="url(#arrR)"/></svg>`
+  },
+  flowX: `<svg width="220" height="150" viewBox="0 0 220 150">
+      <text x="110" y="18" font-size="12" text-anchor="middle">Water</text>
+      <line x1="110" y1="24" x2="110" y2="58" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="18" y="90" font-size="12">Air</text>
+      <line x1="34" y1="86" x2="82" y2="86" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="176" y="90" font-size="12">Insects</text>
+      <line x1="172" y1="86" x2="128" y2="86" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="94" y="72" width="32" height="28" fill="none" stroke="#A6342A" stroke-width="2"/>
+      <text x="110" y="91" font-size="14" text-anchor="middle" font-weight="700" fill="#A6342A">X</text>
+      <text x="110" y="140" font-size="12" text-anchor="middle">Food</text>
+      <line x1="110" y1="134" x2="110" y2="102" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/>
+    </svg>`,
+  flow61: `<svg width="260" height="150" viewBox="0 0 260 150">
+      <rect x="95" y="4" width="90" height="24" fill="none" stroke="#1E2B3C" stroke-width="1.5"/>
+      <text x="140" y="20" font-size="11" text-anchor="middle">Vertebrates</text>
+      <line x1="140" y1="28" x2="140" y2="40" stroke="#1E2B3C" stroke-width="1.5"/>
+      <line x1="60" y1="40" x2="220" y2="40" stroke="#1E2B3C" stroke-width="1.5"/>
+      <line x1="60" y1="40" x2="60" y2="48" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="220" y1="40" x2="220" y2="48" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="20" y="48" width="80" height="24" fill="none" stroke="#1E2B3C" stroke-width="1.5"/>
+      <text x="60" y="64" font-size="10.5" text-anchor="middle">Warm blooded</text>
+      <rect x="180" y="48" width="80" height="24" fill="none" stroke="#1E2B3C" stroke-width="1.5"/>
+      <text x="220" y="64" font-size="10.5" text-anchor="middle">Cold blooded</text>
+      <line x1="60" y1="72" x2="60" y2="86" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="220" y1="72" x2="220" y2="86" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="24" y="86" width="72" height="24" fill="none" stroke="#1E2B3C" stroke-width="1.5"/>
+      <text x="60" y="102" font-size="10.5" text-anchor="middle">Oviparous</text>
+      <rect x="184" y="86" width="72" height="24" fill="none" stroke="#1E2B3C" stroke-width="1.5"/>
+      <text x="220" y="102" font-size="10.5" text-anchor="middle">Oviparous</text>
+      <line x1="60" y1="110" x2="60" y2="124" stroke="#A6342A" stroke-width="1.5" marker-end="url(#arrR)"/>
+      <line x1="220" y1="110" x2="220" y2="124" stroke="#A6342A" stroke-width="1.5" marker-end="url(#arrR)"/>
+      <text x="60" y="140" font-size="14" text-anchor="middle" font-weight="700" fill="#A6342A">P</text>
+      <text x="220" y="140" font-size="14" text-anchor="middle" font-weight="700" fill="#A6342A">Q</text>
+    </svg>`,
+  flow63: `<svg width="260" height="150" viewBox="0 0 260 150">
+      <circle cx="130" cy="75" r="16" fill="none" stroke="#A6342A" stroke-width="2"/>
+      <text x="130" y="80" font-size="14" text-anchor="middle" font-weight="700" fill="#A6342A">X</text>
+      <line x1="118" y1="65" x2="70" y2="20" stroke="#1E2B3C" stroke-width="1.3" marker-end="url(#arr)"/>
+      <text x="10" y="16" font-size="10">Used as animal fodder</text>
+      <line x1="142" y1="65" x2="190" y2="20" stroke="#1E2B3C" stroke-width="1.3" marker-end="url(#arr)"/>
+      <text x="150" y="16" font-size="10">Tender seeds eaten (Hurda)</text>
+      <line x1="118" y1="85" x2="70" y2="130" stroke="#1E2B3C" stroke-width="1.3" marker-end="url(#arr)"/>
+      <text x="4" y="144" font-size="10">Solapur is a store for it</text>
+      <line x1="142" y1="85" x2="190" y2="130" stroke="#1E2B3C" stroke-width="1.3" marker-end="url(#arr)"/>
+      <text x="150" y="144" font-size="10">Used for rotis, puffed grains</text>
+    </svg>`,
+  pqrs64: {
+    P: `<svg width="66" height="66" viewBox="0 0 66 66"><rect x="20" y="10" width="10" height="40" fill="#8A7F63"/><ellipse cx="25" cy="52" rx="18" ry="6" fill="none" stroke="#4B5768" stroke-width="1.5"/><path d="M15 55 Q10 40 20 30" stroke="#4B5768" fill="none" stroke-width="1.5"/><text x="33" y="63" font-size="8" text-anchor="middle">foot pump</text></svg>`,
+    Q: `<svg width="66" height="66" viewBox="0 0 66 66"><circle cx="33" cy="30" r="16" fill="none" stroke="#4B5768" stroke-width="2"/><path d="M33 14 L38 24 L48 26 L40 34 L42 44 L33 38 L24 44 L26 34 L18 26 L28 24 Z" fill="none" stroke="#4B5768"/><text x="33" y="63" font-size="8" text-anchor="middle">football</text></svg>`,
+    R: `<svg width="66" height="66" viewBox="0 0 66 66"><rect x="18" y="6" width="30" height="46" rx="4" fill="none" stroke="#4B5768" stroke-width="2"/><rect x="22" y="12" width="22" height="30" fill="none" stroke="#4B5768"/><circle cx="33" cy="47" r="2.5" fill="#4B5768"/><text x="33" y="63" font-size="8" text-anchor="middle">mobile device</text></svg>`,
+    S: `<svg width="66" height="66" viewBox="0 0 66 66"><line x1="33" y1="52" x2="33" y2="18" stroke="#4B5768" stroke-width="3"/><g transform="translate(33,18)"><line x1="0" y1="0" x2="16" y2="9" stroke="#4B5768" stroke-width="3"/><line x1="0" y1="0" x2="-16" y2="5" stroke="#4B5768" stroke-width="3"/><line x1="0" y1="0" x2="2" y2="-17" stroke="#4B5768" stroke-width="3"/></g><text x="33" y="63" font-size="8" text-anchor="middle">windmill</text></svg>`
+  },
+  magnet68: `<svg width="320" height="70" viewBox="0 0 320 70">
+      <rect x="10" y="16" width="280" height="30" fill="none" stroke="#1E2B3C" stroke-width="2"/>
+      <line x1="80" y1="16" x2="80" y2="46" stroke="#1E2B3C" stroke-width="1" stroke-dasharray="2,2"/>
+      <line x1="150" y1="16" x2="150" y2="46" stroke="#1E2B3C" stroke-width="1" stroke-dasharray="2,2"/>
+      <line x1="220" y1="16" x2="220" y2="46" stroke="#1E2B3C" stroke-width="1" stroke-dasharray="2,2"/>
+      <text x="80" y="10" font-size="10" text-anchor="middle">1</text>
+      <text x="150" y="10" font-size="10" text-anchor="middle">2</text>
+      <text x="220" y="10" font-size="10" text-anchor="middle">3</text>
+      <text x="25" y="35" font-size="13" text-anchor="middle" font-weight="700">S</text>
+      <text x="65" y="35" font-size="13" text-anchor="middle" font-weight="700">N</text>
+      <text x="95" y="35" font-size="13" text-anchor="middle" font-weight="700">S</text>
+      <text x="135" y="35" font-size="13" text-anchor="middle" font-weight="700">N</text>
+      <text x="165" y="35" font-size="13" text-anchor="middle" font-weight="700">S</text>
+      <text x="205" y="35" font-size="13" text-anchor="middle" font-weight="700">N</text>
+      <text x="270" y="35" font-size="13" text-anchor="middle" font-weight="700">N</text>
+      <line x1="290" y1="31" x2="316" y2="31" stroke="#1E2B3C" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="300" y="46" font-size="10">axis</text>
+    </svg>`,
+  wallBall: {
+    A: `<svg width="110" height="80" viewBox="0 0 110 80"><line x1="70" y1="4" x2="70" y2="76" stroke="#1E2B3C" stroke-width="4"/><circle cx="20" cy="60" r="8" fill="#8A7F63"/><line x1="26" y1="55" x2="60" y2="18" stroke="#A6342A" stroke-width="1.5" marker-end="url(#arrR)"/><line x1="70" y1="18" x2="30" y2="8" stroke="#1E2B3C" stroke-width="1" stroke-dasharray="2,2" marker-end="url(#arr)"/></svg>`,
+    B: `<svg width="110" height="80" viewBox="0 0 110 80"><line x1="70" y1="4" x2="70" y2="76" stroke="#1E2B3C" stroke-width="4"/><circle cx="20" cy="40" r="8" fill="#8A7F63"/><line x1="28" y1="40" x2="66" y2="40" stroke="#A6342A" stroke-width="1.5" marker-end="url(#arrR)"/><line x1="70" y1="40" x2="28" y2="40" stroke="#1E2B3C" stroke-width="1" stroke-dasharray="2,2" marker-end="url(#arr)"/></svg>`,
+    C: `<svg width="110" height="80" viewBox="0 0 110 80"><line x1="70" y1="4" x2="70" y2="76" stroke="#1E2B3C" stroke-width="4"/><circle cx="20" cy="16" r="8" fill="#8A7F63"/><line x1="26" y1="22" x2="60" y2="55" stroke="#A6342A" stroke-width="1.5" marker-end="url(#arrR)"/><line x1="70" y1="55" x2="30" y2="70" stroke="#1E2B3C" stroke-width="1" stroke-dasharray="2,2" marker-end="url(#arr)"/></svg>`,
+    D: `<svg width="110" height="80" viewBox="0 0 110 80"><line x1="70" y1="4" x2="70" y2="76" stroke="#1E2B3C" stroke-width="4"/><circle cx="20" cy="40" r="8" fill="#8A7F63"/><line x1="28" y1="40" x2="66" y2="40" stroke="#A6342A" stroke-width="1.5" marker-end="url(#arrR)"/><line x1="70" y1="40" x2="28" y2="40" stroke="#1E2B3C" stroke-width="1" stroke-dasharray="2,2" marker-end="url(#arr)"/><text x="12" y="12" font-size="8">(head-on, straight back)</text></svg>`
+  },
+  spring83: `<svg width="120" height="200" viewBox="0 0 120 200">
+      <circle cx="60" cy="10" r="6" fill="none" stroke="#4B5768" stroke-width="2"/>
+      <line x1="60" y1="16" x2="60" y2="28" stroke="#4B5768" stroke-width="2"/>
+      <rect x="45" y="28" width="30" height="14" fill="none" stroke="#4B5768" stroke-width="1.5"/>
+      <path d="M60 42 v10 q-10 4 0 8 q10 4 0 8 q-10 4 0 8 q10 4 0 8 q-10 4 0 8 q10 4 0 8 v10" fill="none" stroke="#4B5768" stroke-width="1.5"/>
+      <rect x="40" y="110" width="40" height="90" fill="none" stroke="#1E2B3C" stroke-width="1.5"/>
+      <text x="60" y="118" font-size="9" text-anchor="middle">gm</text>
+      <text x="88" y="120" font-size="8">0</text><text x="88" y="132" font-size="8">10</text><text x="88" y="144" font-size="8">20</text>
+      <text x="88" y="156" font-size="8">30</text><text x="88" y="168" font-size="8">40</text><text x="88" y="180" font-size="8">50</text>
+      <line x1="60" y1="112" x2="60" y2="122" stroke="#4B5768" stroke-width="2"/>
+      <circle cx="55" cy="140" r="10" fill="#8A7F63"/>
+      <text x="55" y="165" font-size="9" text-anchor="middle">Weight</text>
+      <text x="55" y="177" font-size="9" text-anchor="middle">(100 gm)</text>
+    </svg>`
+};
+
+/* =====================================================================
+   QUESTION DATA
+   ===================================================================== */
+const QUESTIONS = [
+/* ================= SECTION A ================= */
+{q:"Identify renewable sources of energy among the following.<br><span style='color:#4B5768'>1. Solar&nbsp;&nbsp;2. Coal&nbsp;&nbsp;3. Wind&nbsp;&nbsp;4. Natural gas</span>",
+ opts:["1 and 2","1 and 3","2 and 4","3 and 4"], correct:1},
+{q:"Arrange the following in chronological order:<br><span style='color:#4B5768'>1. Bronze Age&nbsp;&nbsp;2. Stone Age&nbsp;&nbsp;3. Iron Age</span>",
+ opts:["1, 2, 3","2, 1, 3","2, 3, 1","3, 2, 1"], correct:1},
+{q:"<span class='blank'></span> is considered the first animal domesticated by humans for milk and farm work.",
+ opts:["Dog","Goat","Ox","Horse"], correct:1},
+{q:"Which of the following human activities is harmful to the environment?",
+ opts:["Planting trees along roads","Burning plastic waste in the open","Segregating wet and dry waste","Using public transport"], correct:1},
+{q:"Which of the following is NOT a physical property?",
+ opts:["Melting point","Boiling point","Reactivity with acid","Density"], correct:2},
+{q:"Water is essential in the human body because <span class='blank'></span>.",
+ opts:["it helps transport nutrients","it helps remove waste through urine and sweat","it regulates body temperature","All of the above"], correct:3},
+{q:"25 °C = <span class='blank'></span> °K",
+ opts:["25","298","273","248"], correct:1},
+{q:"A spinning top slows down and finally stops. The type of motion of the top while slowing is best described as:",
+ opts:["Uniform linear motion","Oscillatory motion","Random motion","Retarded rotational motion"], correct:3},
+{q:"Find the non-renewable energy source:",
+ diagram:`<div style="display:flex;gap:18px;flex-wrap:wrap;">
+    <div style="text-align:center">${A1.q9_icons.P}<div style="font-size:11px;font-weight:700">P</div></div>
+    <div style="text-align:center">${A1.q9_icons.Q}<div style="font-size:11px;font-weight:700">Q</div></div>
+    <div style="text-align:center">${A1.q9_icons.R}<div style="font-size:11px;font-weight:700">R</div></div>
+    <div style="text-align:center">${A1.q9_icons.S}<div style="font-size:11px;font-weight:700">S</div></div>
+  </div>`,
+ opts:["P","Q","R","S"], correct:0},
+{q:"When sound is reflected from a curved surface, then <span class='blank'></span>.",
+ opts:["angle of incidence &lt; angle of reflection","angle of incidence = angle of reflection","angle of incidence is 90°","angle of incidence &gt; angle of reflection"], correct:1},
+{q:"Penumbra is formed by <span class='blank'></span>.",
+ opts:["an opaque object only","an extended source of light","a point source of light","a transparent object"], correct:1},
+{q:"Which climate is most favourable for the growth of mould on bread?",
+ opts:["Hot and dry","Cold and dry","Warm and humid","Cold and humid"], correct:2},
+{q:"Which of the following is NOT a property of cotton?",
+ opts:["Absorbs moisture","Biodegradable","Good conductor of electricity","Soft and breathable"], correct:2},
+{q:"Which plant has both edible leaves and edible roots?",
+ opts:["Spinach","Carrot","Beetroot","Coriander"], correct:2},
+{q:"Identify the correct picture that shows the proportion of Nitrogen in air.",
+ diagram:`<div style="display:flex;gap:18px;flex-wrap:wrap;">
+    <div style="text-align:center">${A1.q15_pies.A}<div style="font-size:11px;font-weight:700">A</div></div>
+    <div style="text-align:center">${A1.q15_pies.B}<div style="font-size:11px;font-weight:700">B</div></div>
+    <div style="text-align:center">${A1.q15_pies.C}<div style="font-size:11px;font-weight:700">C</div></div>
+    <div style="text-align:center">${A1.q15_pies.D}<div style="font-size:11px;font-weight:700">D</div></div>
+  </div>`,
+ opts:["A","B","C","D"], correct:3},
+{q:"In the life cycle of a silk moth, which stage is harmful to mulberry leaves?",
+ opts:["Egg","Larva (caterpillar)","Pupa","Adult moth"], correct:1},
+{q:"P is an outer planet and it rotates on its side. Name the planet P.",
+ opts:["Saturn","Uranus","Neptune","Mercury"], correct:1},
+{q:"Identify the correlation and choose the correct alternative.<br><span style='color:#4B5768'>Homo Habilis : <span class='blank'></span> :: Homo Sapiens : Wise human</span>",
+ opts:["Strong human","Handy human","Tool-using human","Modern human"], correct:1},
+{q:"Choose the wrong statement with respect to equator.",
+ opts:["Equator is the longest latitude.","Equator divides the Earth into northern and southern hemispheres.","Equator passes through the Tropic of Cancer.","Equator has day and night of 12 hours each."], correct:2},
+{q:"Which type of pollution has increased mainly due to the use of vehicles and industries?",
+ opts:["Soil pollution","Noise and air pollution","Radioactive pollution","Thermal pollution"], correct:1},
+/* ================= SECTION B ================= */
+{q:"A sample of chilli powder is mixed in water and a few drops of dilute HCl are added. The colour changes to pink. Identify the adulterant.",
+ opts:["Sawdust","Brick powder","Turmeric powder","Soap powder"], correct:1},
+{q:"In which case of the position of force and displacement, work won't be done?",
+ diagram:`${DEFS}<div style="display:flex;gap:14px;flex-wrap:wrap;">
+    <div style="text-align:center">${A1.q22_force.A}<div style="font-size:11px;font-weight:700">A</div></div>
+    <div style="text-align:center">${A1.q22_force.B}<div style="font-size:11px;font-weight:700">B</div></div>
+    <div style="text-align:center">${A1.q22_force.C}<div style="font-size:11px;font-weight:700">C</div></div>
+    <div style="text-align:center">${A1.q22_force.D}<div style="font-size:11px;font-weight:700">D</div></div>
+  </div>`,
+ opts:["A","B","C","D"], correct:3},
+{q:"Which activity is useful for the safety of a magnet?",
+ opts:["Heating the magnet strongly","Storing magnets with unlike poles apart and a soft iron keeper","Dropping the magnet on the floor","Hammering the magnet"], correct:1},
+{q:"Which disease is caused by the Nipah virus?",
+ opts:["Dengue","Nipah fever","Chicken pox","Typhoid"], correct:1},
+{q:"The largest volcano in the solar system, Olympus Mons, is on <span class='blank'></span>.",
+ opts:["Earth","Venus","Mars","Jupiter"], correct:2},
+{q:"240 Seconds : 4 Minutes :: 150 Minutes : <span class='blank'></span> Hours",
+ opts:["2.5","2.15","2.3","2.45"], correct:0},
+{q:"Choose the correct statement about plants.",
+ opts:["They respire only at night.","They photosynthesise only at night.","They respire both day and night, and photosynthesise only in the day.","They neither respire nor photosynthesise."], correct:2},
+{q:"Which force helps us write on a blackboard with chalk and walk on the ground without slipping?",
+ opts:["Magnetic Force","Frictional Force","Static-Electric Force","Gravitational Force"], correct:1},
+{q:"Why do fish live in water?",
+ opts:["They are afraid of land animals.","They like to swim.","Water provides them with oxygen, food and support.","They cannot see on land."], correct:2},
+{q:"Identify the wrong statement from the following:",
+ opts:["Roughage helps in digestion.","Vitamins provide energy to the body.","Carbohydrates are the main source of energy.","Proteins help in body growth and repair."], correct:1},
+{q:"A new day on the Earth begins from which ocean?",
+ opts:["Pacific","Indian","Atlantic","Antarctic"], correct:0},
+{q:"Select the correct alternative for E and F with respect to characteristics of living things.",
+ diagram:A1.q32_leaf,
+ opts:["Reproduction - Respiration","Excretion - Growth","Responsiveness to stimulus - Respiration","Excretion - Reproduction"], correct:2},
+{q:"In which irrigation system do we get the following benefits?<br><span style='color:#4B5768'>1) 30 to 80% of water can be saved.<br>2) Aeration of the soil is preserved.<br>3) Fertilizers reach to the roots directly.<br>4) Water is supplied to the crop and not to the soil.</span>",
+ opts:["Water through channels","Sprinkle irrigation","Drip irrigation","Farm lake"], correct:2},
+{q:"When clothes dry up, <span class='blank'></span> happens.",
+ opts:["boiling","evaporation","condensation","sublimation"], correct:1},
+{q:"Ramesh moves a magnet in the sand containing iron pins. What should be the observation of the pins which stuck to the magnet?",
+ diagram:A1.q35_nas,
+ opts:["Increases from A to S and decreases till N.","Goes on decreasing from A towards both ends.","Decreases from A to S and increases till N.","Will increase from A till both ends."], correct:3},
+/* ================= SECTION C ================= */
+{q:"Which quantity will be different in 1 kg iron and 1 kg cotton?",
+ opts:["Weight","Volume","Mass","Gravitational force"], correct:1},
+{q:"A water tank supplying water to the village is built on a hill so that <span class='blank'></span>.",
+ opts:["it is visible","it is safe","water can reach the entire village","more water can be stored"], correct:2},
+{q:"Identify the correlation.<br><span style='color:#4B5768'>Mango Poli (Aam Papad) : Ratnagiri :: Orange Burfi : <span class='blank'></span></span>",
+ opts:["Nagpur","Nashik","Kolhapur","Pune"], correct:0},
+{q:"What one should do if he/she is present at the place of a landslide.",
+ opts:["Find shelter nearby","Stay in a vehicle","Go away from such place","Call the help centers"], correct:2},
+{q:"Which of the following forces affect an object without touching it?<br><span style='color:#4B5768'>P) Gravitational force&nbsp;&nbsp;Q) Magnetic force&nbsp;&nbsp;R) Muscular force&nbsp;&nbsp;S) Static-Electric force</span>",
+ opts:["P, Q, R","Q, R, S","P, Q, S","P, R, S"], correct:2},
+{q:"Which graph shows the process of human respiration?",
+ diagram:`${DEFS}<div style="display:flex;gap:14px;flex-wrap:wrap;">
+   <div style="text-align:center">${B2.respGraphs.A}<div style="font-size:11px;font-weight:700">A</div></div>
+   <div style="text-align:center">${B2.respGraphs.B}<div style="font-size:11px;font-weight:700">B</div></div>
+   <div style="text-align:center">${B2.respGraphs.C}<div style="font-size:11px;font-weight:700">C</div></div>
+   <div style="text-align:center">${B2.respGraphs.D}<div style="font-size:11px;font-weight:700">D</div></div>
+  </div>`,
+ opts:["A","B","C","D"], correct:3},
+{q:"Which characteristic of the magnet is used in maglev trains?",
+ opts:["Attraction between unlike poles","Attraction towards iron","Repulsion between like poles","Freely suspended magnet rests in north-south direction"], correct:2},
+{q:"Choose the correct alternative for X.",
+ diagram:B2.flowX,
+ opts:["Factors essential for survival","Abiotic factors","Factors spreading diseases","Seed dispersing agents"], correct:2},
+{q:"Homo sapiens would mostly hunt animals like <span class='blank'></span>.",
+ opts:["Fish","Elephant","Mammoth","Lion"], correct:2},
+{q:"If we travel from the northern end of India to the south, we will cross the states in which order?",
+ opts:["Gujarat, Himachal Pradesh, Karnataka, Telangana","Gujarat, Telangana, Karnataka, Himachal Pradesh","Himachal Pradesh, Gujarat, Telangana, Karnataka","Himachal Pradesh, Gujarat, Karnataka, Telangana"], correct:2},
+{q:"Arrange the following organs of the human body in the decreasing order of their size.<br><span style='color:#4B5768'>P. Heart&nbsp;&nbsp;Q. Kidney&nbsp;&nbsp;R. Liver&nbsp;&nbsp;S. Gallbladder</span>",
+ opts:["R &gt; S &gt; P &gt; Q","R &gt; S &gt; Q &gt; P","R &gt; P &gt; Q &gt; S","S &gt; R &gt; P &gt; Q"], correct:2},
+{q:"What is responsible for Malaria and Black fever?",
+ opts:["Bacteria","Fungus","Protozoa","Virus"], correct:2},
+{q:"Guess Who am I?<br><span style='color:#4B5768'>I live in the trees. I store useful things for humans in my house. My house is tough. If anyone troubles me, I attack them.</span>",
+ opts:["Ant","Grasshopper","Honeybee","Squirrel"], correct:2},
+{q:"Why is tree plantation necessary?<br><span style='color:#4B5768'>P - To reduce soil erosion&nbsp;&nbsp;Q - To maintain balance in proportion of gases in air&nbsp;&nbsp;R - Soil gets aerated</span>",
+ opts:["P","R","P, Q","P, Q, R"], correct:2},
+{q:"Which of these substances is not used in paper making?",
+ opts:["Aluminium","Grass","Wood","Tatters"], correct:0},
+{q:"What should one do when lightening takes place?",
+ opts:["Stand under a tree in the open ground","Gather at one place","Walk barefoot on the road","Take shelter in the house having electrical deterrent (Vidyut Nivarak)"], correct:3},
+{q:"Given pairs indicate figure number and point of fulcrum. Choose the correct option for all figures.<br><span style='color:#4B5768'>1 — a person pulling a rock with a rope over a pulley&nbsp;&nbsp;2 — a scale balancing objects on a ruler&nbsp;&nbsp;3 — tongs lifting a small stand&nbsp;&nbsp;4 — a hand-operated toy launcher</span>",
+ opts:["1-B, 2-Q, 3-L, 4-X","1-A, 2-P, 3-M, 4-Y","1-C, 2-R, 3-N, 4-Z","1-B, 2-Q, 3-M, 4-X"], correct:0},
+{q:"Guess Who am I?<br><span style='color:#4B5768'>I am a biennial plant. I store food in my roots.</span>",
+ opts:["Potato","Beet","Ginger","Groundnut"], correct:1},
+{q:"100 bricks need to be carried at a height of 10 metres. Mohan completes this work in 1 hour whereas Kasim takes 2 hours to do the same work. What can you say about the work done by them?",
+ opts:["Work done by both is the same.","Work done by Mohan is more than Kasim.","Work done by Kasim is more than Mohan.","Can't say."], correct:0},
+{q:"Identify the odd man out from the following:<br><span style='color:#4B5768'>Taeniasis : Scabies : Headache : Measles</span>",
+ opts:["Taeniasis","Measles","Headache","Scabies"], correct:2},
+{q:"Which of the following mixtures of two substances can be separated by distillation method?",
+ opts:["Substances with different density","Substances with different boiling points","Substances with different colours","Substances with different solubility"], correct:1},
+{q:"Find the odd one out with respect to types of roots.",
+ opts:["Corn","Grass","Banana","Fenugreek (Methi)"], correct:3},
+{q:"According to the Food and Agriculture Organisation (FAO) of the United Nations, which of the following is the staple food of half the population of the world?",
+ opts:["Rice","Wheat","Oats","Soyabeans"], correct:0},
+{q:"Find the odd one out.",
+ opts:["Bay","Strait","Island","Ocean"], correct:2},
+{q:"Which of the following techniques does not help to make water germ-free?",
+ opts:["Filtration","Adding chlorine tablets","Swirling alum","Boiling"], correct:0},
+{q:"Observe the following flow chart and choose the correct alternative for P and Q respectively.",
+ diagram:B2.flow61,
+ opts:["Snake, Termite (white ant)","Pigeon, Tortoise","Crocodile, Starfish","Tiger, Grasshopper"], correct:1},
+{q:"Which statement is true regarding volcanic eruptions in the ocean?",
+ opts:["Only liquids are pushed out due to volcanic eruptions in the ocean.","Air is polluted due to ash and gases come out.","Hills and mountains are created due to volcanic eruptions.","Islands are formed due to volcanic eruptions."], correct:3},
+{q:"Identify the cereal suitable at place X.",
+ diagram:B2.flow63,
+ opts:["Rice","Wheat","Ragi (Nachani)","Jowar"], correct:3},
+{q:"Choose the correct order of the energies shown in the pictures.",
+ diagram:`<div style="display:flex;gap:14px;flex-wrap:wrap;">
+   <div style="text-align:center">${B2.pqrs64.P}<div style="font-size:11px;font-weight:700">P</div></div>
+   <div style="text-align:center">${B2.pqrs64.Q}<div style="font-size:11px;font-weight:700">Q</div></div>
+   <div style="text-align:center">${B2.pqrs64.R}<div style="font-size:11px;font-weight:700">R</div></div>
+   <div style="text-align:center">${B2.pqrs64.S}<div style="font-size:11px;font-weight:700">S</div></div>
+  </div>`,
+ opts:["P - Kinetic energy, Q - Electrical energy, R - Chemical energy, S - Wind energy",
+       "P - Potential energy, Q - Kinetic energy, R - Chemical energy, S - Wind energy",
+       "P - Potential energy, Q - Kinetic energy, R - Kinetic energy, S - Potential energy",
+       "P - Wind energy, Q - Kinetic energy, R - Kinetic energy, S - Chemical energy"], correct:1},
+{q:"If one sound wave completes 20 vibrations in 2.5 seconds, then determine the frequency of that wave.",
+ opts:["200 Hz","50 Hz","20 Hz","8 Hz"], correct:3},
+{q:"Harmful rays coming from the Sun turn to the polar region of the Earth because <span class='blank'></span>.",
+ opts:["Earth has living world","Earth has an atmosphere","70% of the Earth is occupied by water","Earth is surrounded by a magnetic field"], correct:3},
+{q:"Which motion among the following is oscillatory?",
+ opts:["A fast-moving car","Pendulum","Hands of a clock","Revolution of the Earth around the Sun"], correct:1},
+{q:"If a bar magnet is cut at three points perpendicular to its axis, <span class='blank'></span> bar magnets will be formed and <span class='blank'></span> N poles will be formed.",
+ diagram:B2.magnet68,
+ opts:["4, 8","4, 4","8, 8","8, 4"], correct:1},
+{q:"Which of the following changes is natural and non-periodic?",
+ opts:["Speed of the moving car","High tide and low tide in the sea","Eruption of a volcano","Sunrise and sunset"], correct:2},
+{q:"While testing the presence of starch in leaves, why is a leaf boiled in spirit?",
+ opts:["To soften the leaf","To remove the green colour of the leaf","To stop the process of photosynthesis","To stop the loss of water from the leaf"], correct:1},
+{q:"Find the odd one out:",
+ opts:["Boiling","Condensation","Sublimation","Evaporation"], correct:0},
+{q:"Identify a vegetative and biodegradable substance among the following:",
+ opts:["Leather","Silk","Rayon","Cotton"], correct:3},
+{q:"Which disease is not related to bones among the following?",
+ opts:["Rickets","Arthritis","Knee pain","Scurvy"], correct:3},
+{q:"Guess Who am I?<br><span style='color:#4B5768'>I am always green in colour, taste astringent. I am always rich in vitamins. Even if you cook me or dry me up, I remain rich in vitamins.</span>",
+ opts:["Red pumpkin","Guava","Indian gooseberry (Amla)","Orange"], correct:2},
+{q:"How does vaccination help us?",
+ opts:["It controls every disease.","It kills microbes in the infected area.","It improves immunity.","It increases power of the body."], correct:2},
+{q:"In India, forest region is 16.1%, non-agricultural land is 10.2%, waste land is 7.9%, grazing land is 12.8%. What should be the percentage of agricultural land?",
+ opts:["47%","50%","53%","56%"], correct:2},
+{q:"If one ball hits a wall as shown in the figure from a flat surface, what would be the correct choice for the direction of motion of the ball after impact?",
+ diagram:`${DEFS}<div style="display:flex;gap:14px;flex-wrap:wrap;">
+   <div style="text-align:center">${B2.wallBall.A}<div style="font-size:11px;font-weight:700">A</div></div>
+   <div style="text-align:center">${B2.wallBall.B}<div style="font-size:11px;font-weight:700">B</div></div>
+   <div style="text-align:center">${B2.wallBall.C}<div style="font-size:11px;font-weight:700">C</div></div>
+   <div style="text-align:center">${B2.wallBall.D}<div style="font-size:11px;font-weight:700">D</div></div>
+  </div>`,
+ opts:["A","B","C","D"], correct:3},
+{q:"In which of the following activities hinge joints are used?",
+ opts:["While kicking a football","While lifting a load","While opening a fridge","All of the above"], correct:3},
+{q:"Which layer of soil contains worms-insects?",
+ opts:["Humus","Soil","Immature soil","Rocks"], correct:0},
+{q:"If we consider the total waste water stored on the earth is 100 ml, and the distribution of water is as given. Which alternative shows water stored on the earth in ice form?",
+ opts:["0.3 ml","97 ml","0.7 ml","2 ml"], correct:3},
+{q:"A long chain formed by joining many similar molecules is known as <span class='blank'></span>.",
+ opts:["Polymer","Hydrocarbon","Vulcanisation","Galvanisation"], correct:0},
+{q:"Identify the false statement about 'water hyacinth'.",
+ opts:["Growth of mosquitoes increases","Rate of diffusion of oxygen in water decreases","Grows fast in stagnant water","Grows fast in running water"], correct:3},
+{q:"As shown in the figure, a block of mass 100 gm was pulled on the surfaces P, Q, R, S using a spring balance and showed the mark as 80 gm, 65 gm, 50 gm, 45 gm respectively. Which surface out of P, Q, R, S is smoother?",
+ diagram:B2.spring83,
+ opts:["P","Q","R","S"], correct:3},
+{q:"Which metal strip should be used to make an electromagnet?",
+ opts:["Aluminium","Copper","Iron","Silver"], correct:2},
+{q:"Find P and Q respectively.",
+ diagram:`<table class="data-tbl"><tr><th>Nutrient</th><th>Source</th></tr><tr><td>Iron</td><td>P</td></tr><tr><td>Q</td><td>Fish</td></tr></table>`,
+ opts:["Spinach, Iodine","Milk, Calcium","Salt, Sodium","Chesse, Potassium"], correct:0},
+{q:"Guess Who am I?<br><span style='color:#4B5768'>Neither combustible nor supports burning. Important component of proteins. Maintains balance of air pressure in tyres.</span>",
+ opts:["CO<sub>2</sub>","N<sub>2</sub>","O<sub>2</sub>","Cl<sub>2</sub>"], correct:1},
+{q:"Which unit is used to measure the speed of the ball of a bowler?",
+ opts:["cm/second","m/second","km/hour","m/hour"], correct:2},
+{q:"How many pairs of ribs are present in the human rib cage?",
+ opts:["12","24","36","10"], correct:0},
+{q:"Frequency of infrasonic waves is <span class='blank'></span> the frequency of ultrasonic waves.",
+ opts:["less than","more than","equal to","equal or more than"], correct:0},
+{q:"Periscope can be used:",
+ opts:["to see objects around the corner","to observe machine parts underneath the car without bending down","to see far away objects","to see minute objects"], correct:1},
+{q:"Which among the following is not a primary colour?",
+ opts:["Red","Yellow","Black","Blue"], correct:2},
+{q:"When we apply soap while washing clothes and rinse in water, which of the following actions take place respectively?",
+ opts:["Chemical action, Physical action","Physical action, Chemical action","Chemical action, Chemical action","Physical action, Physical action"], correct:0},
+{q:"Two toy cars are made of plastic with metal strips stuck on them. If we place them facing each other, they move towards each other. What can we conclude from this observation?<br><span style='color:#4B5768'>1) Both metal strips are magnets with like poles facing each other.<br>2) Both metal strips are magnets with unlike poles facing each other.<br>3) Both the strips are made of iron.<br>4) One strip is magnet and other one is made of iron.</span>",
+ opts:["1","2","1, 4","2, 4"], correct:3},
+{q:"It is difficult to push an inverted glass in a bucket full of water. But if it is tilted, it can be pushed easily. Which property of air is seen here?",
+ opts:["Air produces pressure","Air has mass","Air occupies space","All of the above"], correct:2},
+{q:"Number of images formed in a Kaleidoscope are <span class='blank'></span>.",
+ opts:["3","4","5","6"], correct:2},
+{q:"When we enter a mall, we enter through a frame which is used to <span class='blank'></span>.",
+ opts:["click photographs for safety purpose.","search for food items carried by people.","count the number of visitors.","check metallic object carried by people."], correct:3},
+{q:"What is the advantage of having two ears over having one?",
+ opts:["Can hear sound more clearly.","If one ear stops functioning, you can use the other.","Can find the direction of the sound.","Human face looks symmetrical."], correct:2},
+{q:"Which part of the body helps a bird to fly?<br><span style='color:#4B5768'>1) Tail&nbsp;&nbsp;2) Hollow bones&nbsp;&nbsp;3) Beak&nbsp;&nbsp;4) Sharp claws</span>",
+ opts:["1, 2, 3, 4","1, 2, 3","1, 2","2"], correct:2},
+{q:"Who does the maximum work in the following cases?<br><span style='color:#4B5768'>1) Ajay is standing with a box on his head<br>2) Amar pulls the same box on the ground for 1 meter<br>3) Anil picks up the same box and keeps it at a height of 1 meter</span>",
+ opts:["Ajay","Amar","Anil","Amar and Anil"], correct:2},
+{q:"Find the odd one out:",
+ opts:["Mongoose","Chameleon","Lizard","Salamander"], correct:0},
+/* ================= SECTION E — ADDITIONAL SIMILAR ================= */
+{q:"Which of the following is a good conductor of electricity but NOT a magnetic material?",
+ opts:["Iron","Copper","Nickel","Cobalt"], correct:1},
+{q:"A pencil partly dipped in water appears bent at the surface. This is because of <span class='blank'></span>.",
+ opts:["reflection of light","refraction of light","dispersion of light","absorption of light"], correct:1},
+{q:"Which of the following is a contact force?",
+ opts:["Gravitational force","Magnetic force","Muscular force","Electrostatic force"], correct:2},
+{q:"The frequency of infrasonic waves is <span class='blank'></span> 20 Hz.",
+ opts:["more than","less than","equal to","double of"], correct:1},
+{q:"Which of the following is a plant-based, biodegradable substance?",
+ opts:["Leather","Silk","Rayon","Cotton"], correct:3},
+{q:"A ball hits a wall at an angle and bounces back. The angle of incidence is <span class='blank'></span> the angle of reflection.",
+ opts:["less than","equal to","more than","double of"], correct:1},
+{q:"Which of the following is an abiotic factor in a forest ecosystem?",
+ opts:["Fungi","Sunlight","Deer","Bacteria"], correct:1},
+{q:"Which metal is used to make an electromagnet?",
+ opts:["Aluminium","Copper","Iron","Silver"], correct:2},
+{q:"The speed of a bowler's ball is usually measured in <span class='blank'></span>.",
+ opts:["cm/s","m/s","km/h","m/h"], correct:2},
+{q:"A periscope is used to <span class='blank'></span>.",
+ opts:["see objects around a corner","observe machine parts under a car","see faraway objects clearly","see very small objects"], correct:0},
+{q:"Which of the following is NOT a primary colour of light?",
+ opts:["Red","Green","Yellow","Blue"], correct:2},
+{q:"The number of images formed in a kaleidoscope with three mirrors at 60° is <span class='blank'></span>.",
+ opts:["3","4","5","6"], correct:2},
+{q:"A metal detector frame at a mall entrance is used to <span class='blank'></span>.",
+ opts:["click photographs","check food items","count visitors","detect metallic objects"], correct:3},
+{q:"What is the advantage of having two ears over one?",
+ opts:["Sound is heard more loudly.","If one ear fails, the other works.","We can judge the direction of sound.","The face looks symmetrical."], correct:2},
+{q:"Which features help a bird to fly?<br><span style='color:#4B5768'>1) Tail&nbsp;&nbsp;2) Hollow bones&nbsp;&nbsp;3) Beak&nbsp;&nbsp;4) Sharp claws</span>",
+ opts:["1, 2, 3, 4","1, 2, 3","1, 2","2"], correct:2},
+{q:"Who does the maximum work?<br><span style='color:#4B5768'>1) Ajay stands with a box on his head.<br>2) Amar pulls the box 1 m on the ground.<br>3) Anil lifts the box to a height of 1 m.</span>",
+ opts:["Ajay","Amar","Anil","Amar and Anil equally"], correct:2},
+{q:"Find the odd one out:",
+ opts:["Mongoose","Chameleon","Lizard","Salamander"], correct:0},
+{q:"Malaria and kala-azar (black fever) are caused by <span class='blank'></span>.",
+ opts:["bacteria","fungus","protozoa","virus"], correct:2},
+{q:"Which disease is NOT related to bones?",
+ opts:["Rickets","Arthritis","Osteoporosis","Scurvy"], correct:3},
+{q:"Guess Who am I?<br><span style='color:#4B5768'>I am a green fruit, rich in vitamin C, and my juice is sour and astringent even after drying.</span>",
+ opts:["Pumpkin","Guava","Amla (Indian gooseberry)","Orange"], correct:2},
+{q:"How does vaccination help us?",
+ opts:["It cures all diseases.","It kills microbes in the infected area.","It improves our immunity.","It increases body weight."], correct:2},
+{q:"In India, forest area is 21.7%, non-agricultural land 8.5%, barren land 6.8%, pasture land 3.5%. What percentage is left for other uses?",
+ opts:["About 50%","About 55%","About 59.5%","About 65%"], correct:2}
+];
+
+
+/* =====================================================================
+   TEST CONFIG
+   ===================================================================== */
+const TIME_LIMIT_SECONDS = 6000;
+
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+
+/* =====================================================================
+   RENDER QUESTIONS
+   ===================================================================== */
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+
+QUESTIONS.forEach((item, qi) => {
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  head.innerHTML = `<span class="q-num">Q${qi+1}.</span><span class="q-text">${item.q}</span>`;
+  block.appendChild(head);
+
+  if(item.diagram){
+    const d = document.createElement('div');
+    d.className = 'diagram';
+    d.innerHTML = item.diagram;
+    block.appendChild(d);
+  }
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+  item.opts.forEach((opt, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span class="bubble">${letters[oi]}</span>
+      <span class="opt-text">${opt}</span>
+    `;
+    optsWrap.appendChild(label);
+  });
+  block.appendChild(optsWrap);
+
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+
+  root.appendChild(block);
+});
+
+/* =====================================================================
+   PROGRESS TRACKING
+   ===================================================================== */
+function updateProgress(){
+  const total = QUESTIONS.length;
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(inp => answered.add(inp.name));
+  const count = answered.size;
+  document.getElementById('progress-bar-fill').style.width = (count/total*100) + '%';
+  document.getElementById('progress-label').textContent = `${count} / ${total} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+
+/* =====================================================================
+   TIMER — starts immediately on page load
+   ===================================================================== */
+function formatClock(totalSeconds){
+  const s = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(s/60);
+  const sec = s%60;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function startTimer(){
+  startPerf = performance.now();
+  const clockEl = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const elapsed = (performance.now() - startPerf) / 1000;
+    const remaining = TIME_LIMIT_SECONDS - elapsed;
+    clockEl.textContent = formatClock(remaining);
+    if(remaining <= 60){ clockEl.classList.add('low'); }
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      clockEl.textContent = '00:00';
+      if(!submitted){ handleSubmit(true); }
+    }
+  }, 250);
+}
+startTimer();
+
+/* =====================================================================
+   SCORING (no persistence — nothing is saved anywhere)
+   ===================================================================== */
+function handleSubmit(autoSubmitted){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate)/1000);
+
+  let score = 0;
+  QUESTIONS.forEach((item, qi) => {
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selIdx = selected ? parseInt(selected.value,10) : null;
+    const optLabels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    optLabels.forEach(l => l.classList.remove('correct-answer','wrong-answer'));
+    optLabels[item.correct].classList.add('correct-answer');
+    if(selIdx !== null){
+      if(selIdx === item.correct){ score++; }
+      else{ optLabels[selIdx].classList.add('wrong-answer'); }
+    }
+    const note = document.getElementById(`note-${qi}`);
+    note.textContent = selIdx === item.correct
+      ? '✓ Correct'
+      : (selIdx === null ? '— Not answered' : '✗ Correct answer highlighted in green');
+    note.classList.add('show');
+  });
+
+  const total = QUESTIONS.length;
+  const pct = Math.round(score/total*100);
+  document.getElementById('score-readout').innerHTML = `Score: <b>${score} / ${total}</b> (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+
+  const dateStr = startDate.toLocaleDateString();
+  const startTimeStr = startDate.toLocaleTimeString();
+  const endTimeStr = endDate.toLocaleTimeString();
+  const durMin = Math.floor(durationSeconds/60);
+  const durSec = durationSeconds%60;
+
+  const tsBox = document.getElementById('result-timestamps');
+  tsBox.innerHTML = `Date: <b>${dateStr}</b> &nbsp;·&nbsp; Start: <b>${startTimeStr}</b> &nbsp;·&nbsp; End: <b>${endTimeStr}</b> &nbsp;·&nbsp; Duration: <b>${durMin}m ${durSec}s</b>`;
+  tsBox.classList.add('show');
+
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted
+    ? `Time's up — test auto-submitted. ${score} out of ${total} correct. Scroll up to review the green/red highlights.`
+    : (pct >= 60
+        ? `Nice work — ${score} out of ${total} correct. Scroll up to review any marked in red.`
+        : `${score} out of ${total} correct. Scroll through to review the green highlights — worth another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>
