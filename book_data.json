@@ -1,0 +1,1235 @@
+{
+  "version": "2026-09-22",
+  "boards": {
+    "maharashtra": {
+      "name": "Maharashtra State Board",
+      "publisher": "Maharashtra State Bureau of Textbook Production and Curriculum Research (Balbharati)",
+      "officialSource": "https://books.ebalbharati.in/",
+      "standards": {
+
+        "5": {
+          "English": {
+            "title": "English Balbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/503020001.pdf",
+            "lastUpdatedYear": 2015,
+            "status": "available"
+          },
+          "Hindi": {
+            "title": "Hindi Balbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/502020020.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Marathi": {
+            "title": "Marathi Balbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/501020020.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Mathematics": {
+            "title": "Mathematics",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/503020004.pdf",
+            "lastUpdatedYear": 2015,
+            "status": "available"
+          },
+          "Environmental Studies": {
+            "title": "Environmental Studies Part 1",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/503000541.pdf",
+            "lastUpdatedYear": null,
+            "status": "available",
+            "additionalPdfUrls": [
+              "https://books.ebalbharati.in/pdfs/503000542.pdf"
+            ]
+          }
+        },
+
+        "6": {
+          "English": {
+            "title": "English Balbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/603020001.pdf",
+            "lastUpdatedYear": 2016,
+            "status": "available"
+          },
+          "Hindi": {
+            "title": "Hindi Lokbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/602020021.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Marathi": {
+            "title": "Marathi Sulabhbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/601020021.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Mathematics": {
+            "title": "Mathematics",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/603020004.pdf",
+            "lastUpdatedYear": 2016,
+            "status": "available"
+          },
+          "General Science": {
+            "title": "General Science",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/603020012.pdf",
+            "lastUpdatedYear": 2016,
+            "status": "available"
+          },
+          "History and Civics": {
+            "title": "History and Civics",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/603000584.pdf",
+            "lastUpdatedYear": 2016,
+            "status": "available"
+          },
+          "Geography": {
+            "title": "Geography",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/603020011.pdf",
+            "lastUpdatedYear": 2016,
+            "status": "available"
+          }
+        },
+
+        "7": {
+          "English": {
+            "title": "English Balbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/703020001.pdf",
+            "lastUpdatedYear": 2017,
+            "status": "available"
+          },
+          "Hindi": {
+            "title": "Hindi Lokbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/702020021.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Marathi": {
+            "title": "Marathi Sulabhbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/701020020.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Mathematics": {
+            "title": "Mathematics",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/703020004.pdf",
+            "lastUpdatedYear": 2017,
+            "status": "available"
+          },
+          "General Science": {
+            "title": "General Science",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/703020012.pdf",
+            "lastUpdatedYear": 2017,
+            "status": "available"
+          },
+          "History and Civics": {
+            "title": "History and Civics",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/703000584.pdf",
+            "lastUpdatedYear": 2017,
+            "status": "available"
+          },
+          "Geography": {
+            "title": "Geography",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/703020011.pdf",
+            "lastUpdatedYear": 2017,
+            "status": "available"
+          }
+        },
+
+        "8": {
+          "English": {
+            "title": "English Balbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/803020001.pdf",
+            "lastUpdatedYear": 2018,
+            "status": "available"
+          },
+          "Hindi": {
+            "title": "Hindi Lokbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/802020021.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Marathi": {
+            "title": "Marathi Sulabhbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/801020021.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Mathematics": {
+            "title": "Mathematics",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/803020004.pdf",
+            "lastUpdatedYear": 2018,
+            "status": "available"
+          },
+          "General Science": {
+            "title": "General Science",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/803020012.pdf",
+            "lastUpdatedYear": 2018,
+            "status": "available"
+          },
+          "History and Civics": {
+            "title": "History and Civics",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/803000584.pdf",
+            "lastUpdatedYear": 2018,
+            "status": "available"
+          },
+          "Geography": {
+            "title": "Geography",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/803020011.pdf",
+            "lastUpdatedYear": 2018,
+            "status": "available"
+          }
+        },
+
+        "9": {
+          "English": {
+            "title": "My English Coursebook",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/903030024.pdf",
+            "lastUpdatedYear": 2017,
+            "status": "available"
+          },
+          "Hindi": {
+            "title": "Hindi",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/902030027.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Marathi": {
+            "title": "Marathi",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/901000616.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Mathematics": {
+            "title": "Mathematics Part I",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/903000608.pdf",
+            "lastUpdatedYear": 2017,
+            "status": "available",
+            "additionalPdfUrls": [
+              "https://books.ebalbharati.in/pdfs/903000609.pdf"
+            ]
+          },
+          "Science and Technology": {
+            "title": "Science and Technology",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/903020456.pdf",
+            "lastUpdatedYear": 2017,
+            "status": "available"
+          },
+          "History and Political Science": {
+            "title": "History and Political Science",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/903010491.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Geography": {
+            "title": "Geography",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/903020011.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Information Technology": {
+            "title": "Information Technology",
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          }
+        },
+
+        "10": {
+          "English": {
+            "title": "My English Coursebook",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1003030024.pdf",
+            "lastUpdatedYear": 2018,
+            "status": "available"
+          },
+          "Hindi": {
+            "title": "Hindi",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1002030027.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Marathi": {
+            "title": "Marathi",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1001000616.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Mathematics": {
+            "title": "Mathematics Part I",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1003000608.pdf",
+            "lastUpdatedYear": 2018,
+            "status": "available",
+            "additionalPdfUrls": [
+              "https://books.ebalbharati.in/pdfs/1003000609.pdf"
+            ]
+          },
+          "Science and Technology": {
+            "title": "Science and Technology Part I",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1003000265.pdf",
+            "lastUpdatedYear": null,
+            "status": "available",
+            "additionalPdfUrls": [
+              "https://books.ebalbharati.in/pdfs/1003000270.pdf"
+            ]
+          },
+          "History and Political Science": {
+            "title": "History and Political Science",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1003010491.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Geography": {
+            "title": "Geography",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1003020011.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Information Technology": {
+            "title": "Information Technology",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1103000662.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          }
+        },
+
+        "11": {
+          "English": {
+            "title": "English Yuvakbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1103040026.pdf",
+            "lastUpdatedYear": 2019,
+            "status": "available"
+          },
+          "Hindi": {
+            "title": "Hindi Yuvakbharati",
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Marathi": {
+            "title": "Marathi Yuvakbharati",
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Physics": {
+            "title": "Physics",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1103020415.pdf",
+            "lastUpdatedYear": 2020,
+            "status": "available"
+          },
+          "Chemistry": {
+            "title": "Chemistry",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1103030414.pdf",
+            "lastUpdatedYear": 2020,
+            "status": "available"
+          },
+          "Biology": {
+            "title": "Biology",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1103030421.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Mathematics": {
+            "title": "Mathematics and Statistics – Arts and Science Part I",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1103020424.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Economics": {
+            "title": "Economics",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1103020029.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Accountancy": {
+            "title": "Book Keeping and Accountancy",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1103020425.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Information Technology": {
+            "title": "Information Technology",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1203010498.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          }
+        },
+
+        "12": {
+          "English": {
+            "title": "English Yuvakbharati",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1203040026.pdf",
+            "lastUpdatedYear": 2020,
+            "status": "available"
+          },
+          "Hindi": {
+            "title": "Hindi Yuvakbharati",
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Marathi": {
+            "title": "Marathi Yuvakbharati",
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Physics": {
+            "title": "Physics",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1203020415.pdf",
+            "lastUpdatedYear": 2020,
+            "status": "available"
+          },
+          "Chemistry": {
+            "title": "Chemistry",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1203030414.pdf",
+            "lastUpdatedYear": 2020,
+            "status": "available"
+          },
+          "Biology": {
+            "title": "Biology",
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Mathematics": {
+            "title": "Mathematics and Statistics – Arts and Science Part II",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1203020424.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Economics": {
+            "title": "Economics",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1203020029.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Accountancy": {
+            "title": "Book Keeping and Accountancy",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1203020425.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          },
+          "Information Technology": {
+            "title": "Information Technology",
+            "pdfUrl": "https://books.ebalbharati.in/pdfs/1203010500.pdf",
+            "lastUpdatedYear": null,
+            "status": "available"
+          }
+        }
+      }
+    },
+
+    "cbse": {
+      "name": "CBSE",
+      "publisher": "NCERT",
+      "officialSource": "https://ncert.nic.in/textbook.php",
+      "note": "CBSE prescribes NCERT books. NCERT's current complete-book download mechanism provides ZIP bundles rather than a single complete-book PDF. Only verified individual PDF assets should therefore be stored in pdfUrls.",
+      "standards": {
+
+        "1": {
+          "English": {
+            "title": "Mridang",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          },
+          "Hindi": {
+            "title": "Sarangi",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          },
+          "Mathematics": {
+            "title": "Joyful Mathematics",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          },
+          "Environmental Studies": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable",
+            "reason": "No separate current NCERT EVS textbook for Class I"
+          }
+        },
+
+        "2": {
+          "English": {
+            "title": "Mridang",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          },
+          "Hindi": {
+            "title": "Sarangi",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          },
+          "Mathematics": {
+            "title": "Joyful Mathematics",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          },
+          "Environmental Studies": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable",
+            "reason": "No separate current NCERT EVS textbook for Class II"
+          }
+        },
+
+        "3": {
+          "English": {
+            "title": "Santoor",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          },
+          "Hindi": {
+            "title": "Veena",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          },
+          "Mathematics": {
+            "title": "Maths Mela",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          },
+          "Environmental Studies": {
+            "title": "The World Around Us",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          }
+        },
+
+        "4": {
+          "English": {
+            "title": "Santoor",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          },
+          "Hindi": {
+            "title": "Veena",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          },
+          "Mathematics": {
+            "title": "Maths Mela",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          },
+          "Environmental Studies": {
+            "title": "The World Around Us",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable",
+            "reason": "Official NCERT current complete-book download is not a single PDF"
+          }
+        },
+
+        "5": {
+          "English": {
+            "title": "Santoor",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Hindi": {
+            "title": "Veena",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Mathematics": {
+            "title": "Maths Mela",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Environmental Studies": {
+            "title": "The World Around Us",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          }
+        },
+
+        "6": {
+          "English": {
+            "title": "Poorvi",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "fepr1"
+          },
+          "Hindi": {
+            "title": "Malhar",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "fhml1"
+          },
+          "Mathematics": {
+            "title": "Ganita Prakash",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "fegp1"
+          },
+          "Science": {
+            "title": "Curiosity",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "fecu1"
+          },
+          "Social Science": {
+            "title": "Exploring Society: India and Beyond",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "fees1"
+          },
+          "Computer Applications": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Artificial Intelligence": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          }
+        },
+
+        "7": {
+          "English": {
+            "title": "Poorvi",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "gepr1"
+          },
+          "Hindi": {
+            "title": "Malhar",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "ghml1"
+          },
+          "Mathematics": {
+            "title": "Ganita Prakash",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCodes": [
+              "gegp1",
+              "gegp2"
+            ]
+          },
+          "Science": {
+            "title": "Curiosity",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "gecu1"
+          },
+          "Social Science": {
+            "title": "Exploring Society: India and Beyond",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "gees1"
+          },
+          "Computer Applications": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Artificial Intelligence": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          }
+        },
+
+        "8": {
+          "English": {
+            "title": "Poorvi",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "hepr1"
+          },
+          "Hindi": {
+            "title": "Malhar",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "hhml1"
+          },
+          "Mathematics": {
+            "title": "Ganita Prakash",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCodes": [
+              "hegp1",
+              "hegp2"
+            ]
+          },
+          "Science": {
+            "title": "Curiosity",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "hecu1"
+          },
+          "Social Science": {
+            "title": "Exploring Society: India and Beyond",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable",
+            "ncertCode": "hees1"
+          },
+          "Computer Applications": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Artificial Intelligence": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          }
+        },
+
+        "9": {
+          "English": {
+            "title": "Kaveri",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable"
+          },
+          "Hindi": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable"
+          },
+          "Mathematics": {
+            "title": "Ganita Manjari",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable"
+          },
+          "Science": {
+            "title": "Exploration",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable"
+          },
+          "Social Science": {
+            "title": "Understanding Society",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2026,
+            "status": "unavailable"
+          },
+          "Computer Applications": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Information Technology": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Artificial Intelligence": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          }
+        },
+
+        "10": {
+          "English": {
+            "title": "First Flight",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Hindi": {
+            "title": "Kshitij / Sparsh / Kritika / Sanchayan",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Mathematics": {
+            "title": "Mathematics",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Science": {
+            "title": "Science",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Social Science": {
+            "title": "History/Geography/Civics/Economics",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Computer Applications": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Information Technology": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Artificial Intelligence": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          }
+        },
+
+        "11": {
+          "English Core": {
+            "title": "Hornbill / Snapshots",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Physics": {
+            "title": "Physics Part I / Part II",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Chemistry": {
+            "title": "Chemistry Part I / Part II",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Biology": {
+            "title": "Biology",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Mathematics": {
+            "title": "Mathematics",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Applied Mathematics": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Economics": {
+            "title": "Statistics for Economics / Indian Economic Development",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Accountancy": {
+            "title": "Accountancy",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Business Studies": {
+            "title": "Business Studies",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Computer Science": {
+            "title": "Computer Science",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Informatics Practices": {
+            "title": "Informatics Practices",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Physical Education": {
+            "title": "Health and Physical Education",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          }
+        },
+
+        "12": {
+          "English Core": {
+            "title": "Flamingo / Vistas",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Physics": {
+            "title": "Physics Part I / Part II",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Chemistry": {
+            "title": "Chemistry Part I / Part II",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Biology": {
+            "title": "Biology",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Mathematics": {
+            "title": "Mathematics",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Applied Mathematics": {
+            "title": null,
+            "pdfUrls": [],
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Economics": {
+            "title": "Introductory Macroeconomics / Indian Economic Development",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Accountancy": {
+            "title": "Accountancy",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Business Studies": {
+            "title": "Business Studies",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Computer Science": {
+            "title": "Computer Science",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Informatics Practices": {
+            "title": "Informatics Practices",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          },
+          "Physical Education": {
+            "title": "Health and Physical Education",
+            "pdfUrls": [],
+            "lastUpdatedYear": 2025,
+            "status": "unavailable"
+          }
+        }
+      }
+    },
+
+    "cisce": {
+      "name": "CISCE / ICSE / ISC",
+      "officialSource": "https://cisce.org/",
+      "standards": {
+
+        "1": {
+          "English": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Second Language": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Mathematics": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Environmental Studies": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Computer Studies": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          }
+        },
+
+        "2": {
+          "English": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Second Language": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Mathematics": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Environmental Studies": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Computer Studies": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          }
+        },
+
+        "3": {
+          "English": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Second Language": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Mathematics": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Environmental Studies": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Computer Studies": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          }
+        },
+
+        "4": {
+          "English": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Second Language": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Mathematics": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Environmental Studies": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Computer Studies": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          }
+        },
+
+        "5": {
+          "English": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Second Language": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Mathematics": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Environmental Studies": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          },
+          "Computer Studies": {
+            "pdfUrl": null,
+            "lastUpdatedYear": null,
+            "status": "unavailable"
+          }
+        },
+
+        "6": {
+          "English": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Second Language": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Mathematics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Physics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Chemistry": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Biology": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "History and Civics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Geography": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Computer Applications": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" }
+        },
+
+        "7": {
+          "English": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Second Language": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Mathematics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Physics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Chemistry": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Biology": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "History and Civics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Geography": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Computer Applications": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" }
+        },
+
+        "8": {
+          "English": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Second Language": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Mathematics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Physics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Chemistry": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Biology": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "History and Civics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Geography": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Computer Applications": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" }
+        },
+
+        "9": {
+          "English": { "pdfUrl": null, "lastUpdatedYear": 2026, "status": "prescribed_book_no_official_pdf" },
+          "Second Language": { "pdfUrl": null, "lastUpdatedYear": 2026, "status": "prescribed_book_no_official_pdf" },
+          "Mathematics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Physics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Chemistry": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Biology": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "History and Civics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Geography": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Computer Applications": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Commercial Studies": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Economic Applications": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" }
+        },
+
+        "10": {
+          "English": { "pdfUrl": null, "lastUpdatedYear": 2026, "status": "prescribed_book_no_official_pdf" },
+          "Second Language": { "pdfUrl": null, "lastUpdatedYear": 2026, "status": "prescribed_book_no_official_pdf" },
+          "Mathematics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Physics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Chemistry": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Biology": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "History and Civics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Geography": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Computer Applications": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Commercial Studies": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Economic Applications": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" }
+        },
+
+        "11": {
+          "English": { "pdfUrl": null, "lastUpdatedYear": 2026, "status": "prescribed_book_no_official_pdf" },
+          "Second Language": { "pdfUrl": null, "lastUpdatedYear": 2026, "status": "prescribed_book_no_official_pdf" },
+          "Physics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Chemistry": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Biology": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Mathematics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Computer Science": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Economics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Accounts": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Business Studies": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Geography": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "History": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Psychology": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Sociology": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Physical Education": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" }
+        },
+
+        "12": {
+          "English": { "pdfUrl": null, "lastUpdatedYear": 2026, "status": "prescribed_book_no_official_pdf" },
+          "Second Language": { "pdfUrl": null, "lastUpdatedYear": 2026, "status": "prescribed_book_no_official_pdf" },
+          "Physics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Chemistry": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Biology": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Mathematics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Computer Science": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Economics": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Accounts": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Business Studies": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Geography": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "History": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Psychology": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Sociology": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" },
+          "Physical Education": { "pdfUrl": null, "lastUpdatedYear": null, "status": "unavailable" }
+        }
+      }
+    }
+  }
+}
