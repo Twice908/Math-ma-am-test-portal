@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') window.location.replace('../../login.html');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Adaptations 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Biology — Adaptations 2</h1>
+    <p class="subtitle">Standard VI · English Medium · Questions 1–50 · Std 5–8 syllabus</p>
+    <div class="meta-row">
+      <span>Questions: <b id="total-q-count">—</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>50</b></span>
+      <span>Type: <b>MCQ</b></span>
+      <span>Time limit: <b>30:00</b></span>
+    </div>
+  </header>
+  <div class="instructions">
+    <b>Instructions:</b> Choose the <b>most appropriate answer</b> for each question. This test covers camouflage,
+    mimicry, mountain and polar adaptations, nocturnal life, bird beaks and claws, special plant adaptations,
+    seed dispersal, pollination, animal defence mechanisms, and other adaptations in plants and animals. One mark each,
+    <b>no negative marking</b>. Select one option per question by tapping its bubble. The timer started as soon as this page loaded.
+    Tap <b>Check My Score</b> when ready; the test auto-submits when the timer reaches zero.
+  </div>
+  <div id="timer-wrap"><span id="timer-clock">30:00</span></div>
+  <div id="progress-wrap"><div id="progress-bar-track"><div id="progress-bar-fill"></div></div><div id="progress-label">0 / 0 answered</div></div>
+  <main id="quiz-root"></main>
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+  <footer class="action-bar"><div id="score-readout">Not submitted yet</div><button id="submit-btn">Check My Score</button></footer>
+</div>
+<script>
+const QUESTIONS = [
+{topic:"Camouflage & Mimicry",q:"The colour or pattern that helps an animal blend into its surroundings to avoid detection is called:",opts:["Migration","Camouflage","Hibernation","Photosynthesis"],correct:1},
+{topic:"Camouflage & Mimicry",q:"A chameleon's ability to change its skin colour is mainly an adaptation for:",opts:["Digestion","Camouflage and communication","Breathing","Reproduction only"],correct:1},
+{topic:"Camouflage & Mimicry",q:"The stick insect's body shape, which resembles a twig, is an example of:",opts:["Migration","Camouflage","Hibernation","Parasitism"],correct:1},
+{topic:"Camouflage & Mimicry",q:"Mimicry, where a harmless animal resembles a dangerous one to avoid predators, is best shown by:",opts:["A hoverfly resembling a wasp","A camel storing fat in its hump","A cactus storing water","A fish having gills"],correct:0},
+{topic:"Polar & Mountain Adaptations",q:"Polar bears have thick fur and a layer of fat (blubber) mainly to:",opts:["Swim faster","Keep the body warm in extreme cold","Camouflage in the forest","Reduce body weight"],correct:1},
+{topic:"Polar & Mountain Adaptations",q:"The white fur of animals like the polar bear and Arctic fox mainly helps them to:",opts:["Reflect sunlight for cooling","Camouflage against snow","Absorb more heat","Attract mates only"],correct:1},
+{topic:"Polar & Mountain Adaptations",q:"Penguins huddle together in large groups mainly to:",opts:["Hunt more effectively","Keep themselves warm","Attract predators away","Communicate with other species"],correct:1},
+{topic:"Polar & Mountain Adaptations",q:"Which adaptation helps mountain animals like the yak survive extreme cold at high altitudes?",opts:["Thin fur and small body","Thick, long fur and a stocky body","Gills","Long roots"],correct:1},
+{topic:"Polar & Mountain Adaptations",q:"The broad hooves of mountain animals such as the ibex or mountain goat mainly help them to:",opts:["Dig burrows","Grip rocky, steep slopes without slipping","Swim in water","Fly"],correct:1},
+{topic:"Polar & Mountain Adaptations",q:"Coniferous trees found in mountain and cold regions typically have a conical shape mainly so that:",opts:["Snow slides off the branches easily","They attract more insects","They can float on water","They can store more water"],correct:0},
+{topic:"Polar & Mountain Adaptations",q:"The needle-shaped, waxy leaves of coniferous (pine-type) trees mainly help to:",opts:["Increase water loss","Reduce water loss and shed snow easily","Trap insects for food","Attract pollinators"],correct:1},
+{topic:"Nocturnal & Seasonal Adaptations",q:"Nocturnal animals such as owls are adapted with large eyes mainly to:",opts:["See well in the dark","Fly faster","Store extra fat","Change colour"],correct:0},
+{topic:"Nocturnal & Seasonal Adaptations",q:"Bats use a special ability to navigate and locate prey in the dark called:",opts:["Camouflage","Echolocation","Hibernation","Migration"],correct:1},
+{topic:"Nocturnal & Seasonal Adaptations",q:"Long, sensitive whiskers found in nocturnal animals like cats mainly help them to:",opts:["Sense their surroundings in the dark","Attract mates","Regulate body temperature","Digest food"],correct:0},
+{topic:"Nocturnal & Seasonal Adaptations",q:"Animals like squirrels and bears that spend winter in a state of deep sleep to conserve energy are said to:",opts:["Migrate","Hibernate","Camouflage","Pollinate"],correct:1},
+{topic:"Nocturnal & Seasonal Adaptations",q:"Birds such as the Siberian crane that travel long distances each year to escape harsh winters are showing:",opts:["Hibernation","Migration","Mimicry","Symbiosis"],correct:1},
+{topic:"Bird Adaptations",q:"A hooked, curved, and strong beak, as seen in eagles and other birds of prey, is an adaptation mainly for:",opts:["Cracking hard seeds","Tearing flesh of prey","Sipping nectar","Straining mud for food"],correct:1},
+{topic:"Bird Adaptations",q:"A short, thick, and strong beak, as seen in sparrows, is mainly an adaptation for:",opts:["Catching fish","Cracking hard seeds and grains","Tearing meat","Filtering water"],correct:1},
+{topic:"Bird Adaptations",q:"A long, thin, pointed beak, as seen in hummingbirds, is mainly an adaptation for:",opts:["Cracking nuts","Sipping nectar from flowers","Tearing flesh","Digging soil"],correct:1},
+{topic:"Bird Adaptations",q:"A flat, broad beak, as seen in ducks, is mainly an adaptation for:",opts:["Straining food from mud and water","Tearing prey","Cracking seeds","Sipping nectar"],correct:0},
+{topic:"Bird Adaptations",q:"The sharp, curved claws (talons) of birds of prey like eagles are mainly used to:",opts:["Build nests","Grip and capture prey","Swim","Dig for worms"],correct:1},
+{topic:"Bird Adaptations",q:"Webbed feet, as seen in ducks and other water birds, are an adaptation that mainly helps them to:",opts:["Run faster on land","Paddle and swim efficiently in water","Perch on branches","Dig burrows"],correct:1},
+{topic:"Bird Adaptations",q:"Woodpeckers have strong, chisel-like beaks mainly adapted for:",opts:["Sipping nectar","Drilling into wood to find insects","Straining water","Cracking soft fruit"],correct:1},
+{topic:"Bird Adaptations",q:"The hollow bones of birds are an adaptation that mainly helps them to:",opts:["Store more fat","Reduce body weight for flight","Swim underwater","Dig burrows"],correct:1},
+{topic:"Plant Adaptations",q:"Insectivorous plants such as the pitcher plant and Venus flytrap are usually adapted to grow in soil that is:",opts:["Very rich in nitrogen","Poor in nitrogen, so they trap insects for nutrients","Always underwater","Extremely dry, like a desert"],correct:1},
+{topic:"Plant Adaptations",q:"The pitcher plant traps insects mainly using:",opts:["A pitcher-shaped leaf containing digestive fluid","Sticky roots","Thorns on its stem","A streamlined body"],correct:0},
+{topic:"Plant Adaptations",q:"Cuscuta (dodder), a parasitic plant, is adapted to survive without making its own food because it:",opts:["Has broad green leaves","Lacks chlorophyll and absorbs nutrients from a host plant","Lives underwater","Has a very deep root system"],correct:1},
+{topic:"Plant Adaptations",q:"Climbing plants such as pea and grapevine have thread-like structures called tendrils, which mainly help them to:",opts:["Absorb extra sunlight","Cling to a support and climb upward","Store water","Trap insects"],correct:1},
+{topic:"Plant Adaptations",q:"Orchids growing on the branches of other trees, without harming them, mainly show an adaptation of:",opts:["Parasitism","Being an epiphyte, using aerial roots to absorb moisture from air","Carnivory","Being fully submerged in water"],correct:1},
+{topic:"Plant Adaptations",q:"Thorns found on plants such as babul and rose are mainly an adaptation for:",opts:["Attracting pollinators","Protection from being eaten by animals","Absorbing more sunlight","Storing extra food"],correct:1},
+{topic:"Plant Adaptations",q:"Brightly coloured, scented flowers with nectar are an adaptation of plants mainly to:",opts:["Reduce water loss","Attract insects and birds for pollination","Protect from predators","Survive cold weather"],correct:1},
+{topic:"Seed Dispersal",q:"Seeds of plants like the maple tree have wing-like structures mainly as an adaptation for:",opts:["Photosynthesis","Dispersal by wind","Storing food","Attracting insects"],correct:1},
+{topic:"Seed Dispersal",q:"Seeds with hooks or spines, such as those of Xanthium (burr), are adapted to spread mainly by:",opts:["Wind","Sticking to the fur of animals or human clothing","Water currents","Self-bursting only"],correct:1},
+{topic:"Seed Dispersal",q:"Coconuts have a hard, fibrous, and light outer covering mainly as an adaptation for:",opts:["Dispersal by floating on water","Attracting birds","Reducing photosynthesis","Trapping insects"],correct:0},
+{topic:"Seed Dispersal",q:"The bursting (explosive) pods of plants like balsam, which fling seeds away when ripe, are an adaptation for:",opts:["Seed dispersal by self-explosion","Water storage","Attracting pollinators","Climbing support"],correct:0},
+{topic:"Animal Adaptations",q:"The long, powerful hind legs of a kangaroo are mainly an adaptation for:",opts:["Digging burrows","Fast hopping movement across open land","Climbing trees","Swimming"],correct:1},
+{topic:"Animal Adaptations",q:"The long neck of a giraffe is mainly an adaptation that helps it to:",opts:["Run faster","Reach leaves high up on trees for food","See predators from far only","Swim across rivers"],correct:1},
+{topic:"Animal Adaptations",q:"The trunk of an elephant is a highly adapted structure used mainly for:",opts:["Breathing underwater only","Grasping food, drinking water, and other tasks","Digging deep burrows","Flying"],correct:1},
+{topic:"Defence Adaptations",q:"Porcupines and hedgehogs have sharp spines on their bodies mainly as an adaptation for:",opts:["Attracting mates","Defence against predators","Swimming","Climbing trees"],correct:1},
+{topic:"Defence Adaptations",q:"A tortoise's hard shell is mainly an adaptation for:",opts:["Swimming faster","Protection from predators","Absorbing sunlight for food","Reducing body weight"],correct:1},
+{topic:"Animal Adaptations",q:"The strong front claws of burrowing animals such as moles are mainly an adaptation for:",opts:["Climbing trees","Digging through soil","Swimming","Flying"],correct:1},
+{topic:"Temperature Adaptations",q:"Animals like the arctic fox having small, rounded ears compared to desert foxes with large ears is an adaptation mainly related to:",opts:["Reducing heat loss in cold climates","Improving hearing only","Attracting mates","Camouflage in sand"],correct:0},
+{topic:"Temperature Adaptations",q:"Large ears, as seen in desert foxes like the fennec fox, mainly help the animal to:",opts:["Store fat","Release excess body heat and keep cool","Camouflage against predators","Swim efficiently"],correct:1},
+{topic:"Defence Adaptations",q:"Skunks release a foul-smelling spray mainly as an adaptation for:",opts:["Attracting prey","Defence against predators","Communication with mates only","Digestion"],correct:1},
+{topic:"Defence Adaptations",q:"Some frogs and insects have brightly coloured bodies that warn predators they are poisonous or bad-tasting; this is called:",opts:["Camouflage","Warning (aposematic) colouration","Migration","Hibernation"],correct:1},
+{topic:"Animal Adaptations",q:"The webbed feet of frogs are an adaptation mainly for:",opts:["Digging burrows","Swimming efficiently in water","Climbing trees","Flying"],correct:1},
+{topic:"Animal Adaptations",q:"The moist, permeable skin of a frog allows it to:",opts:["Breathe partly through its skin","Fly","Store food for winter","Change colour rapidly"],correct:0},
+{topic:"Insect Adaptations",q:"Bees have specially adapted hairy legs mainly used for:",opts:["Digging soil","Collecting and carrying pollen","Swimming","Building nests only"],correct:1},
+{topic:"Insect Adaptations",q:"The tough outer wing covers (elytra) of beetles are mainly an adaptation for:",opts:["Attracting mates only","Protecting the delicate flight wings underneath","Absorbing sunlight","Trapping prey"],correct:1},
+{topic:"General Adaptations",q:"Which of the following best describes adaptation in living organisms overall?",opts:["A random, temporary change with no survival benefit","A feature, habit, or behaviour that helps an organism survive and thrive in its specific habitat","A change that only occurs in animals, never in plants","A change that happens only once in an organism's lifetime"],correct:1}
+];
+
+/* Randomize each correct answer position independently on every page load. */
+QUESTIONS.forEach(item => {
+  const target = Math.floor(Math.random() * 4);
+  const current = item.correct;
+  if (current !== target) {
+    [item.opts[current], item.opts[target]] = [item.opts[target], item.opts[current]];
+    item.correct = target;
+  }
+});
+
+const TIME_LIMIT_SECONDS = 1800;
+const MARKS_PER_QUESTION = 1;
+let startDate = new Date();
+let startPerf = null;
+let timerInterval = null;
+let submitted = false;
+const root = document.getElementById('quiz-root');
+document.getElementById('total-q-count').textContent = QUESTIONS.length;
+QUESTIONS.forEach((item, qi) => {
+  const block = document.createElement('div');
+  block.className = 'question';
+  block.dataset.qi = qi;
+  block.innerHTML = `<div class="q-head"><span class="q-num">Q${qi + 1}.</span><span class="q-text">${item.q}</span></div>`;
+  const options = document.createElement('div');
+  options.className = 'options';
+  ['A', 'B', 'C', 'D'].forEach((letter, oi) => {
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.dataset.oi = oi;
+    label.innerHTML = `<input type="radio" name="q${qi}" value="${oi}"><span class="bubble">${letter}</span><span class="opt-text">${item.opts[oi]}</span>`;
+    options.appendChild(label);
+  });
+  block.appendChild(options);
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  note.id = `note-${qi}`;
+  block.appendChild(note);
+  root.appendChild(block);
+});
+function updateProgress() {
+  const answered = new Set();
+  document.querySelectorAll('input[type=radio]:checked').forEach(input => answered.add(input.name));
+  document.getElementById('progress-bar-fill').style.width = `${answered.size / QUESTIONS.length * 100}%`;
+  document.getElementById('progress-label').textContent = `${answered.size} / ${QUESTIONS.length} answered`;
+}
+root.addEventListener('change', updateProgress);
+updateProgress();
+function formatClock(seconds) {
+  seconds = Math.max(0, Math.round(seconds));
+  return `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`;
+}
+function startTimer() {
+  startPerf = performance.now();
+  const clock = document.getElementById('timer-clock');
+  timerInterval = setInterval(() => {
+    const remaining = TIME_LIMIT_SECONDS - (performance.now() - startPerf) / 1000;
+    clock.textContent = formatClock(remaining);
+    if (remaining <= 120) clock.classList.add('low');
+    if (remaining <= 0) { clearInterval(timerInterval); clock.textContent = '00:00'; if (!submitted) handleSubmit(true); }
+  }, 250);
+}
+startTimer();
+function handleSubmit(autoSubmitted) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+  const endDate = new Date();
+  const durationSeconds = Math.round((endDate - startDate) / 1000);
+  let score = 0;
+  const byTopic = {};
+  QUESTIONS.forEach((item, qi) => {
+    if (!byTopic[item.topic]) byTopic[item.topic] = {correct: 0, total: 0};
+    byTopic[item.topic].total++;
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    const selectedIndex = selected ? parseInt(selected.value, 10) : null;
+    const labels = document.querySelectorAll(`.question[data-qi="${qi}"] .opt`);
+    labels.forEach(label => label.classList.remove('correct-answer', 'wrong-answer'));
+    labels[item.correct].classList.add('correct-answer');
+    const note = document.getElementById(`note-${qi}`);
+    note.classList.remove('miss');
+    if (selectedIndex === item.correct) { score++; byTopic[item.topic].correct++; note.textContent = '✓ Correct'; }
+    else { if (selectedIndex !== null) labels[selectedIndex].classList.add('wrong-answer'); note.textContent = selectedIndex === null ? '— Not answered' : '✗ Correct answer highlighted in green'; note.classList.add('miss'); }
+    note.classList.add('show');
+  });
+  const total = QUESTIONS.length;
+  const pct = Math.round(score / total * 100);
+  document.getElementById('score-readout').innerHTML = `Score: <b>${score} / ${total}</b> marks (${pct}%)`;
+  document.getElementById('submit-btn').disabled = true;
+  let rows = '';
+  Object.keys(byTopic).forEach(topic => { const data = byTopic[topic]; rows += `<tr><td>${topic}</td><td>${data.correct} / ${data.total}</td><td>${Math.round(data.correct / data.total * 100)}%</td></tr>`; });
+  rows += `<tr><td>Total</td><td>${score} / ${total}</td><td>${pct}%</td></tr>`;
+  const breakdown = document.getElementById('breakdown');
+  breakdown.innerHTML = `<h3>Sub-topic breakdown</h3><table><tr><th>Sub-topic</th><th>Correct</th><th>Score</th></tr>${rows}</table>`;
+  breakdown.classList.add('show');
+  const minutes = Math.floor(durationSeconds / 60);
+  const seconds = durationSeconds % 60;
+  const timestamps = document.getElementById('result-timestamps');
+  timestamps.innerHTML = `Date: <b>${startDate.toLocaleDateString()}</b> &nbsp;·&nbsp; Start: <b>${startDate.toLocaleTimeString()}</b> &nbsp;·&nbsp; End: <b>${endDate.toLocaleTimeString()}</b> &nbsp;·&nbsp; Duration: <b>${minutes}m ${seconds}s</b>`;
+  timestamps.classList.add('show');
+  const banner = document.getElementById('result-banner');
+  banner.textContent = autoSubmitted ? `Time's up — test auto-submitted. ${score} out of ${total} marks.` : (pct >= 60 ? `Nice work — ${score} out of ${total} marks. Check the sub-topic breakdown.` : `${score} out of ${total} marks. Use the sub-topic breakdown to see which area needs another pass.`);
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior: 'smooth', block: 'center'});
+}
+document.getElementById('submit-btn').addEventListener('click', () => handleSubmit(false));
+</script>
+</body>
+</html>
