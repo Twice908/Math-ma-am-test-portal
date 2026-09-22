@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') window.location.replace('./login.html');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Books</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/theme.css">
+<link rel="stylesheet" href="./assets/css/portal.css">
+<style>
+  .books-page{max-width:900px;margin:0 auto;padding:56px 24px 80px}
+  .books-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px}
+  .books-back{color:var(--brand-purple);font:600 13px 'Inter',sans-serif;text-decoration:none}
+  .books-kicker{color:var(--ink-soft);font:700 12px 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;margin:0 0 8px}
+  .books-title{font:800 clamp(28px,4vw,42px) 'Poppins',sans-serif;color:var(--ink);margin:0;letter-spacing:0}
+  .books-intro{max-width:640px;color:var(--ink-soft);font:15px/1.7 'Inter',sans-serif;margin:12px 0 0}
+  .books-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:26px}
+  .books-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .books-field label{display:block;color:var(--ink-soft);font:700 12px 'Inter',sans-serif;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+  .books-field select{width:100%;min-height:48px;border:1.5px solid var(--border);border-radius:var(--radius-md);background:var(--bg);color:var(--ink);padding:12px 14px;font:600 14px 'Inter',sans-serif;cursor:pointer}
+  .books-field select:focus{outline:2px solid var(--brand-purple);outline-offset:2px;border-color:var(--brand-purple)}
+  .books-status{margin-top:22px;padding:18px 20px;border:1px dashed var(--border);border-radius:var(--radius-md);background:var(--bg);color:var(--ink-soft);font:14px/1.6 'Inter',sans-serif}
+  .books-status strong{display:block;color:var(--ink);font:700 15px 'Poppins',sans-serif;margin-bottom:4px}
+  @media(max-width:700px){.books-filters{grid-template-columns:1fr}.books-top{align-items:flex-start;flex-direction:column}.books-page{padding-top:34px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="page hero-inner">
+    <div class="hero-brand"><div class="logo-wrap"><img src="./assets/img/logoHW.png" alt="Math ma'am Academy — Where Every Subject Clicks"></div></div>
+    <div class="flex-row justify-center items-center gap-4"><span class="hero-eyebrow">Official Textbooks</span><a href="./index.html" class="logout-link">Back to Portal</a></div>
+  </div>
+</header>
+<main class="books-page">
+  <div class="books-top">
+    <div><p class="books-kicker">Books Library</p><h1 class="books-title">Find your textbook</h1><p class="books-intro">Choose a board, standard, and subject to browse the textbook catalogue. Book links will be added to each category as the collection is completed.</p></div>
+  </div>
+  <section class="books-panel" aria-labelledby="books-filter-heading">
+    <h2 id="books-filter-heading" class="sr-only">Choose a textbook category</h2>
+    <div class="books-filters">
+      <div class="books-field"><label for="board-select">Board</label><select id="board-select"><option value="">Select board</option><option>Maharashtra State Board</option><option>CBSE</option><option>ICSE / ISC</option><option>Other State Boards</option><option>International Boards</option></select></div>
+      <div class="books-field"><label for="standard-select">Standard</label><select id="standard-select"><option value="">Select standard</option><option>LKG</option><option>UKG</option><option>Std 1</option><option>Std 2</option><option>Std 3</option><option>Std 4</option><option>Std 5</option><option>Std 6</option><option>Std 7</option><option>Std 8</option><option>Std 9</option><option>Std 10</option><option>Std 11</option><option>Std 12</option></select></div>
+      <div class="books-field"><label for="subject-select">Subject</label><select id="subject-select" disabled><option value="">Select board and standard first</option></select></div>
+    </div>
+    <div class="books-status" id="books-status"><strong>Choose a category to begin</strong>Textbook links will appear here after the catalogue is populated.</div>
+  </section>
+</main>
+<script>
+  const boardSelect = document.getElementById('board-select');
+  const standardSelect = document.getElementById('standard-select');
+  const subjectSelect = document.getElementById('subject-select');
+const selectors = [...document.querySelectorAll('.books-field select')];
+const status = document.getElementById('books-status');
+  const commonLanguages = ['English', 'Hindi', 'Marathi'];
+  const subjectProfiles = {
+    maharashtra: {
+      early: [...commonLanguages, 'Mathematics', 'Environmental Studies'],
+      middle: [...commonLanguages, 'Mathematics', 'General Science', 'History and Civics', 'Geography'],
+      secondary: [...commonLanguages, 'Mathematics', 'Science and Technology', 'History and Political Science', 'Geography', 'Information Technology'],
+      senior: [...commonLanguages, 'Physics', 'Chemistry', 'Biology', 'Mathematics', 'Economics', 'Accountancy', 'Information Technology']
+    },
+    cbse: {
+      early: ['English', 'Hindi', 'Mathematics', 'Environmental Studies'],
+      middle: ['English', 'Hindi', 'Third Language', 'Mathematics', 'Science', 'Social Science', 'Computer Applications', 'Artificial Intelligence'],
+      secondary: ['English', 'Hindi or Sanskrit', 'Mathematics', 'Science', 'Social Science', 'Computer Applications', 'Information Technology', 'Artificial Intelligence'],
+      senior: ['English Core', 'Physics', 'Chemistry', 'Biology', 'Mathematics', 'Applied Mathematics', 'Economics', 'Accountancy', 'Business Studies', 'Computer Science', 'Informatics Practices', 'Physical Education']
+    },
+    cisce: {
+      early: ['English', 'Second Language', 'Mathematics', 'Environmental Studies', 'Computer Studies'],
+      middle: ['English', 'Second Language', 'Mathematics', 'Physics', 'Chemistry', 'Biology', 'History and Civics', 'Geography', 'Computer Applications'],
+      secondary: ['English', 'Second Language', 'Mathematics', 'Physics', 'Chemistry', 'Biology', 'History and Civics', 'Geography', 'Computer Applications', 'Commercial Studies', 'Economic Applications'],
+      senior: ['English', 'Second Language', 'Physics', 'Chemistry', 'Biology', 'Mathematics', 'Computer Science', 'Economics', 'Accounts', 'Business Studies', 'Geography', 'History', 'Psychology', 'Sociology', 'Physical Education']
+    }
+  };
+  function stageFor(standard){
+    if (['LKG', 'UKG', 'Std 1', 'Std 2', 'Std 3', 'Std 4', 'Std 5'].includes(standard)) return 'early';
+    if (['Std 6', 'Std 7', 'Std 8'].includes(standard)) return 'middle';
+    if (['Std 9', 'Std 10'].includes(standard)) return 'secondary';
+    return 'senior';
+  }
+  function boardKey(board){
+    if (board === 'Maharashtra State Board') return 'maharashtra';
+    if (board === 'CBSE') return 'cbse';
+    if (board === 'ICSE / ISC') return 'cisce';
+    return null;
+  }
+  function updateSubjects(){
+    const board = boardSelect.value;
+    const standard = standardSelect.value;
+    const key = boardKey(board);
+    subjectSelect.replaceChildren();
+    if (!board || !standard) {
+      subjectSelect.disabled = true;
+      subjectSelect.add(new Option('Select board and standard first', ''));
+      return;
+    }
+    if (!key) {
+      subjectSelect.disabled = true;
+      subjectSelect.add(new Option('Choose a specific board first', ''));
+      return;
+    }
+    subjectSelect.disabled = false;
+    subjectSelect.add(new Option('Select subject', ''));
+    subjectProfiles[key][stageFor(standard)].forEach(subject => subjectSelect.add(new Option(subject, subject)));
+  }
+  function updateBookSelection(){
+    const selected = selectors.map(select => select.value).filter(Boolean);
+  if (!selected.length) {
+    status.innerHTML = '<strong>Choose a category to begin</strong>Textbook links will appear here after the catalogue is populated.';
+    return;
+  }
+    if (!boardKey(boardSelect.value)) {
+      status.innerHTML = `<strong>${boardSelect.value} · ${standardSelect.value}</strong>This is a broad category. Select the exact state board or international curriculum before choosing a subject.`;
+      return;
+    }
+    status.innerHTML = `<strong>${selected.join(' · ')}</strong>This catalogue category is ready for textbook links. No external book links have been added yet.`;
+}
+boardSelect.addEventListener('change', () => { updateSubjects(); updateBookSelection(); });
+standardSelect.addEventListener('change', () => { updateSubjects(); updateBookSelection(); });
+  subjectSelect.addEventListener('change', updateBookSelection);
+updateSubjects();
+</script>
+</body>
+</html>

@@ -225,6 +225,55 @@
   color:var(--ink-soft);
 }
 
+/* ---------------- Books entry ---------------- */
+.books-entry{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  margin:0 0 32px;
+  padding:24px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-card);
+}
+.books-entry-kicker{
+  display:block;
+  color:var(--brand-purple);
+  font:700 11px 'Inter',sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.books-entry h2{
+  margin:0 0 6px;
+  color:var(--ink);
+  font:800 22px 'Poppins',sans-serif;
+}
+.books-entry p{
+  margin:0;
+  color:var(--ink-soft);
+  font:14px/1.6 'Inter',sans-serif;
+}
+.books-entry-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  flex-shrink:0;
+  padding:11px 16px;
+  border-radius:var(--radius-md);
+  background:var(--brand-purple);
+  color:#fff;
+  font:700 13px 'Inter',sans-serif;
+  text-decoration:none;
+}
+.books-entry-link:hover{filter:brightness(.94);}
+.books-entry-link svg{width:16px;height:16px;}
+@media(max-width:600px){
+  .books-entry{align-items:flex-start;flex-direction:column;}
+}
+
 /* ---------------- Welcome (empty) state ---------------- */
 .welcome-panel{
   text-align:center;
