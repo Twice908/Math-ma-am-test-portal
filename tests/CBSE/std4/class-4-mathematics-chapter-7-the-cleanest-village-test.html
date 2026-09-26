@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Class 4 Maths Quiz — Chapter 7: The Cleanest Village</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{
+  --bg:#f4f6fb; --card:#ffffff; --text:#1b2333; --muted:#5b6472;
+  --accent:#1f8a5f; --accent-light:#e3f4ec; --correct:#1f9d55; --correct-bg:#e6f7ec;
+  --wrong:#e0483e; --wrong-bg:#fdeceb; --border:#e3e7ef;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12151c; --card:#1b202b; --text:#e9edf5; --muted:#9aa3b2;
+    --accent:#4fd190; --accent-light:#193227; --correct:#4ade80; --correct-bg:#16301f;
+    --wrong:#f87171; --wrong-bg:#3a1d1c; --border:#2a2f3d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12151c; --card:#1b202b; --text:#e9edf5; --muted:#9aa3b2;
+  --accent:#4fd190; --accent-light:#193227; --correct:#4ade80; --correct-bg:#16301f;
+  --wrong:#f87171; --wrong-bg:#3a1d1c; --border:#2a2f3d;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;}
+header{position:sticky;top:env(safe-area-inset-top,0px);padding:16px 20px calc(16px + env(safe-area-inset-top,0px));background:var(--accent);color:#fff;text-align:center;}
+header h1{margin:0;font-size:1.1rem;}
+header p{margin:4px 0 0;font-size:.85rem;opacity:.9;}
+main{max-width:720px;margin:0 auto;padding:16px 14px 60px;}
+.q-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:14px;}
+.q-num{font-weight:700;color:var(--accent);margin-bottom:6px;font-size:.85rem;}
+.q-text{font-weight:600;margin-bottom:12px;font-size:1rem;}
+.opts{display:grid;gap:8px;}
+label.opt{display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:10px;padding:10px 12px;cursor:pointer;font-size:.95rem;transition:background .15s,border-color .15s;}
+label.opt:hover{background:var(--accent-light);}
+label.opt input{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0;}
+label.opt.correct{background:var(--correct-bg);border-color:var(--correct);}
+label.opt.wrong{background:var(--wrong-bg);border-color:var(--wrong);}
+.explain{display:none;margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--accent-light);font-size:.88rem;color:var(--text);}
+.explain.show{display:block;}
+.explain b{color:var(--accent);}
+.actions{position:sticky;bottom:0;padding:12px 0 calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top, var(--bg) 70%, transparent);text-align:center;}
+button{background:var(--accent);color:#fff;border:none;border-radius:999px;padding:12px 32px;font-size:1rem;font-weight:600;cursor:pointer;}
+button:disabled{opacity:.6;}
+#result{max-width:720px;margin:0 auto 10px;padding:0 14px;}
+.score-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center;margin-top:10px;}
+.score-card h2{margin:0 0 6px;color:var(--accent);}
+.unanswered{font-size:.75rem;color:var(--wrong);margin-top:4px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>Mathematics — The Cleanest Village</h1>
+  <p>Class IV &middot; Chapter 7 &middot; 20 Questions &middot; Choose the correct answer</p>
+</header>
+<main>
+  <form id="quiz"></form>
+  <div class="actions"><button id="submitBtn" type="button">Submit Test</button></div>
+  <div id="result"></div>
+</main>
+
+<script>
+const questions = [
+{q:"Find the sum: 45 + 678", opts:["723","713","733","633"], correct:0, exp:"45 + 678 = 723 (adding column by column: ones 5+8=13, write 3 carry 1; tens 4+7+1=12, write 2 carry 1; hundreds 0+6+1=7)."},
+{q:"Ram Chacha got 512 mangoes last year and 347 mangoes this year. How many more mangoes did he get last year than this year?", opts:["165","175","155","265"], correct:0, exp:"512 − 347 = 165 more mangoes last year."},
+{q:"The cost of 1 kg of apples is &#8377;68. What is the cost of 3 kg of apples?", opts:["&#8377;204","&#8377;194","&#8377;214","&#8377;184"], correct:0, exp:"68 + 68 + 68 = &#8377;204 for 3 kg."},
+{q:"Fill the missing digit: 4_6 + 235 = 681. What digit goes in the blank (tens place)?", opts:["4","5","6","3"], correct:0, exp:"681 − 235 = 446, so the number is 446 and the missing tens digit is 4."},
+{q:"Two numbers add up to 745. If one number is 328, what is the other number?", opts:["417","427","407","437"], correct:0, exp:"745 − 328 = 417."},
+{q:"Using a quick mental strategy, find 418 + 29.", opts:["447","437","448","457"], correct:0, exp:"418 + 29 = 418 + 30 − 1 = 448 − 1 = 447."},
+{q:"The cost of 1 kg tomatoes is &#8377;42 and 1 kg onions is &#8377;35. Geeta buys 2 kg tomatoes and 1 kg onions. How much does she pay in total?", opts:["&#8377;119","&#8377;109","&#8377;129","&#8377;154"], correct:0, exp:"2 kg tomatoes = 42 + 42 = 84; 84 + 35 (onions) = &#8377;119."},
+{q:"In a number grid, one pair of neighbouring numbers is 124 and 89. What is their sum?", opts:["213","203","223","193"], correct:0, exp:"124 + 89 = 213."},
+{q:"Find the sum: 356 + 247", opts:["603","593","613","513"], correct:0, exp:"356 + 247 = 603 (ones 6+7=13 carry 1; tens 5+4+1=10 carry 1; hundreds 3+2+1=6)."},
+{q:"The difference between two numbers is 456. If the smaller number is 189, what is the larger number?", opts:["645","655","635","745"], correct:0, exp:"189 + 456 = 645, so the larger number is 645."},
+{q:"A pen costs &#8377;34. Priya buys 2 pens and pays with a &#8377;100 note. How much balance does she get back?", opts:["&#8377;32","&#8377;30","&#8377;34","&#8377;42"], correct:0, exp:"2 pens cost 34 + 34 = 68; balance = 100 − 68 = &#8377;32."},
+{q:"In a number grid, which pair has the greatest difference: (56, 289), (134, 98), or (77, 65)?", opts:["(56, 289)","(134, 98)","(77, 65)","(89, 124)"], correct:0, exp:"289 − 56 = 233, which is greater than 134 − 98 = 36 and 77 − 65 = 12."},
+{q:"Using a quick mental strategy, find 503 − 19.", opts:["484","483","494","474"], correct:0, exp:"503 − 19 = 503 − 20 + 1 = 483 + 1 = 484."},
+{q:"Add using columns: 267 + 358", opts:["625","615","635","525"], correct:0, exp:"267 + 358 = 625 (ones 7+8=15 carry 1; tens 6+5+1=12 carry 1; hundreds 2+3+1=6)."},
+{q:"Ravi had &#8377;165 in his piggy bank. His father gave him &#8377;138 more. How much money does Ravi have now?", opts:["&#8377;303","&#8377;293","&#8377;313","&#8377;203"], correct:0, exp:"165 + 138 = &#8377;303."},
+{q:"Fill the missing digit: 703 − 2_8 = 445. What digit goes in the blank (tens place)?", opts:["5","4","6","7"], correct:0, exp:"703 − 445 = 258, so the number being subtracted is 258 and the missing tens digit is 5."},
+{q:"Reema read 87 pages of one book and 56 pages of another. Sohan read 121 pages of a third book. Who read more, and by how many pages?", opts:["Reema, by 22 pages","Sohan, by 22 pages","Reema, by 34 pages","Sohan, by 34 pages"], correct:0, exp:"Reema read 87 + 56 = 143 pages. 143 − 121 = 22, so Reema read 22 more pages than Sohan."},
+{q:"Find the difference: 542 − 268", opts:["274","284","264","376"], correct:0, exp:"542 − 268 = 274, using regrouping across the tens and hundreds place."},
+{q:"A train had 675 passengers. At the next station, 84 passengers got on and 37 got off. How many passengers are on the train now?", opts:["722","712","732","796"], correct:0, exp:"675 + 84 − 37 = 722 passengers."},
+{q:"Place the numbers 1 to 6 once each on a triangle so every side sums to 12. Which set of three numbers could form one side?", opts:["4, 3, 5","1, 2, 3","2, 3, 4","1, 3, 6"], correct:0, exp:"4 + 3 + 5 = 12. (1+2+3=6, 2+3+4=9, and 1+3+6=10 do not equal 12.)"}
+];
+
+const form = document.getElementById('quiz');
+questions.forEach((item,i)=>{
+  const card = document.createElement('div');
+  card.className='q-card';
+  let optsHtml = item.opts.map((opt,j)=>`
+    <label class="opt" data-q="${i}" data-o="${j}">
+      <input type="radio" name="q${i}" value="${j}">
+      <span>${String.fromCharCode(65+j)}. ${opt}</span>
+    </label>`).join('');
+  card.innerHTML = `<div class="q-num">Question ${i+1}</div>
+    <div class="q-text">${item.q}</div>
+    <div class="opts">${optsHtml}</div>
+    <div class="explain" id="exp${i}"></div>`;
+  form.appendChild(card);
+});
+
+document.getElementById('submitBtn').addEventListener('click', ()=>{
+  let score=0, unanswered=0;
+  questions.forEach((item,i)=>{
+    const selected = form.querySelector(`input[name="q${i}"]:checked`);
+    const labels = form.querySelectorAll(`label[data-q="${i}"]`);
+    const expDiv = document.getElementById(`exp${i}`);
+    labels.forEach(l=>{
+      const o = parseInt(l.dataset.o);
+      l.querySelector('input').disabled = true;
+      if(o===item.correct) l.classList.add('correct');
+      if(selected && parseInt(selected.value)===o && o!==item.correct) l.classList.add('wrong');
+    });
+    if(selected && parseInt(selected.value)===item.correct) score++;
+    if(!selected) unanswered++;
+    expDiv.classList.add('show');
+    expDiv.innerHTML = `<b>Explanation:</b> ${item.exp}`;
+  });
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('result').innerHTML = `
+    <div class="score-card">
+      <h2>Score: ${score} / ${questions.length}</h2>
+      <div>${unanswered>0 ? unanswered+' question(s) left unanswered' : 'All questions answered — great job!'}</div>
+    </div>`;
+  document.getElementById('result').scrollIntoView({behavior:'smooth'});
+});
+</script>
+</body>
+</html>

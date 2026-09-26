@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Class 4 Maths Quiz — Thousands Around Us</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{
+  --bg:#f4f6fb; --card:#ffffff; --text:#1b2333; --muted:#5b6472;
+  --accent:#3d5af1; --accent-light:#e8ecfe; --correct:#1f9d55; --correct-bg:#e6f7ec;
+  --wrong:#e0483e; --wrong-bg:#fdeceb; --border:#e3e7ef;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12151c; --card:#1b202b; --text:#e9edf5; --muted:#9aa3b2;
+    --accent:#7c93ff; --accent-light:#232a44; --correct:#4ade80; --correct-bg:#16301f;
+    --wrong:#f87171; --wrong-bg:#3a1d1c; --border:#2a2f3d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12151c; --card:#1b202b; --text:#e9edf5; --muted:#9aa3b2;
+  --accent:#7c93ff; --accent-light:#232a44; --correct:#4ade80; --correct-bg:#16301f;
+  --wrong:#f87171; --wrong-bg:#3a1d1c; --border:#2a2f3d;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;}
+header{position:sticky;top:0;padding:16px 20px calc(16px + env(safe-area-inset-top,0px));background:var(--accent);color:#fff;text-align:center;top:env(safe-area-inset-top,0px);}
+header h1{margin:0;font-size:1.15rem;}
+header p{margin:4px 0 0;font-size:.85rem;opacity:.9;}
+main{max-width:720px;margin:0 auto;padding:16px 14px 60px;}
+.q-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:14px;}
+.q-num{font-weight:700;color:var(--accent);margin-bottom:6px;font-size:.85rem;}
+.q-text{font-weight:600;margin-bottom:12px;font-size:1rem;}
+.opts{display:grid;gap:8px;}
+label.opt{display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:10px;padding:10px 12px;cursor:pointer;font-size:.95rem;transition:background .15s,border-color .15s;}
+label.opt:hover{background:var(--accent-light);}
+label.opt input{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0;}
+label.opt.correct{background:var(--correct-bg);border-color:var(--correct);}
+label.opt.wrong{background:var(--wrong-bg);border-color:var(--wrong);}
+.explain{display:none;margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--accent-light);font-size:.88rem;color:var(--text);}
+.explain.show{display:block;}
+.explain b{color:var(--accent);}
+.actions{position:sticky;bottom:0;padding:12px 0 calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top, var(--bg) 70%, transparent);text-align:center;}
+button{background:var(--accent);color:#fff;border:none;border-radius:999px;padding:12px 32px;font-size:1rem;font-weight:600;cursor:pointer;}
+button:disabled{opacity:.6;}
+#result{max-width:720px;margin:0 auto 10px;padding:0 14px;}
+.score-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center;margin-top:10px;}
+.score-card h2{margin:0 0 6px;color:var(--accent);}
+.unanswered{font-size:.75rem;color:var(--wrong);margin-top:4px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>Mathematics — Thousands Around Us</h1>
+  <p>Class IV &middot; 20 Questions &middot; Choose the correct answer</p>
+</header>
+<main>
+  <form id="quiz"></form>
+  <div class="actions"><button id="submitBtn" type="button">Submit Test</button></div>
+  <div id="result"></div>
+</main>
+
+<script>
+const questions = [
+{q:"Which number has the digit 8 in the Hundreds place?", opts:["3872","8372","3782","3728"], correct:0, exp:"In 3872 the digits are Th-3, H-8, T-7, O-2, so 8 sits in the Hundreds place."},
+{q:"Which number is formed by 42 Hundreds?", opts:["420","4020","4200","42000"], correct:2, exp:"42 Hundreds = 42 &times; 100 = 4200."},
+{q:"Which number is 10 less than 7053?", opts:["7043","7052","7063","6953"], correct:0, exp:"7053 &minus; 10 = 7043."},
+{q:"Which number is correctly placed between 3678 and 3680?", opts:["3677","3679","3681","3690"], correct:1, exp:"The number right between 3678 and 3680 is 3679."},
+{q:"Which statement is correct?", opts:["Every 4-digit number is greater than every 3-digit number.","8888 is a 3-digit number.","1000 is smaller than 999.","100 Hundreds = 1000."], correct:0, exp:"Every 4-digit number is greater than every 3-digit number. (8888 has 4 digits; 1000 &gt; 999; 100 Hundreds = 10,000, not 1000.)"},
+{q:"Which number is made by 5 Thousands, 6 Hundreds, 3 Tens and 8 Ones?", opts:["5638","5368","5683","6538"], correct:0, exp:"5 Th + 6 H + 3 T + 8 O = 5638."},
+{q:"Which number is 100 more than 2800?", opts:["2810","2900","2890","3000"], correct:1, exp:"2800 + 100 = 2900."},
+{q:"Which expanded form is correct for 6742?", opts:["6000 + 700 + 40 + 2","6000 + 70 + 400 + 2","600 + 700 + 40 + 2","6700 + 42"], correct:0, exp:"6742 = 6000 + 700 + 40 + 2, matching Th-6, H-7, T-4, O-2."},
+{q:"Which of the following is the greatest number?", opts:["5624","5642","5462","5264"], correct:1, exp:"Comparing digit by digit, 5642 is the largest among the four."},
+{q:"Which number comes immediately after 4999?", opts:["5001","5000","4998","5100"], correct:1, exp:"The number right after 4999 is 5000."},
+{q:"How many Tens are there in 740?", opts:["7","70","74","740"], correct:2, exp:"740 has 74 complete tens (74 &times; 10 = 740)."},
+{q:"Which number is represented by 27 Hundreds?", opts:["270","2700","720","27000"], correct:1, exp:"27 Hundreds = 27 &times; 100 = 2700."},
+{q:"Which number lies exactly between 2698 and 2700?", opts:["2697","2699","2701","2710"], correct:1, exp:"The number exactly between 2698 and 2700 is 2699."},
+{q:"A number has 7 Thousands, 0 Hundreds, 4 Tens and 9 Ones. What is the number?", opts:["7049","7409","7490","70049"], correct:0, exp:"7 Th + 0 H + 4 T + 9 O = 7049."},
+{q:"Which place-value chart represents 4093?", opts:["Th-4 H-0 T-9 O-3","Th-4 H-9 T-0 O-3","Th-0 H-4 T-9 O-3","Th-4 H-9 T-3 O-0"], correct:0, exp:"4093 has Thousands-4, Hundreds-0, Tens-9, Ones-3."},
+{q:"Which number is the smallest?", opts:["6234","6324","6432","6243"], correct:0, exp:"Comparing digit by digit, 6234 is the smallest among the four."},
+{q:"Which number should replace the blank? 3400, 3500, 3600, ____", opts:["3650","3700","3710","3800"], correct:1, exp:"The pattern increases by 100 each time, so after 3600 comes 3700."},
+{q:"Which of the following is an even number?", opts:["4567","5678","6789","7891"], correct:1, exp:"A number is even if its Ones digit is 0,2,4,6 or 8. 5678 ends in 8, so it is even."},
+{q:"Karan counted 899 marbles. He found one more marble. How many marbles are there now?", opts:["899","900","901","889"], correct:1, exp:"899 + 1 = 900."},
+{q:"Which comparison is correct?", opts:["3217 &gt; 3271","3217 &lt; 3271","3217 = 3271","Cannot be compared"], correct:1, exp:"Comparing thousands and hundreds first: both have 3 Th and 2 H, but Tens 1 &lt; 7, so 3217 &lt; 3271."}
+];
+
+const form = document.getElementById('quiz');
+questions.forEach((item,i)=>{
+  const card = document.createElement('div');
+  card.className='q-card';
+  let optsHtml = item.opts.map((opt,j)=>`
+    <label class="opt" data-q="${i}" data-o="${j}">
+      <input type="radio" name="q${i}" value="${j}">
+      <span>${String.fromCharCode(65+j)}. ${opt}</span>
+    </label>`).join('');
+  card.innerHTML = `<div class="q-num">Question ${i+1}</div>
+    <div class="q-text">${item.q}</div>
+    <div class="opts">${optsHtml}</div>
+    <div class="explain" id="exp${i}"></div>`;
+  form.appendChild(card);
+});
+
+document.getElementById('submitBtn').addEventListener('click', ()=>{
+  let score=0, unanswered=0;
+  questions.forEach((item,i)=>{
+    const selected = form.querySelector(`input[name="q${i}"]:checked`);
+    const labels = form.querySelectorAll(`label[data-q="${i}"]`);
+    const expDiv = document.getElementById(`exp${i}`);
+    labels.forEach(l=>{
+      const o = parseInt(l.dataset.o);
+      l.querySelector('input').disabled = true;
+      if(o===item.correct) l.classList.add('correct');
+      if(selected && parseInt(selected.value)===o && o!==item.correct) l.classList.add('wrong');
+    });
+    if(selected && parseInt(selected.value)===item.correct) score++;
+    if(!selected) unanswered++;
+    expDiv.classList.add('show');
+    expDiv.innerHTML = `<b>Explanation:</b> ${item.exp}`;
+  });
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('result').innerHTML = `
+    <div class="score-card">
+      <h2>Score: ${score} / ${questions.length}</h2>
+      <div>${unanswered>0 ? unanswered+' question(s) left unanswered' : 'All questions answered — great job!'}</div>
+    </div>`;
+  document.getElementById('result').scrollIntoView({behavior:'smooth'});
+});
+</script>
+</body>
+</html>

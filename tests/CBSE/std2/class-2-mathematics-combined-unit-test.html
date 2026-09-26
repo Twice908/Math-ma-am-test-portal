@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spicer International School — Class 2 Mathematics Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFCF4;
+    --navy:#233047;
+    --coral:#FF6B5E;
+    --coral-tint:#FFEDEB;
+    --sun:#FFB627;
+    --sun-tint:#FFF4DE;
+    --sky:#2FA9B4;
+    --sky-tint:#E4F6F7;
+    --grass:#4CAF50;
+    --grass-tint:#EAF7EA;
+    --lav:#8C6FE6;
+    --lav-tint:#F1ECFE;
+    --card:#FFFFFF;
+    --border:#EAE2D0;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    font-family:'Nunito',sans-serif;
+    color:var(--navy);
+    padding-bottom:60px;
+  }
+  h1,h2,h3{font-family:'Baloo 2',sans-serif; margin:0;}
+
+  /* ---------- Header ---------- */
+  header{
+    background:var(--navy);
+    color:#fff;
+    padding:28px 20px 34px;
+    position:relative;
+    overflow:hidden;
+  }
+  .header-inner{max-width:760px;margin:0 auto;position:relative;z-index:2;}
+  .school-name{font-size:1.9rem;font-weight:800;letter-spacing:.3px;}
+  .subject-line{font-size:1.05rem;font-weight:600;color:#FFD9A0;margin-top:4px;}
+  .lesson-tags{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;}
+  .lesson-tags span{
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    padding:5px 12px;border-radius:999px;font-size:.82rem;font-weight:700;
+  }
+  .id-fields{
+    margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;
+  }
+  .id-fields label{
+    font-size:.85rem;font-weight:700;color:#DCE3F0;display:flex;align-items:center;gap:6px;
+  }
+  .id-fields input{
+    font-family:'Nunito',sans-serif;
+    border:none;border-bottom:2px solid #FFB627;
+    background:transparent;color:#fff;padding:4px 2px;font-size:.95rem;width:160px;
+  }
+  .id-fields input::placeholder{color:#9AA6C0;}
+  .sun-deco{
+    position:absolute;top:-40px;right:-30px;width:180px;height:180px;
+    background:radial-gradient(circle,#FFB627 0%,#FFB62700 70%);
+    z-index:1;
+  }
+
+  /* ---------- Progress bar ---------- */
+  .progress-wrap{
+    position:sticky;top:0;z-index:50;
+    background:#fff;border-bottom:1px solid var(--border);
+    padding:10px 20px;
+  }
+  .progress-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:12px;}
+  .progress-track{flex:1;height:10px;background:#EFE9DA;border-radius:999px;overflow:hidden;}
+  .progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--sky),var(--grass));transition:width .3s ease;}
+  .progress-text{font-size:.82rem;font-weight:800;color:var(--navy);white-space:nowrap;}
+
+  main{max-width:760px;margin:0 auto;padding:24px 20px 0;}
+
+  /* ---------- Summary card ---------- */
+  .summary-card{
+    background:var(--navy);color:#fff;border-radius:18px;
+    padding:22px 24px;margin-bottom:26px;
+    display:flex;align-items:center;gap:18px;
+  }
+  .summary-card.hidden{display:none;}
+  .summary-score{font-family:'Baloo 2',sans-serif;font-size:2.4rem;font-weight:800;color:var(--sun);}
+  .summary-msg{font-weight:700;font-size:1.05rem;}
+  .summary-sub{font-size:.88rem;color:#C9D2E5;margin-top:2px;}
+
+  /* ---------- Sections ---------- */
+  .topic-section{margin-bottom:34px;}
+  .topic-head{
+    display:flex;align-items:center;gap:10px;
+    padding:10px 16px;border-radius:12px;margin-bottom:16px;
+  }
+  .topic-head .icon{font-size:1.5rem;}
+  .topic-head h2{font-size:1.25rem;}
+  .topic-head .count{margin-left:auto;font-size:.78rem;font-weight:700;opacity:.75;}
+
+  .numbers .topic-head{background:var(--lav-tint);color:#5A3FBF;}
+  .addition .topic-head{background:var(--grass-tint);color:#2E7D32;}
+  .subtraction .topic-head{background:var(--coral-tint);color:#C7402F;}
+  .multiplication .topic-head{background:var(--sky-tint);color:#1D7B84;}
+  .division .topic-head{background:var(--sun-tint);color:#B5790D;}
+
+  .question{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-left:6px solid var(--border);
+    border-radius:14px;
+    padding:16px 18px;margin-bottom:14px;
+  }
+  .numbers .question{border-left-color:var(--lav);}
+  .addition .question{border-left-color:var(--grass);}
+  .subtraction .question{border-left-color:var(--coral);}
+  .multiplication .question{border-left-color:var(--sky);}
+  .division .question{border-left-color:var(--sun);}
+
+  .q-label{font-weight:800;font-size:1.02rem;margin-bottom:10px;line-height:1.45;}
+  .q-num{color:#8C93A6;margin-right:4px;}
+
+  .options{display:flex;flex-wrap:wrap;gap:10px;}
+  .option{
+    display:flex;align-items:center;gap:6px;
+    background:#F8F5EC;border:1.5px solid var(--border);border-radius:10px;
+    padding:8px 14px;cursor:pointer;font-weight:700;font-size:.95rem;
+  }
+  .option input{accent-color:var(--navy);}
+  .option:hover{border-color:var(--navy);}
+
+  input[type=text].answer-input{
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:1.05rem;
+    border:2px solid var(--border);border-radius:10px;
+    padding:9px 12px;width:130px;text-align:center;
+  }
+  input[type=text].answer-input:focus{outline:none;border-color:var(--navy);}
+
+  .vertical-sum{
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:1.3rem;
+    display:inline-block;text-align:right;margin:6px 0 12px;
+    border-collapse:collapse;
+  }
+  .vertical-sum div{padding:2px 0;}
+  .vs-line{border-top:3px solid var(--navy);width:80px;margin-left:auto;}
+
+  /* ---------- Visual object boxes ---------- */
+  .visual-box{
+    background:#FBF9F2;border:1.5px dashed var(--border);border-radius:12px;
+    padding:14px;margin:10px 0 14px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;
+  }
+  .visual-box .emoji{font-size:1.7rem;line-height:1;}
+  .group-row{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 14px;}
+  .group-box{
+    background:#FBF9F2;border:1.5px solid var(--border);border-radius:12px;
+    padding:10px 12px;text-align:center;min-width:110px;
+  }
+  .group-box .glabel{font-size:.75rem;font-weight:800;color:#8C93A6;margin-bottom:4px;}
+  .group-box .emoji{font-size:1.5rem;}
+
+  svg.numline{width:100%;max-width:560px;height:140px;display:block;margin:8px 0 14px;}
+
+  /* ---------- Reveal / grading states ---------- */
+  .reveal{display:none;margin-top:12px;font-weight:800;font-size:.92rem;padding:8px 12px;border-radius:8px;}
+  .question.correct{border-left-color:var(--grass);}
+  .question.correct .reveal{display:block;background:var(--grass-tint);color:#2E7D32;}
+  .question.incorrect{border-left-color:var(--coral);}
+  .question.incorrect .reveal{display:block;background:var(--coral-tint);color:#C7402F;}
+  .question.correct,.question.incorrect{opacity:.97;}
+
+  /* ---------- Submit area ---------- */
+  .submit-wrap{
+    display:flex;gap:12px;justify-content:center;margin:30px 0 10px;flex-wrap:wrap;
+  }
+  button.primary-btn{
+    font-family:'Baloo 2',sans-serif;font-size:1.1rem;font-weight:700;
+    background:var(--navy);color:#fff;border:none;border-radius:999px;
+    padding:14px 34px;cursor:pointer;box-shadow:0 4px 0 #121A2B;
+  }
+  button.primary-btn:active{transform:translateY(2px);box-shadow:0 2px 0 #121A2B;}
+  button.secondary-btn{
+    font-family:'Baloo 2',sans-serif;font-size:1.1rem;font-weight:700;
+    background:#fff;color:var(--navy);border:2px solid var(--navy);border-radius:999px;
+    padding:12px 30px;cursor:pointer;
+  }
+  .hidden{display:none !important;}
+
+  footer{max-width:760px;margin:20px auto 0;padding:0 20px;color:#8C93A6;font-size:.8rem;text-align:center;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sun-deco"></div>
+  <div class="header-inner">
+    <div class="school-name">Spicer International School</div>
+    <div class="subject-line">Class 2 · Mathematics · Unit Test</div>
+    <div class="lesson-tags">
+      <span>🔢 Numbers</span>
+      <span>➕ Addition</span>
+      <span>➖ Subtraction</span>
+      <span>✖️ Multiplication</span>
+      <span>➗ Division</span>
+    </div>
+    <div class="id-fields">
+      <label>Name: <input type="text" placeholder="Your name"></label>
+      <label>Date: <input type="text" placeholder="DD/MM/YYYY"></label>
+      <label>Roll No.: <input type="text" placeholder="e.g. 12" style="width:70px;"></label>
+    </div>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText">Answered: 0 / 27</div>
+  </div>
+</div>
+
+<main>
+
+  <div class="summary-card hidden" id="summaryCard">
+    <div class="summary-score" id="summaryScore">0/27</div>
+    <div>
+      <div class="summary-msg" id="summaryMsg">—</div>
+      <div class="summary-sub" id="summarySub">Scroll down to see which ones need another look.</div>
+    </div>
+  </div>
+
+  <!-- ================= NUMBERS ================= -->
+  <section class="topic-section numbers">
+    <div class="topic-head"><span class="icon">🔢</span><h2>Numbers</h2><span class="count">Q1–Q5</span></div>
+
+    <div class="question" data-qid="q1" data-type="mcq" data-answer="48">
+      <div class="q-label"><span class="q-num">1.</span> What number comes right after 47?</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q1" value="46"> 46</label>
+        <label class="option"><input type="radio" name="q1" value="48"> 48</label>
+        <label class="option"><input type="radio" name="q1" value="58"> 58</label>
+        <label class="option"><input type="radio" name="q1" value="38"> 38</label>
+      </div>
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q2" data-type="text" data-answer="99">
+      <div class="q-label"><span class="q-num">2.</span> Fill in the blank: the number just before 100 is ____.</div>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q3" data-type="mcq" data-answer="86">
+      <div class="q-label"><span class="q-num">3.</span> Which number is greater?</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q3" value="68"> 68</label>
+        <label class="option"><input type="radio" name="q3" value="86"> 86</label>
+      </div>
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q4" data-type="text" data-answer="thirty four||thirty-four">
+      <div class="q-label"><span class="q-num">4.</span> Write 34 in words.</div>
+      <input type="text" class="answer-input" style="width:220px;" placeholder="e.g. twenty five">
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q5" data-type="mcq" data-answer="7">
+      <div class="q-label"><span class="q-num">5.</span> In the number <strong>72</strong>, the digit in the tens place is:</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q5" value="7"> 7</label>
+        <label class="option"><input type="radio" name="q5" value="2"> 2</label>
+        <label class="option"><input type="radio" name="q5" value="9"> 9</label>
+      </div>
+      <div class="reveal"></div>
+    </div>
+  </section>
+
+  <!-- ================= ADDITION ================= -->
+  <section class="topic-section addition">
+    <div class="topic-head"><span class="icon">➕</span><h2>Addition</h2><span class="count">Q6–Q11</span></div>
+
+    <div class="question" data-qid="q6" data-type="number" data-answer="38">
+      <div class="q-label"><span class="q-num">6.</span> 23 + 15 = ____</div>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q7" data-type="number" data-answer="73">
+      <div class="q-label"><span class="q-num">7.</span> 46 + 27 = ____</div>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q8" data-type="number" data-answer="9">
+      <div class="q-label"><span class="q-num">8.</span> Look at the number line. What is 5 + 4?</div>
+      <svg class="numline" id="numline-add"></svg>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q9" data-type="number" data-answer="13">
+      <div class="q-label"><span class="q-num">9.</span> Word Problem: Riya has 8 balloons. Her friend gives her 5 more balloons. How many balloons does Riya have now?</div>
+      <div class="visual-box">
+        <span class="emoji">🎈🎈🎈🎈🎈🎈🎈🎈</span>&nbsp;&nbsp;+&nbsp;&nbsp;<span class="emoji">🎈🎈🎈🎈🎈</span>
+      </div>
+      <input type="text" class="answer-input" inputmode="numeric"> balloons
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q10" data-type="number" data-answer="13">
+      <div class="q-label"><span class="q-num">10.</span> Word Problem: Basket A has 6 apples and Basket B has 7 apples. How many apples are there in all?</div>
+      <div class="group-row">
+        <div class="group-box"><div class="glabel">BASKET A</div><div class="emoji">🍎🍎🍎<br>🍎🍎🍎</div></div>
+        <div class="group-box"><div class="glabel">BASKET B</div><div class="emoji">🍎🍎🍎🍎<br>🍎🍎🍎</div></div>
+      </div>
+      <input type="text" class="answer-input" inputmode="numeric"> apples
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q11" data-type="number" data-answer="94">
+      <div class="q-label"><span class="q-num">11.</span> Add the numbers (carry over if needed):</div>
+      <div class="vertical-sum">
+        <div>&nbsp;&nbsp;5&nbsp;8</div>
+        <div>+&nbsp;3&nbsp;6</div>
+        <div class="vs-line"></div>
+      </div><br>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+  </section>
+
+  <!-- ================= SUBTRACTION ================= -->
+  <section class="topic-section subtraction">
+    <div class="topic-head"><span class="icon">➖</span><h2>Subtraction</h2><span class="count">Q12–Q17</span></div>
+
+    <div class="question" data-qid="q12" data-type="number" data-answer="25">
+      <div class="q-label"><span class="q-num">12.</span> 39 − 14 = ____</div>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q13" data-type="number" data-answer="35">
+      <div class="q-label"><span class="q-num">13.</span> 82 − 47 = ____</div>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q14" data-type="number" data-answer="5">
+      <div class="q-label"><span class="q-num">14.</span> Look at the number line. What is 9 − 4?</div>
+      <svg class="numline" id="numline-sub"></svg>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q15" data-type="number" data-answer="7">
+      <div class="q-label"><span class="q-num">15.</span> Word Problem: There are 12 birds sitting on a tree. 5 birds fly away. How many birds are left on the tree?</div>
+      <div class="visual-box">
+        <span class="emoji">🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦</span>
+      </div>
+      <input type="text" class="answer-input" inputmode="numeric"> birds
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q16" data-type="number" data-answer="9">
+      <div class="q-label"><span class="q-num">16.</span> Word Problem: Aman had 15 pencils. He gave 6 pencils to his friend. How many pencils does he have now?</div>
+      <div class="visual-box">
+        <span class="emoji">✏️✏️✏️✏️✏️✏️✏️✏️✏️✏️✏️✏️✏️✏️✏️</span>
+      </div>
+      <input type="text" class="answer-input" inputmode="numeric"> pencils
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q17" data-type="number" data-answer="36">
+      <div class="q-label"><span class="q-num">17.</span> Subtract the numbers (borrow if needed):</div>
+      <div class="vertical-sum">
+        <div>&nbsp;&nbsp;6&nbsp;4</div>
+        <div>−&nbsp;2&nbsp;8</div>
+        <div class="vs-line"></div>
+      </div><br>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+  </section>
+
+  <!-- ================= MULTIPLICATION ================= -->
+  <section class="topic-section multiplication">
+    <div class="topic-head"><span class="icon">✖️</span><h2>Multiplication</h2><span class="count">Q18–Q22</span></div>
+
+    <div class="question" data-qid="q18" data-type="mcq" data-answer="3">
+      <div class="q-label"><span class="q-num">18.</span> 4 + 4 + 4 = 4 × ____</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q18" value="2"> 2</label>
+        <label class="option"><input type="radio" name="q18" value="3"> 3</label>
+        <label class="option"><input type="radio" name="q18" value="4"> 4</label>
+      </div>
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q19" data-type="number" data-answer="15">
+      <div class="q-label"><span class="q-num">19.</span> Count the apples. There are 3 groups of 5 apples. How many apples are there in all?</div>
+      <div class="group-row">
+        <div class="group-box"><div class="glabel">GROUP 1</div><div class="emoji">🍎🍎🍎🍎🍎</div></div>
+        <div class="group-box"><div class="glabel">GROUP 2</div><div class="emoji">🍎🍎🍎🍎🍎</div></div>
+        <div class="group-box"><div class="glabel">GROUP 3</div><div class="emoji">🍎🍎🍎🍎🍎</div></div>
+      </div>
+      <input type="text" class="answer-input" inputmode="numeric"> apples
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q20" data-type="number" data-answer="15">
+      <div class="q-label"><span class="q-num">20.</span> 5 × 3 = ____</div>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q21" data-type="number" data-answer="24">
+      <div class="q-label"><span class="q-num">21.</span> Word Problem: There are 4 plates. Each plate has 6 cookies. How many cookies are there in all?</div>
+      <div class="group-row">
+        <div class="group-box"><div class="glabel">PLATE 1</div><div class="emoji">🍪🍪🍪<br>🍪🍪🍪</div></div>
+        <div class="group-box"><div class="glabel">PLATE 2</div><div class="emoji">🍪🍪🍪<br>🍪🍪🍪</div></div>
+        <div class="group-box"><div class="glabel">PLATE 3</div><div class="emoji">🍪🍪🍪<br>🍪🍪🍪</div></div>
+        <div class="group-box"><div class="glabel">PLATE 4</div><div class="emoji">🍪🍪🍪<br>🍪🍪🍪</div></div>
+      </div>
+      <input type="text" class="answer-input" inputmode="numeric"> cookies
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q22" data-type="number" data-answer="12">
+      <div class="q-label"><span class="q-num">22.</span> 2 × 6 = ____</div>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+  </section>
+
+  <!-- ================= DIVISION ================= -->
+  <section class="topic-section division">
+    <div class="topic-head"><span class="icon">➗</span><h2>Division</h2><span class="count">Q23–Q27</span></div>
+
+    <div class="question" data-qid="q23" data-type="number" data-answer="4">
+      <div class="q-label"><span class="q-num">23.</span> Word Problem: 12 candies are shared equally among 3 children. How many candies does each child get?</div>
+      <div class="visual-box">
+        <span class="emoji">🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬</span>
+      </div>
+      <div class="visual-box">🧒 🧒 🧒</div>
+      <input type="text" class="answer-input" inputmode="numeric"> each
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q24" data-type="number" data-answer="5">
+      <div class="q-label"><span class="q-num">24.</span> 10 ÷ 2 = ____</div>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q25" data-type="number" data-answer="3">
+      <div class="q-label"><span class="q-num">25.</span> Word Problem: 15 mangoes are packed equally into 5 baskets. How many mangoes are in each basket?</div>
+      <div class="visual-box">
+        <span class="emoji">🥭🥭🥭🥭🥭🥭🥭🥭🥭🥭🥭🥭🥭🥭🥭</span>
+      </div>
+      <div class="visual-box">🧺 🧺 🧺 🧺 🧺</div>
+      <input type="text" class="answer-input" inputmode="numeric"> each
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q26" data-type="number" data-answer="2">
+      <div class="q-label"><span class="q-num">26.</span> 8 ÷ 4 = ____</div>
+      <input type="text" class="answer-input" inputmode="numeric">
+      <div class="reveal"></div>
+    </div>
+
+    <div class="question" data-qid="q27" data-type="number" data-answer="4">
+      <div class="q-label"><span class="q-num">27.</span> 20 stars need to be put into groups of 5. How many groups can be made?</div>
+      <div class="visual-box">
+        <span class="emoji">⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</span>
+      </div>
+      <input type="text" class="answer-input" inputmode="numeric"> groups
+      <div class="reveal"></div>
+    </div>
+  </section>
+
+  <div class="submit-wrap">
+    <button class="primary-btn" id="submitBtn" onclick="gradeTest()">✓ Check My Answers</button>
+    <button class="secondary-btn hidden" id="resetBtn" onclick="location.reload()">↻ Try Again</button>
+  </div>
+</main>
+
+<footer>Spicer International School · Class 2 Mathematics · Solve directly on this page — no notebook needed.</footer>
+
+<script>
+  // ---------- Number line drawing ----------
+  function buildNumberLine(svgId, start, steps, dir){
+    const svg = document.getElementById(svgId);
+    const ns = 'http://www.w3.org/2000/svg';
+    const maxN = 12, spacing = 40, startX = 30, y = 90;
+    function xOf(n){ return startX + n*spacing; }
+
+    const line = document.createElementNS(ns,'line');
+    line.setAttribute('x1', xOf(0)); line.setAttribute('y1', y);
+    line.setAttribute('x2', xOf(maxN)); line.setAttribute('y2', y);
+    line.setAttribute('stroke', '#233047'); line.setAttribute('stroke-width', '3');
+    svg.appendChild(line);
+
+    for(let i=0;i<=maxN;i++){
+      const t = document.createElementNS(ns,'line');
+      t.setAttribute('x1', xOf(i)); t.setAttribute('y1', y-6);
+      t.setAttribute('x2', xOf(i)); t.setAttribute('y2', y+6);
+      t.setAttribute('stroke', '#233047'); t.setAttribute('stroke-width', '2');
+      svg.appendChild(t);
+
+      const lbl = document.createElementNS(ns,'text');
+      lbl.setAttribute('x', xOf(i)); lbl.setAttribute('y', y+24);
+      lbl.setAttribute('text-anchor', 'middle'); lbl.setAttribute('font-size', '13');
+      lbl.setAttribute('fill', '#233047'); lbl.setAttribute('font-family', 'Nunito, sans-serif');
+      lbl.textContent = i;
+      svg.appendChild(lbl);
+    }
+
+    const dot = document.createElementNS(ns,'circle');
+    dot.setAttribute('cx', xOf(start)); dot.setAttribute('cy', y); dot.setAttribute('r', 6);
+    dot.setAttribute('fill', '#FF6B5E');
+    svg.appendChild(dot);
+
+    let cur = start;
+    for(let s=0; s<steps; s++){
+      const next = cur + dir;
+      const x1 = xOf(cur), x2 = xOf(next), mid = (x1+x2)/2;
+      const path = document.createElementNS(ns,'path');
+      path.setAttribute('d', `M ${x1} ${y} Q ${mid} ${y-36} ${x2} ${y}`);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', '#2FA9B4');
+      path.setAttribute('stroke-width', '2.5');
+      svg.appendChild(path);
+      cur = next;
+    }
+
+    const q = document.createElementNS(ns,'text');
+    q.setAttribute('x', xOf(cur)); q.setAttribute('y', y-44);
+    q.setAttribute('text-anchor', 'middle'); q.setAttribute('font-size', '20');
+    q.setAttribute('fill', '#FF6B5E'); q.setAttribute('font-weight', '800');
+    q.textContent = '?';
+    svg.appendChild(q);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    buildNumberLine('numline-add', 5, 4, 1);
+    buildNumberLine('numline-sub', 9, 4, -1);
+    updateProgress();
+    document.querySelectorAll('.question input').forEach(inp => {
+      inp.addEventListener('input', updateProgress);
+      inp.addEventListener('change', updateProgress);
+    });
+  });
+
+  // ---------- Progress tracking ----------
+  function updateProgress(){
+    const questions = document.querySelectorAll('.question');
+    let answered = 0;
+    questions.forEach(q => {
+      const type = q.dataset.type;
+      if(type === 'mcq'){
+        if(q.querySelector('input[type=radio]:checked')) answered++;
+      } else {
+        const inp = q.querySelector('input[type=text]');
+        if(inp && inp.value.trim() !== '') answered++;
+      }
+    });
+    const total = questions.length;
+    document.getElementById('progressFill').style.width = (answered/total*100) + '%';
+    document.getElementById('progressText').textContent = `Answered: ${answered} / ${total}`;
+  }
+
+  // ---------- Grading ----------
+  function prettyAnswer(type, raw){
+    if(type === 'text'){
+      return raw.split('||')[0];
+    }
+    return raw;
+  }
+
+  function gradeTest(){
+    const questions = document.querySelectorAll('.question');
+    let correct = 0;
+    questions.forEach(q => {
+      const type = q.dataset.type;
+      const answerRaw = q.dataset.answer;
+      let userVal = '';
+      let isCorrect = false;
+
+      if(type === 'mcq'){
+        const sel = q.querySelector('input[type=radio]:checked');
+        userVal = sel ? sel.value : '';
+        isCorrect = userVal !== '' && userVal.trim().toLowerCase() === answerRaw.trim().toLowerCase();
+      } else if(type === 'number'){
+        const inp = q.querySelector('input[type=text]');
+        userVal = inp.value.trim();
+        isCorrect = userVal !== '' && !isNaN(userVal) && Number(userVal) === Number(answerRaw);
+      } else if(type === 'text'){
+        const inp = q.querySelector('input[type=text]');
+        userVal = inp.value.trim().toLowerCase();
+        const accepted = answerRaw.split('||').map(a => a.trim().toLowerCase());
+        isCorrect = accepted.includes(userVal);
+      }
+
+      q.classList.remove('correct','incorrect');
+      q.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+      const reveal = q.querySelector('.reveal');
+      reveal.innerHTML = isCorrect
+        ? '✅ Correct!'
+        : `❌ Correct answer: <span>${prettyAnswer(type, answerRaw)}</span>`;
+
+      q.querySelectorAll('input').forEach(i => i.disabled = true);
+      if(isCorrect) correct++;
+    });
+
+    const total = questions.length;
+    showSummary(correct, total);
+    document.getElementById('submitBtn').classList.add('hidden');
+    document.getElementById('resetBtn').classList.remove('hidden');
+  }
+
+  function showSummary(correct, total){
+    const pct = Math.round((correct/total) * 100);
+    let msg = '';
+    if(pct >= 90) msg = "Excellent! You're a Math Star! 🌟";
+    else if(pct >= 70) msg = "Great job! Keep practicing! 👏";
+    else if(pct >= 50) msg = "Good try! Let's review the missed ones. 📘";
+    else msg = "Let's practice these lessons a bit more together. 💪";
+
+    document.getElementById('summaryScore').textContent = `${correct}/${total}`;
+    document.getElementById('summaryMsg').textContent = msg;
+    document.getElementById('summarySub').textContent = `That's ${pct}%. Green means correct, red shows the right answer to learn from.`;
+    const card = document.getElementById('summaryCard');
+    card.classList.remove('hidden');
+    card.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+</script>
+
+</body>
+</html>
