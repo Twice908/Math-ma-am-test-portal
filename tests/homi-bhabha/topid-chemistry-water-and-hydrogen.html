@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Water &amp; Hydrogen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Chemistry — Water &amp; Hydrogen</h1>
+    <p class="subtitle">Standard VI · English Medium · Std 5–8 syllabus · Mid-to-hard difficulty</p>
+    <div class="meta-row">
+      <span>Questions: <b>50</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>50</b></span>
+      <span>Time limit: <b>45:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Answer all 50 multiple-choice questions. Each question carries one mark with no negative marking. Select one option per question; you may change your selection until submitting. The test auto-submits when the timer reaches zero. Your score, section breakdown, answer review and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">45:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label">0 / 50 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="instructions"><b>Practical safety note:</b> Hydrogen is highly flammable. Any gas-preparation or flame test should be performed only under a teacher's supervision with appropriate laboratory precautions. Never bring a flame near a gas-generation apparatus while hydrogen is still being produced.</div>
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const D = {"academy":"Math Ma’am Academy","exam":"Dr. Homi Bhabha Balvaidnyanik Competition","std":"Std. 6","subject":"Science","unit":"Unit 5 — Water & Hydrogen","marks":50,"minutes":45,"sections":[{"id":"A","title":"Hydrosphere and Distribution of Water"},{"id":"B","title":"Composition and Physical Properties of Water"},{"id":"C","title":"Hard Water and Soft Water"},{"id":"D","title":"Water Pollution and Purification"},{"id":"E","title":"Hydrogen: Preparation, Properties and Uses"}],"questions":[{"n":1,"s":0,"q":"The hydrosphere includes:","o":["Only oceans and seas","Only freshwater bodies","Only frozen water","All water on Earth, including water in the air and underground"],"a":3},{"n":2,"s":0,"q":"According to your textbook, approximately what percentage of Earth's water is present in oceans?","o":["2.15%","0.0171%","97.2%","50%"],"a":2},{"n":3,"s":0,"q":"Which statement about atmospheric water vapour is correct?","o":["It helps protect living organisms from desiccation.","It forms the largest reservoir of Earth's water.","It contains all the freshwater available on Earth.","It does not participate in the water cycle."],"a":0},{"n":4,"s":0,"q":"The study of the distribution of water and its movement between land and oceans is associated with:","o":["Astronomy","Geology only","Meteorology only","Hydrology"],"a":3},{"n":5,"s":0,"q":"Why can deep ocean water remain close to freezing even in tropical regions?","o":["Deep water receives less direct solar heating.","Sunlight heats only the ocean floor.","Salt prevents water from absorbing heat.","Atmospheric pressure becomes zero underwater."],"a":0},{"n":6,"s":0,"q":"Which reservoir contains the greatest proportion of Earth's water?","o":["Rivers and lakes","Oceans and seas","Atmosphere","Polar ice caps"],"a":1},{"n":7,"s":0,"q":"According to the textbook, approximately what percentage of Earth's water is held in polar ice caps and ice sheets?","o":["2.15%","0.001%","17.1%","97.2%"],"a":0},{"n":8,"s":0,"q":"Which process continuously transfers water between oceans, land and the atmosphere?","o":["Electrolysis","Ion exchange","Water cycle","Sedimentation"],"a":2},{"n":9,"s":1,"q":"Who demonstrated that water is a compound of hydrogen and oxygen in 1781, according to the textbook?","o":["Henry Cavendish","Antoine Lavoisier","Robert Boyle","Michael Faraday"],"a":0},{"n":10,"s":1,"q":"What is the correct molecular formula of water?","o":["HO","H₂O₂","H₃O","H₂O"],"a":3},{"n":11,"s":1,"q":"In a water molecule, the ratio of hydrogen atoms to oxygen atoms is:","o":["1 : 1","1 : 2","2 : 1","2 : 3"],"a":2},{"n":12,"s":1,"q":"What is the mass ratio of hydrogen to oxygen in water?","o":["1 : 2","2 : 1","1 : 8","8 : 1"],"a":2},{"n":13,"s":1,"q":"During electrolysis, water decomposes according to which equation?","o":["H₂O → H₂ + O₂","2H₂O → H₂ + 2O₂","H₂O → 2H₂ + O₂","2H₂O → 2H₂ + O₂"],"a":3},{"n":14,"s":1,"q":"If 18 g of pure water is completely decomposed, how much oxygen is theoretically produced?","o":["2 g","4 g","8 g","16 g"],"a":3},{"n":15,"s":1,"q":"Pure water freezes at:","o":["0°C","4°C","50°C","100°C"],"a":0},{"n":16,"s":1,"q":"At sea level, pure water boils at approximately:","o":["0°C","4°C","100°C","212°C below zero"],"a":2},{"n":17,"s":1,"q":"At which temperature does water have its maximum density under ordinary atmospheric pressure?","o":["0°C","4°C","25°C","100°C"],"a":1},{"n":18,"s":1,"q":"Why does ice float on liquid water?","o":["Ice has a greater density than liquid water.","Ice contains no oxygen.","Ice contains dissolved salts.","Ice is generally less dense than liquid water."],"a":3},{"n":19,"s":1,"q":"Pure water is a poor conductor of electricity mainly because it contains:","o":["Too many electrons flowing freely","Very few freely moving ions","Large amounts of sodium chloride","Only negatively charged ions"],"a":1},{"n":20,"s":1,"q":"Why does ordinary water containing dissolved salts conduct electricity better than pure water?","o":["Salt makes water a metal.","Dissolved salts produce mobile ions.","Salt removes every water molecule.","Dissolved salts stop the movement of charge."],"a":1},{"n":21,"s":2,"q":"Which water lathers easily with soap?","o":["Hard water","Sea water only","Soft water","Water containing excess calcium and magnesium ions"],"a":2},{"n":22,"s":2,"q":"The principal ions responsible for hardness of natural water are:","o":["Sodium and potassium","Calcium and magnesium","Hydrogen and oxygen","Silver and gold"],"a":1},{"n":23,"s":2,"q":"Hardness commonly develops when water dissolves minerals from rocks containing compounds of:","o":["Gold and silver","Hydrogen and helium","Carbon and oxygen only","Calcium and magnesium"],"a":3},{"n":24,"s":2,"q":"What is observed when soap is added to hard water and the mixture is shaken?","o":["Abundant lather forms immediately without residue.","Water changes into hydrogen gas.","Soap scum forms and lather is reduced.","The water necessarily becomes acidic."],"a":2},{"n":25,"s":2,"q":"Washing soda is chemically represented by:","o":["NaCl","Na₂CO₃","NaOH","NaHCO₃"],"a":1},{"n":26,"s":2,"q":"In the washing-soda practical, why does an insoluble precipitate form?","o":["Washing soda converts water into ice.","Washing soda evaporates the dissolved salts.","Washing soda converts calcium and magnesium ions into insoluble carbonates.","Washing soda produces hydrogen gas from water."],"a":2},{"n":27,"s":2,"q":"After treating hard water with washing soda, why is filtration performed?","o":["To remove the dissolved washing soda completely","To increase the calcium concentration","To convert the filtrate into distilled water","To remove the insoluble precipitate"],"a":3},{"n":28,"s":2,"q":"Which method is commonly used to remove temporary hardness of water?","o":["Freezing","Magnetic separation","Boiling","Simple sedimentation of untreated water"],"a":2},{"n":29,"s":2,"q":"Which method is associated with the permutit process of softening water?","o":["Ion exchange","Paper chromatography","Electrolysis","Sublimation"],"a":0},{"n":30,"s":2,"q":"Which is a disadvantage of hard water mentioned in the textbook?","o":["It always contains disease-causing bacteria.","It is unsuitable for every type of drinking purpose.","It always has a temperature above 100°C.","It does not lather easily and can spoil the lustre of utensils."],"a":3},{"n":31,"s":3,"q":"Water pollution is best described as:","o":["Contamination of water by harmful substances or organisms","The natural evaporation of water","The freezing of water in winter","The separation of pure water from salt water"],"a":0},{"n":32,"s":3,"q":"Which is identified in the textbook as an important source of water pollution?","o":["Properly treated drinking water","Untreated industrial waste discharged into rivers","Collecting rainwater in a clean tank","Boiling water before drinking"],"a":1},{"n":33,"s":3,"q":"Excessive use of non-biodegradable synthetic detergents can contribute to:","o":["Water electrolysis","Permanent removal of all dissolved salts","Formation of pure distilled water","Water pollution"],"a":3},{"n":34,"s":3,"q":"Fertilizers and pesticides can pollute rivers and lakes when they:","o":["Are stored in sealed containers","Are measured using a balance","Are washed from fields into water bodies","Are kept away from drains and streams"],"a":2},{"n":35,"s":3,"q":"Which group contains only water-borne diseases mentioned in the textbook?","o":["Ringworm, scabies and measles","Typhoid, cholera and dysentery","Malaria, rabies and chickenpox","Influenza, mumps and tetanus"],"a":1},{"n":36,"s":3,"q":"Why can heavy metals in polluted water be dangerous?","o":["They always evaporate harmlessly.","They may cause poisoning, such as lead or mercury poisoning.","They convert all water into oxygen.","They prevent every microorganism from growing."],"a":1},{"n":37,"s":3,"q":"Which treatment should be applied to harmful industrial wastewater before discharge?","o":["Treat it to remove or neutralize harmful substances.","Add soil and release it immediately.","Mix it with untreated sewage.","Heat it briefly and release it without testing."],"a":0},{"n":38,"s":3,"q":"Which method is suitable for removing suspended solid particles from water?","o":["Electrolysis","Hydrogenation","Ion exchange alone","Filtration"],"a":3},{"n":39,"s":3,"q":"Which method is commonly used to kill many disease-causing microorganisms in drinking water?","o":["Sedimentation alone","Boiling","Decantation alone","Sieving"],"a":1},{"n":40,"s":3,"q":"Why is sewage treated before it is discharged into rivers?","o":["To increase its organic waste content","To increase the amount of disease-causing organisms","To convert all dissolved substances into metals","To reduce pollutants and organic matter"],"a":3},{"n":41,"s":4,"q":"According to the textbook, hydrogen is the most abundant element in the:","o":["Universe","Earth's crust only","Oceans only","Human body only"],"a":0},{"n":42,"s":4,"q":"In the laboratory, hydrogen can be prepared by reacting zinc with:","o":["Dilute hydrochloric acid","Sodium chloride solution alone","Pure water at room temperature","Copper sulphate crystals without water"],"a":0},{"n":43,"s":4,"q":"When zinc reacts with dilute hydrochloric acid, which gas is released?","o":["Oxygen","Hydrogen","Carbon dioxide","Chlorine"],"a":1},{"n":44,"s":4,"q":"Which equation correctly represents the reaction of zinc with dilute hydrochloric acid?","o":["Zn + HCl → ZnO + H₂","Zn + H₂O → ZnCl₂ + O₂","Zn + 2HCl → ZnCl₂ + H₂","Zn + HCl → ZnCl₂ + O₂"],"a":2},{"n":45,"s":4,"q":"Which combination of properties describes hydrogen gas under ordinary conditions?","o":["Colourless, odourless and lighter than air","Coloured, odorous and heavier than air","Blue, odourless and soluble in large amounts in water","Colourless, strongly acidic and heavier than air"],"a":0},{"n":46,"s":4,"q":"What is the characteristic test for hydrogen gas?","o":["It turns red litmus paper blue.","It turns limewater milky.","It burns with a characteristic ‘pop’ sound when tested carefully with a flame.","It extinguishes every flame without reacting."],"a":2},{"n":47,"s":4,"q":"What happens when hydrogen is tested with moist red and blue litmus papers?","o":["Red litmus turns blue.","Neither shows a colour change due to hydrogen's neutral nature.","Blue litmus turns red.","Both turn red."],"a":1},{"n":48,"s":4,"q":"Which application of hydrogen is correctly matched?","o":["Hydrogen — the main ingredient used to filter suspended solids","Hydrogen — a common indicator for acids and bases","Hydrogen — the principal ion responsible for water hardness","Hydrogen — fuel in certain rocket systems"],"a":3},{"n":49,"s":4,"q":"Hydrogenation of vegetable oils involves the use of hydrogen to:","o":["Increase the proportion of unsaturated bonds","Add hydrogen to unsaturated compounds","Convert oil directly into water","Remove every carbon atom from the oil"],"a":1},{"n":50,"s":4,"q":"In the practical investigating hardness, four samples contain dissolved sulphates of sodium, ammonium, calcium and magnesium respectively. Which samples are expected to show reduced lathering with soap due to hardness-producing ions?","o":["Calcium sulphate and magnesium sulphate","Sodium sulphate and ammonium sulphate only","Sodium sulphate and calcium sulphate only","All four samples equally"],"a":0}]};
+const N = D.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(N).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function h(tag, attrs = {}, ...children) {
+  const element = document.createElement(tag);
+  for (const [key, value] of Object.entries(attrs)) {
+    if (key === 'class') element.className = value;
+    else if (key === 'text') element.textContent = value;
+    else element.setAttribute(key, value);
+  }
+  children.filter(Boolean).forEach(child => element.append(child));
+  return element;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function buildQuestion(question) {
+  const block = h('article', { class: 'question', id: 'q' + question.n });
+  block.append(h('div', { class: 'q-head' },
+    h('span', { class: 'q-num', text: question.n + '.' }),
+    h('span', { class: 'q-text', text: question.q })));
+
+  const options = h('div', { class: 'options' });
+  question.o.forEach((option, index) => {
+    const input = h('input', { type: 'radio', name: 'q' + question.n, value: String(index) });
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    options.append(h('label', { class: 'opt' }, input,
+      h('span', { class: 'bubble', text: LETTERS[index] }),
+      h('span', { class: 'opt-text', text: option })));
+  });
+  block.append(options, h('div', { class: 'answer-note', id: 'note-' + question.n }));
+  return block;
+}
+
+function buildPaper() {
+  const root = $('#quiz-root');
+  D.sections.forEach((section, sectionIndex) => {
+    const questions = D.questions.filter(question => question.s === sectionIndex);
+    const first = questions[0].n;
+    const last = questions[questions.length - 1].n;
+    root.append(h('div', { class: 'section-divider' },
+      h('h2', { text: 'Section ' + section.id + ' — ' + section.title }),
+      h('p', { text: 'Questions ' + first + '–' + last + ' · ' + questions.length + ' marks' })));
+    questions.forEach(question => root.append(buildQuestion(question)));
+  });
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / N * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + N + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, D.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percentage = Math.round(score / N * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(h('h3', { text: 'Section breakdown' }));
+
+  const sectionTable = h('table');
+  const sectionHead = h('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => sectionHead.append(h('th', { text: label })));
+  sectionTable.append(sectionHead);
+  D.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = h('tr');
+    row.append(h('td', { text: section.id + ' — ' + section.title }),
+      h('td', { text: result.correct + ' / ' + result.total }),
+      h('td', { text: Math.round(result.correct / result.total * 100) + '%' }));
+    sectionTable.append(row);
+  });
+  const totalRow = h('tr');
+  totalRow.append(h('td', { text: 'Total' }), h('td', { text: score + ' / ' + N }), h('td', { text: percentage + '%' }));
+  sectionTable.append(totalRow);
+  breakdown.append(sectionTable, h('h3', { text: 'Answer key' }));
+
+  const keyTable = h('table');
+  const keyHead = h('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHead.append(h('th', { text: label })));
+  keyTable.append(keyHead);
+  D.questions.forEach(question => {
+    const row = h('tr');
+    row.append(h('td', { text: 'Question ' + question.n }),
+      h('td', { text: LETTERS[question.a] + '. ' + question.o[question.a] }));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + N + '</b> marks (' + percentage + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + N + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / N * 100) + '%';
+
+  const duration = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(duration / 60) + 'm ' + (duration % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review the correct answers and your section breakdown below.'
+    : percentage >= 60
+      ? 'Nice work — review the section breakdown and answers below.'
+      : 'Review the section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, D.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = D.sections.map(() => ({ correct: 0, total: 0 }));
+
+  D.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const note = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      note.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      note.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      note.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      note.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      note.classList.add('miss');
+    }
+    note.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+buildPaper();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

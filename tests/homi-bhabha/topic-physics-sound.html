@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Sound</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Physics — Sound</h1>
+    <p class="subtitle">Standard VI · English Medium · Unit 7</p>
+    <div class="meta-row">
+      <span>Questions: <b>50</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>50</b></span>
+      <span>Time limit: <b>45:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Answer all 50 multiple-choice questions on sound, its speed and reflection, noise, echoes, hearing range, and applications. Each question carries one mark with no negative marking. The 45-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">45:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 50 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":45,"sections":[{"id":"A","title":"Sound and Its Properties"},{"id":"B","title":"Speed of Sound"},{"id":"C","title":"Noise and Its Effects"},{"id":"D","title":"Reflection of Sound and Its Applications"},{"id":"E","title":"Echo and Hearing Range"},{"id":"F","title":"Application and Practical Reasoning"}],"questions":[{"n":1,"s":0,"q":"Sound is produced by:","o":["Heating of objects","Vibrations of objects","Chemical reactions only","Melting of objects"],"a":1},{"n":2,"s":0,"q":"Sound is a form of:","o":["Matter","Energy","Force","Pressure"],"a":1},{"n":3,"s":0,"q":"Which of the following cannot transmit sound?","o":["Water","Steel","Air","Vacuum"],"a":3},{"n":4,"s":0,"q":"An explosion occurs on the Moon. An astronaut standing far away without a communication device will not hear it because:","o":["The Moon has no gravity","Sound cannot travel through vacuum","Sound travels only upwards","The explosion produces no vibrations"],"a":1},{"n":5,"s":0,"q":"Sound travels through a material medium by:","o":["Transfer of energy between neighbouring particles","Transfer of particles from source to listener","Movement of light rays","Movement of the entire medium from source to listener"],"a":0},{"n":6,"s":0,"q":"Which of the following is essential for sound propagation?","o":["Sunlight","A material medium","Magnetic field","Electric current"],"a":1},{"n":7,"s":0,"q":"When a tuning fork is struck, sound is produced because:","o":["Its temperature increases","Its prongs vibrate","Its mass decreases","It emits light"],"a":1},{"n":8,"s":0,"q":"A bell is ringing inside an evacuated glass chamber. As air is gradually removed, the sound heard outside becomes:","o":["Louder","Fainter","Higher in pitch","Unchanged"],"a":1},{"n":9,"s":0,"q":"Which statement is correct?","o":["Sound can travel through vacuum.","Sound is produced only by living organisms.","Vibrating bodies produce sound.","Sound is a form of light energy."],"a":2},{"n":10,"s":0,"q":"A vibrating object transfers sound energy to:","o":["Only solid particles","Particles of the surrounding medium","Only water particles","Empty space without a medium"],"a":1},{"n":11,"s":1,"q":"The correct order of speed of sound in different states of matter is:","o":["Gas > Liquid > Solid","Liquid > Solid > Gas","Solid > Liquid > Gas","Solid > Gas > Liquid"],"a":2},{"n":12,"s":1,"q":"Sound generally travels fastest in:","o":["Air","Water","Steel","Vacuum"],"a":2},{"n":13,"s":1,"q":"Sound travels faster in solids mainly because:","o":["Solid particles are generally closely packed","Solids have no particles","Solid particles do not vibrate","Solids contain more air"],"a":0},{"n":14,"s":1,"q":"A person places their ear against a railway track and hears an approaching train before hearing it through the air. This is because:","o":["Sound cannot travel through air","Sound travels faster through the solid track","The train produces sound only inside the track","The track produces electricity"],"a":1},{"n":15,"s":1,"q":"Sound travels from air into water. Its speed generally:","o":["Increases","Decreases to zero","Remains exactly the same","Becomes infinite"],"a":0},{"n":16,"s":1,"q":"Which medium generally allows sound to travel the slowest?","o":["Iron","Water","Air","Aluminium"],"a":2},{"n":17,"s":1,"q":"Sound travels through a medium because its particles:","o":["Transfer energy through vibrations","Permanently move from source to listener","Stop vibrating after receiving energy","Change into sound waves"],"a":0},{"n":18,"s":2,"q":"Unwanted and disturbing sound is called:","o":["Echo","Noise","Reflection","Ultrasound"],"a":1},{"n":19,"s":2,"q":"The unit commonly used to measure sound level is:","o":["Hertz","Joule","Decibel","Newton"],"a":2},{"n":20,"s":2,"q":"Prolonged exposure to loud noise may cause:","o":["Improved hearing","Hearing loss","Increased eyesight","Faster digestion"],"a":1},{"n":21,"s":2,"q":"Which of the following is most likely to reduce noise pollution?","o":["Unnecessary honking","Using loudspeakers at high volume","Planting trees and controlling unnecessary noise","Bursting crackers near hospitals"],"a":2},{"n":22,"s":2,"q":"Noise pollution can affect concentration because it:","o":["Disturbs attention and mental focus","Increases oxygen production","Improves memory automatically","Stops all vibrations"],"a":0},{"n":23,"s":2,"q":"Which situation is an example of noise pollution?","o":["Birds chirping in a forest","Unnecessarily loud construction noise near a hospital","A person speaking softly","Leaves rustling gently"],"a":1},{"n":24,"s":3,"q":"When sound waves strike a surface and return into the same medium, it is called:","o":["Refraction","Reflection","Absorption","Dispersion"],"a":1},{"n":25,"s":3,"q":"Which surface is generally a better reflector of sound?","o":["Thick curtain","Soft cotton","Hard concrete wall","Foam sheet"],"a":2},{"n":26,"s":3,"q":"A person shouts inside an empty hall and hears the sound again after a short time. This is due to:","o":["Absorption","Reflection","Refraction","Diffraction only"],"a":1},{"n":27,"s":3,"q":"A megaphone helps direct sound towards listeners mainly through:","o":["Multiple reflections inside its horn","Absorption of sound","Conversion of sound into light","Production of electricity"],"a":0},{"n":28,"s":3,"q":"An ear trumpet is useful for a person with hearing difficulty because it:","o":["Produces ultrasound","Collects sound and directs it towards the ear","Converts sound into vibrations of light","Blocks unwanted sound completely"],"a":1},{"n":29,"s":3,"q":"A stethoscope is used by doctors to:","o":["Measure body temperature","Listen to sounds produced inside the body","Measure blood pressure directly","Measure the speed of blood"],"a":1},{"n":30,"s":3,"q":"The chest piece of a stethoscope helps to:","o":["Pick up sounds from the body","Produce loud external noise","Stop all vibrations","Measure sound frequency numerically"],"a":0},{"n":31,"s":3,"q":"Sound boards are used in large halls mainly to:","o":["Absorb all sound","Direct reflected sound towards the audience","Produce electricity","Reduce the speed of sound to zero"],"a":1},{"n":32,"s":3,"q":"The reflecting surface used in a sound board is generally:","o":["Curved","Completely transparent","Made of cotton","Always flat and soft"],"a":0},{"n":33,"s":3,"q":"Which device uses the principle of reflection of sound?","o":["Megaphone","Thermometer","Barometer","Hydrometer"],"a":0},{"n":34,"s":3,"q":"Why are soft curtains and carpets used in some auditoriums?","o":["To increase multiple reflections","To absorb sound and reduce unwanted reflections","To increase the speed of sound","To produce echoes"],"a":1},{"n":35,"s":4,"q":"An echo is:","o":["The original sound produced by a source","Sound heard after reflection from an obstacle","Sound produced only in water","Sound that travels through vacuum"],"a":1},{"n":36,"s":4,"q":"A distinct echo is heard when the reflected sound reaches the ear after a sufficient time gap, approximately:","o":["0.001 second","0.01 second","0.1 second","10 seconds"],"a":2},{"n":37,"s":4,"q":"According to the supplied textbook page, the minimum distance for hearing an echo is:","o":["1 metre","5 metres","11 metres","100 metres"],"a":2},{"n":38,"s":4,"q":"Which surface is most suitable for producing a clear echo?","o":["Thick sponge","Soft curtain","Large hard wall","Cotton mattress"],"a":2},{"n":39,"s":4,"q":"The usual audible frequency range of a healthy young human ear is approximately:","o":["2 Hz–200 Hz","20 Hz–20,000 Hz","200 Hz–200,000 Hz","20,000 Hz–40,000 Hz"],"a":1},{"n":40,"s":4,"q":"Sound having a frequency below 20 Hz is called:","o":["Ultrasound","Infrasound","Audible sound","Supersonic sound"],"a":1},{"n":41,"s":4,"q":"Sound having a frequency greater than 20 kHz is called:","o":["Infrasound","Ultrasound","Audible sound","Noise"],"a":1},{"n":42,"s":4,"q":"Which animal can hear frequencies up to approximately 100 kHz, according to the supplied textbook?","o":["Dog","Bat","Human","Elephant"],"a":0},{"n":43,"s":4,"q":"Which animal is known for detecting very low-frequency sounds?","o":["Elephant","Sparrow","Butterfly","Housefly"],"a":0},{"n":44,"s":4,"q":"With increasing age, a person's ability to hear very high-frequency sounds generally:","o":["Increases","Decreases","Remains exactly constant","Becomes unlimited"],"a":1},{"n":45,"s":5,"q":"A stone is dropped onto a table from a height of 100 cm and then from 20 cm. Which impact is generally louder?","o":["The 20 cm drop","The 100 cm drop","Both must be equally loud","Neither produces sound"],"a":1},{"n":46,"s":5,"q":"Why does the stone dropped from a greater height generally produce a louder impact?","o":["It gains greater speed and kinetic energy before impact","Its mass increases during falling","Gravity stops acting on it","It absorbs all sound energy"],"a":0},{"n":47,"s":5,"q":"In the stone-drop experiment, which factor should be kept constant for a fair comparison?","o":["Height of dropping","Same stone and same table","Impact speed","Sound produced"],"a":1},{"n":48,"s":5,"q":"A bat emits high-frequency sound waves and detects their reflections to locate objects. This is an example of:","o":["Photosynthesis","Echolocation","Transpiration","Conduction"],"a":1},{"n":49,"s":5,"q":"A person standing between two distant buildings hears repeated echoes. This happens because:","o":["Sound is reflected by the buildings","Sound is absorbed completely","Buildings produce their own sound","Sound travels through vacuum"],"a":0},{"n":50,"s":5,"q":"A sound source vibrates 500 times in one second. Its frequency is:","o":["50 Hz","100 Hz","500 Hz","5000 Hz"],"a":2}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Food and Nutrition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Biology — Food and Nutrition</h1>
+    <p class="subtitle">Standard VI · English Medium · Topic Test</p>
+    <div class="meta-row">
+      <span>Questions: <b>90</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>90</b></span>
+      <span>Time limit: <b>80:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Answer all 90 mixed multiple-choice questions on nutrients, balanced diets, deficiency diseases, food tests, preservation, and healthy eating. Each question carries one mark with no negative marking. The 80-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">80:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 90 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":80,"sections":[{"id":"A","title":"Mixed Questions"}],"questions":[{"n":1,"s":0,"q":"Which nutrient is the body's main source of energy?","o":["Vitamins","Carbohydrates","Minerals","Water"],"a":1},{"n":2,"s":0,"q":"A child has a swollen belly, stunted growth and muscle wasting due to severe protein deficiency. The condition is most likely:","o":["Scurvy","Rickets","Kwashiorkor","Goitre"],"a":2},{"n":3,"s":0,"q":"Which of the following is a good source of roughage?","o":["Refined sugar","Whole grains","Butter","Ghee"],"a":1},{"n":4,"s":0,"q":"Which nutrient is mainly responsible for growth and repair of body tissues?","o":["Protein","Carbohydrate","Fat","Water"],"a":0},{"n":5,"s":0,"q":"A person has bleeding gums and wounds that heal slowly. Which vitamin may be deficient?","o":["Vitamin A","Vitamin B1","Vitamin C","Vitamin D"],"a":2},{"n":6,"s":0,"q":"Which method of food preservation involves removing moisture from food?","o":["Refrigeration","Dehydration","Pasteurisation","Canning"],"a":1},{"n":7,"s":0,"q":"Which mineral is essential for the formation of haemoglobin?","o":["Iodine","Calcium","Iron","Sodium"],"a":2},{"n":8,"s":0,"q":"Which of the following is NOT an energy-giving nutrient?","o":["Carbohydrate","Fat","Protein","Vitamin C"],"a":3},{"n":9,"s":0,"q":"A person has difficulty seeing in dim light. This may be due to a deficiency of:","o":["Vitamin A","Vitamin C","Vitamin D","Vitamin B1"],"a":0},{"n":10,"s":0,"q":"Which of the following foods is a rich source of protein?","o":["Sugar","Pulses","Butter","Potato chips"],"a":1},{"n":11,"s":0,"q":"Which disease is commonly caused by iodine deficiency?","o":["Anaemia","Goitre","Scurvy","Beri-beri"],"a":1},{"n":12,"s":0,"q":"Which of the following is a correct function of water in the human body?","o":["It provides most of the body's energy","It helps transport nutrients and wastes","It builds bones directly","It replaces all vitamins"],"a":1},{"n":13,"s":0,"q":"Which nutrient provides the highest amount of energy per gram?","o":["Carbohydrates","Proteins","Fats","Vitamins"],"a":2},{"n":14,"s":0,"q":"Which method is commonly used to preserve milk by controlled heating followed by rapid cooling?","o":["Smoking","Pasteurisation","Dehydration","Canning"],"a":1},{"n":15,"s":0,"q":"A child has weak muscles and very little energy due to vitamin B1 deficiency. The disease is:","o":["Beri-beri","Pellagra","Rickets","Scurvy"],"a":0},{"n":16,"s":0,"q":"Which of these is a protective food?","o":["Sugar","Oil","Green leafy vegetables","Butter"],"a":2},{"n":17,"s":0,"q":"Which substance is used to test the presence of starch in food?","o":["Vinegar","Iodine solution","Salt solution","Lime water"],"a":1},{"n":18,"s":0,"q":"What colour indicates the presence of starch when iodine solution is added?","o":["Red","Green","Blue-black","Yellow"],"a":2},{"n":19,"s":0,"q":"Which of the following is a concentrated source of energy?","o":["Fat","Water","Vitamin C","Roughage"],"a":0},{"n":20,"s":0,"q":"Which condition is associated with severe deficiency of both energy and protein, causing extreme thinness?","o":["Goitre","Marasmus","Scurvy","Night blindness"],"a":1},{"n":21,"s":0,"q":"Which of the following is a balanced diet?","o":["Only rice and potatoes","Only fruits and juices","A suitable variety of foods containing all essential nutrients","Only milk and eggs"],"a":2},{"n":22,"s":0,"q":"Which food preservation method uses low temperature to slow microbial growth?","o":["Smoking","Refrigeration","Dehydration","Heating"],"a":1},{"n":23,"s":0,"q":"Which of the following is a source of vitamin C?","o":["Orange","Ghee","Rice","Butter"],"a":0},{"n":24,"s":0,"q":"Which nutrient helps in the formation and maintenance of bones and teeth?","o":["Calcium","Iodine","Vitamin C alone","Carbohydrate"],"a":0},{"n":25,"s":0,"q":"Which of the following is NOT a function of roughage?","o":["Adds bulk to food","Helps bowel movement","Provides large amounts of energy","Helps prevent constipation"],"a":2},{"n":26,"s":0,"q":"Which food is most likely to turn blue-black when iodine solution is added?","o":["Potato","Sugar","Cooking oil","Lemon juice"],"a":0},{"n":27,"s":0,"q":"Which of the following is a common symptom of iron-deficiency anaemia?","o":["Swollen thyroid gland","Pale skin and tiredness","Bleeding gums","Bowed legs"],"a":1},{"n":28,"s":0,"q":"Which of the following is a correct statement about cooking?","o":["Cooking always destroys all nutrients","Cooking can improve flavour and digestibility","Raw food is always safer than cooked food","Cooking cannot kill microbes"],"a":1},{"n":29,"s":0,"q":"Which vitamin is essential for normal bone development and calcium absorption?","o":["Vitamin A","Vitamin B1","Vitamin D","Vitamin C"],"a":2},{"n":30,"s":0,"q":"Which of the following is commonly used in preserving pickles?","o":["Vinegar","Fresh water","Plain air","Ice only"],"a":0},{"n":31,"s":0,"q":"Which disease is caused by a deficiency of niacin (vitamin B3)?","o":["Pellagra","Beri-beri","Scurvy","Rickets"],"a":0},{"n":32,"s":0,"q":"Which of the following is a body-building food?","o":["Pulses","Sugar","Cooking oil","Salt"],"a":0},{"n":33,"s":0,"q":"Which food preservation method uses smoke and drying, particularly for meat and fish?","o":["Pasteurisation","Smoking","Refrigeration","Canning"],"a":1},{"n":34,"s":0,"q":"Which of the following is NOT a nutrient group listed in the textbook?","o":["Proteins","Vitamins","Roughage","Plastic"],"a":3},{"n":35,"s":0,"q":"A child has bowed legs and soft bones. Which deficiency is most likely?","o":["Vitamin D","Vitamin C","Vitamin B1","Iodine"],"a":0},{"n":36,"s":0,"q":"Which of these foods is a good source of carbohydrates?","o":["Rice","Fish","Egg","Paneer"],"a":0},{"n":37,"s":0,"q":"Why should cut vegetables not be washed repeatedly?","o":["They become poisonous","Some water-soluble nutrients may be lost","They turn into proteins","Their fibre disappears completely"],"a":1},{"n":38,"s":0,"q":"Which of the following is a correct function of proteins?","o":["Providing roughage","Growth and repair of tissues","Acting as the body's only energy source","Making food taste sweet"],"a":1},{"n":39,"s":0,"q":"Which food preservation technique involves packing sterilised food in airtight containers?","o":["Canning","Smoking","Dehydration","Refrigeration"],"a":0},{"n":40,"s":0,"q":"Which of the following is a source of healthy dietary fibre?","o":["Whole fruits","Refined sugar","Butter","Ghee"],"a":0},{"n":41,"s":0,"q":"Which deficiency disease is associated with swollen thyroid glands?","o":["Goitre","Anaemia","Marasmus","Pellagra"],"a":0},{"n":42,"s":0,"q":"Which nutrient helps maintain body temperature by providing insulation?","o":["Fat","Vitamin C","Water only","Roughage"],"a":0},{"n":43,"s":0,"q":"Which of the following is the best example of a protective food?","o":["Orange","Sugar","Ghee","Refined flour"],"a":0},{"n":44,"s":0,"q":"What is the main purpose of food preservation?","o":["To increase the weight of food","To prevent or delay food spoilage","To remove all nutrients","To change food into minerals"],"a":1},{"n":45,"s":0,"q":"Which of the following is commonly added to food as a preservative?","o":["Sodium benzoate","Sand","Chalk powder","Sawdust"],"a":0},{"n":46,"s":0,"q":"Which nutrient is required for the formation of haemoglobin in red blood cells?","o":["Iron","Iodine","Vitamin D","Roughage"],"a":0},{"n":47,"s":0,"q":"Which of the following is NOT a suitable practice for retaining nutrients during cooking?","o":["Avoiding excessive cooking","Washing vegetables before cutting","Repeatedly washing cut vegetables","Using suitable cooking methods"],"a":2},{"n":48,"s":0,"q":"A child is extremely thin, with very little body fat and muscle. Which condition is most likely?","o":["Marasmus","Goitre","Night blindness","Scurvy"],"a":0},{"n":49,"s":0,"q":"Which of these is a correct statement about pasteurisation?","o":["It freezes milk completely","It uses controlled heating followed by rapid cooling","It removes all water from milk","It converts milk into powder"],"a":1},{"n":50,"s":0,"q":"Which of the following is a source of vitamin A?","o":["Carrot","White sugar","Salt","Refined oil"],"a":0},{"n":51,"s":0,"q":"Which nutrient helps in the transport of dissolved substances in the body?","o":["Water","Roughage","Starch","Fat only"],"a":0},{"n":52,"s":0,"q":"Which of the following is a common symptom of scurvy?","o":["Bleeding gums","Enlarged thyroid","Bowed legs","Night blindness"],"a":0},{"n":53,"s":0,"q":"Which of the following is a correct pair?","o":["Vitamin B1 – Beri-beri","Vitamin C – Rickets","Iodine – Scurvy","Vitamin A – Goitre"],"a":0},{"n":54,"s":0,"q":"Why is refrigeration useful for food preservation?","o":["It kills every microorganism instantly","It slows the multiplication of microorganisms","It removes all water from food","It increases the temperature of food"],"a":1},{"n":55,"s":0,"q":"Which of the following is a good source of fats?","o":["Nuts","Orange","Cucumber","Plain water"],"a":0},{"n":56,"s":0,"q":"Which of these is most likely to be deficient in a person suffering from goitre due to nutritional deficiency?","o":["Iodine","Iron","Vitamin C","Protein"],"a":0},{"n":57,"s":0,"q":"What is the main role of carbohydrates in the body?","o":["Energy supply","Blood clotting only","Vision in dim light","Bone formation only"],"a":0},{"n":58,"s":0,"q":"Which of the following is an example of dehydration?","o":["Drying grapes to make raisins","Keeping milk in a refrigerator","Heating milk and cooling it rapidly","Packing food in airtight cans"],"a":0},{"n":59,"s":0,"q":"Which of the following foods is a good source of protein?","o":["Fish","Sugar","Potato","Honey"],"a":0},{"n":60,"s":0,"q":"Which statement about a balanced diet is correct?","o":["It is identical for every person","It depends on age, activity and health condition","It contains only energy-giving nutrients","It excludes water"],"a":1},{"n":61,"s":0,"q":"Which deficiency may cause difficulty in seeing in darkness?","o":["Vitamin A","Vitamin C","Vitamin D","Vitamin B1"],"a":0},{"n":62,"s":0,"q":"Which of the following is a common source of iodine in the diet?","o":["Iodised salt","Refined sugar","Butter","White rice"],"a":0},{"n":63,"s":0,"q":"Which of the following is NOT an energy-giving nutrient?","o":["Carbohydrate","Fat","Protein","Mineral"],"a":3},{"n":64,"s":0,"q":"Why is water essential for digestion and other body processes?","o":["It acts as a solvent and medium for chemical reactions","It replaces all food nutrients","It provides more energy than fat","It prevents all diseases"],"a":0},{"n":65,"s":0,"q":"Which food preservation method is based mainly on the use of high temperature to kill microbes?","o":["Heating","Refrigeration","Drying in shade only","Adding ice"],"a":0},{"n":66,"s":0,"q":"Which of these is a common symptom of pellagra?","o":["Dermatitis and diarrhoea","Bleeding gums only","Swollen thyroid only","Bowed legs only"],"a":0},{"n":67,"s":0,"q":"Which of the following is a correct statement about fats?","o":["They provide concentrated energy","They contain no energy","They are the main source of roughage","They are needed only by children"],"a":0},{"n":68,"s":0,"q":"Which method of preservation is most suitable for slowing spoilage of fresh vegetables for a short period?","o":["Refrigeration","Smoking","Canning at home without processing","Adding sand"],"a":0},{"n":69,"s":0,"q":"Which of the following is a source of calcium?","o":["Milk","Sugar","Cooking oil","Lemon juice only"],"a":0},{"n":70,"s":0,"q":"Which condition is most directly associated with vitamin D deficiency in children?","o":["Rickets","Scurvy","Beri-beri","Pellagra"],"a":0},{"n":71,"s":0,"q":"Why should food be stored in clean, airtight containers?","o":["To prevent entry of moisture and pests and reduce contamination","To increase its water content","To make it more acidic","To remove its proteins"],"a":0},{"n":72,"s":0,"q":"Which of the following foods contains a considerable amount of roughage?","o":["Cabbage","Butter","Sugar syrup","Ghee"],"a":0},{"n":73,"s":0,"q":"Which nutrient is especially important for the repair of damaged muscles?","o":["Protein","Vitamin C alone","Water alone","Roughage"],"a":0},{"n":74,"s":0,"q":"Which of the following is the correct sequence in the textbook's description of pasteurisation?","o":["Rapid cooling followed by heating","Heating followed by rapid cooling","Freezing followed by drying","Smoking followed by canning"],"a":1},{"n":75,"s":0,"q":"Which disease can result from a deficiency of vitamin B1?","o":["Beri-beri","Night blindness","Goitre","Rickets"],"a":0},{"n":76,"s":0,"q":"Which of the following is NOT a recommended reason for cooking food?","o":["Improving flavour","Improving digestibility","Destroying many harmful microbes","Removing all nutrients"],"a":3},{"n":77,"s":0,"q":"Which food is most likely to be used as a source of carbohydrates?","o":["Banana","Fish","Egg","Cheese"],"a":0},{"n":78,"s":0,"q":"Which of the following is a common sign of anaemia?","o":["Tiredness and paleness","Swollen neck due to thyroid enlargement","Bleeding gums","Difficulty seeing in dim light"],"a":0},{"n":79,"s":0,"q":"Which of the following is a correct statement about vitamins and minerals?","o":["They are protective and regulatory nutrients","They are the body's only energy source","They are not required in a balanced diet","They are found only in meat"],"a":0},{"n":80,"s":0,"q":"Which traditional method may be used to protect stored grains from insect pests?","o":["Keeping neem leaves with the grains","Adding water","Keeping grains uncovered in rain","Mixing grains with fresh fruit"],"a":0},{"n":81,"s":0,"q":"A student adds iodine solution to a food sample and observes no blue-black colour. What can be concluded?","o":["Starch is definitely present","The test does not indicate the presence of starch","Protein is definitely present","Fat is definitely present"],"a":1},{"n":82,"s":0,"q":"Which of the following is a good source of vitamin C?","o":["Lemon","Butter","Rice","Oil"],"a":0},{"n":83,"s":0,"q":"Why does marasmus cause severe thinness?","o":["The body lacks sufficient energy and protein","The body receives excess iodine","The body stores too much water","The thyroid gland becomes enlarged"],"a":0},{"n":84,"s":0,"q":"Which statement about preservatives is correct?","o":["All preservatives are harmful","Some suitable substances are added to delay spoilage","Preservatives increase microbial growth","Preservatives are used only in fresh milk"],"a":1},{"n":85,"s":0,"q":"Which nutrient is most directly associated with preventing constipation by adding bulk to food?","o":["Roughage","Fat","Sugar","Vitamin D"],"a":0},{"n":86,"s":0,"q":"A person eats mainly polished rice and very few other foods for a long period. Which deficiency is a particular concern?","o":["Vitamin B1","Vitamin C","Vitamin D","Iodine"],"a":0},{"n":87,"s":0,"q":"Which of the following is the best example of a balanced meal?","o":["Rice, dal, vegetables, curd and fruit","Only fried potatoes","Only sweets and soft drinks","Only buttered bread"],"a":0},{"n":88,"s":0,"q":"Which statement about water is incorrect?","o":["It helps transport nutrients","It acts as a solvent","It helps regulate body temperature","It is the body's main source of energy"],"a":3},{"n":89,"s":0,"q":"Which of the following pairs is correctly matched?","o":["Iron – Anaemia","Vitamin C – Goitre","Iodine – Scurvy","Vitamin A – Beri-beri"],"a":0},{"n":90,"s":0,"q":"A food item is dried and then stored in a sealed container. Which two preservation ideas are being used?","o":["Moisture removal and protection from contamination","Increasing moisture and heating","Freezing and smoking","Pasteurisation and fermentation"],"a":0}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

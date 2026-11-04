@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Classification of Animals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Biology — Classification of Animals</h1>
+    <p class="subtitle">Standard VI · English Medium · Unit 2 · Animal Kingdom</p>
+    <div class="meta-row">
+      <span>Questions: <b>90</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>90</b></span>
+      <span>Time limit: <b>75:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Select the most appropriate answer for each question. Each question carries one mark with no negative marking. The 75-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">45:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 90 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":75,"sections":[{"id":"A","title":"Easy: Textbook-based"},{"id":"B","title":"Slightly Higher Level: Conceptual and Application-based"},{"id":"C","title":"General Homi Bhabha-level Science"}],"questions":[{"n":1,"s":0,"q":"Which phylum consists of pore-bearing animals?","o":["Annelida","Porifera","Mollusca","Arthropoda"],"a":1},{"n":2,"s":0,"q":"Which of the following is an example of Porifera?","o":["Hydra","Earthworm","Sycon","Planaria"],"a":2},{"n":3,"s":0,"q":"Animals belonging to Coelenterata generally show:","o":["Bilateral symmetry","Asymmetry","Radial symmetry","No definite body organisation"],"a":2},{"n":4,"s":0,"q":"Which animal has tentacles surrounding its mouth?","o":["Hydra","Earthworm","Ascaris","Snail"],"a":0},{"n":5,"s":0,"q":"Which phylum includes dorsoventrally flattened animals?","o":["Annelida","Platyhelminthes","Arthropoda","Echinodermata"],"a":1},{"n":6,"s":0,"q":"Tapeworm belongs to:","o":["Nematoda","Mollusca","Platyhelminthes","Porifera"],"a":2},{"n":7,"s":0,"q":"Which of the following is a roundworm?","o":["Planaria","Ascaris","Nereis","Sycon"],"a":1},{"n":8,"s":0,"q":"The body of an earthworm is:","o":["Unsegmented","Porous","Covered with feathers","Segmented"],"a":3},{"n":9,"s":0,"q":"Jointed appendages are the characteristic feature of:","o":["Arthropoda","Mollusca","Annelida","Porifera"],"a":0},{"n":10,"s":0,"q":"Which of the following belongs to Mollusca?","o":["Leech","Pila","Hydra","Starfish"],"a":1},{"n":11,"s":0,"q":"Echinoderms are found:","o":["Only in freshwater","Only on land","Only in marine habitats","Both on land and in freshwater"],"a":2},{"n":12,"s":0,"q":"Which of the following is an echinoderm?","o":["Jellyfish","Sea urchin","Prawn","Octopus"],"a":1},{"n":13,"s":0,"q":"Which vertebrate class has feathers?","o":["Mammalia","Reptilia","Amphibia","Aves"],"a":3},{"n":14,"s":0,"q":"Which class of vertebrates breathes through gills throughout adult life in typical members?","o":["Pisces","Amphibia","Reptilia","Mammalia"],"a":0},{"n":15,"s":0,"q":"Frog belongs to:","o":["Pisces","Amphibia","Reptilia","Aves"],"a":1},{"n":16,"s":0,"q":"Which of the following has dry, scaly skin?","o":["Amphibian","Mammal","Reptile","Bird"],"a":2},{"n":17,"s":0,"q":"Mammary glands are characteristic of:","o":["Pisces","Reptilia","Aves","Mammalia"],"a":3},{"n":18,"s":0,"q":"Which vertebrate class is generally warm-blooded and has feathers?","o":["Aves","Pisces","Amphibia","Reptilia"],"a":0},{"n":19,"s":0,"q":"Which of the following is an example of a mammal?","o":["Penguin","Bat","Crocodile","Shark"],"a":1},{"n":20,"s":0,"q":"Which animal is commonly associated with desert habitats?","o":["Polar bear","Camel","Penguin","Yak"],"a":1},{"n":21,"s":0,"q":"Which of the following is a grassland animal?","o":["Giraffe","Polar bear","Starfish","Sea cucumber"],"a":0},{"n":22,"s":0,"q":"Animals that feed mainly on plants are called:","o":["Carnivores","Scavengers","Herbivores","Decomposers"],"a":2},{"n":23,"s":0,"q":"Which of the following is an omnivore?","o":["Deer","Lion","Rabbit","Crow"],"a":3},{"n":24,"s":0,"q":"Fungi and bacteria are commonly classified as:","o":["Producers","Decomposers","Herbivores","Primary consumers"],"a":1},{"n":25,"s":0,"q":"Which teeth are mainly used for tearing food?","o":["Incisors","Molars","Canines","Premolars"],"a":2},{"n":26,"s":0,"q":"Which type of symmetry is commonly seen in earthworms?","o":["Radial","Bilateral","Asymmetrical","Spherical"],"a":1},{"n":27,"s":0,"q":"Which animal belongs to the class Pisces?","o":["Salamander","Tortoise","Seahorse","Dolphin"],"a":2},{"n":28,"s":1,"q":"An animal has a soft body, a muscular foot and a shell secreted by its mantle. It most likely belongs to:","o":["Arthropoda","Mollusca","Annelida","Echinodermata"],"a":1},{"n":29,"s":1,"q":"An animal has a cylindrical, unsegmented body and lives as an intestinal parasite. It is most likely:","o":["Earthworm","Planaria","Ascaris","Nereis"],"a":2},{"n":30,"s":1,"q":"Which feature distinguishes Arthropoda from Annelida most clearly?","o":["Bilateral symmetry","Segmented body","Jointed appendages","Presence of a digestive system"],"a":2},{"n":31,"s":1,"q":"An organism has radial symmetry, tentacles and stinging cells. Which group does it belong to?","o":["Cnidaria (Coelenterata)","Mollusca","Annelida","Platyhelminthes"],"a":0},{"n":32,"s":1,"q":"A starfish and an earthworm differ mainly in their adult body symmetry. Which statement is correct?","o":["Both are asymmetrical.","Starfish are radially symmetrical, while earthworms are bilaterally symmetrical.","Both show bilateral symmetry.","Starfish are bilaterally symmetrical, while earthworms are radially symmetrical."],"a":1},{"n":33,"s":1,"q":"Which pair is correctly matched?","o":["Porifera – Jointed legs","Annelida – Calcareous shell","Echinodermata – Water vascular system","Arthropoda – Pore-bearing body"],"a":2},{"n":34,"s":1,"q":"A student observes an animal with a segmented body, moist skin and no jointed legs. Which group is the best fit?","o":["Arthropoda","Annelida","Mollusca","Porifera"],"a":1},{"n":35,"s":1,"q":"Which of the following animals is incorrectly matched with its vertebrate class?","o":["Whale – Mammalia","Crocodile – Reptilia","Penguin – Aves","Dolphin – Pisces"],"a":3},{"n":36,"s":1,"q":"A tadpole breathes through gills, while an adult frog uses lungs and skin. This change is associated with:","o":["Hibernation","Metamorphosis","Migration","Regeneration"],"a":1},{"n":37,"s":1,"q":"Which combination is most suitable for identifying a bird?","o":["Moist skin, gills and external fertilisation","Feathers, wings and lungs","Dry scales and crawling movement","Hair, mammary glands and diaphragm"],"a":1},{"n":38,"s":1,"q":"Which animal is an exception to the general rule that mammals give birth to live young?","o":["Dog","Whale","Platypus","Human"],"a":2},{"n":39,"s":1,"q":"Which of the following is NOT a characteristic of all reptiles?","o":["Dry, scaly skin","Respiration through lungs","Ectothermic nature","Four limbs"],"a":3},{"n":40,"s":1,"q":"Why is a whale classified as a mammal rather than a fish?","o":["It lives in water.","It has a streamlined body.","It breathes through lungs and feeds its young with milk.","It has a tail for swimming."],"a":2},{"n":41,"s":1,"q":"Which of the following pairs consists of animals that are both endothermic?","o":["Frog and lizard","Shark and whale","Pigeon and bat","Crocodile and penguin"],"a":2},{"n":42,"s":1,"q":"Which animal has a cartilaginous skeleton?","o":["Rohu","Shark","Frog","Crocodile"],"a":1},{"n":43,"s":1,"q":"Which statement about echinoderms is correct?","o":["They are exclusively terrestrial.","Their larvae are radially symmetrical.","Adult forms usually show radial symmetry, while larvae are bilateral.","They have jointed appendages."],"a":2},{"n":44,"s":1,"q":"Which of the following is an example of a free-living flatworm?","o":["Tapeworm","Liver fluke","Planaria","Ascaris"],"a":2},{"n":45,"s":1,"q":"Which group is characterised by a chitinous exoskeleton?","o":["Arthropoda","Mollusca","Annelida","Echinodermata"],"a":0},{"n":46,"s":1,"q":"Which of the following is a correct sequence of food-chain roles?","o":["Grass → Grasshopper → Frog → Snake","Snake → Grass → Frog → Grasshopper","Frog → Grass → Snake → Grasshopper","Grasshopper → Grass → Snake → Frog"],"a":0},{"n":47,"s":1,"q":"A vulture feeds on the body of a dead animal. It is acting as a:","o":["Producer","Scavenger","Herbivore","Parasite"],"a":1},{"n":48,"s":1,"q":"What is the main difference between a scavenger and a decomposer?","o":["Scavengers make their own food.","Decomposers eat only living plants.","Scavengers feed on dead organisms, while decomposers chemically break down organic matter.","Both are producers."],"a":2},{"n":49,"s":1,"q":"Which teeth are generally broad and flat in herbivores for grinding plant material?","o":["Canines","Molars","Incisors only","All teeth are identical"],"a":1},{"n":50,"s":1,"q":"A polar animal has a thick layer of fat beneath its skin. This adaptation mainly helps in:","o":["Increasing speed","Digestion","Insulation against cold","Producing oxygen"],"a":2},{"n":51,"s":1,"q":"Which adaptation helps fish move efficiently through water?","o":["Broad, flat feet","Streamlined body and fins","Feathers and wings","Thick fur"],"a":1},{"n":52,"s":1,"q":"Which animal is correctly matched with its habitat?","o":["Yak – Mountain habitat","Camel – Polar habitat","Polar bear – Desert habitat","Starfish – Grassland habitat"],"a":0},{"n":53,"s":1,"q":"An animal has a bilateral body plan, jointed legs and a hard external covering. Which phylum is most likely?","o":["Mollusca","Porifera","Arthropoda","Coelenterata"],"a":2},{"n":54,"s":1,"q":"Which of the following is the best example of an animal that undergoes metamorphosis?","o":["Adult dog","Frog","Adult pigeon","Earthworm"],"a":1},{"n":55,"s":2,"q":"Which of the following is a chordate feature present at least during some stage of development?","o":["Notochord","Jointed appendages","Calcareous shell","Stinging cells"],"a":0},{"n":56,"s":2,"q":"Which of the following is NOT a vertebrate?","o":["Frog","Pigeon","Earthworm","Lizard"],"a":2},{"n":57,"s":2,"q":"Which animal has an open circulatory system?","o":["Earthworm","Cockroach","Human","Fish"],"a":1},{"n":58,"s":2,"q":"Which of the following animals has a closed circulatory system?","o":["Earthworm","Cockroach","Housefly","Snail (typical gastropod)"],"a":0},{"n":59,"s":2,"q":"The breathing organs of a spider are commonly:","o":["Gills only","Lungs or book lungs","Skin only","Air sacs like birds"],"a":1},{"n":60,"s":2,"q":"Which animal uses a water vascular system for movement?","o":["Earthworm","Starfish","Cockroach","Snail"],"a":1},{"n":61,"s":2,"q":"Which of the following is a cnidarian?","o":["Sea anemone","Sea cucumber","Sea horse","Sea snake"],"a":0},{"n":62,"s":2,"q":"Which animal is a cephalopod mollusc?","o":["Pila","Oyster","Octopus","Earthworm"],"a":2},{"n":63,"s":2,"q":"Which of the following is a bivalve mollusc?","o":["Squid","Octopus","Oyster","Snail"],"a":2},{"n":64,"s":2,"q":"Which animal belongs to the class Amphibia?","o":["Salamander","Crocodile","Shark","Pigeon"],"a":0},{"n":65,"s":2,"q":"Which of the following is a flightless bird?","o":["Eagle","Sparrow","Penguin","Parrot"],"a":2},{"n":66,"s":2,"q":"Which animal is a mammal capable of true powered flight?","o":["Flying fish","Bat","Penguin","Flying lizard"],"a":1},{"n":67,"s":2,"q":"Which of the following is a monotreme?","o":["Kangaroo","Platypus","Dolphin","Bat"],"a":1},{"n":68,"s":2,"q":"Which of the following is a marsupial?","o":["Kangaroo","Tiger","Whale","Elephant"],"a":0},{"n":69,"s":2,"q":"Which feature is characteristic of mammals?","o":["Feathers","Mammary glands","Gills","Jointed appendages"],"a":1},{"n":70,"s":2,"q":"Which animal has a four-chambered heart despite being a reptile?","o":["Lizard","Snake","Crocodile","Turtle"],"a":2},{"n":71,"s":2,"q":"Which of the following animals is known to use echolocation?","o":["Bat","Earthworm","Frog","Tortoise"],"a":0},{"n":72,"s":2,"q":"Which of the following is a cold-blooded vertebrate?","o":["Pigeon","Dog","Frog","Whale"],"a":2},{"n":73,"s":2,"q":"Which of the following animals is most likely to have external fertilisation?","o":["Human","Frog","Dog","Cat"],"a":1},{"n":74,"s":2,"q":"Which of the following is an example of internal fertilisation?","o":["Most frogs","Many bony fish","Humans","Many sea urchins"],"a":2},{"n":75,"s":2,"q":"Which group generally lays amniotic eggs, allowing reproduction away from open water?","o":["Reptiles and birds","Most amphibians","Sponges","Jellyfish"],"a":0},{"n":76,"s":2,"q":"Which of the following is a parasite?","o":["Earthworm living in soil","Tapeworm living in the intestine","Butterfly feeding on nectar","Starfish living on the seabed"],"a":1},{"n":77,"s":2,"q":"Which organism is commonly used as an example of a decomposer?","o":["Mushroom","Deer","Tiger","Eagle"],"a":0},{"n":78,"s":2,"q":"Which ecological level includes all interacting living organisms and their physical environment?","o":["Population","Community","Ecosystem","Species"],"a":2},{"n":79,"s":2,"q":"In a food chain, the original source of energy for most ecosystems is:","o":["Soil","Sunlight","Moonlight","Decomposers"],"a":1},{"n":80,"s":2,"q":"Which organisms form the base of most aquatic food chains?","o":["Large fish","Phytoplankton","Sharks","Aquatic birds"],"a":1},{"n":81,"s":2,"q":"Which of the following is a primary consumer?","o":["Grass","Rabbit","Tiger","Mushroom"],"a":1},{"n":82,"s":2,"q":"What is the role of decomposers in an ecosystem?","o":["They convert sunlight directly into food.","They recycle nutrients by breaking down dead matter.","They always hunt herbivores.","They stop energy flow."],"a":1},{"n":83,"s":2,"q":"Which of the following is an example of mutualism?","o":["Tapeworm living in a human intestine","Tick feeding on a dog","Bee obtaining nectar while pollinating a flower","Lion hunting a deer"],"a":2},{"n":84,"s":2,"q":"Which relationship is shown when a tick feeds on the blood of a dog?","o":["Mutualism","Parasitism","Commensalism","Competition"],"a":1},{"n":85,"s":2,"q":"Which of the following animals is adapted to live both in water and on land during its life cycle?","o":["Frog","Shark","Pigeon","Camel"],"a":0},{"n":86,"s":2,"q":"Which animal is most likely to have a body covered with a moist, glandular skin?","o":["Lizard","Frog","Pigeon","Cat"],"a":1},{"n":87,"s":2,"q":"Which of the following is NOT an arthropod?","o":["Scorpion","Prawn","Centipede","Octopus"],"a":3},{"n":88,"s":2,"q":"Which statement about animal classification is scientifically most appropriate?","o":["Animals should be classified only by their colour.","Animals are classified using several structural, developmental and evolutionary characteristics.","All animals living in water belong to Pisces.","All animals with wings belong to Aves."],"a":1},{"n":89,"s":2,"q":"Which pair belongs to the same phylum?","o":["Earthworm and leech","Starfish and jellyfish","Snail and crab","Hydra and sponge"],"a":0},{"n":90,"s":2,"q":"A newly observed animal has a soft unsegmented body, a mantle and a muscular foot. Which phylum should it be placed in?","o":["Annelida","Arthropoda","Mollusca","Echinodermata"],"a":2}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

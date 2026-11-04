@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Types of Motion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Physics — Types of Motion</h1>
+    <p class="subtitle">Standard VI · English Medium · Motion</p>
+    <div class="meta-row">
+      <span>Questions: <b>50</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>50</b></span>
+      <span>Time limit: <b>45:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Select the most appropriate answer for each question. Each question carries one mark with no negative marking. The 45-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">45:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 50 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":45,"sections":[{"id":"A","title":"Basic Concepts"},{"id":"B","title":"Conceptual and Slightly Higher Level"},{"id":"C","title":"Application and General Homi Bhabha Level"}],"questions":[{"n":1,"s":0,"q":"When an object changes its position with respect to its surroundings, it is said to be in:","o":["Rest","Motion","Equilibrium","Inertia"],"a":1},{"n":2,"s":0,"q":"Motion is considered a relative phenomenon because:","o":["Every object is always moving","Motion depends only on speed","An object may be at rest relative to one observer and moving relative to another","Motion does not depend on position"],"a":2},{"n":3,"s":0,"q":"Which of the following is an example of linear motion?","o":["A ceiling fan","A spinning top","A stone falling vertically","A merry-go-round"],"a":2},{"n":4,"s":0,"q":"The motion of the blades of a ceiling fan is:","o":["Random","Rotational","Linear","Oscillatory"],"a":1},{"n":5,"s":0,"q":"The movement of a pendulum of a wall clock is:","o":["Random","Circular only","Oscillatory and periodic","Linear only"],"a":2},{"n":6,"s":0,"q":"Which of the following shows random motion?","o":["Hands of a clock","A lift moving upwards","A flying housefly","A rotating wheel"],"a":2},{"n":7,"s":0,"q":"The motion of a child sitting on a merry-go-round is:","o":["Linear","Circular","Random","Oscillatory"],"a":1},{"n":8,"s":0,"q":"The total length of the actual path travelled by an object is called:","o":["Displacement","Velocity","Distance","Acceleration"],"a":2},{"n":9,"s":0,"q":"Which of the following is a vector quantity?","o":["Speed","Distance","Time","Displacement"],"a":3},{"n":10,"s":0,"q":"Which quantity can never have a negative value?","o":["Velocity","Displacement","Distance","Acceleration"],"a":2},{"n":11,"s":0,"q":"An object covers equal distances in equal intervals of time. Its motion is:","o":["Random","Uniform","Non-uniform","Oscillatory"],"a":1},{"n":12,"s":0,"q":"The SI unit of speed is:","o":["Kilometre","Metre","Metre per second","Second"],"a":2},{"n":13,"s":0,"q":"Speed is calculated using:","o":["Time ÷ Distance","Distance × Time","Distance ÷ Time","Displacement × Time"],"a":2},{"n":14,"s":0,"q":"The number of complete oscillations made in one second is called:","o":["Amplitude","Frequency","Time period","Displacement"],"a":1},{"n":15,"s":0,"q":"Which of the following is an example of periodic motion?","o":["Earthquake","Falling tree","Revolution of Earth around the Sun","A flying mosquito"],"a":2},{"n":16,"s":1,"q":"A passenger sitting in a moving train is at rest with respect to:","o":["Trees beside the track","A person standing on the platform","Another passenger sitting beside them","Railway signals"],"a":2},{"n":17,"s":1,"q":"A student walks 8 m east and then 3 m west. What is the total distance travelled?","o":["5 m","11 m","8 m","3 m"],"a":1},{"n":18,"s":1,"q":"For the journey in Q17, what is the displacement?","o":["11 m east","5 m east","5 m west","0 m"],"a":1},{"n":19,"s":1,"q":"A runner completes one full round of a circular track and returns to the starting point. Which statement is correct?","o":["Both distance and displacement are zero","Distance is zero and displacement is positive","Distance is positive and displacement is zero","Distance equals displacement"],"a":2},{"n":20,"s":1,"q":"Which statement about distance and displacement is correct?","o":["Distance is always less than displacement","Distance is always equal to displacement","Distance is always greater than or equal to the magnitude of displacement","Displacement is always greater than distance"],"a":2},{"n":21,"s":1,"q":"A vehicle travels 100 km in 2 hours. Its average speed is:","o":["25 km/h","50 km/h","100 km/h","200 km/h"],"a":1},{"n":22,"s":1,"q":"Convert 72 km/h into m/s.","o":["10 m/s","15 m/s","20 m/s","25 m/s"],"a":2},{"n":23,"s":1,"q":"On a distance-time graph, a horizontal line indicates:","o":["Increasing speed","Decreasing speed","The object is at rest","Uniform acceleration"],"a":2},{"n":24,"s":1,"q":"The slope of a distance-time graph represents:","o":["Acceleration","Speed","Time","Displacement"],"a":1},{"n":25,"s":1,"q":"Two objects are represented by straight lines on the same distance-time graph. The steeper line represents:","o":["The slower object","The object at rest","The faster object","An object with zero displacement"],"a":2},{"n":26,"s":1,"q":"An object moving with constant speed in a circular path has:","o":["Constant velocity","Changing velocity","Zero acceleration","Zero speed"],"a":1},{"n":27,"s":1,"q":"Which statement correctly distinguishes speed from velocity?","o":["Both are vector quantities","Speed has direction but velocity does not","Speed is scalar, while velocity is vector","Both are always negative"],"a":2},{"n":28,"s":1,"q":"A pendulum completes 20 oscillations in 10 seconds. Its frequency is:","o":["0.5 Hz","2 Hz","10 Hz","20 Hz"],"a":1},{"n":29,"s":1,"q":"If the time period of an oscillating object is 0.5 seconds, its frequency is:","o":["0.5 Hz","1 Hz","2 Hz","4 Hz"],"a":2},{"n":30,"s":1,"q":"Which of the following objects demonstrates combined translational and rotational motion?","o":["A stationary fan","A wheel rolling on a road","A falling stone","A stationary pendulum"],"a":1},{"n":31,"s":2,"q":"A person walks 3 m north and then 4 m east. What is the magnitude of the displacement?","o":["7 m","5 m","1 m","12 m"],"a":1},{"n":32,"s":2,"q":"A car travels 60 km in the first hour and 40 km in the second hour. Its motion is:","o":["Uniform","Non-uniform","Periodic","Oscillatory"],"a":1},{"n":33,"s":2,"q":"A car travels 30 km in 30 minutes. Its average speed is:","o":["30 km/h","45 km/h","60 km/h","90 km/h"],"a":2},{"n":34,"s":2,"q":"A cyclist travels 100 m in 20 seconds and then another 100 m in 10 seconds. What is the average speed for the entire journey?","o":["5 m/s","6.67 m/s","10 m/s","15 m/s"],"a":1},{"n":35,"s":2,"q":"A body moves with a velocity of 10 m/s east for 5 seconds. Its displacement is:","o":["2 m east","15 m east","50 m east","50 m west"],"a":2},{"n":36,"s":2,"q":"A vehicle increases its velocity from 5 m/s to 25 m/s in 4 seconds. Its acceleration is:","o":["4 m/s²","5 m/s²","10 m/s²","20 m/s²"],"a":1},{"n":37,"s":2,"q":"A car moves at a constant speed but takes a curved road. Which statement is correct?","o":["Its velocity remains constant","Its direction changes, so its velocity changes","Its acceleration must be zero","It is at rest"],"a":1},{"n":38,"s":2,"q":"A distance-time graph is a curve that becomes progressively steeper. This indicates:","o":["Decreasing speed","Constant speed","Increasing speed","The object is stationary"],"a":2},{"n":39,"s":2,"q":"A vehicle moves 40 m east and then 40 m west in 20 seconds. What is its average velocity?","o":["4 m/s east","4 m/s west","0 m/s","2 m/s east"],"a":2},{"n":40,"s":2,"q":"A vehicle covers half of a journey at 20 km/h and the remaining half at 40 km/h. Which statement is correct?","o":["Its average speed is 30 km/h","Its average speed is 26.67 km/h","Its average speed is 25 km/h","Its average speed is 40 km/h"],"a":1},{"n":41,"s":2,"q":"A rotating fan is switched off. Its blades gradually slow down before stopping. This is an example of:","o":["Uniform motion","Non-uniform rotational motion","Linear motion","Random motion"],"a":1},{"n":42,"s":2,"q":"Which of the following has the greatest frequency?","o":["An object completing 2 oscillations per second","An object completing 5 oscillations per second","An object completing 1 oscillation in 2 seconds","An object completing 1 oscillation in 5 seconds"],"a":1},{"n":43,"s":2,"q":"A body completes 10 oscillations in 5 seconds. What is its time period?","o":["0.5 seconds","2 seconds","5 seconds","10 seconds"],"a":0},{"n":44,"s":2,"q":"A person observes a train moving at 60 km/h. Another train travelling in the same direction at 60 km/h is:","o":["Moving at 120 km/h relative to the first train","At rest relative to the first train","Moving at 60 km/h relative to the first train","Moving backwards at 60 km/h relative to the first train"],"a":1},{"n":45,"s":2,"q":"Two trains move in opposite directions at 50 km/h and 40 km/h. Their relative speed is:","o":["10 km/h","45 km/h","90 km/h","2 km/h"],"a":2},{"n":46,"s":2,"q":"A ball is thrown vertically upwards. At the highest point of its motion, its instantaneous velocity is:","o":["Maximum","Zero","Equal to gravitational acceleration","Infinite"],"a":1},{"n":47,"s":2,"q":"Which of the following statements about acceleration is correct?","o":["Acceleration occurs only when speed increases","Acceleration occurs whenever velocity changes","Acceleration is always positive","Acceleration is measured in metres per second"],"a":1},{"n":48,"s":2,"q":"A person walks around a square park of side 20 m and returns to the starting point. What are the distance and displacement?","o":["20 m and 20 m","40 m and 0 m","80 m and 0 m","80 m and 80 m"],"a":2},{"n":49,"s":2,"q":"Which pair of motions is correctly matched?","o":["Earth spinning on its axis – rotational motion; pendulum – oscillatory motion","Lift moving upwards – circular motion; fan – linear motion","Housefly – uniform motion; clock hands – random motion","Falling stone – oscillatory motion; swing – random motion"],"a":0},{"n":50,"s":2,"q":"A distance-time graph for a moving object consists of two straight sections with different slopes. What does this indicate?","o":["The object has remained at rest throughout","The object has changed its speed","The object has travelled no distance","The object has moved with constant speed throughout"],"a":1}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

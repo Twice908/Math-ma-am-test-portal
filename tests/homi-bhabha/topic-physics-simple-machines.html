@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Simple Machines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Physics — Simple Machines</h1>
+    <p class="subtitle">Standard VI · English Medium · Unit 6</p>
+    <div class="meta-row">
+      <span>Questions: <b>50</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>50</b></span>
+      <span>Time limit: <b>45:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Answer all 50 multiple-choice questions on simple machines, levers, pulleys, inclined planes, screws, wheels, and their applications. Each question carries one mark with no negative marking. The 45-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">45:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 50 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":45,"sections":[{"id":"A","title":"Machines and Their Uses"},{"id":"B","title":"Levers and Their Principle"},{"id":"C","title":"Types of Levers"},{"id":"D","title":"Pulley and Inclined Plane"},{"id":"E","title":"Screw, Wheel and Application"}],"questions":[{"n":1,"s":0,"q":"A machine is a device that helps us to:","o":["Increase the weight of objects","Do work more easily","Create matter","Stop all friction"],"a":1},{"n":2,"s":0,"q":"Which of the following is NOT a way in which machines help us?","o":["Multiplying force","Applying force in a convenient direction","Saving time","Creating energy from nothing"],"a":3},{"n":3,"s":0,"q":"How many types of simple machines are listed in the textbook?","o":["Three","Four","Five","Six"],"a":3},{"n":4,"s":0,"q":"Which of the following is NOT a simple machine?","o":["Pulley","Lever","Inclined plane","Thermometer"],"a":3},{"n":5,"s":0,"q":"Which set contains only simple machines?","o":["Lever, pulley, screw, wheel","Motor, battery, bulb, wire","Thermometer, barometer, compass","Magnet, mirror, lens, prism"],"a":0},{"n":6,"s":0,"q":"A machine can help us lift a heavy load by:","o":["Increasing the required effort in every case","Multiplying force","Removing gravity","Changing the mass of the load"],"a":1},{"n":7,"s":0,"q":"Which machine is particularly useful for changing the direction in which effort is applied?","o":["Fixed pulley","Thermometer","Magnifying glass","Spring balance"],"a":0},{"n":8,"s":0,"q":"A ramp used to load goods into a truck is an example of:","o":["Screw","Wheel","Inclined plane","Pulley"],"a":2},{"n":9,"s":1,"q":"A lever consists of:","o":["A flexible rope","A rigid rod that turns about a fixed point","A rotating liquid","A magnetic bar"],"a":1},{"n":10,"s":1,"q":"The fixed point about which a lever turns is called:","o":["Load","Effort","Fulcrum","Resistance arm"],"a":2},{"n":11,"s":1,"q":"The force applied to move a load is called:","o":["Effort","Fulcrum","Load arm","Friction"],"a":0},{"n":12,"s":1,"q":"The object that is to be moved by a lever is called:","o":["Effort","Load","Fulcrum","Pivot arm"],"a":1},{"n":13,"s":1,"q":"The distance between the fulcrum and the point where effort is applied is called:","o":["Load arm","Effort arm","Load","Mechanical force"],"a":1},{"n":14,"s":1,"q":"The principle of a balanced lever is:","o":["Effort × Load = Fulcrum","Effort × Effort arm = Load × Load arm","Effort arm × Load arm = Load","Effort = Load × Fulcrum"],"a":1},{"n":15,"s":1,"q":"The mechanical advantage of a lever is:","o":["Load / Effort","Effort / Load","Load × Effort","Fulcrum / Load"],"a":0},{"n":16,"s":1,"q":"The mechanical advantage of an ideal balanced lever can also be calculated using:","o":["Load arm / Effort arm","Effort arm / Load arm","Effort × Load arm","Load × Effort arm"],"a":1},{"n":17,"s":1,"q":"If the effort arm is made longer while the load arm remains unchanged, the effort required to balance the same load generally:","o":["Increases","Decreases","Becomes zero","Remains unchanged"],"a":1},{"n":18,"s":1,"q":"A lever has an effort arm of 60 cm and a load arm of 20 cm. Its ideal mechanical advantage is:","o":["1","2","3","4"],"a":2},{"n":19,"s":2,"q":"In a first-class lever, which part lies between the other two?","o":["Load","Effort","Fulcrum","Effort arm"],"a":2},{"n":20,"s":2,"q":"Which of the following is a first-class lever?","o":["Wheelbarrow","See-saw","Nutcracker","Bottle opener"],"a":1},{"n":21,"s":2,"q":"Scissors are an example of:","o":["First-class lever","Second-class lever","Third-class lever","Inclined plane"],"a":0},{"n":22,"s":2,"q":"In a second-class lever, the ______ lies between the fulcrum and effort.","o":["Fulcrum","Load","Effort","Effort arm"],"a":1},{"n":23,"s":2,"q":"Which of the following is a second-class lever?","o":["Forceps","See-saw","Wheelbarrow","Pliers"],"a":2},{"n":24,"s":2,"q":"A bottle opener is an example of:","o":["First-class lever","Second-class lever","Third-class lever","Pulley"],"a":1},{"n":25,"s":2,"q":"In a third-class lever, the ______ lies between the fulcrum and load.","o":["Load","Effort","Fulcrum","Pivot"],"a":1},{"n":26,"s":2,"q":"Which of the following is a third-class lever?","o":["Beam balance","Scissors","Forceps","Nutcracker"],"a":2},{"n":27,"s":2,"q":"The human forearm lifting an object is generally an example of:","o":["First-class lever","Second-class lever","Third-class lever","Inclined plane"],"a":2},{"n":28,"s":2,"q":"A pair of pliers is generally classified as:","o":["First-class lever","Second-class lever","Third-class lever","Screw"],"a":0},{"n":29,"s":2,"q":"A nail cutter is commonly treated as a combination of levers. Which type is represented in the textbook's simple lever examples?","o":["First class only","Second class","Third class only","Not a machine"],"a":1},{"n":30,"s":2,"q":"Which set contains only first-class levers?","o":["See-saw, scissors, beam balance","Wheelbarrow, bottle opener, nutcracker","Forceps, forearm, fishing rod","Ramp, screw, pulley"],"a":0},{"n":31,"s":2,"q":"Which set contains only third-class levers?","o":["Scissors, see-saw, pliers","Wheelbarrow, nutcracker, bottle opener","Forceps, forearm, fishing rod","Beam balance, crowbar, see-saw"],"a":2},{"n":32,"s":3,"q":"A pulley is mainly used to:","o":["Measure temperature","Lift loads conveniently","Store electrical energy","Increase the mass of objects"],"a":1},{"n":33,"s":3,"q":"When drawing water from a well using a fixed pulley, the person generally:","o":["Pushes the rope upwards","Pulls the rope downwards","Pushes the bucket sideways","Rotates the well"],"a":1},{"n":34,"s":3,"q":"Pulleys are commonly used in:","o":["Cranes and lifts","Thermometers","Spectacles","Compasses"],"a":0},{"n":35,"s":3,"q":"An inclined plane is:","o":["A circular disc","A sloping surface","A rigid rod","A grooved wheel"],"a":1},{"n":36,"s":3,"q":"Why is it easier to push a heavy object up a ramp rather than lift it vertically?","o":["The object's weight becomes zero","A smaller effort can be applied over a greater distance","Gravity stops acting","The object loses mass"],"a":1},{"n":37,"s":3,"q":"If an inclined plane becomes steeper, the effort required to move the same load to the same height generally:","o":["Decreases","Increases","Becomes zero","Remains unchanged in every case"],"a":1},{"n":38,"s":3,"q":"Which of the following is an example of an inclined plane?","o":["Staircase","See-saw","Pliers","Pulley"],"a":0},{"n":39,"s":3,"q":"A knife and an axe are examples of:","o":["Wheels","Wedges formed by inclined planes","Pulleys","Third-class levers"],"a":1},{"n":40,"s":3,"q":"A heavy cylinder is loaded onto a truck using a long wooden plank. The plank acts as:","o":["A screw","An inclined plane","A wheel","A first-class lever"],"a":1},{"n":41,"s":4,"q":"A screw is a modified form of:","o":["Lever","Inclined plane","Pulley","Wheel"],"a":1},{"n":42,"s":4,"q":"The thread of a screw is similar to:","o":["A straight rod","An inclined plane wrapped around a cylinder","A circular pulley","A flat lever"],"a":1},{"n":43,"s":4,"q":"A screw jack is used to:","o":["Measure force","Lift heavy objects such as cars","Reduce temperature","Produce sound"],"a":1},{"n":44,"s":4,"q":"A carpenter prefers screws over ordinary nails in certain applications because:","o":["Screws have no friction","Their threads grip the wood firmly","Screws are always lighter than nails","Screws do not require effort"],"a":1},{"n":45,"s":4,"q":"Which simple machine is used in the wheels of vehicles?","o":["Wheel","Screw","Inclined plane","Lever only"],"a":0},{"n":46,"s":4,"q":"Rolling friction is generally:","o":["Greater than sliding friction","Less than sliding friction","Equal to gravitational force","Always zero"],"a":1},{"n":47,"s":4,"q":"Ball bearings are used in machines mainly to:","o":["Increase friction","Reduce friction","Increase the weight of machines","Stop rotation"],"a":1},{"n":48,"s":4,"q":"A person pushes a heavy box using rollers. The box becomes easier to move because:","o":["Rolling friction is less than sliding friction","The mass of the box decreases","Gravity disappears","The rollers remove the load"],"a":0},{"n":49,"s":4,"q":"A boat's oar is generally an example of which class of lever when used for rowing?","o":["First class","Second class","Third class","Not a lever"],"a":0},{"n":50,"s":4,"q":"A person uses a wheelbarrow to carry a heavy load. The load is positioned between the wheel and the handles. This is a:","o":["First-class lever","Second-class lever","Third-class lever","Pulley"],"a":1}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

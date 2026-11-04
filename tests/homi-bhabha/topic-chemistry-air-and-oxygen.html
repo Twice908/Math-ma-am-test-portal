@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Air and Oxygen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Science — Air &amp; Oxygen</h1>
+    <p class="subtitle">Standard VI · English Medium · Unit 4</p>
+    <div class="meta-row">
+      <span>Questions: <b>45</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>45</b></span>
+      <span>Time limit: <b>45:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Select the most appropriate answer for each question. Each question carries one mark with no negative marking. The 45-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">45:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 45 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":45,"sections":[{"id":"A","title":"Atmosphere and Composition"},{"id":"B","title":"Layers of the Atmosphere"},{"id":"C","title":"Uses of Atmospheric Gases and Noble Gases"},{"id":"D","title":"Air Pollution and Acid Rain"},{"id":"E","title":"Oxygen: Preparation and Properties"}],"questions":[{"n":1,"s":0,"q":"The envelope of air completely surrounding the Earth is called:","o":["Hydrosphere","Lithosphere","Atmosphere","Biosphere"],"a":2},{"n":2,"s":0,"q":"Approximately 99% of the total mass of the atmosphere is found within:","o":["32 km from Earth's surface","100 km from Earth's surface","500 km from Earth's surface","1000 km from Earth's surface"],"a":0},{"n":3,"s":0,"q":"Which gas forms the largest proportion of the atmosphere?","o":["Oxygen","Argon","Carbon dioxide","Nitrogen"],"a":3},{"n":4,"s":0,"q":"What is the approximate percentage of oxygen in clean, dry air?","o":["78.08%","20.95%","0.93%","0.036%"],"a":1},{"n":5,"s":0,"q":"Which of the following gases is present in the atmosphere in the highest proportion after nitrogen and oxygen?","o":["Neon","Carbon dioxide","Argon","Hydrogen"],"a":2},{"n":6,"s":0,"q":"Which component of the atmosphere varies considerably from place to place and plays an important role in weather?","o":["Nitrogen","Water vapour","Argon","Neon"],"a":1},{"n":7,"s":0,"q":"The atmosphere is held around the Earth mainly due to:","o":["Magnetic force","Solar radiation","Earth's gravitational pull","Ocean currents"],"a":2},{"n":8,"s":0,"q":"Which of the following is a component of atmospheric air other than gases?","o":["Dust particles","Molten rocks","Soil layers","Ocean water"],"a":0},{"n":9,"s":1,"q":"Which is the lowest layer of the atmosphere?","o":["Mesosphere","Stratosphere","Thermosphere","Troposphere"],"a":3},{"n":10,"s":1,"q":"Almost all weather phenomena occur in the:","o":["Exosphere","Troposphere","Thermosphere","Mesosphere"],"a":1},{"n":11,"s":1,"q":"The upper boundary of the troposphere is called:","o":["Stratopause","Mesopause","Tropopause","Thermopause"],"a":2},{"n":12,"s":1,"q":"The troposphere extends approximately how high above the Earth's surface at the Equator, according to the textbook?","o":["8 km","18 km","50 km","80 km"],"a":1},{"n":13,"s":1,"q":"In which layer does temperature increase with height due to absorption of ultraviolet radiation by ozone?","o":["Stratosphere","Troposphere","Mesosphere","Exosphere"],"a":0},{"n":14,"s":1,"q":"Which layer provides relatively stable flying conditions for large jet aircraft?","o":["Troposphere","Mesosphere","Stratosphere","Exosphere"],"a":2},{"n":15,"s":1,"q":"Which atmospheric layer experiences temperatures falling to approximately −90°C, according to the textbook?","o":["Thermosphere","Mesosphere","Stratosphere","Troposphere"],"a":1},{"n":16,"s":1,"q":"The upper boundary of the mesosphere is known as:","o":["Tropopause","Stratopause","Ionosphere","Mesopause"],"a":3},{"n":17,"s":1,"q":"In which atmospheric layer does ionisation occur due to absorption of high-energy solar radiation?","o":["Troposphere","Thermosphere","Stratosphere","Exosphere"],"a":1},{"n":18,"s":1,"q":"The ionosphere is particularly important for:","o":["Formation of clouds","Formation of rainbows","Long-distance radio communication","Production of oxygen by plants"],"a":2},{"n":19,"s":1,"q":"Which atmospheric layer gradually merges with interplanetary space?","o":["Exosphere","Troposphere","Stratosphere","Mesosphere"],"a":0},{"n":20,"s":1,"q":"The process in which gas molecules become electrically charged particles is called:","o":["Condensation","Sublimation","Evaporation","Ionisation"],"a":3},{"n":21,"s":2,"q":"Nitrogen helps slow down combustion because:","o":["It increases the oxygen concentration.","It dilutes the concentration of oxygen.","It produces additional heat.","It acts as a strong oxidising agent."],"a":1},{"n":22,"s":2,"q":"Plants utilise nitrogen mainly in the form of:","o":["Nitrates and nitrites","Nitrogen gas directly in all cases","Carbonates and bicarbonates","Sulphates and chlorides"],"a":0},{"n":23,"s":2,"q":"Nitrogen is used in airtight packaging of foodstuffs mainly because:","o":["It increases food moisture.","It makes food acidic.","It reduces contact with oxygen and slows oxidation.","It increases the temperature of food."],"a":2},{"n":24,"s":2,"q":"Which gas is essential for normal respiration in humans?","o":["Nitrogen","Carbon dioxide","Argon","Oxygen"],"a":3},{"n":25,"s":2,"q":"Liquid oxygen is used in rockets as:","o":["A coolant only","An oxidiser","A lubricant","A rocket body material"],"a":1},{"n":26,"s":2,"q":"Which gas is used in the preparation of aerated drinks such as soda water?","o":["Oxygen","Nitrogen","Carbon dioxide","Argon"],"a":2},{"n":27,"s":2,"q":"Solid carbon dioxide is commonly known as:","o":["Dry ice","Wet ice","Liquid air","Frost gas"],"a":0},{"n":28,"s":2,"q":"Which gas is used in fire extinguishers because it does not support combustion and can help displace oxygen around a fire?","o":["Hydrogen","Oxygen","Nitrogen dioxide","Carbon dioxide"],"a":3},{"n":29,"s":2,"q":"Which noble gas is commonly used for filling electric bulbs?","o":["Neon","Argon","Helium","Hydrogen"],"a":1},{"n":30,"s":2,"q":"Helium is preferred for filling balloons because it is:","o":["Heavier than air and highly reactive","Highly flammable","Lighter than air and chemically unreactive","Easily converted into liquid at room temperature"],"a":2},{"n":31,"s":2,"q":"Neon is commonly used in:","o":["Neon sign tubes and signboards","Artificial respiration cylinders","Fertilizer manufacturing","Food photosynthesis"],"a":0},{"n":32,"s":2,"q":"Liquid helium is used in cryogenics mainly because it can:","o":["Produce very high temperatures","Remove carbon dioxide from air","Increase atmospheric pressure","Provide extremely low temperatures"],"a":3},{"n":33,"s":3,"q":"Contamination of air with dust, smoke and harmful gases is called:","o":["Water pollution","Air pollution","Soil erosion","Acidification of soil"],"a":1},{"n":34,"s":3,"q":"Which gas is particularly dangerous because it combines with haemoglobin to form carboxyhaemoglobin?","o":["Oxygen","Nitrogen","Carbon monoxide","Argon"],"a":2},{"n":35,"s":3,"q":"Auto-exhaust refers to:","o":["Gases emitted by vehicle engines","Smoke released by burning forests only","Water vapour from oceans","Oxygen released by plants"],"a":0},{"n":36,"s":3,"q":"Which of the following is NOT a major source of air pollution?","o":["Industrial emissions","Burning of fossil fuels","Automobile exhaust","Photosynthesis by green plants"],"a":3},{"n":37,"s":3,"q":"Which device is installed in industrial chimneys to remove suspended particles from smoke?","o":["Thermometer","Electrostatic precipitator","Barometer","Hydrometer"],"a":1},{"n":38,"s":3,"q":"Acid rain is mainly associated with atmospheric gases such as:","o":["Oxygen and nitrogen","Helium and neon","Sulphur dioxide and nitrogen oxides","Hydrogen and argon"],"a":2},{"n":39,"s":3,"q":"Which of the following is a harmful effect of acid rain?","o":["It increases the strength of marble buildings.","It improves the survival of all aquatic organisms.","It prevents corrosion of metals.","It corrodes metals and damages monuments"],"a":3},{"n":40,"s":3,"q":"Acid rain can be particularly harmful to aquatic ecosystems because:","o":["It makes water more acidic and affects aquatic organisms.","It increases dissolved oxygen in every water body.","It converts freshwater into pure distilled water.","It removes all dissolved salts from water."],"a":0},{"n":41,"s":3,"q":"Which of the following is an effective way to reduce air pollution?","o":["Increasing the use of coal for cooking","Burning plastic waste in open areas","Using cleaner energy sources such as solar and electrical energy","Removing trees from urban areas"],"a":2},{"n":42,"s":4,"q":"Who was the first to prepare oxygen, according to the textbook?","o":["Henry Cavendish","Karl Scheele","Joseph Priestley","Antoine Lavoisier"],"a":1},{"n":43,"s":4,"q":"Joseph Priestley prepared oxygen by heating:","o":["Red oxide of mercury","Sodium chloride","Calcium carbonate","Zinc sulphate"],"a":0},{"n":44,"s":4,"q":"In the laboratory, manganese dioxide acts as a catalyst when oxygen is prepared using:","o":["Sodium chloride and water","Zinc and hydrochloric acid","Potassium chloride and manganese dioxide","Hydrogen peroxide and sodium chloride"],"a":2},{"n":45,"s":4,"q":"Which observation confirms the presence of oxygen gas?","o":["A burning matchstick produces a pop sound.","Limewater turns milky.","A glowing splint or burning matchstick burns more brightly.","Moist red litmus turns blue."],"a":2}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

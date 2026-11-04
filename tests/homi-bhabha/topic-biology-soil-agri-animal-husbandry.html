@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Soil, Agriculture and Animal Husbandry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Biology — Soil, Agriculture &amp; Animal Husbandry</h1>
+    <p class="subtitle">Standard VI · English Medium · Agriculture and Animal Life</p>
+    <div class="meta-row">
+      <span>Questions: <b>100</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>100</b></span>
+      <span>Time limit: <b>75:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Select the most appropriate answer for each question. Each question carries one mark with no negative marking. The 75-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">45:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 100 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":75,"sections":[{"id":"A","title":"Basic and textbook concepts"},{"id":"B","title":"Conceptual and moderately difficult"},{"id":"C","title":"Higher-level application and general science"}],"questions":[{"n":1,"s":0,"q":"Crops grown mainly during the winter season are called:","o":["Kharif crops","Rabi crops","Zaid crops","Plantation crops"],"a":1},{"n":2,"s":0,"q":"Which of the following is a Kharif crop?","o":["Wheat","Gram","Mustard","Rice"],"a":3},{"n":3,"s":0,"q":"Which of the following is generally a Rabi crop?","o":["Wheat","Cotton","Groundnut","Maize"],"a":0},{"n":4,"s":0,"q":"The process of loosening and turning the soil before sowing is called:","o":["Harvesting","Winnowing","Ploughing","Threshing"],"a":2},{"n":5,"s":0,"q":"Which agricultural implement is used for sowing seeds at proper depth and spacing?","o":["Sickle","Seed drill","Leveller","Sprinkler"],"a":1},{"n":6,"s":0,"q":"Scattering seeds by hand over a field is known as:","o":["Transplantation","Irrigation","Broadcasting","Threshing"],"a":2},{"n":7,"s":0,"q":"Moving seedlings from a nursery to the main field is called:","o":["Harvesting","Transplantation","Winnowing","Levelling"],"a":1},{"n":8,"s":0,"q":"Unwanted plants growing along with crops are called:","o":["Fungi","Fertilisers","Weeds","Seedlings"],"a":2},{"n":9,"s":0,"q":"Chemicals used to destroy unwanted plants are called:","o":["Insecticides","Fungicides","Fertilisers","Herbicides"],"a":3},{"n":10,"s":0,"q":"The artificial supply of water to crops is called:","o":["Irrigation","Manuring","Weeding","Harvesting"],"a":0},{"n":11,"s":0,"q":"Which irrigation method supplies water drop by drop near the roots?","o":["Basin","Furrow","Drip","Sprinkler"],"a":2},{"n":12,"s":0,"q":"Which irrigation method resembles natural rainfall?","o":["Drip","Sprinkler","Basin","Furrow"],"a":1},{"n":13,"s":0,"q":"Which method allows water to flow through channels between rows of crops?","o":["Drip","Sprinkler","Basin","Furrow"],"a":3},{"n":14,"s":0,"q":"Organic manure is mainly formed by:","o":["Burning of minerals","Decomposition of animal wastes and plant residues","Mixing sand and stones","Evaporation of water"],"a":1},{"n":15,"s":0,"q":"Which of the following is a nitrogenous fertiliser?","o":["Superphosphate","Potassium chloride","Urea","Potassium sulphate"],"a":2},{"n":16,"s":0,"q":"Superphosphate is a:","o":["Nitrogenous fertiliser","Phosphatic fertiliser","Potassic fertiliser","Herbicide"],"a":1},{"n":17,"s":0,"q":"Which of the following supplies potassium to plants?","o":["Urea","Ammonium sulphate","Superphosphate","Potassium chloride"],"a":3},{"n":18,"s":0,"q":"The process of cutting and collecting mature crops is called:","o":["Harvesting","Sowing","Ploughing","Irrigation"],"a":0},{"n":19,"s":0,"q":"Separating grains from harvested stalks is known as:","o":["Winnowing","Threshing","Broadcasting","Transplantation"],"a":1},{"n":20,"s":0,"q":"Separating lighter chaff from heavier grains using wind is called:","o":["Threshing","Harvesting","Winnowing","Ploughing"],"a":2},{"n":21,"s":0,"q":"The uppermost layer of soil is generally rich in:","o":["Humus","Solid bedrock","Large stones only","Pure sand only"],"a":0},{"n":22,"s":0,"q":"Which soil layer is also called the A-horizon?","o":["Bedrock","Subsoil","Topsoil","Parent rock"],"a":2},{"n":23,"s":0,"q":"Which type of soil has the largest particles among the three commonly studied soil types?","o":["Clayey soil","Loamy soil","Silty soil","Sandy soil"],"a":3},{"n":24,"s":0,"q":"Which soil generally has the highest water-holding capacity?","o":["Sandy soil","Clayey soil","Gravelly soil","Rocky soil"],"a":1},{"n":25,"s":0,"q":"Which soil is generally considered most suitable for growing a wide variety of crops?","o":["Sandy soil","Rocky soil","Loamy soil","Pure clay"],"a":2},{"n":26,"s":0,"q":"The removal of fertile topsoil by wind and water is called:","o":["Soil formation","Soil erosion","Soil deposition","Soil conservation"],"a":1},{"n":27,"s":0,"q":"Which movement is associated with the protection of trees in India?","o":["Green Revolution","White Revolution","Chipko Movement","Blue Revolution"],"a":2},{"n":28,"s":0,"q":"The scientific rearing and management of useful animals is called:","o":["Apiculture","Sericulture","Pisciculture","Animal husbandry"],"a":3},{"n":29,"s":0,"q":"Rearing honey bees is known as:","o":["Sericulture","Apiculture","Pisciculture","Horticulture"],"a":1},{"n":30,"s":0,"q":"The rearing of silkworms for silk production is called:","o":["Apiculture","Pisciculture","Sericulture","Floriculture"],"a":2},{"n":31,"s":1,"q":"Which of the following is the correct sequence of agricultural practices?","o":["Sowing → Ploughing → Harvesting → Irrigation","Ploughing → Sowing → Irrigation → Harvesting","Harvesting → Sowing → Ploughing → Weeding","Irrigation → Harvesting → Sowing → Ploughing"],"a":1},{"n":32,"s":1,"q":"Why is soil loosened before sowing?","o":["To remove all microorganisms","To reduce the amount of air in soil","To improve aeration and allow roots to penetrate easily","To make the soil completely dry"],"a":2},{"n":33,"s":1,"q":"What is the main advantage of using a seed drill over broadcasting?","o":["It increases seed wastage","It places seeds at suitable depth and spacing","It removes weeds automatically","It prevents the need for irrigation"],"a":1},{"n":34,"s":1,"q":"Paddy seedlings are often first grown in nurseries because:","o":["Paddy cannot grow in soil","Paddy seeds do not germinate in water","Transplanting helps establish seedlings in the main field","Paddy requires no sunlight"],"a":2},{"n":35,"s":1,"q":"Weeds reduce crop yield mainly because they:","o":["Increase soil fertility","Compete with crops for resources","Produce extra manure","Increase the size of crop seeds"],"a":1},{"n":36,"s":1,"q":"Which irrigation method is generally most suitable for saving water in an orchard?","o":["Flood irrigation","Basin irrigation","Drip irrigation","Uncontrolled canal irrigation"],"a":2},{"n":37,"s":1,"q":"Sprinkler irrigation may be less efficient on a very windy day because:","o":["Water becomes salty","Wind can carry water droplets away from the target area","Plants stop absorbing water","Soil becomes impermeable"],"a":1},{"n":38,"s":1,"q":"Which is a major advantage of manure over excessive chemical fertiliser use?","o":["Manure always supplies more nitrogen","Manure contains no nutrients","Manure adds humus and improves soil structure","Manure kills all soil organisms"],"a":2},{"n":39,"s":1,"q":"Which nutrient is especially important for the formation of proteins in plants?","o":["Nitrogen","Sodium","Chlorine","Lead"],"a":0},{"n":40,"s":1,"q":"A farmer applies excessive fertiliser just before heavy rain. What is a likely consequence?","o":["All fertiliser becomes humus","Nutrients may be washed into nearby water bodies","Soil erosion completely stops","Crop roots stop respiring permanently"],"a":1},{"n":41,"s":1,"q":"Which of the following is correctly matched?","o":["Urea – Potassic fertiliser","Superphosphate – Phosphatic fertiliser","Potassium chloride – Nitrogenous fertiliser","Ammonium sulphate – Herbicide"],"a":1},{"n":42,"s":1,"q":"A farmer wants to separate grains from chaff after threshing. Which method should be used?","o":["Sedimentation","Filtration","Winnowing","Crystallisation"],"a":2},{"n":43,"s":1,"q":"Why must grains be dried properly before storage?","o":["To increase their water content","To encourage fungal growth","To prevent spoilage due to mould and other organisms","To make them germinate immediately"],"a":2},{"n":44,"s":1,"q":"Which machine can carry out harvesting and threshing together?","o":["Seed drill","Combine harvester","Leveller","Sprinkler"],"a":1},{"n":45,"s":1,"q":"Which soil property is most directly responsible for the ability of soil to hold water?","o":["Particle size and pore spaces","Colour alone","Presence of large rocks only","Temperature alone"],"a":0},{"n":46,"s":1,"q":"Sandy soil is usually well drained because:","o":["Its particles are extremely fine","It has large spaces between particles","It contains the most humus","It is completely impermeable"],"a":1},{"n":47,"s":1,"q":"Clayey soil may become waterlogged because:","o":["It has very large particles","Water passes through it extremely quickly","It has very fine particles and poor drainage","It contains no minerals"],"a":2},{"n":48,"s":1,"q":"Which combination best describes loamy soil?","o":["Only sand and stones","Clay without humus","Balanced sand, silt, clay and organic matter","Pure humus without minerals"],"a":2},{"n":49,"s":1,"q":"Humus is formed mainly by:","o":["Melting of rocks","Decomposition of dead organic matter","Evaporation of groundwater","Crystallisation of salts"],"a":1},{"n":50,"s":1,"q":"Which soil horizon usually contains the greatest amount of humus?","o":["A-horizon","C-horizon","Bedrock","Unweathered rock"],"a":0},{"n":51,"s":1,"q":"Which of the following is a major cause of soil erosion?","o":["Contour farming","Afforestation","Deforestation","Mulching"],"a":2},{"n":52,"s":1,"q":"Terracing is especially useful in:","o":["Flat deserts","Hilly regions","Deep oceans","Indoor gardens"],"a":1},{"n":53,"s":1,"q":"Contour farming reduces soil erosion by:","o":["Increasing the speed of water flow","Ploughing along the slope vertically","Slowing water runoff across the slope","Removing vegetation"],"a":2},{"n":54,"s":1,"q":"Overgrazing increases soil erosion because:","o":["It increases humus formation","It removes protective vegetation cover","It increases the number of soil layers","It makes rocks dissolve instantly"],"a":1},{"n":55,"s":1,"q":"Which of the following is an example of soil pollution?","o":["Adding compost","Planting trees","Excessive dumping of industrial waste on land","Practising crop rotation"],"a":2},{"n":56,"s":1,"q":"Excessive irrigation in poorly drained areas may cause:","o":["Soil salinity","Formation of pure humus","Complete removal of all minerals","Increase in soil aeration"],"a":0},{"n":57,"s":1,"q":"Which cattle feed is generally rich in fibre?","o":["Roughage","Concentrates","Mineral mixture only","Antibiotics"],"a":0},{"n":58,"s":1,"q":"Which of the following is a concentrate used in cattle feed?","o":["Dry straw","Oil cake","Dry leaves only","Sawdust"],"a":1},{"n":59,"s":1,"q":"Which disease of cattle is caused by a virus?","o":["Anthrax","Foot-and-mouth disease","Foot rot","Ringworm"],"a":1},{"n":60,"s":1,"q":"Poultry birds raised mainly for egg production are called:","o":["Broilers","Layers","Drones","Calves"],"a":1},{"n":61,"s":1,"q":"Poultry birds raised mainly for meat are called:","o":["Layers","Workers","Broilers","Queens"],"a":2},{"n":62,"s":1,"q":"Which breed is commonly associated with egg-laying poultry?","o":["White Leghorn","Murrah","Jersey","Sahiwal"],"a":0},{"n":63,"s":1,"q":"Which member of a honey-bee colony is responsible for laying eggs?","o":["Worker","Drone","Queen","Larva"],"a":2},{"n":64,"s":1,"q":"Which bees collect nectar and pollen and feed the larvae?","o":["Drones","Worker bees","Queen only","Adult moths"],"a":1},{"n":65,"s":1,"q":"The cocoon of a silkworm contains:","o":["Cotton fibres","Silk fibres","Wool fibres","Cellulose fibres"],"a":1},{"n":66,"s":2,"q":"A farmer grows wheat in a field and then grows gram in the same field in the next season. This practice is an example of:","o":["Monoculture","Crop rotation","Transplantation","Winnowing"],"a":1},{"n":67,"s":2,"q":"Growing different crops one after another in the same field can help:","o":["Increase the accumulation of the same pests only","Maintain soil fertility and interrupt pest cycles","Remove all soil organisms","Stop the need for water completely"],"a":1},{"n":68,"s":2,"q":"Leguminous plants such as gram and peas are useful in crop rotation because they:","o":["Absorb all nitrogen from the soil","Have root nodules containing nitrogen-fixing bacteria","Do not require minerals","Prevent photosynthesis in weeds"],"a":1},{"n":69,"s":2,"q":"The bacteria commonly associated with nitrogen fixation in legume root nodules belong to:","o":["Rhizobium","Lactobacillus","Plasmodium","Amoeba"],"a":0},{"n":70,"s":2,"q":"Which of the following is a biological method of pest control?","o":["Spraying excessive insecticide","Introducing natural predators of crop pests","Burning all crops","Applying industrial waste to soil"],"a":1},{"n":71,"s":2,"q":"A farmer notices that the topsoil of a sloping field is being washed away during rain. Which combination would be most effective?","o":["Deforestation and overgrazing","Terracing and contour farming","Excessive ploughing down the slope","Removing all field boundaries"],"a":1},{"n":72,"s":2,"q":"Why are trees planted as shelter belts around agricultural fields?","o":["To increase wind speed","To reduce wind speed and limit wind erosion","To increase soil salinity","To prevent rainfall"],"a":1},{"n":73,"s":2,"q":"A soil sample has very poor drainage and remains sticky when wet. It most likely contains a large proportion of:","o":["Sand","Gravel","Clay","Humus alone"],"a":2},{"n":74,"s":2,"q":"A farmer wants to improve the water-holding capacity and structure of sandy soil. Which addition is most useful?","o":["Plastic waste","Compost or well-decomposed manure","Large stones","Excessive salt"],"a":1},{"n":75,"s":2,"q":"Which statement about soil formation is correct?","o":["Soil forms instantly when rocks are broken","Soil develops slowly through weathering and organic matter accumulation","Soil contains only dead plant material","Soil formation occurs only in deserts"],"a":1},{"n":76,"s":2,"q":"Which process is responsible for breaking rocks into smaller particles during soil formation?","o":["Weathering","Winnowing","Transpiration","Pollination"],"a":0},{"n":77,"s":2,"q":"Which of the following is most likely to increase soil organic matter?","o":["Burning crop residues repeatedly","Adding compost and returning plant residues to soil","Removing all vegetation","Dumping plastic waste"],"a":1},{"n":78,"s":2,"q":"A farmer uses untreated sewage to irrigate vegetables. What is the greatest concern?","o":["Vegetables will become seedless","Soil and crops may become contaminated with pathogens and harmful substances","Soil will turn into pure clay","Plants will stop requiring sunlight"],"a":1},{"n":79,"s":2,"q":"Which of the following best explains why earthworms are considered beneficial to soil?","o":["They destroy all soil nutrients","They help loosen and aerate soil and contribute to decomposition","They prevent water from entering soil","They convert soil into bedrock"],"a":1},{"n":80,"s":2,"q":"Which organism is commonly called a decomposer in soil?","o":["Mushroom","Tiger","Eagle","Earthworm-eating frog"],"a":0},{"n":81,"s":2,"q":"Which statement about honey bees is correct?","o":["They pollinate flowers while collecting nectar and pollen","They reproduce only through seeds","All members of a colony lay eggs","They produce silk from cocoons"],"a":0},{"n":82,"s":2,"q":"What is the main role of drones in a honey-bee colony?","o":["Collecting nectar","Feeding all larvae","Mating with the queen","Producing all the honey"],"a":2},{"n":83,"s":2,"q":"Which statement about worker honey bees is correct?","o":["They are males","They are sterile females that perform most colony tasks","They are the only egg-laying members","They develop into silkworms"],"a":1},{"n":84,"s":2,"q":"Honey is produced by bees mainly from:","o":["Soil minerals","Nectar collected from flowers","Tree bark","Fish oils"],"a":1},{"n":85,"s":2,"q":"The place where honey-bee colonies are maintained is called:","o":["Aquarium","Apiary","Aviary","Granary"],"a":1},{"n":86,"s":2,"q":"Which sequence correctly represents the life cycle of a silk moth?","o":["Egg → pupa → larva → adult","Larva → egg → adult → pupa","Egg → larva → pupa → adult","Pupa → adult → egg → larva"],"a":2},{"n":87,"s":2,"q":"The main food plant of the commonly reared silkworm Bombyx mori is:","o":["Neem","Mulberry","Mango","Banyan"],"a":1},{"n":88,"s":2,"q":"Silk is mainly composed of:","o":["Protein","Starch","Cellulose","Fat"],"a":0},{"n":89,"s":2,"q":"Which activity is directly associated with fish farming?","o":["Sericulture","Apiculture","Pisciculture","Viticulture"],"a":2},{"n":90,"s":2,"q":"Which of the following is a product obtained from fish?","o":["Silk","Beeswax","Fish liver oil","Cotton fibre"],"a":2},{"n":91,"s":2,"q":"Pearl culture is commonly associated with:","o":["Earthworms","Pearl oysters","Silkworms","Honey bees"],"a":1},{"n":92,"s":2,"q":"Which of the following is NOT a product or service obtained from animal husbandry?","o":["Milk","Eggs","Wool","Synthetic fertiliser manufactured from petroleum"],"a":3},{"n":93,"s":2,"q":"Which pair is correctly matched?","o":["Apiculture – Fish farming","Sericulture – Silk production","Pisciculture – Honey production","Poultry – Rearing silkworms"],"a":1},{"n":94,"s":2,"q":"Which practice is most likely to reduce the need for chemical pesticides?","o":["Encouraging natural predators of pests","Increasing monoculture indefinitely","Removing all beneficial insects","Spraying pesticides without identifying pests"],"a":0},{"n":95,"s":2,"q":"A farmer stores grains in a damp room. Which problem is most likely?","o":["Increased seed purity","Fungal growth and spoilage","Complete prevention of insect attack","Immediate increase in grain quality"],"a":1},{"n":96,"s":2,"q":"Which of the following is an example of a sustainable agricultural practice?","o":["Excessive use of chemical fertilisers","Burning all crop residues","Crop rotation with legumes and organic manure","Continuous cultivation without restoring soil nutrients"],"a":2},{"n":97,"s":2,"q":"A farmer uses drip irrigation instead of flood irrigation in a water-scarce region. The main benefit is:","o":["More water is lost through evaporation","Water is delivered near roots with less wastage","Soil erosion always increases","Plants receive no water on their leaves"],"a":1},{"n":98,"s":2,"q":"Which one of the following correctly describes the relationship between topsoil and crop productivity?","o":["Topsoil is unimportant because roots grow only in bedrock","Topsoil contains humus and nutrients important for plant growth","Topsoil contains no living organisms","Topsoil is always infertile"],"a":1},{"n":99,"s":2,"q":"Which of these pairs contains two activities that are both branches of animal-based farming?","o":["Apiculture and sericulture","Winnowing and threshing","Ploughing and levelling","Irrigation and transplantation"],"a":0},{"n":100,"s":2,"q":"A farmer wants to improve crop yield while protecting soil and biodiversity. Which approach is most appropriate?","o":["Use excessive pesticides and remove field vegetation","Practise crop rotation, maintain soil organic matter and use integrated pest management","Irrigate continuously and leave soil uncovered","Burn all organic residues and grow only one crop every year"],"a":1}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

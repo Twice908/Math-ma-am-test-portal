@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Types of Forces</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Physics — Types of Forces</h1>
+    <p class="subtitle">Standard VI · English Medium · Unit 3</p>
+    <div class="meta-row">
+      <span>Questions: <b>50</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>50</b></span>
+      <span>Time limit: <b>45:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Select the most appropriate answer for each question. Each question carries one mark with no negative marking. The 45-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">45:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 50 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":45,"sections":[{"id":"A","title":"Basic Concepts"},{"id":"B","title":"Conceptual Understanding"},{"id":"C","title":"Application and Higher-Level Questions"}],"questions":[{"n":1,"s":0,"q":"Force is defined as:","o":["A form of energy","A push or pull acting on a body","The amount of matter in a body","The speed of a moving object"],"a":1},{"n":2,"s":0,"q":"The SI unit of force is:","o":["Dyne","Pascal","Newton","Joule"],"a":2},{"n":3,"s":0,"q":"Which of the following is a vector quantity?","o":["Mass","Distance","Temperature","Force"],"a":3},{"n":4,"s":0,"q":"Which of the following is a contact force?","o":["Gravitational force","Magnetic force","Muscular force","Electrostatic force"],"a":2},{"n":5,"s":0,"q":"The force exerted by our muscles is called:","o":["Magnetic force","Muscular force","Gravitational force","Electrostatic force"],"a":1},{"n":6,"s":0,"q":"Frictional force acts:","o":["In the direction of motion","Always vertically upwards","Opposite to relative motion between surfaces","Only on stationary objects"],"a":2},{"n":7,"s":0,"q":"Which of the following is a non-contact force?","o":["Muscular force","Frictional force","Gravitational force","Force applied while pushing a cart"],"a":2},{"n":8,"s":0,"q":"Which of the following is attracted by an ordinary magnet?","o":["Wood","Plastic","Iron","Rubber"],"a":2},{"n":9,"s":0,"q":"Like poles of two magnets:","o":["Attract each other","Repel each other","Have no effect on each other","Always become neutral"],"a":1},{"n":10,"s":0,"q":"Unlike poles of two magnets:","o":["Repel each other","Attract each other","Produce no force","Lose their magnetic properties"],"a":1},{"n":11,"s":0,"q":"The force between electrically charged objects is called:","o":["Frictional force","Muscular force","Electrostatic force","Nuclear force"],"a":2},{"n":12,"s":0,"q":"The amount of matter contained in an object is called:","o":["Weight","Pressure","Force","Mass"],"a":3},{"n":13,"s":0,"q":"Weight is measured in:","o":["Kilogram","Newton","Metre","Pascal"],"a":1},{"n":14,"s":0,"q":"The formula for weight is:","o":["W = m/g","W = g/m","W = mg","W = m + g"],"a":2},{"n":15,"s":0,"q":"Pressure is defined as:","o":["Force × Area","Force ÷ Area","Area ÷ Force","Mass × Acceleration"],"a":1},{"n":16,"s":1,"q":"Which instrument is commonly used to measure the weight of an object?","o":["Beam balance","Thermometer","Spring balance","Barometer"],"a":2},{"n":17,"s":1,"q":"The gravitational force exerted by Earth on an object is called its:","o":["Mass","Weight","Density","Volume"],"a":1},{"n":18,"s":1,"q":"If the mass of an object is doubled while gravitational acceleration remains constant, its weight:","o":["Becomes half","Remains unchanged","Becomes double","Becomes four times"],"a":2},{"n":19,"s":1,"q":"The weight of an object on the Moon is approximately:","o":["Equal to its weight on Earth","Twice its weight on Earth","Six times its weight on Earth","One-sixth of its weight on Earth"],"a":3},{"n":20,"s":1,"q":"Which statement about mass is correct?","o":["It changes from Earth to Moon.","It is measured in newtons.","It remains approximately constant wherever the object is taken.","It depends on the object's height above the ground only."],"a":2},{"n":21,"s":1,"q":"The pressure exerted by a force increases when:","o":["The area of contact increases","The area of contact decreases","The force becomes zero","The object becomes lighter without changing force or area"],"a":1},{"n":22,"s":1,"q":"Why are knives made with sharp cutting edges?","o":["To decrease the applied force","To increase the contact area","To increase pressure by reducing the contact area","To eliminate friction completely"],"a":2},{"n":23,"s":1,"q":"Broad straps are used in school bags because they:","o":["Increase pressure on shoulders","Reduce pressure by increasing contact area","Increase the weight of the bag","Reduce the mass of the bag"],"a":1},{"n":24,"s":1,"q":"Atmospheric pressure is measured using a:","o":["Spring balance","Barometer","Thermometer","Hydrometer"],"a":1},{"n":25,"s":1,"q":"Atmospheric pressure is caused mainly by:","o":["The rotation of Earth","The weight of air under gravity","The movement of clouds","The heat of the Sun alone"],"a":1},{"n":26,"s":1,"q":"Pressure exerted by a liquid generally:","o":["Decreases with depth","Remains zero at all depths","Increases with depth","Depends only on the container's shape"],"a":2},{"n":27,"s":1,"q":"At the same depth in the same liquid at rest, pressure is:","o":["Different in every direction","The same in all directions","Always zero","Greater only towards the bottom"],"a":1},{"n":28,"s":1,"q":"Deep-sea divers require special protective suits because:","o":["Water temperature is always high","Water pressure increases with depth","Gravity disappears underwater","Water has no friction"],"a":1},{"n":29,"s":1,"q":"Which of the following is a useful effect of friction?","o":["Wearing out machine parts","Producing unwanted heat","Helping us walk without slipping","Slowing down moving vehicles unnecessarily"],"a":2},{"n":30,"s":1,"q":"Which method is commonly used to reduce friction between machine parts?","o":["Applying lubricants","Making surfaces rougher","Increasing the force pressing surfaces together","Removing wheels and bearings"],"a":0},{"n":31,"s":2,"q":"An object has a mass of 8 kg. Taking gravitational acceleration as 10 N/kg, its weight on Earth is:","o":["18 N","80 N","8 N","800 N"],"a":1},{"n":32,"s":2,"q":"An object weighs 60 N on Earth. Its approximate weight on the Moon will be:","o":["360 N","60 N","10 N","6 N"],"a":2},{"n":33,"s":2,"q":"A body has a mass of 12 kg. If it is taken from Earth to the Moon, its mass will be:","o":["2 kg","72 kg","12 kg","0 kg"],"a":2},{"n":34,"s":2,"q":"A force of 100 N acts normally on an area of 5 m². The pressure produced is:","o":["500 Pa","20 Pa","105 Pa","50 Pa"],"a":1},{"n":35,"s":2,"q":"A force of 200 N acts on an area of 2 m². If the area is reduced to 1 m² without changing the force, the new pressure is:","o":["100 Pa","200 Pa","400 Pa","50 Pa"],"a":1},{"n":36,"s":2,"q":"Two blocks exert the same force on the ground. Block A has a contact area of 2 m² and block B has an area of 4 m². Which statement is correct?","o":["Block B produces twice the pressure of A.","Block A produces twice the pressure of B.","Both produce equal pressure.","Neither produces pressure."],"a":1},{"n":37,"s":2,"q":"A student rubs a plastic comb through dry hair and brings it near small paper pieces. The paper pieces are attracted because of:","o":["Gravitational force","Muscular force","Electrostatic force","Frictional force directly pulling the paper"],"a":2},{"n":38,"s":2,"q":"An electrostatic precipitator is used in industries to:","o":["Increase the temperature of smoke","Remove fine pollutant particles from smoke","Increase atmospheric pressure","Produce magnetic fields for machines"],"a":1},{"n":39,"s":2,"q":"A ball rolling on grass gradually comes to rest. The main opposing force between the ball and the ground is:","o":["Magnetic force","Electrostatic force","Frictional force","Gravitational force alone"],"a":2},{"n":40,"s":2,"q":"Why do racing cars and aeroplanes have streamlined shapes?","o":["To increase air resistance","To reduce air resistance","To increase gravitational force","To eliminate their weight"],"a":1},{"n":41,"s":2,"q":"A person pushes a heavy wall, but the wall does not move. Which statement is correct?","o":["No force is applied.","The person applies muscular force, but the wall has no resulting displacement.","Gravity stops acting on the wall.","The wall has no mass."],"a":1},{"n":42,"s":2,"q":"A magnet attracts an iron nail even when a sheet of paper is placed between them. This demonstrates that magnetic force:","o":["Is always a contact force","Can act without direct contact","Acts only in water","Requires muscular effort"],"a":1},{"n":43,"s":2,"q":"A diver is at a depth of 10 m and then moves to 20 m below the water surface. What happens to the water pressure?","o":["It decreases","It remains unchanged","It increases","It becomes zero"],"a":2},{"n":44,"s":2,"q":"Why are dams constructed thicker at the bottom than at the top?","o":["Water is colder at the bottom.","Liquid pressure increases with depth","Gravitational force is absent at the top.","Water pressure acts only downwards."],"a":1},{"n":45,"s":2,"q":"A sharp needle enters a surface more easily than a blunt needle when the same force is applied because:","o":["Its mass is greater","Its contact area is smaller, producing greater pressure","Its gravitational force is smaller","It experiences no friction"],"a":1},{"n":46,"s":2,"q":"Which of the following statements about friction is incorrect?","o":["Friction can produce heat.","Friction helps us walk.","Friction always acts in the direction of relative sliding.","Friction can cause wear and tear."],"a":2},{"n":47,"s":2,"q":"An object has a weight of 98 N on Earth. Taking g = 9.8 N/kg, its mass is:","o":["9.8 kg","10 kg","98 kg","960.4 kg"],"a":1},{"n":48,"s":2,"q":"A person weighs slightly more at the poles than at the equator mainly because:","o":["Their mass increases at the poles.","Gravitational acceleration is generally greater at the poles.","Atmospheric pressure is zero at the poles.","Earth's magnetic force increases their weight."],"a":1},{"n":49,"s":2,"q":"A liquid is poured into two differently shaped containers. At the same depth in the same liquid, the pressure is:","o":["Always greater in the wider container","Always greater in the narrower container","The same, provided the liquid is at rest","Zero in both containers"],"a":2},{"n":50,"s":2,"q":"Which set contains only non-contact forces?","o":["Muscular, frictional and gravitational","Magnetic, gravitational and electrostatic","Muscular, magnetic and frictional","Frictional, electrostatic and muscular"],"a":1}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

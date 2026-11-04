@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Static Electricity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Physics — Static Electricity</h1>
+    <p class="subtitle">Standard VI · English Medium · Topic Test</p>
+    <div class="meta-row">
+      <span>Questions: <b>40</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>40</b></span>
+      <span>Time limit: <b>35:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Answer all 40 multiple-choice questions on electric charge, electroscopes, conductors and insulators, electric cells, and current electricity. Each question carries one mark with no negative marking. The 35-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">35:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 40 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":35,"sections":[{"id":"A","title":"Basic Concepts"},{"id":"B","title":"Nature of Electric Charges"},{"id":"C","title":"Electroscope"},{"id":"D","title":"Conductors and Insulators"},{"id":"E","title":"Current Electricity and Cells"}],"questions":[{"n":1,"s":0,"q":"Electricity at rest is called:","o":["Current electricity","Static electricity","Magnetic electricity","Chemical electricity"],"a":1},{"n":2,"s":0,"q":"Static electricity can be produced by:","o":["Freezing","Melting","Rubbing two suitable materials","Boiling"],"a":2},{"n":3,"s":0,"q":"The crackling sound heard while removing certain synthetic clothes is due to:","o":["Magnetic force","Electric sparks","Sound waves from fabric","Heat radiation"],"a":1},{"n":4,"s":0,"q":"Static electricity is:","o":["Electricity in motion","Electricity at rest","Chemical energy","Heat energy"],"a":1},{"n":5,"s":0,"q":"Which of the following can develop static charge?","o":["Only metals","Only insulators","Both conductors and insulators","Only liquids"],"a":2},{"n":6,"s":0,"q":"A plastic ruler rubbed with a woollen sleeve can attract small pieces of paper because:","o":["It becomes magnetic","It becomes electrically charged","It becomes hot","It produces sound waves"],"a":1},{"n":7,"s":0,"q":"The force between electrically charged bodies is called:","o":["Gravitational force","Muscular force","Electrostatic force","Frictional force"],"a":2},{"n":8,"s":0,"q":"Which instrument is used to detect small electric charges?","o":["Barometer","Electroscope","Thermometer","Ammeter"],"a":1},{"n":9,"s":1,"q":"How many kinds of electric charges are there?","o":["One","Two","Three","Four"],"a":1},{"n":10,"s":1,"q":"The two types of electric charges are:","o":["Hot and cold","Positive and negative","North and south","Strong and weak"],"a":1},{"n":11,"s":1,"q":"Like charges:","o":["Attract each other","Repel each other","Have no effect on each other","Always become neutral"],"a":1},{"n":12,"s":1,"q":"Unlike charges:","o":["Repel each other","Attract each other","Always remain separate","Produce heat only"],"a":1},{"n":13,"s":1,"q":"A glass rod rubbed with silk becomes:","o":["Negatively charged","Positively charged","Neutral in every case","Magnetic"],"a":1},{"n":14,"s":1,"q":"An ebonite rod rubbed with wool becomes:","o":["Positively charged","Negatively charged","Uncharged","Magnetic"],"a":1},{"n":15,"s":1,"q":"When a body loses electrons, it becomes:","o":["Positively charged","Negatively charged","Neutral","Magnetic"],"a":0},{"n":16,"s":1,"q":"When a body gains electrons, it becomes:","o":["Positively charged","Negatively charged","Neutral","Hot"],"a":1},{"n":17,"s":1,"q":"Two negatively charged objects are brought near each other. They will:","o":["Attract","Repel","Melt","Become neutral immediately"],"a":1},{"n":18,"s":1,"q":"A positively charged glass rod is brought near a negatively charged ebonite rod. They will:","o":["Repel","Attract","Show no interaction","Produce magnetic poles"],"a":1},{"n":19,"s":2,"q":"A gold-leaf electroscope is used to:","o":["Measure temperature","Detect electric charge","Measure atmospheric pressure","Generate electricity"],"a":1},{"n":20,"s":2,"q":"Which of the following is NOT a use of an electroscope?","o":["Detecting whether a body is charged","Determining the nature of charge","Testing whether a material is a conductor or insulator","Measuring the temperature of a body"],"a":3},{"n":21,"s":2,"q":"A gold-leaf electroscope is particularly useful because it:","o":["Is very heavy","Is sensitive to small charges","Produces electricity","Measures current directly"],"a":1},{"n":22,"s":2,"q":"If the leaves of a charged gold-leaf electroscope diverge, it indicates:","o":["The presence of electric charge","The presence of heat","The absence of matter","The presence of sound"],"a":0},{"n":23,"s":3,"q":"A material that allows electric current to pass through it easily is called:","o":["Insulator","Conductor","Semiconductor only","Magnetic material"],"a":1},{"n":24,"s":3,"q":"Which of the following is a good conductor of electricity?","o":["Glass","Paper","Copper","Ebonite"],"a":2},{"n":25,"s":3,"q":"Which of the following is an electrical insulator?","o":["Silver","Aluminium","Copper","Rubber"],"a":3},{"n":26,"s":3,"q":"Which group contains only conductors?","o":["Copper, silver, aluminium","Glass, paper, rubber","Ebonite, leather, plastic","Wood, glass, paper"],"a":0},{"n":27,"s":3,"q":"Which group contains only insulators?","o":["Iron, copper, gold","Silver, aluminium, copper","Glass, ebonite, paper","Gold, rubber, silver"],"a":2},{"n":28,"s":3,"q":"Metals generally conduct electricity because they contain:","o":["Freely moving electrons","Only neutrons","No charged particles","Immobile protons"],"a":0},{"n":29,"s":4,"q":"Current electricity is produced due to:","o":["Charge at rest","Movement of electric charges","Absence of electrons","Rubbing only"],"a":1},{"n":30,"s":4,"q":"An electric cell converts:","o":["Electrical energy into chemical energy","Heat energy into light energy","Chemical energy into electrical energy","Sound energy into mechanical energy"],"a":2},{"n":31,"s":4,"q":"In a common dry cell, the zinc container acts as the:","o":["Positive terminal","Negative terminal","Neutral terminal","Insulator"],"a":1},{"n":32,"s":4,"q":"The metal cap of a common dry cell is its:","o":["Negative terminal","Positive terminal","Neutral terminal","Chemical container"],"a":1},{"n":33,"s":4,"q":"A primary cell is generally:","o":["Rechargeable","Non-rechargeable","Powered only by sunlight","Used only in vehicles"],"a":1},{"n":34,"s":4,"q":"A secondary cell can be reused because:","o":["It contains no chemicals","Its chemical reaction is reversible under suitable conditions","It produces unlimited energy","It does not contain terminals"],"a":1},{"n":35,"s":4,"q":"Two or more electric cells connected together form a:","o":["Resistor","Battery","Switch","Electroscope"],"a":1},{"n":36,"s":4,"q":"Which cell is commonly used in wristwatches and calculators?","o":["Dry cell only","Button cell","Solar panel","Fuel cell"],"a":1},{"n":37,"s":4,"q":"A solar cell converts:","o":["Chemical energy into heat energy","Sound energy into electrical energy","Light energy into electrical energy","Mechanical energy into chemical energy"],"a":2},{"n":38,"s":4,"q":"In a metal wire, electrons flow from:","o":["Positive terminal to negative terminal","Negative terminal to positive terminal","Both terminals towards the centre","No particular direction"],"a":1},{"n":39,"s":4,"q":"Conventional electric current in an external circuit is considered to flow from:","o":["Negative terminal to positive terminal","Positive terminal to negative terminal","Earth to the cell only","Both directions simultaneously"],"a":1},{"n":40,"s":4,"q":"Which statement correctly distinguishes static electricity from current electricity?","o":["Static electricity involves charge at rest, while current electricity involves moving charge.","Both always involve charge at rest.","Static electricity flows continuously through wires.","Current electricity can exist only on insulators."],"a":0}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

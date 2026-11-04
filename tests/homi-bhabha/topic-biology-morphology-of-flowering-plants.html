@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Morphology of Flowering Plants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Biology — Morphology of Flowering Plants</h1>
+    <p class="subtitle">Standard VI · English Medium · Unit 4</p>
+    <div class="meta-row">
+      <span>Questions: <b>50</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>50</b></span>
+      <span>Time limit: <b>45:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Answer all 50 multiple-choice questions on plant structure, roots, stems, leaves, flowers, and reproductive parts. Each question carries one mark with no negative marking. The 45-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">45:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 50 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":45,"sections":[{"id":"A","title":"Plant Structure and Classification"},{"id":"B","title":"Roots and Root Modifications"},{"id":"C","title":"Stem and Its Modifications"},{"id":"D","title":"Leaves and Their Modifications"},{"id":"E","title":"Flower and Reproductive Parts"}],"questions":[{"n":1,"s":0,"q":"The study of the external form and structure of plants is called:","o":["Physiology","Morphology","Ecology","Genetics"],"a":1},{"n":2,"s":0,"q":"Which of the following belongs to the shoot system?","o":["Root hairs","Root cap","Flower","Primary root"],"a":2},{"n":3,"s":0,"q":"Which plant is correctly classified as a shrub?","o":["Mango","Rose","Wheat","Pumpkin"],"a":1},{"n":4,"s":0,"q":"Plants with weak stems that spread along the ground are called:","o":["Herbs","Trees","Creepers","Shrubs"],"a":2},{"n":5,"s":0,"q":"Which of the following is a climber?","o":["Watermelon","Grapevine","Mango","Wheat"],"a":1},{"n":6,"s":0,"q":"Which is the main function of the root system?","o":["Production of flowers","Absorption of water and minerals","Pollination","Formation of fruits"],"a":1},{"n":7,"s":0,"q":"The shoot system generally develops from the:","o":["Radicle","Plumule","Root cap","Root hair"],"a":1},{"n":8,"s":0,"q":"Which combination is correctly matched?","o":["Herb – thick woody trunk","Tree – soft green stem","Shrub – medium-sized bushy plant","Creeper – strong upright stem"],"a":2},{"n":9,"s":0,"q":"Which plant has a weak stem and requires support to grow upwards?","o":["Pea","Banyan","Neem","Mustard"],"a":0},{"n":10,"s":0,"q":"A plant has a hard woody stem and branches arising near its base. It is most likely a:","o":["Herb","Shrub","Creeper","Climber"],"a":1},{"n":11,"s":1,"q":"The main root that develops from the radicle is called:","o":["Fibrous root","Taproot","Adventitious root","Prop root"],"a":1},{"n":12,"s":1,"q":"Which of the following has a fibrous root system?","o":["Mustard","Mango","Wheat","Neem"],"a":2},{"n":13,"s":1,"q":"Which root system is commonly found in dicot plants?","o":["Fibrous","Taproot","Clinging","Stilt"],"a":1},{"n":14,"s":1,"q":"The roots of banyan trees that arise from branches and provide support are called:","o":["Stilt roots","Prop roots","Storage roots","Climbing roots"],"a":1},{"n":15,"s":1,"q":"Which of the following is a storage root?","o":["Potato","Ginger","Carrot","Turmeric"],"a":2},{"n":16,"s":1,"q":"The roots of sugarcane that arise from the lower nodes of the stem are called:","o":["Prop roots","Stilt roots","Climbing roots","Taproots"],"a":1},{"n":17,"s":1,"q":"Clinging roots are useful because they:","o":["Absorb sunlight","Help plants attach to supports","Store water in leaves","Produce flowers"],"a":1},{"n":18,"s":1,"q":"Which pair contains only storage roots?","o":["Potato and ginger","Carrot and turnip","Turmeric and potato","Ginger and carrot"],"a":1},{"n":19,"s":1,"q":"A plant growing on a wall uses special roots to attach itself to the surface. These roots are:","o":["Storage roots","Clinging roots","Fibrous roots","Prop roots"],"a":1},{"n":20,"s":1,"q":"Which statement about roots is incorrect?","o":["They anchor plants in soil.","They absorb minerals and water.","They help prevent soil erosion.","All roots are modified to store food."],"a":3},{"n":21,"s":2,"q":"Which of the following is a modified underground stem?","o":["Carrot","Sweet potato","Potato","Turnip"],"a":2},{"n":22,"s":2,"q":"Ginger and turmeric are examples of:","o":["Tubers","Rhizomes","Bulbs","Storage roots"],"a":1},{"n":23,"s":2,"q":"The main function of stem tendrils is:","o":["Food storage","Climbing and support","Absorption of minerals","Seed production"],"a":1},{"n":24,"s":2,"q":"Which plant uses stem tendrils for climbing?","o":["Pea","Grapevine","Cactus","Bryophyllum"],"a":1},{"n":25,"s":2,"q":"Green succulent stems of cactus perform:","o":["Only absorption","Photosynthesis","Pollination","Seed dispersal"],"a":1},{"n":26,"s":2,"q":"New plants produced from rose stem cuttings demonstrate:","o":["Pollination","Vegetative propagation","Transpiration","Germination"],"a":1},{"n":27,"s":2,"q":"Which of the following is a protective modification of the stem?","o":["Rhizome","Tuber","Thorn","Tendril"],"a":2},{"n":28,"s":2,"q":"A potato is considered a stem because it has:","o":["Root hairs","Nodes and buds called eyes","Only root caps","No buds"],"a":1},{"n":29,"s":2,"q":"Which pair is incorrectly matched?","o":["Potato – Tuber","Ginger – Rhizome","Grapevine – Stem tendril","Carrot – Modified stem"],"a":3},{"n":30,"s":3,"q":"The broad, flat green portion of a leaf is called:","o":["Petiole","Lamina","Stipule","Root cap"],"a":1},{"n":31,"s":3,"q":"The stalk that attaches a leaf to the stem is called:","o":["Midrib","Petiole","Leaf margin","Apex"],"a":1},{"n":32,"s":3,"q":"The arrangement of veins in a leaf is known as:","o":["Phyllotaxy","Venation","Transpiration","Germination"],"a":1},{"n":33,"s":3,"q":"Which plant generally shows parallel venation?","o":["Mango","Hibiscus","Banana","Peepal"],"a":2},{"n":34,"s":3,"q":"Reticulate venation is characterised by:","o":["Veins running parallel","Veins forming a network","Absence of veins","Only one central vein without branches"],"a":1},{"n":35,"s":3,"q":"Which leaf modification helps pea plants climb?","o":["Leaf spine","Leaf tendril","Storage leaf","Leaf bud"],"a":1},{"n":36,"s":3,"q":"Bryophyllum reproduces vegetatively through:","o":["Root hairs","Buds on leaf margins","Flowers only","Stem thorns"],"a":1},{"n":37,"s":3,"q":"In cactus, leaves are modified into spines mainly to:","o":["Increase transpiration","Reduce water loss and provide protection","Absorb more water","Attract pollinators"],"a":1},{"n":38,"s":3,"q":"Which of the following is an edible leaf?","o":["Spinach","Potato","Carrot","Ginger"],"a":0},{"n":39,"s":3,"q":"Which process involves the loss of water vapour from leaves?","o":["Photosynthesis","Respiration","Transpiration","Pollination"],"a":2},{"n":40,"s":4,"q":"A flower is primarily responsible for:","o":["Absorption of minerals","Sexual reproduction","Anchoring the plant","Water transport"],"a":1},{"n":41,"s":4,"q":"The four floral whorls from outside to inside are:","o":["Corolla, calyx, gynoecium, androecium","Calyx, corolla, androecium, gynoecium","Androecium, calyx, corolla, gynoecium","Gynoecium, androecium, calyx, corolla"],"a":1},{"n":42,"s":4,"q":"The outermost whorl of a typical flower is:","o":["Corolla","Androecium","Calyx","Gynoecium"],"a":2},{"n":43,"s":4,"q":"Which part protects the flower during the bud stage?","o":["Petals","Sepals","Anther","Stigma"],"a":1},{"n":44,"s":4,"q":"The brightly coloured part of many flowers that attracts pollinators is:","o":["Calyx","Corolla","Ovary","Filament"],"a":1},{"n":45,"s":4,"q":"The male reproductive part of a flower is:","o":["Gynoecium","Androecium","Calyx","Corolla"],"a":1},{"n":46,"s":4,"q":"A typical stamen consists of:","o":["Stigma and style","Anther and filament","Ovary and ovule","Petal and sepal"],"a":1},{"n":47,"s":4,"q":"Pollen grains are produced in the:","o":["Stigma","Ovary","Anther","Filament"],"a":2},{"n":48,"s":4,"q":"The female reproductive part of a flower is:","o":["Androecium","Gynoecium","Corolla","Calyx"],"a":1},{"n":49,"s":4,"q":"After fertilisation, the ovary generally develops into the:","o":["Root","Stem","Fruit","Leaf"],"a":2},{"n":50,"s":4,"q":"Which combination is correctly matched?","o":["Stigma – Produces pollen","Filament – Receives pollen","Ovary – Contains ovules","Sepal – Produces seeds"],"a":2}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

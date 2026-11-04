@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Acids, Bases and Salts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Chemistry — Acids, Bases and Salts</h1>
+    <p class="subtitle">Standard VI · English Medium · Unit 7</p>
+    <div class="meta-row">
+      <span>Questions: <b>55</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>55</b></span>
+      <span>Time limit: <b>45:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Select the most appropriate answer for each question. Each question carries one mark with no negative marking. The 45-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">45:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 55 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":45,"sections":[{"id":"A","title":"Indicators and Their Properties"},{"id":"B","title":"Acids"},{"id":"C","title":"Bases and Alkalis"},{"id":"D","title":"Neutralisation and Differences"},{"id":"E","title":"Salts and Application-Based Questions"}],"questions":[{"n":1,"s":0,"q":"Indicators are substances used to identify whether a solution is:","o":["Hot or cold","Acidic, basic or neutral","Heavy or light","Soluble or insoluble"],"a":1},{"n":2,"s":0,"q":"Which of the following is a natural indicator?","o":["Phenolphthalein","Methyl orange","Turmeric","Methyl red"],"a":2},{"n":3,"s":0,"q":"Which of the following is a synthetic indicator?","o":["Red cabbage","Litmus","Beetroot","Phenolphthalein"],"a":3},{"n":4,"s":0,"q":"Blue litmus paper turns red when dipped in:","o":["Acid","Base","Neutral solution","Distilled water only"],"a":0},{"n":5,"s":0,"q":"Red litmus turns blue in:","o":["Acid","Alkali","Neutral solution","Sugar solution"],"a":1},{"n":6,"s":0,"q":"Phenolphthalein becomes pink in:","o":["Acidic solution","Neutral solution","Basic solution","All solutions"],"a":2},{"n":7,"s":0,"q":"What is the colour of methyl orange in an acidic solution?","o":["Blue","Red","Green","Yellow"],"a":1},{"n":8,"s":0,"q":"Turmeric indicator changes to reddish-brown when treated with:","o":["Acid","Base","Neutral water","Sugar solution"],"a":1},{"n":9,"s":0,"q":"Red cabbage extract is generally purple in:","o":["Strong acid","Neutral solution","Strong alkali","Concentrated hydrochloric acid"],"a":1},{"n":10,"s":0,"q":"Which indicator remains colourless in both acidic and neutral solutions?","o":["Turmeric","Phenolphthalein","Methyl orange","Blue litmus"],"a":1},{"n":11,"s":0,"q":"A solution turns red litmus blue and phenolphthalein pink. The solution is:","o":["Acidic","Neutral","Basic","Pure water"],"a":2},{"n":12,"s":0,"q":"A student tests an unknown solution. Blue litmus remains blue and red litmus remains red. The solution may be:","o":["Only acidic","Only basic","Neutral","Strongly acidic"],"a":2},{"n":13,"s":1,"q":"The word acid is derived from the Latin word acidus, meaning:","o":["Bitter","Sour","Salty","Sweet"],"a":1},{"n":14,"s":1,"q":"Which of the following is an organic acid?","o":["Hydrochloric acid","Sulphuric acid","Acetic acid","Nitric acid"],"a":2},{"n":15,"s":1,"q":"Acetic acid is commonly found in:","o":["Vinegar","Tamarind","Amla","Butter milk"],"a":0},{"n":16,"s":1,"q":"Ascorbic acid is commonly known as:","o":["Vitamin A","Vitamin B","Vitamin C","Vitamin D"],"a":2},{"n":17,"s":1,"q":"Which acid is naturally found in tamarind?","o":["Lactic acid","Tartaric acid","Acetic acid","Oxalic acid"],"a":1},{"n":18,"s":1,"q":"Which of the following is a mineral acid?","o":["Malic acid","Lactic acid","Nitric acid","Ascorbic acid"],"a":2},{"n":19,"s":1,"q":"The chemical formula of sulphuric acid is:","o":["HCl","HNO₃","H₂SO₄","H₃PO₄"],"a":2},{"n":20,"s":1,"q":"Which acid is used in the manufacture of many fertilisers?","o":["Nitric acid","Acetic acid","Oxalic acid","Lactic acid"],"a":0},{"n":21,"s":1,"q":"Aqua regia is a mixture of:","o":["HCl and H₂SO₄","HCl and HNO₃","HNO₃ and H₃PO₄","H₂SO₄ and HNO₃"],"a":1},{"n":22,"s":1,"q":"Aqua regia dissolves certain noble metals such as:","o":["Iron and zinc","Sodium and potassium","Gold and platinum","Calcium and magnesium"],"a":2},{"n":23,"s":1,"q":"Acids react with reactive metals to release:","o":["Oxygen","Nitrogen","Hydrogen","Carbon dioxide"],"a":2},{"n":24,"s":1,"q":"When an acid reacts with a carbonate, which gas is generally released?","o":["Hydrogen","Oxygen","Carbon dioxide","Nitrogen"],"a":2},{"n":25,"s":1,"q":"Which gas turns limewater milky?","o":["Hydrogen","Carbon dioxide","Oxygen","Nitrogen"],"a":1},{"n":26,"s":2,"q":"A base is a substance that:","o":["Always tastes sour","Neutralises an acid","Turns blue litmus red","Produces only hydrogen gas"],"a":1},{"n":27,"s":2,"q":"Water-soluble bases are called:","o":["Acids","Salts","Alkalis","Indicators"],"a":2},{"n":28,"s":2,"q":"Which statement is correct?","o":["All bases are alkalis","All alkalis are bases","No alkali is a base","Acids are always alkalis"],"a":1},{"n":29,"s":2,"q":"Which of the following is an alkali?","o":["Copper hydroxide","Iron hydroxide","Sodium hydroxide","Aluminium hydroxide"],"a":2},{"n":30,"s":2,"q":"The chemical formula of potassium hydroxide is:","o":["KCl","KOH","K₂CO₃","KHCO₃"],"a":1},{"n":31,"s":2,"q":"Which of the following is generally insoluble in water?","o":["Sodium hydroxide","Potassium hydroxide","Calcium hydroxide (sparingly soluble)","Copper hydroxide"],"a":3},{"n":32,"s":2,"q":"Which ion is produced by common alkalis in aqueous solution?","o":["H⁺","OH⁻","Cl⁻","CO₃²⁻"],"a":1},{"n":33,"s":2,"q":"Which base is commonly called slaked lime?","o":["NaOH","KOH","Ca(OH)₂","Mg(OH)₂"],"a":2},{"n":34,"s":2,"q":"Sodium hydroxide is also known as:","o":["Baking soda","Caustic soda","Washing soda","Slaked lime"],"a":1},{"n":35,"s":2,"q":"Which base is used in some antacid preparations?","o":["Magnesium hydroxide","Sodium chloride","Copper hydroxide","Iron hydroxide"],"a":0},{"n":36,"s":2,"q":"Which substance is commonly used to neutralise acidic soil?","o":["Vinegar","Lime","Hydrochloric acid","Nitric acid"],"a":1},{"n":37,"s":2,"q":"Which of the following is NOT an alkali?","o":["Sodium hydroxide","Potassium hydroxide","Aqueous ammonia","Copper hydroxide"],"a":3},{"n":38,"s":3,"q":"Neutralisation is a reaction between:","o":["Two acids","Two bases","An acid and a base","Two metals"],"a":2},{"n":39,"s":3,"q":"The usual products of neutralisation are:","o":["Salt and hydrogen","Salt and water","Water and oxygen","Acid and oxygen"],"a":1},{"n":40,"s":3,"q":"Which equation represents neutralisation?","o":["HCl + NaOH → NaCl + H₂O","Zn + HCl → ZnCl₂ + H₂","CaCO₃ → CaO + CO₂","H₂ + O₂ → H₂O"],"a":0},{"n":41,"s":3,"q":"Which of the following is used as an antacid?","o":["Hydrochloric acid","Magnesium hydroxide","Nitric acid","Sulphuric acid"],"a":1},{"n":42,"s":3,"q":"A farmer finds that the soil is too acidic. Which substance may be added to reduce its acidity?","o":["Vinegar","Lemon juice","Lime","Hydrochloric acid"],"a":2},{"n":43,"s":3,"q":"Which of the following is a correct difference between acids and bases?","o":["Acids turn red litmus blue","Bases turn blue litmus red","Acids turn blue litmus red","Both always turn litmus green"],"a":2},{"n":44,"s":3,"q":"Phenolphthalein gives which colour in a basic solution?","o":["Red","Pink","Yellow","Blue"],"a":1},{"n":45,"s":3,"q":"Methyl orange becomes yellow in:","o":["Acidic solution","Basic solution","Only strong acid","All neutral solutions"],"a":1},{"n":46,"s":3,"q":"Which statement about neutral solutions is correct?","o":["They always turn blue litmus red","They always turn red litmus blue","They do not change red or blue litmus","They always turn phenolphthalein pink"],"a":2},{"n":47,"s":4,"q":"A salt can be formed by the reaction of:","o":["Acid and base","Two indicators","Two metals only","Two gases only"],"a":0},{"n":48,"s":4,"q":"Washing soda is:","o":["Sodium chloride","Sodium carbonate","Sodium hydrogencarbonate","Potassium nitrate"],"a":1},{"n":49,"s":4,"q":"Baking soda is:","o":["Na₂CO₃","NaCl","NaHCO₃","KNO₃"],"a":2},{"n":50,"s":4,"q":"Which salt is used in baking cakes and bread?","o":["Sodium hydrogencarbonate","Sodium chloride","Potassium nitrate","Copper sulphate"],"a":0},{"n":51,"s":4,"q":"Which salt is used in the manufacture of gunpowder and some fireworks?","o":["Sodium carbonate","Potassium nitrate","Sodium hydrogencarbonate","Calcium chloride"],"a":1},{"n":52,"s":4,"q":"Washing soda is commonly used for:","o":["Water softening","Increasing soil acidity","Producing oxygen","Testing acids"],"a":0},{"n":53,"s":4,"q":"Which of the following is correctly matched?","o":["NaHCO₃ – Washing soda","Na₂CO₃ – Baking soda","KNO₃ – Potassium nitrate","Ca(OH)₂ – Caustic soda"],"a":2},{"n":54,"s":4,"q":"A student adds dilute hydrochloric acid to a substance and observes brisk bubbling. The substance may contain:","o":["Carbonate","Pure sugar","Sodium chloride only","Copper metal only"],"a":0},{"n":55,"s":4,"q":"An unknown solution turns blue litmus red. When another substance is added, the solution becomes neutral. The second substance was most likely:","o":["An acid","A base","An indicator","A neutral salt solution only"],"a":1}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

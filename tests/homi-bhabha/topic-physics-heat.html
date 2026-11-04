@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Heat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Physics — Heat</h1>
+    <p class="subtitle">Standard VI · English Medium · Unit 5</p>
+    <div class="meta-row">
+      <span>Questions: <b>50</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>50</b></span>
+      <span>Time limit: <b>45:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Answer all 50 multiple-choice questions on heat and temperature. Each question carries one mark with no negative marking. The 45-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">45:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 50 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":45,"sections":[{"id":"A","title":"Heat and Temperature"},{"id":"B","title":"Evaporation and Boiling"},{"id":"C","title":"Thermal Expansion"},{"id":"D","title":"Transfer of Heat"},{"id":"E","title":"Conductors and Applications"}],"questions":[{"n":1,"s":0,"q":"Heat is best described as:","o":["The total mass of a body","Energy transferred due to temperature difference","The volume of a substance","The weight of a body"],"a":1},{"n":2,"s":0,"q":"The SI unit of heat energy is:","o":["Calorie","Kelvin","Joule","Celsius"],"a":2},{"n":3,"s":0,"q":"Heat naturally flows from:","o":["A colder body to a hotter body","A hotter body to a colder body","A lighter body to a heavier body","A smaller body to a larger body"],"a":1},{"n":4,"s":0,"q":"Which is the SI unit of temperature?","o":["Celsius","Fahrenheit","Kelvin","Joule"],"a":2},{"n":5,"s":0,"q":"The lower fixed point on the Celsius scale is:","o":["32°C","0°C","100°C","273°C"],"a":1},{"n":6,"s":0,"q":"The upper fixed point on the Fahrenheit scale is:","o":["100°F","180°F","212°F","273°F"],"a":2},{"n":7,"s":0,"q":"0°C is equal to:","o":["0 K","100 K","273.15 K","373.15 K"],"a":2},{"n":8,"s":0,"q":"A temperature of 40°C is equal to:","o":["72°F","104°F","100°F","112°F"],"a":1},{"n":9,"s":0,"q":"68°F is equal to:","o":["10°C","15°C","20°C","25°C"],"a":2},{"n":10,"s":0,"q":"The number of divisions between the lower and upper fixed points on the Fahrenheit scale is:","o":["100","180","212","273"],"a":1},{"n":11,"s":0,"q":"Which statement is correct?","o":["Heat and temperature are the same physical quantity.","Temperature is measured in joules.","Heat is energy transferred because of temperature difference.","Heat always flows from cold to hot naturally."],"a":2},{"n":12,"s":0,"q":"If two objects at different temperatures are kept in contact in an isolated system, heat transfer eventually stops when they reach:","o":["Different masses","Equal temperature","Equal volumes","Equal densities"],"a":1},{"n":13,"s":1,"q":"Evaporation takes place:","o":["Only at 100°C","At all temperatures","Only at the freezing point","Only in sunlight"],"a":1},{"n":14,"s":1,"q":"Evaporation occurs mainly:","o":["Throughout the liquid","At the surface of the liquid","At the bottom only","Inside the container walls"],"a":1},{"n":15,"s":1,"q":"Boiling occurs:","o":["Only at the surface","Throughout the liquid","Only below room temperature","At every temperature"],"a":1},{"n":16,"s":1,"q":"Which process produces a cooling effect?","o":["Condensation","Freezing","Evaporation","Deposition"],"a":2},{"n":17,"s":1,"q":"Wet clothes dry faster on a hot, windy day because:","o":["Evaporation decreases","Evaporation increases","Water freezes quickly","Humidity always increases"],"a":1},{"n":18,"s":1,"q":"Which condition generally slows down evaporation?","o":["Larger exposed surface area","Higher temperature","Stronger wind","Higher humidity"],"a":3},{"n":19,"s":1,"q":"Water kept in an earthen pot becomes cool mainly due to:","o":["Conduction","Evaporation","Radiation","Freezing"],"a":1},{"n":20,"s":1,"q":"During boiling at constant atmospheric pressure, the temperature of a pure liquid:","o":["Keeps increasing rapidly","Keeps decreasing","Remains constant during the phase change","Becomes zero"],"a":2},{"n":21,"s":2,"q":"The expansion of a substance on heating is called:","o":["Thermal contraction","Thermal expansion","Condensation","Sublimation"],"a":1},{"n":22,"s":2,"q":"When a metal rod is heated, it mainly undergoes:","o":["Linear expansion","Area expansion only","No expansion","Chemical decomposition"],"a":0},{"n":23,"s":2,"q":"When a metal sheet is heated, the increase in its surface area is called:","o":["Linear expansion","Area expansion","Volume contraction","Sublimation"],"a":1},{"n":24,"s":2,"q":"A heated metal block expands in:","o":["Length only","Breadth only","Height only","Length, breadth and height"],"a":3},{"n":25,"s":2,"q":"Gaps are left between railway tracks to:","o":["Reduce the weight of trains","Allow expansion during hot weather","Reduce friction between wheels","Prevent rusting"],"a":1},{"n":26,"s":2,"q":"A glass tumbler may crack when hot water is poured into it because:","o":["Glass melts immediately","Unequal expansion produces stress","Glass contracts uniformly","Water chemically reacts with glass"],"a":1},{"n":27,"s":2,"q":"In summer, a pendulum clock with a metal pendulum rod generally:","o":["Gains time","Loses time","Stops permanently","Runs at exactly the same rate"],"a":1},{"n":28,"s":2,"q":"Invar is used in precision pendulums because it:","o":["Is a very good liquid conductor","Expands very little with temperature","Melts at room temperature","Has a very high density"],"a":1},{"n":29,"s":2,"q":"A tight metal screw cap can be loosened by warming it because:","o":["The cap contracts","The cap expands","The bottle expands much more","The cap becomes magnetic"],"a":1},{"n":30,"s":3,"q":"Heat transfer through a solid without bulk movement of the material is called:","o":["Convection","Radiation","Conduction","Evaporation"],"a":2},{"n":31,"s":3,"q":"Which method of heat transfer requires no material medium?","o":["Conduction","Convection","Radiation","All three"],"a":2},{"n":32,"s":3,"q":"Heat from the Sun reaches Earth mainly through:","o":["Conduction","Convection","Radiation","Evaporation"],"a":2},{"n":33,"s":3,"q":"The transfer of heat by actual movement of a fluid is called:","o":["Conduction","Convection","Radiation","Reflection"],"a":1},{"n":34,"s":3,"q":"When water is heated in a vessel, warmer water rises mainly because:","o":["Its density generally decreases","Its mass becomes zero","It becomes a solid","Its volume becomes zero"],"a":0},{"n":35,"s":3,"q":"Sea breeze generally blows:","o":["From land towards sea during daytime","From sea towards land during daytime","From north towards south only","From mountains towards valleys only"],"a":1},{"n":36,"s":3,"q":"Land breeze generally occurs:","o":["During the night","Only at noon","Only during rainfall","Only in winter afternoons"],"a":0},{"n":37,"s":3,"q":"Land heats up faster than sea water during the day. This causes:","o":["Sea breeze","Land breeze","No air movement","Snowfall"],"a":0},{"n":38,"s":3,"q":"A metal spoon placed in hot tea becomes hot mainly due to:","o":["Radiation","Conduction","Convection","Evaporation"],"a":1},{"n":39,"s":3,"q":"Which of the following is an example of convection?","o":["Heating of a metal rod","Heat from the Sun","Circulation of water while boiling","Heating of a spoon by direct contact"],"a":2},{"n":40,"s":3,"q":"Which statement about radiation is correct?","o":["It requires a solid medium.","It requires water.","It can travel through vacuum.","It occurs only in liquids."],"a":2},{"n":41,"s":3,"q":"A hot bar placed under a running hot-water tap gains heat mainly by:","o":["Conduction from the water in contact with it","Radiation from the Sun","Evaporation","Freezing"],"a":0},{"n":42,"s":4,"q":"Which of the following is a good conductor of heat?","o":["Wood","Wool","Copper","Plastic"],"a":2},{"n":43,"s":4,"q":"Which material is generally a poor conductor of heat?","o":["Aluminium","Iron","Copper","Glass"],"a":3},{"n":44,"s":4,"q":"Copper is used in automobile radiators because:","o":["It is a poor conductor","It conducts heat efficiently","It does not expand","It absorbs water"],"a":1},{"n":45,"s":4,"q":"Cooking vessels are generally made of metals because metals:","o":["Are poor conductors","Transfer heat efficiently","Prevent all heat transfer","Are always lighter than plastic"],"a":1},{"n":46,"s":4,"q":"Wooden or plastic handles are provided on cooking utensils because:","o":["They are good conductors","They are poor conductors","They increase the boiling point","They produce heat"],"a":1},{"n":47,"s":4,"q":"Woollen sweaters keep us warm mainly because:","o":["Wool produces heat continuously","Wool traps air, which is a poor conductor","Wool absorbs sunlight only","Wool is a metal"],"a":1},{"n":48,"s":4,"q":"Polar bears have thick fur mainly to:","o":["Increase heat loss","Trap insulating air and reduce heat loss","Increase body temperature by friction","Help them swim faster only"],"a":1},{"n":49,"s":4,"q":"Ice slabs are covered with sawdust to:","o":["Increase heat transfer","Reduce heat transfer","Increase melting","Add heat to ice"],"a":1},{"n":50,"s":4,"q":"Which statement correctly explains why mud houses remain relatively cool in summer and warm in winter?","o":["Mud is a comparatively poor conductor of heat.","Mud is an excellent conductor of heat.","Mud produces heat in winter.","Mud absorbs all sunlight without warming."],"a":0}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

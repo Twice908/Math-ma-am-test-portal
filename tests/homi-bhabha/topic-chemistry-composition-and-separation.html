@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math ma'am Academy — Topic Practice · Composition and Separation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="title-block">
+    <a class="back-link" href="../../index.html">&larr; Back to Home</a>
+    <p class="eyebrow">Homi Bhabha Balvaidnyanik Competition · Topic Practice</p>
+    <h1>Chemistry — Composition of Substances &amp; Separation Techniques</h1>
+    <p class="subtitle">Standard VI · English Medium · Combined Units</p>
+    <div class="meta-row">
+      <span>Questions: <b>60</b></span>
+      <span>Marks each: <b>1</b></span>
+      <span>Total marks: <b>60</b></span>
+      <span>Time limit: <b>50:00</b></span>
+      <span>Type: <b>MCQ</b></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <b>Instructions:</b> Select the most appropriate answer for each question. Each question carries one mark with no negative marking. The 50-minute timer starts when this page loads and the test auto-submits when time runs out. Your score, section-wise breakdown and answer key appear after submission.
+  </div>
+
+  <div id="timer-wrap"><span id="timer-clock">50:00</span></div>
+  <div id="progress-wrap">
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+    <div id="progress-label" aria-live="polite">0 / 60 answered</div>
+  </div>
+
+  <main id="quiz-root"></main>
+
+  <div class="breakdown" id="breakdown"></div>
+  <div class="result-timestamps" id="result-timestamps"></div>
+  <div class="result-banner" id="result-banner" role="status"></div>
+
+  <footer class="action-bar">
+    <div id="score-readout">Not submitted yet</div>
+    <button id="submit-btn" type="button">Check My Score</button>
+  </footer>
+</div>
+
+<script>
+const TEST = {"minutes":50,"sections":[{"id":"A","title":"Matter and Classification"},{"id":"B","title":"Elements, Compounds and Mixtures"},{"id":"C","title":"Separation of Solid–Solid Mixtures"},{"id":"D","title":"Separation of Solid–Liquid Mixtures"},{"id":"E","title":"Liquid–Liquid Separation and Application"}],"questions":[{"n":1,"s":0,"q":"Matter is anything that:","o":["Has only mass","Occupies only space","Has mass and occupies space","Produces energy"],"a":2},{"n":2,"s":0,"q":"Which of the following is a pure substance?","o":["Soil","Air","Distilled water","Milk"],"a":2},{"n":3,"s":0,"q":"A pure substance that cannot be broken down into simpler substances by ordinary chemical methods is called:","o":["Mixture","Element","Solution","Compound"],"a":1},{"n":4,"s":0,"q":"Which of the following is a metalloid?","o":["Sodium","Sulphur","Silicon","Oxygen"],"a":2},{"n":5,"s":0,"q":"Which of the following is a non-metal?","o":["Iron","Copper","Aluminium","Sulphur"],"a":3},{"n":6,"s":0,"q":"Which group contains only metals?","o":["Ag, Fe, Cu","C, S, O","Si, As, Ge","H, N, Cl"],"a":0},{"n":7,"s":0,"q":"Which of the following elements exists as a monoatomic gas?","o":["Oxygen","Nitrogen","Helium","Hydrogen"],"a":2},{"n":8,"s":0,"q":"Which of the following is a diatomic molecule?","o":["He","O₂","P₄","S₈"],"a":1},{"n":9,"s":0,"q":"Which of the following is a polyatomic molecule?","o":["He","Ne","O₃","Ar"],"a":2},{"n":10,"s":0,"q":"Which of the following is a compound?","o":["Iron","Oxygen","Sodium chloride","Copper"],"a":2},{"n":11,"s":0,"q":"In a compound, elements are combined in:","o":["Any proportion","A definite proportion by mass","Equal volumes only","Random proportions"],"a":1},{"n":12,"s":0,"q":"Which statement about compounds is correct?","o":["They retain all properties of their elements","They can always be separated by handpicking","They have a definite composition","Their composition changes continuously"],"a":2},{"n":13,"s":0,"q":"Which of the following is a homogeneous mixture?","o":["Oil and water","Sand and water","Salt solution","Soil"],"a":2},{"n":14,"s":0,"q":"Which of the following is a heterogeneous mixture?","o":["Sugar solution","Salt solution","Air","Muddy water"],"a":3},{"n":15,"s":0,"q":"Which statement correctly distinguishes a mixture from a compound?","o":["Mixtures always have fixed composition","Mixture components can often be separated physically","Compounds contain only one element","Mixtures always have definite melting points"],"a":1},{"n":16,"s":1,"q":"Air is classified as:","o":["An element","A compound","A homogeneous mixture","A heterogeneous mixture"],"a":2},{"n":17,"s":1,"q":"Water is a compound because:","o":["It contains visible particles","Hydrogen and oxygen are chemically combined in a fixed proportion","It can be separated using a sieve","Its composition changes according to the container"],"a":1},{"n":18,"s":1,"q":"Which pair consists of compounds?","o":["Iron and copper","Hydrogen and oxygen","Water and sodium chloride","Nitrogen and sulphur"],"a":2},{"n":19,"s":1,"q":"Which of the following is NOT a pure substance?","o":["Gold","Oxygen","Carbon dioxide","Seawater"],"a":3},{"n":20,"s":1,"q":"A mixture contains two or more substances:","o":["Chemically combined in a fixed ratio","Physically combined in any proportion","Always combined in equal quantities","That cannot be separated"],"a":1},{"n":21,"s":1,"q":"Which statement about the components of a mixture is correct?","o":["They always lose their individual properties","They retain their individual properties in general","They must react chemically","They always form a new compound"],"a":1},{"n":22,"s":1,"q":"Which of the following contains both a metal and a non-metal chemically combined?","o":["Iron sulphide","Air","Salt solution","Sand and iron filings"],"a":0},{"n":23,"s":1,"q":"A student mixes sugar with water until it completely dissolves. The resulting mixture is:","o":["Heterogeneous","Homogeneous","An element","A pure compound"],"a":1},{"n":24,"s":1,"q":"Which of the following is incorrectly matched?","o":["Helium – Monoatomic","Oxygen – Diatomic","Ozone – Polyatomic","Phosphorus P₄ – Diatomic"],"a":3},{"n":25,"s":1,"q":"A substance has a fixed composition and its constituent elements cannot be separated by ordinary physical methods. It is most likely:","o":["A heterogeneous mixture","A compound","A solution","A suspension"],"a":1},{"n":26,"s":2,"q":"Which method is suitable for separating stones from rice?","o":["Distillation","Handpicking","Evaporation","Filtration"],"a":1},{"n":27,"s":2,"q":"Sieving separates substances mainly on the basis of:","o":["Colour","Density","Particle size","Boiling point"],"a":2},{"n":28,"s":2,"q":"Iron filings are mixed with sulphur powder. Which method is most suitable for separating them?","o":["Filtration","Magnetic separation","Evaporation","Winnowing"],"a":1},{"n":29,"s":2,"q":"The process of separating grains from harvested stalks is called:","o":["Winnowing","Threshing","Sieving","Sedimentation"],"a":1},{"n":30,"s":2,"q":"Winnowing works because:","o":["Both components have the same weight","Lighter particles are carried away by air more easily","One component dissolves in water","One component is magnetic"],"a":1},{"n":31,"s":2,"q":"A mixture contains iron filings, sand and sulphur. Which should be removed first?","o":["Sand using a sieve","Sulphur using evaporation","Iron filings using a magnet","All three using filtration"],"a":2},{"n":32,"s":2,"q":"A farmer separates husk from wheat grains using:","o":["Distillation","Winnowing","Crystallisation","Sedimentation"],"a":1},{"n":33,"s":2,"q":"Which technique is suitable for separating two solid substances that differ considerably in particle size?","o":["Sieving","Separating funnel","Distillation","Centrifugation"],"a":0},{"n":34,"s":2,"q":"Which of the following is NOT a solid–solid separation method?","o":["Handpicking","Magnetic separation","Winnowing","Separating funnel"],"a":3},{"n":35,"s":2,"q":"A mixture contains large pieces of unwanted material mixed with pulses. The simplest method is:","o":["Handpicking","Distillation","Crystallisation","Centrifugation"],"a":0},{"n":36,"s":3,"q":"When muddy water is left undisturbed, the heavier mud particles settle at the bottom. This process is:","o":["Filtration","Sedimentation","Evaporation","Distillation"],"a":1},{"n":37,"s":3,"q":"Carefully pouring the clear liquid without disturbing the settled particles is called:","o":["Decantation","Threshing","Winnowing","Crystallisation"],"a":0},{"n":38,"s":3,"q":"Which method is most suitable for separating insoluble sand from water?","o":["Filtration","Distillation only","Magnetic separation","Winnowing"],"a":0},{"n":39,"s":3,"q":"Filter paper is used in filtration because:","o":["It dissolves the solid","It allows liquid to pass but retains insoluble solid particles","It changes the boiling point","It attracts magnetic particles"],"a":1},{"n":40,"s":3,"q":"Which method is commonly used to separate cream from milk?","o":["Handpicking","Centrifugation","Winnowing","Sieving"],"a":1},{"n":41,"s":3,"q":"Centrifugation separates components mainly by:","o":["Rapid spinning and differences in density","Differences in colour","Magnetic attraction only","Differences in particle shape"],"a":0},{"n":42,"s":3,"q":"Common salt can be obtained from seawater by:","o":["Handpicking","Evaporation","Sieving","Magnetic separation"],"a":1},{"n":43,"s":3,"q":"Which technique is used to obtain crystals of a pure substance from its solution?","o":["Winnowing","Crystallisation","Threshing","Sedimentation"],"a":1},{"n":44,"s":3,"q":"A mixture of salt and water is passed through ordinary filter paper. What will happen?","o":["Salt will remain on the filter paper","Water will remain on the filter paper","Both will remain on the filter paper","Salt solution will pass through the filter paper"],"a":3},{"n":45,"s":3,"q":"Which method would be most suitable to separate very fine insoluble particles from a liquid when ordinary settling is slow?","o":["Centrifugation","Handpicking","Winnowing","Sieving"],"a":0},{"n":46,"s":3,"q":"Which of the following is correctly matched?","o":["Evaporation – Separating stones from rice","Filtration – Separating insoluble solids from liquids","Threshing – Separating salt from water","Winnowing – Separating oil from water"],"a":1},{"n":47,"s":3,"q":"In crystallisation, crystals are obtained from:","o":["A suitable solution","A magnetic field","A mixture of two gases only","A separating funnel"],"a":0},{"n":48,"s":4,"q":"A separating funnel is used to separate:","o":["Two miscible liquids","Two immiscible liquids","Solids of different sizes","Dissolved salt from water"],"a":1},{"n":49,"s":4,"q":"Which mixture can be separated using a separating funnel?","o":["Alcohol and water","Salt and water","Oil and water","Sugar and water"],"a":2},{"n":50,"s":4,"q":"The separating funnel works because immiscible liquids:","o":["Have identical densities","Form separate layers","React to form a compound","Evaporate at the same rate"],"a":1},{"n":51,"s":4,"q":"Distillation is based mainly on differences in:","o":["Colour","Particle size","Boiling points","Magnetic properties"],"a":2},{"n":52,"s":4,"q":"Which process involves evaporation followed by condensation?","o":["Filtration","Distillation","Winnowing","Sedimentation"],"a":1},{"n":53,"s":4,"q":"Which technique is most appropriate for separating two miscible liquids with sufficiently different boiling points?","o":["Separating funnel","Distillation","Magnetic separation","Handpicking"],"a":1},{"n":54,"s":4,"q":"Which method would be suitable for obtaining pure water from salt solution?","o":["Winnowing","Distillation","Handpicking","Sieving"],"a":1},{"n":55,"s":4,"q":"A mixture contains oil, water and sand. Which sequence is most appropriate?","o":["Filtration followed by separating funnel","Distillation followed by winnowing","Sieving followed by handpicking","Evaporation followed by magnetic separation"],"a":0},{"n":56,"s":4,"q":"A student wants to separate salt from sand. The best sequence is:","o":["Add water, filter, then evaporate the filtrate","Use a magnet, then use a separating funnel","Use winnowing, then sedimentation","Use distillation only without adding water"],"a":0},{"n":57,"s":4,"q":"Which of the following pairs is incorrectly matched?","o":["Oil and water – Separating funnel","Sand and water – Filtration","Salt and water – Evaporation","Alcohol and water – Handpicking"],"a":3},{"n":58,"s":4,"q":"Which method is used when the components of a mixture have different boiling points and are miscible?","o":["Distillation","Magnetic separation","Handpicking","Sieving"],"a":0},{"n":59,"s":4,"q":"A student wants to separate iron filings from salt. Which is the most suitable first step?","o":["Add water and filter immediately","Use a magnet to remove iron filings","Evaporate the mixture","Use a separating funnel"],"a":1},{"n":60,"s":4,"q":"Which statement about selecting separation techniques is correct?","o":["Every mixture can be separated by filtration","Separation depends on differences in physical properties of components","All mixtures must be separated chemically","Only particle size is used for separation"],"a":1}]};
+const TOTAL = TEST.questions.length;
+const LETTERS = ['A', 'B', 'C', 'D'];
+const answers = new Array(TOTAL).fill(-1);
+const startedAt = Date.now();
+const startDate = new Date(startedAt);
+let submitted = false;
+let timerId;
+const $ = (selector, root = document) => root.querySelector(selector);
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function formatClock(milliseconds) {
+  const seconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+}
+
+function renderQuestions() {
+  const root = $('#quiz-root');
+  TEST.sections.forEach((section, sectionIndex) => {
+    const sectionQuestions = TEST.questions.filter(question => question.s === sectionIndex);
+    const first = sectionQuestions[0].n;
+    const last = sectionQuestions[sectionQuestions.length - 1].n;
+    const divider = element('div', 'section-divider');
+    divider.append(
+      element('h2', '', 'Section ' + section.id + ' — ' + section.title),
+      element('p', '', 'Questions ' + first + '–' + last + ' · ' + sectionQuestions.length + ' marks')
+    );
+    root.append(divider);
+    sectionQuestions.forEach(question => root.append(renderQuestion(question)));
+  });
+}
+
+function renderQuestion(question) {
+  const block = element('article', 'question');
+  block.id = 'q' + question.n;
+  const head = element('div', 'q-head');
+  head.append(element('span', 'q-num', 'Q' + question.n + '.'), element('span', 'q-text', question.q));
+  const options = element('div', 'options');
+  question.o.forEach((option, index) => {
+    const label = element('label', 'opt');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + question.n;
+    input.value = String(index);
+    input.addEventListener('change', () => {
+      if (submitted) return;
+      answers[question.n - 1] = index;
+      updateProgress();
+    });
+    label.append(input, element('span', 'bubble', LETTERS[index]), element('span', 'opt-text', option));
+    options.append(label);
+  });
+  const feedback = element('div', 'answer-note');
+  feedback.id = 'note-' + question.n;
+  block.append(head, options, feedback);
+  return block;
+}
+
+function updateProgress() {
+  const answered = answers.filter(answer => answer !== -1).length;
+  $('#progress-bar-fill').style.width = (answered / TOTAL * 100) + '%';
+  $('#progress-label').textContent = answered + ' / ' + TOTAL + ' answered';
+}
+
+function updateTimer() {
+  const remaining = Math.max(0, TEST.minutes * 60000 - (Date.now() - startedAt));
+  const clock = $('#timer-clock');
+  clock.textContent = formatClock(remaining);
+  clock.classList.toggle('low', remaining <= 120000);
+  if (remaining === 0) submitTest(true);
+}
+
+function showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed) {
+  const percent = Math.round(score / TOTAL * 100);
+  const breakdown = $('#breakdown');
+  breakdown.classList.add('show');
+  breakdown.append(element('h3', '', 'Section-wise breakdown'));
+
+  const table = document.createElement('table');
+  const heading = document.createElement('tr');
+  ['Section', 'Correct', 'Score'].forEach(label => heading.append(element('th', '', label)));
+  table.append(heading);
+  TEST.sections.forEach((section, index) => {
+    const result = sectionScores[index];
+    const row = document.createElement('tr');
+    row.append(
+      element('td', '', section.id + ' — ' + section.title),
+      element('td', '', result.correct + ' / ' + result.total),
+      element('td', '', Math.round(result.correct / result.total * 100) + '%')
+    );
+    table.append(row);
+  });
+  const totalRow = document.createElement('tr');
+  totalRow.append(element('td', '', 'Total'), element('td', '', score + ' / ' + TOTAL), element('td', '', percent + '%'));
+  table.append(totalRow);
+  breakdown.append(table, element('h3', '', 'Answer key'));
+
+  const keyTable = document.createElement('table');
+  const keyHeading = document.createElement('tr');
+  ['Question', 'Correct answer'].forEach(label => keyHeading.append(element('th', '', label)));
+  keyTable.append(keyHeading);
+  TEST.questions.forEach(question => {
+    const row = document.createElement('tr');
+    row.append(element('td', '', 'Question ' + question.n), element('td', '', LETTERS[question.a] + '. ' + question.o[question.a]));
+    keyTable.append(row);
+  });
+  breakdown.append(keyTable);
+
+  $('#score-readout').innerHTML = 'Score: <b>' + score + ' / ' + TOTAL + '</b> marks (' + percent + '%)';
+  $('#submit-btn').disabled = true;
+  $('#timer-clock').textContent = autoSubmitted ? '00:00' : formatClock(elapsed);
+  $('#progress-label').textContent = score + ' / ' + TOTAL + ' correct · ' + wrong + ' wrong · ' + unanswered + ' unanswered';
+  $('#progress-bar-fill').style.width = (score / TOTAL * 100) + '%';
+
+  const durationSeconds = Math.floor(elapsed / 1000);
+  const endDate = new Date();
+  $('#result-timestamps').textContent = 'Date: ' + startDate.toLocaleDateString() + ' · Started: ' + startDate.toLocaleTimeString() + ' · Submitted: ' + endDate.toLocaleTimeString() + ' · Duration: ' + Math.floor(durationSeconds / 60) + 'm ' + (durationSeconds % 60) + 's';
+  $('#result-timestamps').classList.add('show');
+
+  const banner = $('#result-banner');
+  banner.textContent = autoSubmitted
+    ? 'Time is up — the test was submitted automatically. Review your section breakdown and answers below.'
+    : percent >= 60
+      ? 'Nice work — review your section breakdown and answers below.'
+      : 'Review your section breakdown and answers below to identify topics for further practice.';
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function submitTest(autoSubmitted = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerId);
+  const elapsed = Math.min(Date.now() - startedAt, TEST.minutes * 60000);
+  let score = 0;
+  let wrong = 0;
+  let unanswered = 0;
+  const sectionScores = TEST.sections.map(() => ({ correct: 0, total: 0 }));
+
+  TEST.questions.forEach((question, index) => {
+    const answer = answers[index];
+    const block = $('#q' + question.n);
+    const options = block.querySelectorAll('.opt');
+    const feedback = $('#note-' + question.n);
+    sectionScores[question.s].total++;
+    options[question.a].classList.add('correct-answer');
+    block.querySelectorAll('input').forEach(input => { input.disabled = true; });
+
+    if (answer === question.a) {
+      score++;
+      sectionScores[question.s].correct++;
+      feedback.textContent = '✓ Correct';
+    } else if (answer === -1) {
+      unanswered++;
+      feedback.textContent = 'Not answered · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    } else {
+      wrong++;
+      options[answer].classList.add('wrong-answer');
+      feedback.textContent = 'Incorrect · Correct answer: ' + LETTERS[question.a];
+      feedback.classList.add('miss');
+    }
+    feedback.classList.add('show');
+  });
+
+  showResults(autoSubmitted, score, sectionScores, wrong, unanswered, elapsed);
+}
+
+renderQuestions();
+updateProgress();
+updateTimer();
+timerId = setInterval(updateTimer, 250);
+$('#submit-btn').addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>
