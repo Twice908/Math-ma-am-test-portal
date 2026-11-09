@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Computation Operations — Std V Mathematics Olympiad Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+<header class="title-block">
+  <a class="back-link" href="../../index.html">&larr; Back to Tests</a>
+  <p class="eyebrow">Mathematics Olympiad · Std V · Topic Practice</p>
+  <h1>IMO Mathematics &mdash; Computation Operations</h1>
+  <div class="subtitle">Mathematics Olympiad · Practice Test 2</div>
+  <div class="meta-row">
+    <span>Questions: <b id="total-q-count">50</b></span>
+    <span>Marks each: <b>1</b></span>
+    <span>Total marks: <b>50</b></span>
+    <span>Time limit: <b>60:00</b></span>
+  </div>
+</header>
+<div class="instructions">
+  <b>Instructions:</b> Answer all questions. Each question carries one mark with no negative marking.
+  Select one option per question. Your answers are checked when you submit, and the test auto-submits when the 60-minute timer ends.
+</div>
+<div id="timer-wrap"><span id="timer-clock">60:00</span></div>
+<div id="progress-wrap">
+  <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+  <div id="progress-label">0 / 50 answered</div>
+</div>
+<main id="quiz-root" aria-label="Computation Operations quiz"><div id="quiz"></div></main>
+<div class="breakdown" id="breakdown"></div>
+<div class="result-timestamps" id="result-timestamps"></div>
+<div class="result-banner" id="result-banner"></div>
+<footer class="action-bar">
+  <div id="score-readout">Not submitted yet</div>
+  <button id="submit-btn" type="button">Check My Score</button>
+</footer>
+</div>
+<script type="application/json" id="question-data">[{"title":"A – Addition","questions":[{"number":1,"text":"Find the sum of 5,43,218 + 3,76,495.","options":["9,19,713","9,19,703","9,29,713","8,19,713"],"correct":0},{"number":2,"text":"The sum of three numbers is 85,640. If two numbers are 24,560 and 31,780, find the third number.","options":["29,300","30,300","28,300","29,200"],"correct":0},{"number":3,"text":"Which property of addition is shown below? (125 + 350) + 450 = 125 + (350 + 450)","options":["Commutative property","Identity property","Associative property","Distributive property"],"correct":2},{"number":4,"text":"What is the smallest number that must be added to 78,956 to get 1,00,000?","options":["21,144","22,044","20,044","21,044"],"correct":3},{"number":5,"text":"A library has 12,450 storybooks, 8,765 science books and 9,875 mathematics books. How many books are there altogether?","options":["30,090","31,090","31,190","32,090"],"correct":1},{"number":6,"text":"What is the sum of the greatest 5-digit number and the smallest 6-digit number?","options":["1,99,999","1,09,999","1,99,990","2,00,000"],"correct":0}]},{"title":"B – Subtraction","questions":[{"number":7,"text":"Find the difference between 8,00,000 and 3,76,845.","options":["4,23,155","4,24,155","4,33,155","4,23,255"],"correct":0},{"number":8,"text":"What must be subtracted from 9,45,670 to obtain 5,28,390?","options":["4,27,280","4,17,380","4,17,280","4,16,280"],"correct":2},{"number":9,"text":"Which property is shown by the following? 56,789 − 0 = 56,789","options":["Commutative property","Identity property of addition","Associative property","Subtraction of zero leaves the number unchanged"],"correct":3},{"number":10,"text":"The difference between two numbers is 25,680. If the smaller number is 34,560, find the greater number.","options":["59,240","60,240","60,140","59,140"],"correct":1},{"number":11,"text":"A factory produced 85,750 toys. It sold 49,875 toys. How many toys are left?","options":["35,875","36,875","34,875","35,975"],"correct":0},{"number":12,"text":"What is the difference between the greatest 6-digit number and the smallest 6-digit number?","options":["8,99,999","9,00,000","8,99,990","9,99,999"],"correct":0}]},{"title":"C – Estimating the Sum and Difference","questions":[{"number":13,"text":"Estimate the sum of 48,765 and 32,148 by rounding both numbers to the nearest thousand.","options":["80,000","81,000","82,000","79,000"],"correct":1},{"number":14,"text":"Estimate the difference between 76,842 and 29,315 by rounding both numbers to the nearest thousand.","options":["46,000","48,000","47,000","49,000"],"correct":1},{"number":15,"text":"Estimate 3,48,765 + 2,51,249 to the nearest ten thousand.","options":["5,90,000","6,10,000","5,80,000","6,00,000"],"correct":3},{"number":16,"text":"Estimate 89,456 − 34,721 by rounding both numbers to the nearest hundred.","options":["54,700","54,800","55,000","54,600"],"correct":1},{"number":17,"text":"A shopkeeper sold goods worth ₹4,875 on Monday and ₹6,125 on Tuesday. What is the estimated total sale to the nearest thousand?","options":["₹10,000","₹12,000","₹11,000","₹9,000"],"correct":2},{"number":18,"text":"Estimate the difference between 5,78,920 and 2,21,180 to the nearest ten thousand.","options":["3,50,000","3,60,000","3,70,000","3,80,000"],"correct":1}]},{"title":"D – Multiplication","questions":[{"number":19,"text":"Find the product of 2,345 × 24.","options":["56,280","55,280","56,820","54,280"],"correct":0},{"number":20,"text":"Which property of multiplication is shown below? 45 × 28 = 28 × 45","options":["Associative","Distributive","Commutative","Identity"],"correct":2},{"number":21,"text":"A carton contains 125 pencils. How many pencils will be there in 48 such cartons?","options":["5,000","6,000","5,500","6,500"],"correct":1},{"number":22,"text":"Find the missing number: 375 × _____ = 37,500","options":["100","10","1,000","50"],"correct":0},{"number":23,"text":"What is the value of 4,567 × 100?","options":["45,670","4,567,000","456,700","456,070"],"correct":2},{"number":24,"text":"A school has 36 classrooms. Each classroom has 45 students. How many students are there altogether?","options":["1,520","1,620","1,720","1,600"],"correct":1}]},{"title":"E – Division","questions":[{"number":25,"text":"Find the quotient when 84,672 is divided by 24.","options":["3,528","3,5280","3,582","3,428"],"correct":0},{"number":26,"text":"56,700 chocolates are distributed equally among 45 schools. How many chocolates does each school receive?","options":["1,250","1,260","1,270","1,360"],"correct":1},{"number":27,"text":"What is the quotient when a number is divided by 1?","options":["1","0","The number itself","Twice the number"],"correct":2},{"number":28,"text":"Which of the following is NOT possible?","options":["0 ÷ 25 = 0","25 ÷ 25 = 1","25 ÷ 1 = 25","25 ÷ 0 = 0"],"correct":3},{"number":29,"text":"If 8,640 ÷ 36 = 240, then find 8,640 ÷ 12.","options":["720","360","480","240"],"correct":0},{"number":30,"text":"A number when divided by 35 gives a quotient of 125 and a remainder of 18. Find the number.","options":["4,375","4,393","4,408","4,383"],"correct":1}]},{"title":"F – Estimating Multiplication and Division","questions":[{"number":31,"text":"Estimate 498 × 21 by rounding to the nearest hundred and nearest ten respectively.","options":["9,000","10,000","11,000","8,000"],"correct":1},{"number":32,"text":"Estimate 3,985 ÷ 8 by rounding 3,985 to the nearest thousand.","options":["400","500","600","450"],"correct":1},{"number":33,"text":"A shopkeeper buys 503 cricket bats at ₹4,345 each. Estimate the total cost by rounding to the nearest thousand.","options":["₹20,00,000","₹22,50,000","₹21,50,000","₹25,00,000"],"correct":0},{"number":34,"text":"Estimate 6,120 ÷ 29 by rounding both numbers to convenient values.","options":["100","200","300","400"],"correct":1},{"number":35,"text":"Estimate 198 × 49 by rounding both numbers to the nearest hundred and ten respectively.","options":["8,000","9,000","10,000","11,000"],"correct":2}]},{"title":"G – Factors and Multiples","questions":[{"number":36,"text":"Which of the following is a factor of 84?","options":["9","7","11","13"],"correct":1},{"number":37,"text":"How many factors does the number 16 have?","options":["4","6","5","8"],"correct":2},{"number":38,"text":"Which of the following is a prime number?","options":["21","39","51","37"],"correct":3},{"number":39,"text":"The smallest prime number is:","options":["2","1","3","0"],"correct":0},{"number":40,"text":"Which of the following numbers is composite?","options":["13","17","27","19"],"correct":2},{"number":41,"text":"Find the common factors of 24 and 36.","options":["1, 2, 3, 4, 6, 12","1, 2, 4, 8, 12","1, 3, 6, 9, 12","1, 2, 3, 6, 18"],"correct":0},{"number":42,"text":"Which of the following is a multiple of both 6 and 8?","options":["18","24","36","42"],"correct":1},{"number":43,"text":"Which statement about multiples is correct?","options":["Every number has a greatest multiple.","Every number has only two multiples.","Every number is a multiple of itself.","Zero is the smallest positive multiple of every number."],"correct":2},{"number":44,"text":"Which number has exactly two factors?","options":["1","9","15","11"],"correct":3}]},{"title":"H – H.C.F. and L.C.M.","questions":[{"number":45,"text":"Find the H.C.F. of 36 and 48.","options":["6","12","18","24"],"correct":1},{"number":46,"text":"Find the L.C.M. of 12 and 18.","options":["24","30","36","72"],"correct":2},{"number":47,"text":"Two bells ring at intervals of 12 minutes and 15 minutes. If they ring together at 9:00 AM, when will they ring together again?","options":["9:30 AM","9:45 AM","10:00 AM","10:15 AM"],"correct":2},{"number":48,"text":"Find the greatest number that divides 48 and 60 exactly.","options":["6","10","15","12"],"correct":3},{"number":49,"text":"The H.C.F. of two numbers is 8 and their L.C.M. is 120. If one number is 24, find the other number.","options":["40","48","32","60"],"correct":0},{"number":50,"text":"Find the L.C.M. of 15, 20 and 30.","options":["30","45","60","90"],"correct":2}]}]</script>
+<script src="../../assets/js/imo-test.js"></script>
+<script src="../../assets/js/imo-data-test.js"></script>
+</body>
+</html>

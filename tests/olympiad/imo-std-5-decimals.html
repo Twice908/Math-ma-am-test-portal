@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fractions and Decimals — Std V Mathematics Olympiad Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+<header class="title-block">
+  <a class="back-link" href="../../index.html">&larr; Back to Tests</a>
+  <p class="eyebrow">Mathematics Olympiad · Std V · Topic Practice</p>
+  <h1>IMO Mathematics &mdash; Fractions and Decimals</h1>
+  <div class="subtitle">Mathematics Olympiad · Practice Test 3</div>
+  <div class="meta-row">
+    <span>Questions: <b id="total-q-count">50</b></span>
+    <span>Marks each: <b>1</b></span>
+    <span>Total marks: <b>50</b></span>
+    <span>Time limit: <b>60:00</b></span>
+  </div>
+</header>
+<div class="instructions">
+  <b>Instructions:</b> Answer all questions. Each question carries one mark with no negative marking.
+  Select one option per question. Your answers are checked when you submit, and the test auto-submits when the 60-minute timer ends.
+</div>
+<div id="timer-wrap"><span id="timer-clock">60:00</span></div>
+<div id="progress-wrap">
+  <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+  <div id="progress-label">0 / 50 answered</div>
+</div>
+<main id="quiz-root" aria-label="Fractions and Decimals quiz"><div id="quiz"></div></main>
+<div class="breakdown" id="breakdown"></div>
+<div class="result-timestamps" id="result-timestamps"></div>
+<div class="result-banner" id="result-banner"></div>
+<footer class="action-bar">
+  <div id="score-readout">Not submitted yet</div>
+  <button id="submit-btn" type="button">Check My Score</button>
+</footer>
+</div>
+<script type="application/json" id="question-data">[{"title":"A – Fractions and Types of Fractions","questions":[{"number":1,"text":"A circle is divided into 8 equal parts. If 5 parts are shaded, what fraction represents the shaded portion?","options":["3/8","5/8","5/3","8/5"],"correct":1},{"number":2,"text":"A fraction represents:","options":["Total number of objects only","Difference between two numbers","Product of two numbers","Number of equal parts taken divided by total equal parts"],"correct":3},{"number":3,"text":"Which of the following is a proper fraction?","options":["9/7","11/11","5/8","13/4"],"correct":2},{"number":4,"text":"Which of the following is an improper fraction?","options":["7/9","3/11","5/12","13/8"],"correct":3},{"number":5,"text":"Convert 3 2/5 into an improper fraction.","options":["15/5","17/5","13/5","16/5"],"correct":1},{"number":6,"text":"Which fraction is equivalent to 4/7?","options":["12/21","16/21","8/21","20/28"],"correct":0},{"number":7,"text":"Which of the following is a unit fraction?","options":["3/5","5/8","7/9","1/12"],"correct":3},{"number":8,"text":"Convert 17/4 into a mixed fraction.","options":["3 1/4","4 2/4","4 1/4","5 1/4"],"correct":2}]},{"title":"B – Comparison of Fractions","questions":[{"number":9,"text":"Which fraction is greater? 3/11 _____ 7/11","options":["=","Greater than","Less than","Cannot be determined"],"correct":2},{"number":10,"text":"Which is greater? 5/8 or 5/12?","options":["5/8","5/12","Both are equal","Cannot be determined"],"correct":0},{"number":11,"text":"Compare 3/4 and 5/6.","options":["3/4 > 5/6","3/4 = 5/6","3/4 < 5/6","Cannot be determined"],"correct":2},{"number":12,"text":"Which of the following is the correct comparison?","options":["7/9 > 5/6","7/9 < 5/6","7/9 = 5/6","None of these"],"correct":1},{"number":13,"text":"Arrange the fractions in ascending order: 2/3, 3/4, 5/8","options":["2/3, 5/8, 3/4","3/4, 2/3, 5/8","5/8, 3/4, 2/3","5/8, 2/3, 3/4"],"correct":3},{"number":14,"text":"Which of the following fractions is equivalent to 15/21?","options":["5/7","3/5","7/5","5/9"],"correct":0}]},{"title":"C – Operations on Fractions","questions":[{"number":15,"text":"Find the sum: 7/15 + 4/15","options":["3/15","12/15","11/15","10/15"],"correct":2},{"number":16,"text":"Subtract 9/17 from 12/17.","options":["21/17","3/17","3/34","1/17"],"correct":1},{"number":17,"text":"Find: 2/3 + 3/4","options":["5/7","17/7","7/12","1 5/12"],"correct":3},{"number":18,"text":"Subtract 1/4 from 5/6.","options":["7/12","4/10","2/12","3/12"],"correct":0},{"number":19,"text":"Find the sum of: 2 1/3 + 1 1/6","options":["3 1/3","3 1/2","2 1/2","4 1/6"],"correct":1},{"number":20,"text":"Find the difference: 4 1/4 − 1 3/8","options":["3 1/8","2 5/8","2 7/8","3 7/8"],"correct":2},{"number":21,"text":"Find the product: 2/5 × 3/7","options":["6/35","5/12","6/12","5/35"],"correct":0},{"number":22,"text":"Multiply 15 by 3/17.","options":["3/17","45/17","15/51","45/15"],"correct":1},{"number":23,"text":"Divide 18 by 2/9.","options":["4","36","81","9"],"correct":2},{"number":24,"text":"Divide 3/14 by 6.","options":["18/14","3/84","3/20","1/7"],"correct":1},{"number":25,"text":"Divide 5/36 by 7/18.","options":["5/14","35/648","7/14","10/36"],"correct":0}]},{"title":"D – Decimals and Place Values","questions":[{"number":26,"text":"In the decimal number 15.25, the whole number part is:","options":["25","0.25","15","15.25"],"correct":2},{"number":27,"text":"What is the decimal representation of 3/10?","options":["0.03","0.3","3.10","0.003"],"correct":1},{"number":28,"text":"The decimal representation of 13/1000 is:","options":["0.13","1.3","0.130","0.013"],"correct":3},{"number":29,"text":"Find the place value of digit 7 in 4105.378.","options":["7/10","7/100","7/1000","70"],"correct":1},{"number":30,"text":"How is 5.02 read?","options":["Five point two","Fifty point two","Five point zero two","Five point zero zero two"],"correct":2},{"number":31,"text":"Which of the following represents an equivalent decimal to 0.8?","options":["0.08","0.008","8.00","0.80"],"correct":3},{"number":32,"text":"Which pair represents like decimals?","options":["0.5 and 0.25","0.714 and 0.568","2.5 and 2.55","3.6 and 3.456"],"correct":1}]},{"title":"E – Conversion and Types of Decimals","questions":[{"number":33,"text":"The whole number 18 can be written in decimal form as:","options":["0.18","1.8","18.0","18.18"],"correct":2},{"number":34,"text":"Convert 25.013 into a fraction.","options":["25013/100","25013/1000","25013/10","2513/1000"],"correct":1},{"number":35,"text":"Convert 0.45 into its simplest fractional form.","options":["9/20","45/10","4/5","45/1000"],"correct":0},{"number":36,"text":"Convert 7/10 into decimal form.","options":["0.07","7.10","0.007","0.7"],"correct":3},{"number":37,"text":"Convert 125/1000 into decimal form.","options":["1.25","0.0125","0.125","12.5"],"correct":2},{"number":38,"text":"Convert 3.6 into an improper fraction in its simplest form.","options":["36/100","18/5","36/5","3/6"],"correct":1},{"number":39,"text":"Which of the following is an example of equivalent decimals?","options":["0.6 and 0.06","0.45 and 0.045","2.5 and 2.50","1.2 and 1.02"],"correct":2},{"number":40,"text":"Which of the following pairs represents unlike decimals?","options":["0.25 and 0.75","2.35 and 4.68","5.678 and 1.234","0.8 and 0.24"],"correct":3}]},{"title":"F – Comparing Decimals","questions":[{"number":41,"text":"Which of the following is greater? 56.568 _____ 56.548","options":["<",">","=","Cannot be determined"],"correct":1},{"number":42,"text":"Compare: 7 tens 45 hundredths _____ 8 tens 24 hundredths","options":[">","=","<","Cannot be determined"],"correct":2},{"number":43,"text":"Which is the greatest decimal number?","options":["0.89","0.809","0.9","0.899"],"correct":2},{"number":44,"text":"Arrange the following decimals in ascending order: 0.56, 0.506, 0.65, 0.605","options":["0.506, 0.56, 0.605, 0.65","0.56, 0.506, 0.65, 0.605","0.65, 0.605, 0.56, 0.506","0.506, 0.605, 0.56, 0.65"],"correct":0},{"number":45,"text":"Which of the following is the smallest?","options":["4.05","4.005","4.5","4.15"],"correct":1},{"number":46,"text":"Insert the correct sign: 3.75 _____ 3.750","options":[">","<","=","Cannot be determined"],"correct":2}]},{"title":"G – Addition and Subtraction of Decimals","questions":[{"number":47,"text":"Find the sum: 12.35 + 8.7","options":["20.95","21.05","21.15","20.05"],"correct":1},{"number":48,"text":"Subtract 42.35 from 814.49.","options":["772.14","772.04","782.14","771.14"],"correct":0},{"number":49,"text":"Find: 3.75 + 0.806","options":["4.456","3.836","4.556","4.656"],"correct":2},{"number":50,"text":"A student had ₹100. He spent ₹37.86. How much money is left?","options":["₹63.14","₹62.24","₹62.04","₹62.14"],"correct":3}]}]</script>
+<script src="../../assets/js/imo-test.js"></script>
+<script src="../../assets/js/imo-data-test.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Measurements — Std V Mathematics Olympiad Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+<header class="title-block">
+  <a class="back-link" href="../../index.html">&larr; Back to Tests</a>
+  <p class="eyebrow">Mathematics Olympiad · Std V · Topic Practice</p>
+  <h1>IMO Mathematics &mdash; Measurements</h1>
+  <div class="subtitle">Mathematics Olympiad · Practice Test 4</div>
+  <div class="meta-row">
+    <span>Questions: <b id="total-q-count">50</b></span>
+    <span>Marks each: <b>1</b></span>
+    <span>Total marks: <b>50</b></span>
+    <span>Time limit: <b>60:00</b></span>
+  </div>
+</header>
+<div class="instructions">
+  <b>Instructions:</b> Answer all questions. Each question carries one mark with no negative marking.
+  Select one option per question. Your answers are checked when you submit, and the test auto-submits when the 60-minute timer ends.
+</div>
+<div id="timer-wrap"><span id="timer-clock">60:00</span></div>
+<div id="progress-wrap">
+  <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+  <div id="progress-label">0 / 50 answered</div>
+</div>
+<main id="quiz-root" aria-label="Measurements quiz"><div id="quiz"></div></main>
+<div class="breakdown" id="breakdown"></div>
+<div class="result-timestamps" id="result-timestamps"></div>
+<div class="result-banner" id="result-banner"></div>
+<footer class="action-bar">
+  <div id="score-readout">Not submitted yet</div>
+  <button id="submit-btn" type="button">Check My Score</button>
+</footer>
+</div>
+<script type="application/json" id="question-data">[{"title":"A – MEASUREMENT AND STANDARD UNITS","questions":[{"number":1,"text":"Which unit is most suitable for measuring the distance between Pune and Mumbai?","options":["Centimetre","Metre","Kilometre","Millimetre"],"correct":2},{"number":2,"text":"How many millimetres are equal to 4.25 metres?","options":["425 mm","4250 mm","42500 mm","42.5 mm"],"correct":1},{"number":3,"text":"Convert 6 kg 75 g into kilograms.","options":["6.75 kg","6.075 kg","6.0075 kg","6.75 g"],"correct":1},{"number":4,"text":"Which of the following is equal to 3.6 litres?","options":["360 mL","36 mL","36000 mL","3600 mL"],"correct":3},{"number":5,"text":"Convert 8 km 854 m into kilometres.","options":["8.854 km","8.0854 km","8.054 km","8.584 km"],"correct":0},{"number":6,"text":"A ribbon is 18 m 50 cm long. Another ribbon is 15 m 20 cm long. Find their total length.","options":["32 m 70 cm","34 m 70 cm","33 m 70 cm","33 m 30 cm"],"correct":2},{"number":7,"text":"A shopkeeper has 5 kg 250 g of rice. He sells 2 kg 875 g. How much rice remains?","options":["2 kg 275 g","2 kg 375 g","3 kg 375 g","2 kg 475 g"],"correct":1},{"number":8,"text":"A water tank contains 12,000 L of water. Each of 600 students uses 4 L in one day. How much water remains?","options":["10,400 L","9,400 L","9,800 L","9,600 L"],"correct":3},{"number":9,"text":"How many seconds are there in 2 hours 15 minutes?","options":["8100 seconds","7200 seconds","9000 seconds","7500 seconds"],"correct":0},{"number":10,"text":"How many days are equal to 216 hours?","options":["8 days","10 days","9 days","6 days"],"correct":2}]},{"title":"B – TIME AND CLOCK","questions":[{"number":11,"text":"Convert 7:45 p.m. into 24-hour clock time.","options":["07:45","19:45","17:45","20:45"],"correct":1},{"number":12,"text":"A train departs at 22:35 and arrives at 01:20 the next day. What is its journey duration?","options":["2 hours 45 minutes","3 hours 15 minutes","3 hours 45 minutes","2 hours 35 minutes"],"correct":0},{"number":13,"text":"Which instrument is used to measure the temperature of an object?","options":["Barometer","Speedometer","Thermometer","Hygrometer"],"correct":2},{"number":14,"text":"A thermometer shows 42°C. What will be the temperature after a rise of 8°C?","options":["34°C","40°C","48°C","50°C"],"correct":3},{"number":15,"text":"Convert ₹18.75 into paise.","options":["1875 paise","187.5 paise","18,750 paise","187 paise"],"correct":0},{"number":16,"text":"If 12 notebooks cost ₹180, what is the cost of 7 notebooks at the same rate?","options":["₹95","₹105","₹120","₹90"],"correct":1},{"number":17,"text":"A packet weighs 2 kg 500 g. What is the weight of 6 such packets?","options":["12 kg","13 kg","15 kg","16 kg"],"correct":2},{"number":18,"text":"Which statement correctly describes the metric conversion from a base unit to the next smaller unit?","options":["Divide by 10","Multiply by 100","Divide by 1000","Multiply by 10"],"correct":3},{"number":19,"text":"A bus arrives at a stop at 8:15 a.m. It is delayed by 50 minutes. At what time does it arrive?","options":["8:55 a.m.","9:15 a.m.","9:05 a.m.","9:10 a.m."],"correct":2},{"number":20,"text":"If 8 caps cost ₹120, what is the cost of 15 caps at the same rate?","options":["₹210","₹240","₹200","₹225"],"correct":3}]},{"title":"C – CONVERSION OF MEASUREMENT UNITS","questions":[{"number":21,"text":"Convert 7 m 35 cm into centimetres.","options":["735 cm","705 cm","753 cm","7350 cm"],"correct":0},{"number":22,"text":"A rope is 12.5 m long. How many centimetres long is the rope?","options":["125 cm","1250 cm","12500 cm","1205 cm"],"correct":1},{"number":23,"text":"Convert 4 kg 250 g into grams.","options":["425 g","4025 g","4250 g","4500 g"],"correct":2},{"number":24,"text":"How many millilitres are present in 8 L 75 mL?","options":["875 mL","8075 mL","8750 mL","80075 mL"],"correct":1},{"number":25,"text":"Which of the following is the greatest measurement?","options":["2.5 kg","2500 g","25050 g","2 kg 550 g"],"correct":2},{"number":26,"text":"A fruit seller has 25 kg of apples. He sells 8 kg 750 g in the morning and 6 kg 500 g in the evening. How many kilograms of apples are left?","options":["9 kg 750 g","10 kg 250 g","9 kg 500 g","10 kg 750 g"],"correct":0},{"number":27,"text":"A milkman delivers 3 L 500 mL of milk every day. How much milk does he deliver in 6 days?","options":["18 L","20 L","21 L","24 L"],"correct":2},{"number":28,"text":"A water bottle contains 750 mL of water. How many such bottles are required to fill a 6 L container?","options":["6","7","9","8"],"correct":3},{"number":29,"text":"Convert 0.045 km into metres.","options":["45 m","450 m","4.5 m","4500 m"],"correct":0},{"number":30,"text":"A boy walks 1 km 250 m in the morning and 2 km 750 m in the evening. Find the total distance travelled.","options":["3 km 500 m","4 km","4 km 500 m","3 km 750 m"],"correct":1}]},{"title":"D – TIME AND TEMPERATURE","questions":[{"number":31,"text":"How many minutes are there in 3 days?","options":["4320 minutes","3600 minutes","4200 minutes","4800 minutes"],"correct":0},{"number":32,"text":"Convert 5 hours 45 minutes into minutes.","options":["325 minutes","345 minutes","365 minutes","305 minutes"],"correct":1},{"number":33,"text":"A movie starts at 2:35 p.m. and ends at 5:20 p.m. Find the duration of the movie.","options":["2 hours 35 minutes","3 hours 15 minutes","2 hours 45 minutes","2 hours 55 minutes"],"correct":2},{"number":34,"text":"Convert 18:40 hours into 12-hour clock time.","options":["6:40 a.m.","8:40 p.m.","5:40 p.m.","6:40 p.m."],"correct":3},{"number":35,"text":"How many seconds are there in 1 hour 25 minutes?","options":["5100 seconds","5000 seconds","5200 seconds","5500 seconds"],"correct":0},{"number":36,"text":"A student joins a dance class on 12th April for 39 days. On which date will the 39th day fall, counting 12th April as the first day?","options":["19th May","20th May","21st May","22nd May"],"correct":1},{"number":37,"text":"The temperature in a city was 18°C in the morning and 32°C in the afternoon. Find the increase in temperature.","options":["12°C","16°C","14°C","18°C"],"correct":2},{"number":38,"text":"A thermometer shows 55°C. The temperature decreases by 17°C. What is the new temperature?","options":["28°C","38°C","42°C","35°C"],"correct":1}]},{"title":"E – MONEY AND UNITARY METHOD","questions":[{"number":39,"text":"Convert ₹45.65 into paise.","options":["4565 paise","4655 paise","456 paise","45065 paise"],"correct":0},{"number":40,"text":"Convert 8750 paise into rupees.","options":["₹8.75","₹87.50","₹875","₹78.50"],"correct":1},{"number":41,"text":"If 15 shirts cost ₹900, what will be the cost of 25 shirts?","options":["₹1200","₹1400","₹1500","₹1800"],"correct":2},{"number":42,"text":"The cost of 9 pens is ₹135. Find the cost of 14 pens.","options":["₹180","₹195","₹200","₹210"],"correct":3},{"number":43,"text":"A shopkeeper buys 5 notebooks for ₹175. What is the cost of 8 notebooks?","options":["₹280","₹250","₹300","₹320"],"correct":0},{"number":44,"text":"If 12 chocolates cost ₹96, how many chocolates can be purchased for ₹160?","options":["16","18","20","24"],"correct":2},{"number":45,"text":"Riya has ₹500. She purchases 3 books costing ₹85 each and 2 pens costing ₹25 each. How much money is left?","options":["₹195","₹185","₹190","₹205"],"correct":0},{"number":46,"text":"A fruit seller buys 8 kg of mangoes for ₹640. What is the cost of 5 kg of mangoes?","options":["₹350","₹400","₹450","₹500"],"correct":1},{"number":47,"text":"A person spends ₹125.75 on vegetables and ₹86.50 on fruits. How much does he spend altogether?","options":["₹212.25","₹211.25","₹213.25","₹210.75"],"correct":0},{"number":48,"text":"A shopkeeper has ₹1000. He spends ₹375.50 on groceries and ₹248.75 on stationery. How much money remains?","options":["₹375.75","₹385.75","₹375.25","₹365.75"],"correct":0},{"number":49,"text":"If 6 toys cost ₹450, how many toys can be purchased for ₹900 at the same rate?","options":["9","10","12","15"],"correct":2},{"number":50,"text":"A family consumes 12 L of water every day for drinking. How much water will it consume in 3 weeks? ALL THE BEST!","options":["240 L","252 L","260 L","280 L"],"correct":1}]}]</script>
+<script src="../../assets/js/imo-test.js"></script>
+<script src="../../assets/js/imo-data-test.js"></script>
+</body>
+</html>

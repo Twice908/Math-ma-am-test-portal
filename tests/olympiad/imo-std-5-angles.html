@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  if (localStorage.getItem('mm_auth') !== '1') {
+    window.location.replace('../../login.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Math Ma’am Academy | Std 5 IMO Practice Test – Angles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/theme.css">
+<link rel="stylesheet" href="../../assets/css/test.css">
+</head>
+<body>
+<div class="sheet">
+<header class="title-block">
+  <a class="back-link" href="../../index.html">&larr; Back to Tests</a>
+  <p class="eyebrow">Mathematics Olympiad · Std V · Topic Practice</p>
+  <h1>IMO Mathematics — Angles</h1>
+  <div class="subtitle">Mathematics Olympiad · Practice Test 5</div>
+  <div class="meta-row">
+    <span>Questions: <b id="total-q-count">50</b></span>
+    <span>Marks each: <b>1</b></span>
+    <span>Total marks: <b>50</b></span>
+    <span>Time limit: <b>60:00</b></span>
+  </div>
+</header>
+
+<div class="instructions">
+  <b>Instructions:</b> Answer all questions. Each question carries one mark with no negative marking.
+  Select one option per question. Diagrams are schematic. Your answers are checked when you submit, and the test auto-submits when the 60-minute timer ends.
+</div>
+
+<div id="timer-wrap"><span id="timer-clock">60:00</span></div>
+<div id="progress-wrap">
+  <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+  <div id="progress-label">0 / 50 answered</div>
+</div>
+
+<!-- SVG ASSET LIBRARY: Reusable vector diagrams used by the questions below.
+     Questions refer to these assets with <use href="#asset-id">. -->
+<section aria-label="SVG asset library">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <defs>
+      <marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#26384d"/></marker>
+      <style>
+        .gline{stroke:#26384d;stroke-width:2.6;fill:none;stroke-linecap:round}
+        .thin{stroke:#64748b;stroke-width:1.5;fill:none}
+        .arc{stroke:#d04a35;stroke-width:2.3;fill:none}
+        .pt{fill:#17365d}
+        .lbl{font: bold 13px Arial,sans-serif;fill:#17365d}
+        .clocktxt{font:10px Arial,sans-serif;fill:#26384d}
+      </style>
+
+      <symbol id="asset-point" viewBox="0 0 260 90">
+        <circle cx="130" cy="42" r="4.5" class="pt"/><text x="143" y="47" class="lbl">P</text>
+        <text x="130" y="72" text-anchor="middle" class="clocktxt">A point marks an exact position.</text>
+      </symbol>
+      <symbol id="asset-line" viewBox="0 0 300 85">
+        <path d="M35 42 H265" class="gline" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+        <circle cx="150" cy="42" r="3.5" class="pt"/><text x="24" y="27" class="lbl">A</text><text x="270" y="27" class="lbl">B</text>
+      </symbol>
+      <symbol id="asset-segment" viewBox="0 0 300 85">
+        <path d="M45 42 H255" class="gline"/><circle cx="45" cy="42" r="4" class="pt"/><circle cx="255" cy="42" r="4" class="pt"/>
+        <text x="37" y="26" class="lbl">A</text><text x="258" y="26" class="lbl">B</text>
+      </symbol>
+      <symbol id="asset-ray" viewBox="0 0 300 85">
+        <path d="M55 42 H265" class="gline" marker-end="url(#arrow)"/><circle cx="55" cy="42" r="4" class="pt"/>
+        <text x="43" y="26" class="lbl">A</text><text x="270" y="47" class="lbl">B</text>
+      </symbol>
+      <symbol id="asset-intersect" viewBox="0 0 240 150">
+        <path d="M28 18 L212 132 M28 132 L212 18" class="gline"/>
+        <circle cx="120" cy="75" r="3.5" class="pt"/><text x="126" y="69" class="lbl">O</text>
+        <text x="13" y="17" class="lbl">P</text><text x="215" y="142" class="lbl">Q</text>
+        <text x="13" y="145" class="lbl">R</text><text x="215" y="16" class="lbl">S</text>
+      </symbol>
+      <symbol id="asset-parallel" viewBox="0 0 300 130">
+        <path d="M35 35 H265 M35 95 H265" class="gline" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+        <text x="20" y="30" class="lbl">l</text><text x="20" y="90" class="lbl">m</text>
+        <path d="M125 15 L185 115" class="thin" stroke-dasharray="4 4"/>
+      </symbol>
+      <symbol id="asset-acute" viewBox="0 0 240 150">
+        <path d="M45 118 L195 118 M45 118 L153 25" class="gline"/>
+        <path d="M88 118 A43 43 0 0 0 77 91" class="arc"/><text x="92" y="94" class="lbl">?</text>
+        <text x="32" y="137" class="lbl">O</text><text x="198" y="123" class="lbl">A</text><text x="156" y="22" class="lbl">B</text>
+      </symbol>
+      <symbol id="asset-right" viewBox="0 0 240 150">
+        <path d="M45 118 L195 118 M45 118 L45 22" class="gline"/>
+        <path d="M45 98 H65 V118" class="arc"/><text x="75" y="98" class="lbl">90°</text>
+        <text x="30" y="137" class="lbl">O</text><text x="198" y="123" class="lbl">A</text><text x="32" y="19" class="lbl">B</text>
+      </symbol>
+      <symbol id="asset-obtuse" viewBox="0 0 240 150">
+        <path d="M45 118 L195 118 M45 118 L-2 35" class="gline"/>
+        <path d="M88 118 A43 43 0 0 0 23 79" class="arc"/><text x="77" y="77" class="lbl">?</text>
+        <text x="32" y="137" class="lbl">O</text><text x="198" y="123" class="lbl">A</text><text x="0" y="28" class="lbl">B</text>
+      </symbol>
+      <symbol id="asset-straight" viewBox="0 0 260 100">
+        <path d="M25 55 H235" class="gline" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+        <path d="M130 55 A48 48 0 0 0 82 55" class="arc"/><text x="130" y="20" text-anchor="middle" class="lbl">180°</text>
+        <text x="15" y="76" class="lbl">A</text><text x="126" y="76" class="lbl">O</text><text x="238" y="76" class="lbl">B</text>
+      </symbol>
+      <symbol id="asset-reflex" viewBox="0 0 240 160">
+        <path d="M55 120 L200 120 M55 120 L145 25" class="gline"/>
+        <path d="M75 104 A55 55 0 1 0 107 66" class="arc"/><text x="25" y="60" class="lbl">Reflex</text>
+        <text x="42" y="140" class="lbl">O</text>
+      </symbol>
+      <symbol id="asset-clock-acute" viewBox="0 0 150 150">
+        <circle cx="75" cy="75" r="57" class="gline"/><circle cx="75" cy="75" r="3" class="pt"/>
+        <g class="clocktxt" text-anchor="middle"><text x="75" y="28">12</text><text x="122" y="79">3</text><text x="75" y="130">6</text><text x="28" y="79">9</text></g>
+        <path d="M75 75 L75 35 M75 75 L105 45" class="gline"/>
+      </symbol>
+      <symbol id="asset-clock-right" viewBox="0 0 150 150">
+        <circle cx="75" cy="75" r="57" class="gline"/><circle cx="75" cy="75" r="3" class="pt"/>
+        <g class="clocktxt" text-anchor="middle"><text x="75" y="28">12</text><text x="122" y="79">3</text><text x="75" y="130">6</text><text x="28" y="79">9</text></g>
+        <path d="M75 75 L75 35 M75 75 L115 75" class="gline"/>
+      </symbol>
+      <symbol id="asset-clock-obtuse" viewBox="0 0 150 150">
+        <circle cx="75" cy="75" r="57" class="gline"/><circle cx="75" cy="75" r="3" class="pt"/>
+        <g class="clocktxt" text-anchor="middle"><text x="75" y="28">12</text><text x="122" y="79">3</text><text x="75" y="130">6</text><text x="28" y="79">9</text></g>
+        <path d="M75 75 L75 35 M75 75 L27 95" class="gline"/>
+      </symbol>
+      <symbol id="asset-clock-straight" viewBox="0 0 150 150">
+        <circle cx="75" cy="75" r="57" class="gline"/><circle cx="75" cy="75" r="3" class="pt"/>
+        <g class="clocktxt" text-anchor="middle"><text x="75" y="28">12</text><text x="122" y="79">3</text><text x="75" y="130">6</text><text x="28" y="79">9</text></g>
+        <path d="M75 75 L75 30 M75 75 L75 120" class="gline"/>
+      </symbol>
+      <symbol id="asset-polygon" viewBox="0 0 250 150">
+        <path d="M25 115 L65 25 L85 95 L135 25 L150 95 L210 35 L225 115 Z" class="gline"/>
+      </symbol>
+      <symbol id="asset-angle-count" viewBox="0 0 250 150">
+        <path d="M30 120 L75 25 L95 90 L145 25 L160 90 L220 35" class="gline"/>
+        <circle cx="30" cy="120" r="3" class="pt"/>
+      </symbol>
+      <symbol id="asset-parallel-transversal" viewBox="0 0 260 160">
+        <path d="M25 40 H235 M25 120 H235 M75 10 L185 150" class="gline"/>
+        <text x="12" y="35" class="lbl">l</text><text x="12" y="115" class="lbl">m</text>
+      </symbol>
+    </defs>
+  </svg>
+</section>
+<main id="quiz-root">
+<p class="asset-note"><b>SVG asset section:</b> The diagrams are embedded as reusable vector symbols in this HTML file. Each question that needs a diagram calls the relevant SVG symbol, so the document works offline without external image files.</p>
+
+<h2>SECTION A – POINTS, LINES AND LINE SEGMENTS</h2>
+<div class="question"><div class="qtitle">Q1. Which figure represents a point?</div>
+<svg class="diagram small" viewBox="0 0 260 90"><use href="#asset-point"/></svg>
+<div class="opts"><div class="opt">(A) A straight path with two arrows</div><div class="opt">(B) A dot showing an exact position</div><div class="opt">(C) A path with one endpoint</div><div class="opt">(D) A curved line</div></div></div>
+
+<div class="question"><div class="qtitle">Q2. A line can be extended:</div><div class="opts"><div class="opt">(A) In one direction only</div><div class="opt">(B) In no direction</div><div class="opt">(C) In both directions</div><div class="opt">(D) Only up to 1 metre</div></div></div>
+
+<div class="question"><div class="qtitle">Q3. Which figure has two endpoints and a definite length?</div>
+<svg class="diagram small" viewBox="0 0 300 85"><use href="#asset-segment"/></svg>
+<div class="opts"><div class="opt">(A) Line segment</div><div class="opt">(B) Ray</div><div class="opt">(C) Line</div><div class="opt">(D) Angle</div></div></div>
+
+<div class="question"><div class="qtitle">Q4. A ray has:</div><div class="opts"><div class="opt">(A) No endpoint</div><div class="opt">(B) Two endpoints</div><div class="opt">(C) Three endpoints</div><div class="opt">(D) One endpoint and extends endlessly in one direction</div></div></div>
+
+<div class="question"><div class="qtitle">Q5. In the diagram, which pair of lines intersect at O?</div>
+<svg class="diagram small" viewBox="0 0 240 150"><use href="#asset-intersect"/></svg>
+<div class="opts"><div class="opt">(A) PQ and RS</div><div class="opt">(B) PR and QS</div><div class="opt">(C) PO and PR</div><div class="opt">(D) OQ and OS</div></div></div>
+
+<div class="question"><div class="qtitle">Q6. Two lines in the same plane that never meet, even when extended, are called:</div>
+<svg class="diagram small" viewBox="0 0 300 130"><use href="#asset-parallel"/></svg>
+<div class="opts"><div class="opt">(A) Intersecting lines</div><div class="opt">(B) Curved lines</div><div class="opt">(C) Parallel lines</div><div class="opt">(D) Perpendicular rays</div></div></div>
+
+<div class="question"><div class="qtitle">Q7. Which statement about a line segment is correct?</div><div class="opts"><div class="opt">(A) It has no endpoints</div><div class="opt">(B) It extends endlessly in both directions</div><div class="opt">(C) It has one endpoint</div><div class="opt">(D) It has two endpoints</div></div></div>
+
+<div class="question"><div class="qtitle">Q8. Two roads cross each other at one point. They are best represented by:</div><div class="opts"><div class="opt">(A) Parallel lines</div><div class="opt">(B) Intersecting lines</div><div class="opt">(C) Line segments that never meet</div><div class="opt">(D) A single ray</div></div></div>
+
+<div class="question"><div class="qtitle">Q9. How many endpoints does a ray have?</div><div class="opts"><div class="opt">(A) One</div><div class="opt">(B) Two</div><div class="opt">(C) None</div><div class="opt">(D) Four</div></div></div>
+
+<div class="question"><div class="qtitle">Q10. Which symbol is commonly used to represent an angle?</div><div class="opts"><div class="opt">(A) #</div><div class="opt">(B) %</div><div class="opt">(C) ∠</div><div class="opt">(D) =</div></div></div>
+
+<h2>SECTION B – ANGLES AND THEIR PARTS</h2>
+<div class="question"><div class="qtitle">Q11. The common endpoint where the two arms of an angle meet is called the:</div><div class="opts"><div class="opt">(A) Side</div><div class="opt">(B) Vertex</div><div class="opt">(C) Line</div><div class="opt">(D) Centre</div></div></div>
+
+<div class="question"><div class="qtitle">Q12. The two rays that form an angle are called its:</div><div class="opts"><div class="opt">(A) Vertices</div><div class="opt">(B) Points</div><div class="opt">(C) Curves</div><div class="opt">(D) Arms</div></div></div>
+
+<div class="question"><div class="qtitle">Q13. In ∠ABC, which letter represents the vertex?</div><div class="opts"><div class="opt">(A) A</div><div class="opt">(B) C</div><div class="opt">(C) B</div><div class="opt">(D) AC</div></div></div>
+
+<div class="question"><div class="qtitle">Q14. An angle is formed when:</div><div class="opts"><div class="opt">(A) Two rays meet at a common endpoint</div><div class="opt">(B) Two parallel lines never meet</div><div class="opt">(C) A point is drawn</div><div class="opt">(D) A line is measured</div></div></div>
+
+<div class="question"><div class="qtitle">Q15. The amount of turn between two rays with a common endpoint is called:</div><div class="opts"><div class="opt">(A) Length</div><div class="opt">(B) Distance</div><div class="opt">(C) Perimeter</div><div class="opt">(D) Angle</div></div></div>
+
+<h2>SECTION C – TYPES OF ANGLES</h2>
+<div class="question"><div class="qtitle">Q16. Identify the type of angle shown.</div><svg class="diagram small" viewBox="0 0 240 150"><use href="#asset-acute"/></svg>
+<div class="opts"><div class="opt">(A) Acute</div><div class="opt">(B) Right</div><div class="opt">(C) Obtuse</div><div class="opt">(D) Straight</div></div></div>
+
+<div class="question"><div class="qtitle">Q17. An angle measuring exactly 90° is called:</div><div class="opts"><div class="opt">(A) Acute angle</div><div class="opt">(B) Right angle</div><div class="opt">(C) Obtuse angle</div><div class="opt">(D) Reflex angle</div></div></div>
+
+<div class="question"><div class="qtitle">Q18. Identify the angle shown in the figure.</div><svg class="diagram small" viewBox="0 0 240 150"><use href="#asset-obtuse"/></svg>
+<div class="opts"><div class="opt">(A) Acute</div><div class="opt">(B) Right</div><div class="opt">(C) Obtuse</div><div class="opt">(D) Straight</div></div></div>
+
+<div class="question"><div class="qtitle">Q19. An angle measuring exactly 180° is a:</div><svg class="diagram small" viewBox="0 0 260 100"><use href="#asset-straight"/></svg>
+<div class="opts"><div class="opt">(A) Straight angle</div><div class="opt">(B) Acute angle</div><div class="opt">(C) Reflex angle</div><div class="opt">(D) Right angle</div></div></div>
+
+<div class="question"><div class="qtitle">Q20. A reflex angle is:</div><div class="opts"><div class="opt">(A) Less than 90°</div><div class="opt">(B) Exactly 90°</div><div class="opt">(C) More than 90° but less than 180°</div><div class="opt">(D) More than 180° but less than 360°</div></div></div>
+
+<div class="question"><div class="qtitle">Q21. Which of these can be an acute angle?</div><div class="opts"><div class="opt">(A) 120°</div><div class="opt">(B) 45°</div><div class="opt">(C) 180°</div><div class="opt">(D) 270°</div></div></div>
+
+<div class="question"><div class="qtitle">Q22. Which of these is an obtuse angle?</div><div class="opts"><div class="opt">(A) 89°</div><div class="opt">(B) 90°</div><div class="opt">(C) 135°</div><div class="opt">(D) 180°</div></div></div>
+
+<div class="question"><div class="qtitle">Q23. Which angle is greater than a straight angle?</div><div class="opts"><div class="opt">(A) 175°</div><div class="opt">(B) 90°</div><div class="opt">(C) 45°</div><div class="opt">(D) 225°</div></div></div>
+
+<div class="question"><div class="qtitle">Q24. An angle of 360° represents:</div><div class="opts"><div class="opt">(A) One complete turn</div><div class="opt">(B) Half turn</div><div class="opt">(C) Quarter turn</div><div class="opt">(D) No turn</div></div></div>
+
+<div class="question"><div class="qtitle">Q25. A quarter turn is equal to:</div><div class="opts"><div class="opt">(A) 45°</div><div class="opt">(B) 90°</div><div class="opt">(C) 180°</div><div class="opt">(D) 360°</div></div></div>
+
+<div class="question"><div class="qtitle">Q26. A half turn is equal to:</div><div class="opts"><div class="opt">(A) 90°</div><div class="opt">(B) 270°</div><div class="opt">(C) 180°</div><div class="opt">(D) 360°</div></div></div>
+
+<div class="question"><div class="qtitle">Q27. An angle of 75° is:</div><div class="opts"><div class="opt">(A) Acute</div><div class="opt">(B) Right</div><div class="opt">(C) Obtuse</div><div class="opt">(D) Reflex</div></div></div>
+
+<div class="question"><div class="qtitle">Q28. An angle of 155° is:</div><div class="opts"><div class="opt">(A) Acute</div><div class="opt">(B) Right</div><div class="opt">(C) Straight</div><div class="opt">(D) Obtuse</div></div></div>
+
+<div class="question"><div class="qtitle">Q29. Which pair contains only right angles?</div><div class="opts"><div class="opt">(A) 45° and 90°</div><div class="opt">(B) 90° and 90°</div><div class="opt">(C) 90° and 180°</div><div class="opt">(D) 120° and 90°</div></div></div>
+
+<div class="question"><div class="qtitle">Q30. Which statement is correct?</div><div class="opts"><div class="opt">(A) Every obtuse angle is less than 90°</div><div class="opt">(B) A straight angle is smaller than a right angle</div><div class="opt">(C) Every reflex angle is greater than 180° and less than 360°</div><div class="opt">(D) An acute angle is exactly 180°</div></div></div>
+
+<h2>SECTION D – ANGLES IN CLOCKS AND FIGURES</h2>
+<div class="question"><div class="qtitle">Q31. What type of smaller angle is formed by the clock hands shown?</div><svg class="diagram small" viewBox="0 0 150 150"><use href="#asset-clock-acute"/></svg>
+<div class="opts"><div class="opt">(A) Straight</div><div class="opt">(B) Obtuse</div><div class="opt">(C) Acute</div><div class="opt">(D) Reflex</div></div></div>
+
+<div class="question"><div class="qtitle">Q32. What type of angle is shown by the clock hands?</div><svg class="diagram small" viewBox="0 0 150 150"><use href="#asset-clock-right"/></svg>
+<div class="opts"><div class="opt">(A) Right</div><div class="opt">(B) Acute</div><div class="opt">(C) Obtuse</div><div class="opt">(D) Reflex</div></div></div>
+
+<div class="question"><div class="qtitle">Q33. What type of smaller angle is formed by the clock hands?</div><svg class="diagram small" viewBox="0 0 150 150"><use href="#asset-clock-obtuse"/></svg>
+<div class="opts"><div class="opt">(A) Acute</div><div class="opt">(B) Straight</div><div class="opt">(C) Right</div><div class="opt">(D) Obtuse</div></div></div>
+
+<div class="question"><div class="qtitle">Q34. The clock hands shown form which angle?</div><svg class="diagram small" viewBox="0 0 150 150"><use href="#asset-clock-straight"/></svg>
+<div class="opts"><div class="opt">(A) Acute</div><div class="opt">(B) Straight</div><div class="opt">(C) Obtuse</div><div class="opt">(D) Reflex</div></div></div>
+
+<div class="question"><div class="qtitle">Q35. In the polygon shown, how many vertices are present?</div><svg class="diagram small" viewBox="0 0 250 150"><use href="#asset-polygon"/></svg>
+<div class="opts"><div class="opt">(A) 5</div><div class="opt">(B) 6</div><div class="opt">(C) 7</div><div class="opt">(D) 8</div></div></div>
+
+<div class="question"><div class="qtitle">Q36. How many corners (interior angles) does a triangle have?</div><div class="opts"><div class="opt">(A) 2</div><div class="opt">(B) 4</div><div class="opt">(C) 3</div><div class="opt">(D) 5</div></div></div>
+
+<div class="question"><div class="qtitle">Q37. How many interior angles does a quadrilateral have?</div><div class="opts"><div class="opt">(A) 3</div><div class="opt">(B) 4</div><div class="opt">(C) 5</div><div class="opt">(D) 6</div></div></div>
+
+<div class="question"><div class="qtitle">Q38. Count the sharp (acute) corners in the zig-zag outline shown. Do not count the two bottom corners.</div><svg class="diagram small" viewBox="0 0 250 150"><use href="#asset-polygon"/></svg>
+<div class="opts"><div class="opt">(A) 1</div><div class="opt">(B) 2</div><div class="opt">(C) 4</div><div class="opt">(D) 3</div></div></div>
+
+<div class="question"><div class="qtitle">Q39. In the intersecting-lines diagram, how many lines meet at point O?</div><svg class="diagram small" viewBox="0 0 240 150"><use href="#asset-intersect"/></svg>
+<div class="opts"><div class="opt">(A) 2</div><div class="opt">(B) 1</div><div class="opt">(C) 3</div><div class="opt">(D) 4</div></div></div>
+
+<div class="question"><div class="qtitle">Q40. Two parallel lines are shown. How many times will they meet if extended indefinitely?</div><svg class="diagram small" viewBox="0 0 300 130"><use href="#asset-parallel"/></svg>
+<div class="opts"><div class="opt">(A) Once</div><div class="opt">(B) Twice</div><div class="opt">(C) Never</div><div class="opt">(D) Four times</div></div></div>
+
+<h2>SECTION E – OLYMPIAD APPLICATION AND REASONING</h2>
+<div class="question"><div class="qtitle">Q41. A clock shows 3:00. What type of smaller angle is formed between its hour and minute hands?</div><div class="opts"><div class="opt">(A) Acute</div><div class="opt">(B) Right</div><div class="opt">(C) Obtuse</div><div class="opt">(D) Straight</div></div></div>
+
+<div class="question"><div class="qtitle">Q42. A clock shows 6:00. What type of angle is formed between its hands?</div><div class="opts"><div class="opt">(A) Acute</div><div class="opt">(B) Right</div><div class="opt">(C) Obtuse</div><div class="opt">(D) Straight</div></div></div>
+
+<div class="question"><div class="qtitle">Q43. Rohan turns one-quarter of a complete turn clockwise. How many degrees has he turned?</div><div class="opts"><div class="opt">(A) 180°</div><div class="opt">(B) 45°</div><div class="opt">(C) 90°</div><div class="opt">(D) 360°</div></div></div>
+
+<div class="question"><div class="qtitle">Q44. A steering wheel is turned through 270°. This is an example of a:</div><div class="opts"><div class="opt">(A) Reflex angle</div><div class="opt">(B) Acute angle</div><div class="opt">(C) Right angle</div><div class="opt">(D) Straight angle</div></div></div>
+
+<div class="question"><div class="qtitle">Q45. Which angle is the largest?</div><div class="opts"><div class="opt">(A) 89°</div><div class="opt">(B) 179°</div><div class="opt">(C) 181°</div><div class="opt">(D) 90°</div></div></div>
+
+<div class="question"><div class="qtitle">Q46. Which angle is the smallest?</div><div class="opts"><div class="opt">(A) 91°</div><div class="opt">(B) 45°</div><div class="opt">(C) 180°</div><div class="opt">(D) 120°</div></div></div>
+
+<div class="question"><div class="qtitle">Q47. An angle is greater than 90° but smaller than 180°. Which of the following could be its measure?</div><div class="opts"><div class="opt">(A) 90°</div><div class="opt">(B) 180°</div><div class="opt">(C) 89°</div><div class="opt">(D) 146°</div></div></div>
+
+<div class="question"><div class="qtitle">Q48. How many right angles make one complete turn?</div><div class="opts"><div class="opt">(A) 2</div><div class="opt">(B) 3</div><div class="opt">(C) 4</div><div class="opt">(D) 6</div></div></div>
+
+<div class="question"><div class="qtitle">Q49. A line is divided at point O into two opposite rays. The angle formed is:</div><svg class="diagram small" viewBox="0 0 260 100"><use href="#asset-straight"/></svg>
+<div class="opts"><div class="opt">(A) 180°</div><div class="opt">(B) 90°</div><div class="opt">(C) 45°</div><div class="opt">(D) 360°</div></div></div>
+
+<div class="question"><div class="qtitle">Q50. A shape has 8 corners. How many interior angles does it have?</div><div class="opts"><div class="opt">(A) 6</div><div class="opt">(B) 7</div><div class="opt">(C) 9</div><div class="opt">(D) 8</div></div></div>
+
+ </main>
+<div class="answerkey" hidden>
+  <details>
+    <summary>Teacher’s Answer Key – tap to reveal</summary>
+    <div class="answers">
+      <span>1. B</span><span>2. C</span><span>3. A</span><span>4. D</span><span>5. A</span>
+      <span>6. C</span><span>7. D</span><span>8. B</span><span>9. A</span><span>10. C</span>
+      <span>11. B</span><span>12. D</span><span>13. C</span><span>14. A</span><span>15. D</span>
+      <span>16. A</span><span>17. B</span><span>18. C</span><span>19. A</span><span>20. D</span>
+      <span>21. B</span><span>22. C</span><span>23. D</span><span>24. A</span><span>25. B</span>
+      <span>26. C</span><span>27. A</span><span>28. D</span><span>29. B</span><span>30. C</span>
+      <span>31. C</span><span>32. A</span><span>33. D</span><span>34. B</span><span>35. C</span>
+      <span>36. C</span><span>37. B</span><span>38. D</span><span>39. A</span><span>40. C</span>
+      <span>41. B</span><span>42. D</span><span>43. C</span><span>44. A</span><span>45. C</span>
+      <span>46. B</span><span>47. D</span><span>48. C</span><span>49. A</span><span>50. D</span>
+    </div>
+  </details>
+</div>
+<div class="breakdown" id="breakdown"></div>
+<div class="result-timestamps" id="result-timestamps"></div>
+<div class="result-banner" id="result-banner"></div>
+<footer class="action-bar">
+  <div id="score-readout">Not submitted yet</div>
+  <button id="submit-btn" type="button">Check My Score</button>
+</footer>
+</div>
+<script src="../../assets/js/imo-test.js"></script>
+<script>
+const TEST_DURATION_SECONDS = 60 * 60;
+const answerKey = new Map(
+  [...document.querySelectorAll('.answers span')].map(entry => {
+    const match = entry.textContent.match(/^(\d+)\.\s*([A-D])$/);
+    if (!match) throw new Error('Invalid answer key entry: ' + entry.textContent);
+    return [Number(match[1]), match[2]];
+  })
+);
+let topic = 'Angles';
+const questions = [];
+const quizRoot = document.getElementById('quiz-root');
+const letters = ['A', 'B', 'C', 'D'];
+
+[...quizRoot.children].forEach(block => {
+  if (block.tagName === 'H2') {
+    topic = block.textContent;
+    const divider = document.createElement('div');
+    divider.className = 'section-divider';
+    block.replaceWith(divider);
+    divider.appendChild(block);
+    return;
+  }
+  if (!block.classList.contains('question')) return;
+
+  const question = block;
+  const title = question.querySelector('.qtitle');
+  const match = title.textContent.match(/^Q(\d+)\.\s*/);
+  if (!match) throw new Error('Question is missing its number: ' + title.textContent);
+  const number = Number(match[1]);
+  const options = [...question.querySelectorAll('.opts .opt')];
+  const correctLetter = answerKey.get(number);
+  if (options.length !== 4 || !correctLetter) {
+    throw new Error('Question ' + number + ' must have four options and an answer key entry.');
+  }
+  const head = document.createElement('div');
+  head.className = 'q-head';
+  const numberLabel = document.createElement('span');
+  numberLabel.className = 'q-num';
+  numberLabel.textContent = 'Q' + number + '.';
+  const prompt = document.createElement('span');
+  prompt.className = 'q-text';
+  prompt.textContent = title.textContent.replace(/^Q\d+\.\s*/, '');
+  head.append(numberLabel, prompt);
+  title.replaceWith(head);
+
+  const optionsWrap = question.querySelector('.opts');
+  optionsWrap.classList.replace('opts', 'options');
+  const parsedOptions = [];
+  options.forEach((option, index) => {
+    const letter = letters[index];
+    const labelMatch = option.textContent.trim().match(/^\(([A-D])\)\s*(.*)$/);
+    if (!labelMatch || labelMatch[1] !== letter) {
+      throw new Error('Question ' + number + ' has an invalid option label.');
+    }
+    const label = document.createElement('label');
+    label.className = 'opt';
+    label.id = 'q' + number + '_o' + letter;
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'q' + number;
+    input.value = letter;
+    const bubble = document.createElement('span');
+    bubble.className = 'bubble';
+    bubble.textContent = letter;
+    const text = document.createElement('span');
+    text.className = 'opt-text';
+    text.textContent = labelMatch[2];
+    label.append(input, bubble, text);
+    option.replaceWith(label);
+    parsedOptions.push({element: label, input});
+  });
+  const note = document.createElement('div');
+  note.className = 'answer-note';
+  question.appendChild(note);
+  questions.push({number, element: question, options: parsedOptions, correct: letters.indexOf(correctLetter), topic});
+});
+if (questions.length !== 50 || answerKey.size !== questions.length) {
+  throw new Error('The Angles test must contain 50 questions with matching answers.');
+}
+
+window.initializeImoTest(questions, TEST_DURATION_SECONDS);
+</script>
+</body>
+</html>
