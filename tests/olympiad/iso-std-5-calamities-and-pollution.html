@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Math Ma’am Academy | Science Olympiad Test</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fff; color: #000; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.45; }
+  .page { max-width: 900px; margin: 24px auto; padding: 28px 34px; border: 1px solid #000; }
+  header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 12px; margin-bottom: 16px; }
+  header h1 { font-family: Georgia, "Times New Roman", serif; font-size: 27px; margin: 0 0 3px; letter-spacing: .3px; }
+  header .tagline { font-family: Georgia, "Times New Roman", serif; font-size: 13px; margin-bottom: 12px; }
+  header h2 { font-size: 19px; margin: 0; text-transform: uppercase; }
+  .details { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 22px; text-align: left; margin-top: 14px; font-weight: 600; }
+  .details div { border-bottom: 1px dotted #555; padding: 3px 0; }
+  .instructions { border: 1px solid #000; padding: 9px 12px; margin: 16px 0; }
+  .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid #000; padding: 10px 12px; margin: 14px 0 20px; }
+  #timer { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 18px; }
+  button { background: #fff; color: #000; border: 1px solid #000; border-radius: 0; padding: 9px 16px; font: inherit; cursor: pointer; }
+  button:hover { background: #eee; }
+  button:disabled { opacity: .55; cursor: default; }
+  .question { padding: 12px 0 14px; border-bottom: 1px solid #aaa; break-inside: avoid; }
+  .qtext { font-weight: 700; margin-bottom: 7px; }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 18px; }
+  .option { display: flex; gap: 7px; align-items: flex-start; padding: 3px 5px; }
+  .option input { margin-top: 4px; accent-color: #000; }
+  .option.correct { font-weight: 700; text-decoration: underline; }
+  .option.wrong-selected { text-decoration: line-through; }
+  .result { margin-top: 7px; font-weight: 700; }
+  .summary { display: none; border: 2px solid #000; padding: 12px; margin: 20px 0; font-weight: 700; }
+  footer { text-align: center; border-top: 1px solid #000; margin-top: 28px; padding-top: 12px; font-weight: 700; letter-spacing: 1px; }
+  @media (max-width: 600px) {
+    .page { margin: 0; padding: 18px 14px; border: 0; }
+    .options { grid-template-columns: 1fr; }
+    .details { grid-template-columns: 1fr; }
+    .toolbar { align-items: flex-start; flex-direction: column; }
+  }
+  @media print {
+    body { font-size: 11pt; }
+    .page { max-width: none; margin: 0; padding: 12mm; border: 0; }
+    .toolbar button, .toolbar .timer-label { display: none; }
+    input { print-color-adjust: exact; }
+  }
+  :root { --ink:#172033; --muted:#64748b; --line:#e2e8f0; --blue:#2457c5; --bg:#f4f7fb; }
+  body { background:var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; }
+  .page { max-width:900px; margin:auto; padding:22px 14px 50px; border:0; }
+  header { background:linear-gradient(135deg,#172554,#2563eb); color:white; text-align:left; padding:26px; border:0; border-radius:20px; margin-bottom:18px; }
+  header h1 { font:800 clamp(1.7rem,5vw,2.5rem)/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; margin:6px 0; letter-spacing:0; }
+  header h2 { font-size:1rem; text-transform:none; margin:0; }
+  header .tagline { color:white; opacity:.8; font:700 .76rem system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+  .details { display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-start; margin-top:16px; text-align:left; }
+  .details div { border:1px solid #ffffff40; border-radius:99px; padding:6px 11px; color:white; background:#ffffff20; }
+  .instructions { background:white; color:var(--ink); border:1px solid var(--line); border-radius:16px; padding:14px 18px; margin:13px 0; box-shadow:0 2px 8px #0f172a08; font-size:.9rem; }
+  .toolbar { position:sticky; top:8px; z-index:5; background:white; border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow:0 5px 20px #0f172a10; }
+  #timer { color:var(--blue); }
+  button { border:0; border-radius:11px; padding:11px 17px; background:var(--blue); color:white; font:600 .95rem system-ui; }
+  button:hover { filter:brightness(.97); }
+  .question { background:white; border:1px solid var(--line); border-radius:15px; padding:18px; margin:13px 0; box-shadow:0 2px 8px #0f172a08; }
+  .qtext { font-size:1.02rem; font-weight:700; margin-bottom:14px; }
+  .options { gap:9px; }
+  .option { border:1px solid var(--line); border-radius:10px; padding:10px 12px; background:white; color:var(--ink); transition:.15s; }
+  .option:hover { border-color:#8aa8ef; background:#f8faff; }
+  .option input { accent-color:var(--blue); }
+  .option.correct { border-color:#16a36a; background:#ecfdf3; color:#065f46; text-decoration:none; }
+  .option.wrong-selected { border-color:#e05a52; background:#fff1f0; color:#9f1d18; text-decoration:none; }
+  .result { border-radius:10px; padding:10px 12px; background:#f1f5f9; color:#334155; }
+  .summary { border:1px solid var(--line); border-radius:16px; background:white; color:var(--ink); box-shadow:0 2px 8px #0f172a08; }
+  footer { border-top:1px solid var(--line); color:var(--muted); font-weight:500; letter-spacing:0; }
+  @media (max-width:620px) { .page { padding:12px 10px 40px; } .question { padding:15px; } header { padding:21px; } }
+</style>
+</head>
+<body>
+<main class="page">
+<header>
+  <div class="tagline">Class 5 · Science Olympiad</div>
+  <h1>Pollution and Calamities</h1>
+  <h2>70 multiple-choice questions · 70 marks</h2>
+  <div class="details">
+    <div>60-minute test</div><div>Pollution · Earthquakes · Disasters</div>
+  </div>
+</header>
+<div class="instructions"><strong>Instructions:</strong> Select one option for each question. Each question carries 1 mark. The timer starts automatically. Submit the test to see your score and the correct answers marked in the questions.</div>
+<div class="toolbar">
+  <div><span class="timer-label">Time Remaining: </span><span id="timer">60:00</span></div>
+  <div><span id="progress">Answered: 0 / 70</span></div>
+  <div><button id="submitBtn" type="button">Submit Test</button></div>
+</div>
+<div id="summary" class="summary" role="status"></div>
+<form id="quiz" autocomplete="off"></form>
+<footer>ALL THE BEST</footer>
+</main>
+<script>
+const questions = [["Which of the following is NOT a major type of environmental pollution?", ["Air pollution", "Water pollution", "Soil pollution", "Solar pollution"], 3], ["Which gas is mainly responsible for acid rain?", ["Oxygen", "Sulphur dioxide", "Hydrogen", "Helium"], 1], ["Which of the following is a non-biodegradable waste?", ["Vegetable peels", "Dry leaves", "Plastic bags", "Paper"], 2], ["Which instrument is used to measure the intensity of earthquakes?", ["Barometer", "Seismograph", "Thermometer", "Hygrometer"], 1], ["The sudden shaking or trembling of the Earth is called:", ["Cyclone", "Tsunami", "Earthquake", "Volcano"], 2], ["Which of the following is a major cause of water pollution?", ["Afforestation", "Discharge of untreated industrial waste", "Rainwater harvesting", "Terrace farming"], 1], ["Which layer of the atmosphere protects the Earth from harmful ultraviolet rays?", ["Troposphere", "Ozone layer", "Mesosphere", "Ionosphere"], 1], ["Which of the following is an example of a biodegradable waste?", ["Glass bottle", "Plastic container", "Fruit peel", "Aluminium foil"], 2], ["What is the molten rock present beneath the Earth's surface called?", ["Lava", "Magma", "Crater", "Ash"], 1], ["Which of the following activities contributes most directly to soil erosion?", ["Afforestation", "Terrace farming", "Overgrazing", "Growing cover crops"], 2], ["Which of the following is a greenhouse gas?", ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"], 2], ["The point on the Earth's surface directly above the focus of an earthquake is called:", ["Crater", "Epicentre", "Vent", "Mantle"], 1], ["Which of the following can cause air pollution?", ["Burning firecrackers", "Planting trees", "Using solar energy", "Rainwater harvesting"], 0], ["Which disease can spread through contaminated drinking water?", ["Asthma", "Cholera", "Skin cancer", "Night blindness"], 1], ["The long-term increase in the average temperature of the Earth is called:", ["Acid rain", "Global warming", "Ozone depletion", "Soil erosion"], 1], ["Which of the following is the most suitable method to prevent soil erosion in hilly areas?", ["Overgrazing", "Terrace farming", "Deforestation", "Excessive ploughing"], 1], ["Which gas is released in large quantities by vehicles and industries and contributes to air pollution?", ["Carbon monoxide", "Oxygen", "Hydrogen", "Helium"], 0], ["What is the name given to smaller earthquakes that occur after a major earthquake?", ["Tremors", "Aftershocks", "Cyclones", "Tidal waves"], 1], ["Which of the following is NOT a cause of soil pollution?", ["Excessive use of pesticides", "Disposal of industrial waste", "Improper disposal of plastic", "Planting more trees"], 3], ["Which of the following is a natural cause of air pollution?", ["Vehicle exhaust", "Factory smoke", "Volcanic eruption", "Burning plastic"], 2], ["Which device is installed in automobiles to reduce harmful exhaust gases?", ["Electrostatic precipitator", "Catalytic converter", "Scrubber", "Seismograph"], 1], ["Which of the following is the correct order of the Earth's layers from outside to inside?", ["Mantle, Crust, Core", "Crust, Mantle, Core", "Core, Mantle, Crust", "Crust, Core, Mantle"], 1], ["What is the main cause of a tsunami?", ["Heavy rainfall", "Underwater earthquakes", "Deforestation", "Strong winds on land"], 1], ["Which of the following is NOT a method of water conservation?", ["Rainwater harvesting", "Constructing dams", "Leaving taps running", "Repairing leaking taps"], 2], ["The harmful effect caused by excessive noise is measured in:", ["Metres", "Decibels", "Kilograms", "Litres"], 1], ["Which of the following materials takes the longest time to decompose naturally?", ["Vegetable waste", "Paper", "Plastic", "Dry leaves"], 2], ["Which of the following is an example of an extinct volcano?", ["A volcano that erupts frequently", "A volcano that has not erupted in the last 10,000 years and is not expected to erupt again", "A volcano that is currently erupting", "A volcano that erupts every year"], 1], ["Which of the following is NOT an effect of global warming?", ["Melting of polar ice caps", "Rise in sea levels", "Flooding of coastal areas", "Decrease in Earth's average temperature"], 3], ["Which organisation is internationally known for providing disaster relief and humanitarian assistance?", ["Red Cross Society", "ISRO", "RBI", "UNESCO"], 0], ["Which of the following is a major effect of noise pollution?", ["Better concentration", "Hearing problems", "Increased rainfall", "Soil fertility"], 1], ["What is the main purpose of planting cover crops after harvesting?", ["To increase soil erosion", "To prevent soil erosion", "To increase noise pollution", "To increase water pollution"], 1], ["Which of the following is a non-biodegradable material?", ["Cotton cloth", "Paper", "Ceramic mug", "Fruit peel"], 2], ["Which of the following is responsible for the greenhouse effect?", ["Trapping of heat by greenhouse gases", "Reflection of sound waves", "Formation of earthquakes", "Decomposition of plants"], 0], ["Which of the following is the deepest layer of the Earth?", ["Crust", "Mantle", "Core", "Lithosphere"], 2], ["Which of the following is a major characteristic of cyclones?", ["Very low rainfall and no wind", "Strong winds and heavy rainfall", "Continuous snowfall", "Sudden increase in soil fertility"], 1], ["What is the bowl-shaped opening at the top of a volcano called?", ["Vent", "Crater", "Magma chamber", "Epicentre"], 1], ["Which of the following is an effective way to reduce air pollution caused by vehicles?", ["Using more private vehicles", "Using public transport", "Burning petrol in open areas", "Removing catalytic converters"], 1], ["Which of the following is NOT an effect of water pollution?", ["Death of aquatic animals", "Growth of harmful algae", "Spread of waterborne diseases", "Increase in dissolved oxygen in all polluted water bodies"], 3], ["The festival of Van Mahotsav is celebrated during:", ["First week of January", "First week of July", "Last week of December", "Second week of October"], 1], ["Which of the following is used to reduce industrial air pollution?", ["Scrubbers", "Loudspeakers", "Generators", "Plastic containers"], 0], ["A volcano that has erupted at least once in the last 10,000 years is classified as:", ["Extinct", "Dormant", "Active", "Dead"], 2], ["Which of the following disasters is mainly caused by a prolonged absence of rainfall?", ["Flood", "Cyclone", "Drought", "Tsunami"], 2], ["Which of the following is the correct sequence of events during a volcanic eruption?", ["Lava cools → Magma forms → Eruption", "Magma rises → Pressure builds → Magma escapes through the vent", "Crater forms → Earthquake occurs → Magma disappears", "Rainfall occurs → Magma rises → Flood"], 1], ["Which of the following activities helps prevent noise pollution?", ["Using unnecessary vehicle horns", "Bursting loud firecrackers", "Avoiding loudspeakers at high volume", "Playing loud music near hospitals"], 2], ["Which of the following is an important effect of acid rain?", ["Damage to buildings and monuments", "Increase in soil fertility everywhere", "Formation of the ozone layer", "Reduction in atmospheric carbon dioxide"], 0], ["What happens when excessive nutrients enter a water body?", ["Algal growth may increase rapidly", "Water becomes completely pure", "Aquatic plants stop growing immediately", "Water pollution disappears"], 0], ["Which of the following is a correct example of soil conservation?", ["Deforestation", "Terrace farming", "Excessive mining", "Overgrazing"], 1], ["What is the name given to a rapid flow of snow down a mountain slope?", ["Landslide", "Avalanche", "Tsunami", "Cyclone"], 1], ["Which of the following is NOT a greenhouse gas?", ["Methane", "Carbon dioxide", "Water vapour", "Oxygen"], 3], ["What is the main purpose of constructing embankments along riverbanks?", ["To increase soil erosion", "To prevent flooding and soil erosion", "To increase water pollution", "To increase the speed of river water"], 1], ["Which of the following is most suitable for disposing of biodegradable kitchen waste?", ["Mixing it with plastic waste", "Composting", "Throwing it into rivers", "Burning it in open spaces"], 1], ["Which of the following is NOT a direct effect of an earthquake?", ["Collapse of buildings", "Damage to roads and bridges", "Ground shaking", "Formation of acid rain"], 3], ["What is the main reason why polluted water can cause aquatic animals to die?", ["Increase in oxygen supply", "Reduction in dissolved oxygen", "Increase in sunlight", "Reduction in water temperature in every case"], 1], ["Which of the following is an example of an alternative fuel used to reduce vehicular air pollution?", ["Coal", "CNG", "Wood", "Kerosene"], 1], ["What is the opening through which lava, ash and gases escape from a volcano called?", ["Focus", "Vent", "Epicentre", "Mantle"], 1], ["Which of the following is the correct way to conserve water at home?", ["Keeping taps open while brushing", "Washing vehicles with running water continuously", "Repairing leaking taps", "Allowing water tanks to overflow"], 2], ["Which of the following can trigger a forest fire naturally?", ["Lightning", "Terrace farming", "Rainwater harvesting", "Afforestation"], 0], ["Which of the following statements about earthquakes is correct?", ["They occur only during the rainy season", "They are caused by movements of Earth's plates", "They occur only near oceans", "They can always be predicted accurately"], 1], ["Which of the following is a major consequence of cyclones and floods?", ["Increased food production in all areas", "Contamination of drinking water", "Permanent improvement in roads", "Reduction in all diseases"], 1], ["Which of the following is NOT a recommended action immediately after a disaster?", ["Rescuing people trapped under rubble", "Providing first aid to injured people", "Cleaning the rubble", "Ignoring injured survivors"], 3], ["The Montreal Protocol was signed to control the release of:", ["Oxygen", "Chlorofluorocarbons", "Nitrogen", "Hydrogen"], 1], ["Which of the following is the most appropriate substitute for plastic carry bags?", ["Polythene bags", "Paper or cloth bags", "Thermocol bags", "Plastic-coated bags"], 1], ["Which of the following statements about magma and lava is correct?", ["Magma is found above the Earth's surface", "Lava is found below the Earth's surface", "Magma is molten rock beneath the Earth's surface, while lava is molten rock that reaches the surface", "Both are completely solid rocks"], 2], ["A coastal town experiences a sudden rise of sea water with huge destructive waves following an underwater earthquake. Which disaster has occurred?", ["Drought", "Tsunami", "Avalanche", "Forest fire"], 1], ["Which of the following is NOT an effect of volcanic eruptions?", ["Release of poisonous gases", "Damage caused by flowing lava", "Triggering of earthquakes", "Reduction of all natural disasters"], 3], ["Which of the following correctly matches the type of pollution with its source?", ["Noise pollution – Plastic bags", "Soil pollution – Excessive pesticides", "Water pollution – Vehicle horns", "Air pollution – Paper recycling"], 1], ["A factory releases hot wastewater into a nearby river. What is the most likely environmental effect?", ["Increase in water temperature and harm to aquatic life", "Increase in dissolved oxygen in every case", "Complete removal of water pollution", "Formation of glaciers"], 0], ["Which of the following pairs is incorrectly matched?", ["Seismograph – Earthquake detection", "Richter scale – Measurement of earthquake magnitude", "Decibel – Measurement of noise level", "Barometer – Measurement of earthquake intensity"], 3], ["During a tsunami warning, people living near the coast should:", ["Move towards the beach to observe waves", "Move to higher ground away from the coast", "Stay inside low-lying coastal buildings", "Enter the sea to check the water level"], 1], ["Which of the following is the most appropriate combination of actions to protect the environment?", ["Deforestation, burning plastic and wasting water", "Afforestation, waste segregation and water conservation", "Overgrazing, excessive pesticide use and burning fuels", "Dumping industrial waste and using disposable plastics"], 1]];
+const quiz = document.getElementById('quiz');
+const progress = document.getElementById('progress');
+const submitBtn = document.getElementById('submitBtn');
+const timerEl = document.getElementById('timer');
+const summary = document.getElementById('summary');
+let remaining = 60 * 60;
+let submitted = false;
+
+function renderQuestions() {
+  questions.forEach((q, i) => {
+    const section = document.createElement('section');
+    section.className = 'question';
+    section.id = `question-${i}`;
+    const title = document.createElement('div');
+    title.className = 'qtext';
+    title.textContent = `${i + 1}. ${q[0]}`;
+    section.appendChild(title);
+    const options = document.createElement('div');
+    options.className = 'options';
+    q[1].forEach((option, j) => {
+      const label = document.createElement('label');
+      label.className = 'option';
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = `q${i}`;
+      input.value = j;
+      input.addEventListener('change', updateProgress);
+      const text = document.createElement('span');
+      text.textContent = `(${String.fromCharCode(65 + j)}) ${option}`;
+      label.append(input, text);
+      options.appendChild(label);
+    });
+    section.appendChild(options);
+    quiz.appendChild(section);
+  });
+}
+function updateProgress() {
+  const count = questions.filter((_, i) => quiz.querySelector(`input[name="q${i}"]:checked`)).length;
+  progress.textContent = `Answered: ${count} / ${questions.length}`;
+}
+function updateTimer() {
+  const minutes = Math.floor(remaining / 60);
+  const seconds = remaining % 60;
+  timerEl.textContent = `${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+  if (remaining <= 0) { submitTest(true); return; }
+  remaining--;
+}
+function submitTest(auto = false) {
+  if (submitted) return;
+  if (!auto && !confirm('Submit your test now? You will not be able to change your answers.')) return;
+  submitted = true;
+  clearInterval(clock);
+  let score = 0;
+  questions.forEach((q, i) => {
+    const section = document.getElementById(`question-${i}`);
+    const selected = section.querySelector(`input[name="q${i}"]:checked`);
+    const labels = [...section.querySelectorAll('.option')];
+    labels.forEach((label, j) => {
+      const input = label.querySelector('input');
+      input.disabled = true;
+      if (j === q[2]) label.classList.add('correct');
+      if (selected && Number(selected.value) === j && j !== q[2]) label.classList.add('wrong-selected');
+    });
+    if (selected && Number(selected.value) === q[2]) score++;
+    const result = document.createElement('div');
+    result.className = 'result';
+    const correctLetter = String.fromCharCode(65 + q[2]);
+    if (!selected) result.textContent = `Correct answer: (${correctLetter}) ${q[1][q[2]]} — Not attempted`;
+    else if (Number(selected.value) === q[2]) result.textContent = `Correct`;
+    else result.textContent = `Incorrect. Correct answer: (${correctLetter}) ${q[1][q[2]]}`;
+    section.appendChild(result);
+  });
+  summary.style.display = 'block';
+  summary.textContent = `${auto ? 'Time is up. ' : ''}Test submitted. Score: ${score} / ${questions.length}  |  Unanswered: ${questions.length - questions.filter((_, i) => quiz.querySelector(`input[name="q${i}"]:checked`)).length}`;
+  submitBtn.disabled = true;
+  progress.textContent = `Submitted: ${questions.length} questions checked`;
+  summary.scrollIntoView({behavior: 'smooth', block: 'center'});
+}
+renderQuestions();
+updateTimer();
+const clock = setInterval(updateTimer, 1000);
+submitBtn.addEventListener('click', () => submitTest(false));
+</script>
+</body>
+</html>

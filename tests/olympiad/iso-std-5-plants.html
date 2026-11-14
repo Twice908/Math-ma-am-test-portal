@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Math Ma’am Academy | Science Olympiad – Plants</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#000;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.45}
+.page{max-width:900px;margin:24px auto;padding:28px 34px;border:1px solid #000}
+header{text-align:center;border-bottom:2px solid #000;padding-bottom:12px;margin-bottom:16px}
+header h1{font-family:Georgia,"Times New Roman",serif;font-size:27px;margin:0 0 3px;letter-spacing:.3px}
+.tagline{font-family:Georgia,"Times New Roman",serif;font-size:13px;margin-bottom:12px}
+header h2{font-size:19px;margin:0;text-transform:uppercase}
+.details{display:grid;grid-template-columns:1fr 1fr;gap:7px 22px;text-align:left;margin-top:14px;font-weight:600}
+.details div{border-bottom:1px dotted #555;padding:3px 0}
+.instructions{border:1px solid #000;padding:9px 12px;margin:16px 0}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #000;padding:10px 12px;margin:14px 0 20px}
+#timer{font-weight:700;font-variant-numeric:tabular-nums;font-size:18px}
+button{background:#fff;color:#000;border:1px solid #000;border-radius:0;padding:9px 16px;font:inherit;cursor:pointer}
+button:hover{background:#eee}button:disabled{opacity:.55;cursor:default}
+.question{padding:12px 0 14px;border-bottom:1px solid #aaa;break-inside:avoid}
+.qtext{font-weight:700;margin-bottom:7px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:5px 18px}
+.option{display:flex;gap:7px;align-items:flex-start;padding:3px 5px}
+.option input{margin-top:4px;accent-color:#000}
+.option.correct{font-weight:700;text-decoration:underline}
+.option.wrong-selected{text-decoration:line-through}
+.result{margin-top:7px;font-weight:700}
+.summary{display:none;border:2px solid #000;padding:12px;margin:20px 0;font-weight:700}
+footer{text-align:center;border-top:1px solid #000;margin-top:28px;padding-top:12px;font-weight:700;letter-spacing:1px}
+@media(max-width:600px){.page{margin:0;padding:18px 14px;border:0}.options{grid-template-columns:1fr}.details{grid-template-columns:1fr}.toolbar{align-items:flex-start;flex-direction:column}}
+@media print{body{font-size:11pt}.page{max-width:none;margin:0;padding:12mm;border:0}.toolbar button,.toolbar .timer-label{display:none}}
+:root{--ink:#172033;--muted:#64748b;--line:#e2e8f0;--blue:#2457c5;--bg:#f4f7fb}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.page{max-width:900px;margin:auto;padding:22px 14px 50px;border:0}
+header{background:linear-gradient(135deg,#172554,#2563eb);color:white;text-align:left;padding:26px;border:0;border-radius:20px;margin-bottom:18px}
+header h1{font:800 clamp(1.7rem,5vw,2.5rem)/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:6px 0;letter-spacing:0}
+header h2{font-size:1rem;text-transform:none;margin:0}
+header .tagline{color:white;opacity:.8;font:700 .76rem system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.details{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start;margin-top:16px;text-align:left}
+.details div{border:1px solid #ffffff40;border-radius:99px;padding:6px 11px;color:white;background:#ffffff20}
+.instructions{background:white;color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin:13px 0;box-shadow:0 2px 8px #0f172a08;font-size:.9rem}
+.toolbar{position:sticky;top:8px;z-index:5;background:white;border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 5px 20px #0f172a10}
+#timer{color:var(--blue)}
+button{border:0;border-radius:11px;padding:11px 17px;background:var(--blue);color:white;font:600 .95rem system-ui}
+button:hover{filter:brightness(.97)}
+.question{background:white;border:1px solid var(--line);border-radius:15px;padding:18px;margin:13px 0;box-shadow:0 2px 8px #0f172a08}
+.qtext{font-size:1.02rem;font-weight:700;margin-bottom:14px}
+.options{gap:9px}
+.option{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:white;color:var(--ink);transition:.15s}
+.option:hover{border-color:#8aa8ef;background:#f8faff}
+.option input{accent-color:var(--blue)}
+.option.correct{border-color:#16a36a;background:#ecfdf3;color:#065f46;text-decoration:none}
+.option.wrong-selected{border-color:#e05a52;background:#fff1f0;color:#9f1d18;text-decoration:none}
+.result{border-radius:10px;padding:10px 12px;background:#f1f5f9;color:#334155}
+.summary{border:1px solid var(--line);border-radius:16px;background:white;color:var(--ink);box-shadow:0 2px 8px #0f172a08}
+footer{border-top:1px solid var(--line);color:var(--muted);font-weight:500;letter-spacing:0}
+@media(max-width:620px){.page{padding:12px 10px 40px}.question{padding:15px}header{padding:21px}}
+@media print{body{font-size:11pt}.page{max-width:none;margin:0;padding:12mm}.question{box-shadow:none}}
+</style>
+</head>
+<body>
+<main class="page">
+<header>
+<div class="tagline">Class 5 · Science Olympiad</div>
+<h1>Plants</h1>
+<h2>70 multiple-choice questions · 70 marks</h2>
+<div class="details">
+<div>60-minute test</div><div>Plant Parts · Reproduction · Agriculture</div>
+</div>
+</header>
+<div class="instructions"><strong>Instructions:</strong> Select one option for each question. Each question carries 1 mark. The timer starts automatically. Submit the test to see your score and the correct answers marked in the questions.</div>
+<div class="toolbar">
+<div><span class="timer-label">Time Remaining: </span><span id="timer">60:00</span></div>
+<div><span id="progress">Answered: 0 / 70</span></div>
+<button id="submitBtn" type="button">Submit Test</button>
+</div>
+<div id="summary" class="summary" role="status"></div>
+<form id="quiz" autocomplete="off"></form>
+<footer>ALL THE BEST</footer>
+</main>
+<script>
+const questions = [["Which part of a plant is mainly responsible for absorbing water and minerals from the soil?", ["Stem", "Root", "Leaf", "Flower"], 1], ["Which of the following plants has a fibrous root system?", ["Carrot", "Radish", "Wheat", "Mustard"], 2], ["The leaves of a plant are called the kitchen of the plant because they:", ["Absorb minerals", "Prepare food", "Store seeds", "Absorb water"], 1], ["Which of the following is an example of a modified stem that stores food?", ["Carrot", "Radish", "Potato", "Turnip"], 2], ["Which structure on the surface of leaves helps in the exchange of gases?", ["Veins", "Stomata", "Roots", "Petals"], 1], ["Which of the following pairs is incorrectly matched?", ["Carrot – Tap root", "Wheat – Fibrous root", "Onion – Fibrous root", "Radish – Fibrous root"], 3], ["Which of the following is NOT a function of roots?", ["Absorbing water", "Holding the plant firmly in soil", "Preparing food", "Storing food in some plants"], 2], ["Which part of a plant develops into a fruit after fertilisation?", ["Root", "Ovary", "Leaf", "Stem"], 1], ["Which of the following plants reproduces through spores?", ["Mango", "Fern", "Rose", "Wheat"], 1], ["Which of the following is an example of vegetative reproduction through leaves?", ["Potato", "Ginger", "Bryophyllum", "Onion"], 2], ["A new potato plant grows from which structure?", ["Roots", "Eyes or buds", "Flowers", "Seeds only"], 1], ["Which of the following plants reproduces through underground stems?", ["Ginger", "Carrot", "Radish", "Turnip"], 0], ["Which of the following is NOT a method of vegetative reproduction?", ["Reproduction through roots", "Reproduction through stems", "Reproduction through leaves", "Reproduction through seeds"], 3], ["A farmer plants a piece of rose stem containing a bud in moist soil. Which method of reproduction is being used?", ["Reproduction by seeds", "Stem cutting", "Reproduction by spores", "Pollination"], 1], ["Which of the following is a flowering plant?", ["Fern", "Moss", "Mango", "Mushroom"], 2], ["Which of the following is the correct sequence in the life cycle of a flowering plant?", ["Seed → Flower → Seedling → Fruit", "Seed → Seedling → Mature plant → Flower → Fruit", "Flower → Seedling → Fruit → Seed", "Fruit → Flower → Seedling → Mature plant"], 1], ["Which part of a seed develops into the root of a new plant?", ["Plumule", "Radicle", "Cotyledon", "Seed coat"], 1], ["Which part of the embryo develops into the shoot?", ["Radicle", "Plumule", "Seed coat", "Cotyledon"], 1], ["Which of the following is NOT necessary for seed germination?", ["Water", "Air", "Suitable temperature", "Sunlight"], 3], ["What is the main function of cotyledons in many seeds?", ["Protecting flowers", "Storing food for the developing embryo", "Absorbing minerals from soil", "Producing fruits"], 1], ["Which of the following seeds has two cotyledons?", ["Wheat", "Rice", "Maize", "Bean"], 3], ["Which of the following is a monocot seed?", ["Pea", "Gram", "Maize", "Bean"], 2], ["Seeds of which of the following plants are mainly dispersed by wind?", ["Coconut", "Dandelion", "Lotus", "Mango"], 1], ["The seeds of coconut are dispersed by:", ["Wind", "Water", "Explosion", "Birds"], 1], ["Which of the following plants has seeds with hooks that attach to animal fur?", ["Coconut", "Xanthium", "Dandelion", "Lotus"], 1], ["Which of the following plants disperses its seeds by explosion?", ["Pea", "Coconut", "Dandelion", "Mango"], 0], ["Why is seed dispersal important for plants?", ["It prevents seeds from growing", "It reduces competition with the parent plant", "It stops the formation of fruits", "It prevents germination"], 1], ["Which of the following is NOT a method of seed dispersal?", ["Wind", "Water", "Animals", "Photosynthesis"], 3], ["A seed has a light structure with hair-like projections. Which method of dispersal is most likely?", ["Water", "Wind", "Explosion", "Underground growth"], 1], ["Which of the following fruits is most likely to be dispersed by water?", ["Coconut", "Pea", "Dandelion", "Xanthium"], 0], ["Plants grown on a large scale for food and other useful products are called:", ["Weeds", "Crops", "Shrubs", "Forests"], 1], ["Which of the following is a Rabi crop?", ["Rice", "Cotton", "Wheat", "Maize"], 2], ["Kharif crops are generally grown during which season?", ["Winter", "Monsoon", "Summer only", "Spring"], 1], ["Which of the following is a plantation crop?", ["Tea", "Wheat", "Gram", "Mustard"], 0], ["Which of the following is an oil-producing crop?", ["Mustard", "Rice", "Wheat", "Gram"], 0], ["Which of the following is a fibre crop?", ["Cotton", "Rice", "Pea", "Mustard"], 0], ["Which of the following is a pulse crop?", ["Wheat", "Gram", "Cotton", "Sugarcane"], 1], ["Which agricultural operation involves loosening and turning the soil before sowing?", ["Harvesting", "Ploughing", "Threshing", "Winnowing"], 1], ["Why is ploughing done before sowing seeds?", ["To remove all nutrients from the soil", "To loosen and aerate the soil", "To stop root growth", "To increase soil hardness"], 1], ["Which tool is commonly used for sowing seeds uniformly in fields?", ["Sickle", "Seed drill", "Thresher", "Harvester"], 1], ["Why should seeds be sown at an appropriate distance from one another?", ["To prevent them from getting water", "To avoid overcrowding and competition", "To stop them from germinating", "To reduce sunlight availability"], 1], ["Which of the following is the most suitable method of irrigation when water is scarce?", ["Flood irrigation", "Drip irrigation", "Continuous water flow", "Overwatering"], 1], ["Which method of irrigation supplies water drop by drop near the roots?", ["Sprinkler irrigation", "Drip irrigation", "Flood irrigation", "Canal irrigation"], 1], ["What is the main purpose of adding manure to the soil?", ["To reduce soil fertility", "To increase soil fertility", "To kill all useful microorganisms", "To make the soil completely dry"], 1], ["Which of the following is an organic manure?", ["Urea", "Compost", "Superphosphate", "Ammonium sulphate"], 1], ["Which of the following is a chemical fertiliser?", ["Cow dung", "Compost", "Urea", "Vermicompost"], 2], ["Why is excessive use of chemical fertilisers harmful?", ["It always improves soil quality", "It may reduce soil health and pollute water", "It completely prevents plant growth", "It increases the natural decomposition of plastic"], 1], ["What are unwanted plants growing along with crops called?", ["Seedlings", "Weeds", "Saplings", "Shrubs"], 1], ["Which of the following is used to protect crops from insect pests?", ["Insecticides", "Manure", "Irrigation", "Ploughing"], 0], ["What is the process of cutting mature crops called?", ["Sowing", "Harvesting", "Irrigation", "Ploughing"], 1], ["Which agricultural process separates grains from the harvested stalks?", ["Winnowing", "Threshing", "Irrigation", "Sowing"], 1], ["Which method is used to separate lighter husk from heavier grains using wind?", ["Ploughing", "Threshing", "Winnowing", "Harvesting"], 2], ["Why should grains be dried properly before storage?", ["To increase their moisture content", "To prevent fungal growth and spoilage", "To make them germinate immediately", "To attract insects"], 1], ["Which of the following is the most suitable place for storing grains safely?", ["Open ground", "Moist containers", "Dry and clean storage bins", "Near stagnant water"], 2], ["Which of the following is NOT a stage of agricultural practice?", ["Ploughing", "Sowing", "Irrigation", "Photosynthesis"], 3], ["A farmer notices that the leaves of a plant have many tiny holes through which gases enter and leave. These holes are called:", ["Root hairs", "Stomata", "Buds", "Veins"], 1], ["Which of the following pairs correctly represents underground food-storing plant parts?", ["Potato and ginger", "Mango and apple", "Wheat and rice", "Pea and gram"], 0], ["Which of the following plants can reproduce through roots?", ["Dahlia", "Rose", "Bryophyllum", "Fern"], 0], ["A seed is placed in moist soil but does not germinate because the soil is extremely cold. Which condition is missing?", ["Water", "Air", "Suitable temperature", "Seed coat"], 2], ["Which of the following correctly matches the type of seed dispersal with the plant?", ["Dandelion – Water", "Coconut – Water", "Xanthium – Explosion", "Pea – Wind"], 1], ["Consider the following statements: 1. All seeds have two cotyledons. 2. Seeds require water for germination. 3. The radicle develops into the root. 4. Sunlight is essential for every seed to germinate. Which statements are correct?", ["1 and 2 only", "2 and 3 only", "1, 3 and 4 only", "2, 3 and 4 only"], 1], ["Which of the following is the correct order of agricultural operations?", ["Harvesting → Ploughing → Sowing → Irrigation", "Ploughing → Sowing → Irrigation → Harvesting", "Sowing → Harvesting → Ploughing → Irrigation", "Irrigation → Harvesting → Sowing → Ploughing"], 1], ["A farmer grows wheat during winter and rice during the rainy season. Which statement is correct?", ["Both are Rabi crops", "Both are Kharif crops", "Wheat is Rabi and rice is Kharif", "Wheat is Kharif and rice is Rabi"], 2], ["Which of the following correctly describes the difference between tap roots and fibrous roots?", ["Tap roots have many equal-sized roots, while fibrous roots have one main root", "Tap roots have one main root with lateral branches, while fibrous roots have many roots of similar size", "Both have only one root", "Both grow only above the ground"], 1], ["A plant has a weak stem and grows with the support of nearby objects. Which type of plant is it most likely to be?", ["Tree", "Climber", "Shrub", "Herb"], 1], ["Which of the following statements about leaves is correct?", ["Leaves absorb food from the soil", "Leaves prepare food using sunlight, water and carbon dioxide", "Leaves absorb minerals directly from the soil", "Leaves are responsible for holding plants firmly in soil"], 1], ["A farmer uses a sprinkler system to irrigate crops. How does this system supply water?", ["Water flows through underground roots", "Water is sprayed over crops like rainfall", "Water is supplied only to the main stem", "Water is stored inside the seeds"], 1], ["A farmer stores freshly harvested grains without drying them. What is the most likely result?", ["Grains may develop fungus due to moisture", "Grains become completely pest-free", "Grains lose all their weight immediately", "Grains turn into fertilisers"], 0], ["Which of the following correctly identifies the function of the flower?", ["Absorption of water", "Reproduction in plants", "Holding the plant firmly in soil", "Transporting minerals from roots"], 1], ["Which combination correctly matches all three examples?", ["Bryophyllum – Leaf reproduction; Coconut – Water dispersal; Wheat – Rabi crop", "Potato – Seed reproduction; Dandelion – Water dispersal; Rice – Rabi crop", "Ginger – Root reproduction; Pea – Wind dispersal; Wheat – Kharif crop", "Fern – Seed reproduction; Xanthium – Water dispersal; Cotton – Pulse crop"], 0]];
+const quiz=document.getElementById('quiz');
+const progress=document.getElementById('progress');
+const submitBtn=document.getElementById('submitBtn');
+const timerEl=document.getElementById('timer');
+const summary=document.getElementById('summary');
+let remaining=60*60,submitted=false,clock;
+function renderQuestions(){
+ questions.forEach((q,i)=>{
+  const section=document.createElement('section');section.className='question';section.id=`question-${i}`;
+  const title=document.createElement('div');title.className='qtext';title.textContent=`${i+1}. ${q[0]}`;section.appendChild(title);
+  const options=document.createElement('div');options.className='options';
+  q[1].forEach((option,j)=>{
+   const label=document.createElement('label');label.className='option';
+   const input=document.createElement('input');input.type='radio';input.name=`q${i}`;input.value=j;input.addEventListener('change',updateProgress);
+   const text=document.createElement('span');text.textContent=`(${String.fromCharCode(65+j)}) ${option}`;
+   label.append(input,text);options.appendChild(label);
+  });
+  section.appendChild(options);quiz.appendChild(section);
+ });
+}
+function updateProgress(){
+ const count=questions.filter((_,i)=>quiz.querySelector(`input[name="q${i}"]:checked`)).length;
+ progress.textContent=`Answered: ${count} / ${questions.length}`;
+}
+function updateTimer(){
+ const m=Math.floor(remaining/60),s=remaining%60;
+ timerEl.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+ if(remaining<=0){submitTest(true);return;}remaining--;
+}
+function submitTest(auto=false){
+ if(submitted)return;
+ if(!auto&&!confirm('Submit your test now? You will not be able to change your answers.'))return;
+ submitted=true;clearInterval(clock);
+ let score=0,attempted=0;
+ questions.forEach((q,i)=>{
+  const section=document.getElementById(`question-${i}`);
+  const selected=section.querySelector(`input[name="q${i}"]:checked`);
+  if(selected)attempted++;
+  const labels=[...section.querySelectorAll('.option')];
+  labels.forEach((label,j)=>{
+   const input=label.querySelector('input');input.disabled=true;
+   if(j===q[2])label.classList.add('correct');
+   if(selected&&Number(selected.value)===j&&j!==q[2])label.classList.add('wrong-selected');
+  });
+  if(selected&&Number(selected.value)===q[2])score++;
+  const result=document.createElement('div');result.className='result';
+  const letter=String.fromCharCode(65+q[2]);
+  if(!selected)result.textContent=`Correct answer: (${letter}) ${q[1][q[2]]} — Not attempted`;
+  else if(Number(selected.value)===q[2])result.textContent='Correct';
+  else result.textContent=`Incorrect. Correct answer: (${letter}) ${q[1][q[2]]}`;
+  section.appendChild(result);
+ });
+ summary.style.display='block';
+ summary.textContent=`${auto?'Time is up. ':''}Test submitted. Score: ${score} / ${questions.length} | Attempted: ${attempted} | Unanswered: ${questions.length-attempted}`;
+ submitBtn.disabled=true;progress.textContent='Submitted: 70 questions checked';
+ summary.scrollIntoView({behavior:'smooth',block:'center'});
+}
+renderQuestions();updateTimer();clock=setInterval(updateTimer,1000);
+submitBtn.addEventListener('click',()=>submitTest(false));
+</script>
+</body>
+</html>

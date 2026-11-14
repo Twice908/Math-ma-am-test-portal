@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Ma’am Academy | Class 5 Science Olympiad – Animals</title>
+<style>
+  @page { size: A4; margin: 16mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fff; color: #000; font-family: Inter, Arial, sans-serif; font-size: 14px; line-height: 1.45; }
+  .sheet { max-width: 900px; margin: 0 auto; padding: 28px 34px 44px; }
+  header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 12px; margin-bottom: 16px; }
+  h1 { font-size: 23px; margin: 0 0 3px; letter-spacing: .2px; }
+  .tagline { font-size: 12px; margin: 0 0 12px; }
+  h2 { font-size: 18px; margin: 0 0 10px; }
+  .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; text-align: left; font-size: 13px; }
+  .meta div { border-bottom: 1px solid #777; padding: 3px 0; }
+  .instructions { border: 1px solid #000; padding: 9px 12px; margin: 14px 0; font-size: 13px; }
+  .toolbar { position: sticky; top: 0; z-index: 5; background: #fff; border: 1px solid #000; padding: 9px 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 14px 0 18px; }
+  .timer { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 17px; }
+  .stats { font-size: 12px; }
+  button { background: #fff; color: #000; border: 1px solid #000; padding: 8px 13px; font: inherit; cursor: pointer; }
+  button:disabled { opacity: .55; cursor: default; }
+  .section { font-size: 16px; font-weight: 700; border-bottom: 1px solid #000; margin: 24px 0 12px; padding-bottom: 4px; }
+  .question { margin: 0 0 17px; break-inside: avoid; }
+  .qtext { font-weight: 600; margin-bottom: 5px; }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 18px; padding-left: 2px; }
+  label.option { display: flex; align-items: flex-start; gap: 7px; padding: 2px 3px; cursor: pointer; }
+  input[type=radio] { margin: 3px 0 0; accent-color: #000; flex: 0 0 auto; }
+  .letter { min-width: 19px; }
+  .correct { font-weight: 700; text-decoration: underline; }
+  .wrong-selected { text-decoration: line-through; }
+  .result-note { display: none; font-size: 12px; font-weight: 700; margin-top: 5px; }
+  .submitted .result-note { display: block; }
+  .summary { display: none; border: 2px solid #000; padding: 12px; margin: 18px 0; font-weight: 700; }
+  .submitted .summary { display: block; }
+  .footer { border-top: 1px solid #000; margin-top: 28px; padding-top: 10px; text-align: center; font-weight: 700; letter-spacing: .4px; }
+  @media (max-width: 600px) {
+    .sheet { padding: 18px 14px 30px; }
+    .options { grid-template-columns: 1fr; }
+    .toolbar { flex-wrap: wrap; }
+    h1 { font-size: 20px; }
+  }
+  @media print {
+    body { font-size: 11px; }
+    .sheet { max-width: none; padding: 0; }
+    .toolbar, .no-print { display: none !important; }
+    .question { margin-bottom: 11px; }
+    .options { gap: 1px 12px; }
+    input[type=radio] { appearance: none; width: 10px; height: 10px; border: 1px solid #000; border-radius: 50%; }
+    .submitted .summary { display: block; }
+  }
+  :root { --ink:#172033; --muted:#64748b; --line:#e2e8f0; --blue:#2457c5; --bg:#f4f7fb; --good:#087443; --bad:#b42318; }
+  body { background:var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; }
+  .sheet,.page { max-width:900px; margin:auto; padding:22px 14px 50px; border:0; }
+  header { background:linear-gradient(135deg,#172554,#2563eb); color:white; text-align:left; padding:26px; border:0; border-radius:20px; margin-bottom:18px; }
+  header h1 { font:800 clamp(1.7rem,5vw,2.5rem)/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; margin:6px 0; letter-spacing:0; }
+  header h2 { font-size:1rem; text-transform:none; margin:0; }
+  header .tagline { color:white; opacity:.8; font-size:.76rem; letter-spacing:.12em; text-transform:uppercase; }
+  .meta,.details { display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-start; margin-top:16px; text-align:left; }
+  .meta div { border:1px solid #ffffff40; border-radius:99px; padding:6px 11px; color:white; background:#ffffff20; }
+  .details div { border:1px solid #ffffff40; border-radius:99px; padding:6px 11px; color:white; background:#ffffff20; }
+  .instructions { background:white; color:var(--ink); border:1px solid var(--line); border-radius:16px; padding:14px 18px; margin:13px 0; box-shadow:0 2px 8px #0f172a08; font-size:.9rem; }
+  .toolbar { position:sticky; top:8px; z-index:5; background:white; border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow:0 5px 20px #0f172a10; }
+  .timer { color:var(--blue); }
+  button { border:0; border-radius:11px; padding:11px 17px; background:var(--blue); color:white; font:600 .95rem system-ui; }
+  #printBtn { background:#e8edf5; color:#243047; }
+  button:hover { filter:brightness(.97); }
+  .section { color:var(--blue); border-bottom:2px solid #dbe4f0; font-size:1.05rem; margin:24px 0 12px; padding-bottom:6px; }
+  .question { background:white; border:1px solid var(--line); border-radius:15px; padding:18px; margin:13px 0; box-shadow:0 2px 8px #0f172a08; }
+  .qtext { font-size:1.02rem; font-weight:700; margin-bottom:14px; }
+  .options { gap:9px; }
+  label.option { border:1px solid var(--line); border-radius:10px; padding:10px 12px; background:white; color:var(--ink); text-decoration:none; transition:.15s; }
+  label.option:hover { border-color:#8aa8ef; background:#f8faff; }
+  input[type=radio] { accent-color:var(--blue); }
+  .correct { border-color:#16a36a !important; background:#ecfdf3; color:#065f46; text-decoration:none; }
+  .wrong-selected { border-color:#e05a52 !important; background:#fff1f0; color:#9f1d18; text-decoration:none; }
+  .result-note { border-radius:10px; padding:10px 12px; background:#f1f5f9; color:#334155; }
+  .summary { border:1px solid var(--line); border-radius:16px; background:white; color:var(--ink); box-shadow:0 2px 8px #0f172a08; }
+  .footer { border-top:1px solid var(--line); color:var(--muted); font-weight:500; letter-spacing:0; }
+  @media (max-width:620px) { .sheet,.page { padding:12px 10px 40px; } .question { padding:15px; } header { padding:21px; } }
+  @media print { body { font-size:11px; } .sheet,.page { max-width:none; padding:0; } .question { box-shadow:none; } }
+</style>
+</head>
+<body>
+<div class="sheet" id="paper">
+<header>
+  <div class="tagline">Class 5 · Science Olympiad</div>
+  <h1>Animals</h1>
+  <h2>100 multiple-choice questions · 100 marks</h2>
+  <div class="meta">
+    <div>90-minute test</div><div>Habitats · Adaptations · Body Systems</div>
+  </div>
+</header>
+<div class="instructions"><b>Instructions:</b> Select one option for each question. Each question carries 1 mark. Submit your test to see your score and the correct answers marked in the questions. The test will submit automatically when the timer reaches zero.</div>
+<div class="toolbar no-print">
+  <div><div class="timer" id="timer">90:00</div><div class="stats" id="progress">Answered: 0 / 100</div></div>
+  <div><button id="submitBtn" type="button">Submit Test</button> <button id="printBtn" type="button">Print</button></div>
+</div>
+<div class="summary" id="summary" aria-live="polite"></div>
+<main id="questions"></main>
+<div class="footer">ALL THE BEST</div>
+</div>
+<script>
+const questions = [["The place where an animal lives, grows and reproduces is called its:", ["Territory", "Habitat", "Shelter", "Environment"], 1], ["Which of the following is a terrestrial animal?", ["Dolphin", "Shark", "Elephant", "Octopus"], 2], ["Animals that live mainly on trees are called:", ["Aquatic", "Arboreal", "Aerial", "Amphibians"], 1], ["Which of the following is an amphibian?", ["Crocodile", "Frog", "Fish", "Lizard"], 1], ["Which pair consists of aerial animals?", ["Eagle and bat", "Fish and dolphin", "Frog and toad", "Monkey and sloth"], 0], ["Which of the following animals is NOT aquatic?", ["Shark", "Whale", "Dolphin", "Camel"], 3], ["Aquatic animals living in freshwater include:", ["Shark and whale", "Rohu and catla", "Dolphin and octopus", "Seal and sea turtle"], 1], ["Which animal is commonly found in desert habitats?", ["Polar bear", "Camel", "Penguin", "Yak"], 1], ["Which of the following animals is adapted to mountainous regions?", ["Yak", "Octopus", "Dolphin", "Crocodile"], 0], ["The region surrounding the North Pole is called:", ["Antarctic region", "Arctic region", "Tropical region", "Equatorial region"], 1], ["Which of the following animals is found in polar regions?", ["Camel", "Rattlesnake", "Polar bear", "Monkey"], 2], ["Which animal is commonly found in forests and is adapted to climbing trees?", ["Monkey", "Shark", "Penguin", "Ostrich"], 0], ["Which of the following is an example of an animal living in a marine habitat?", ["Earthworm", "Shark", "Camel", "Deer"], 1], ["Animals that live both on land and in water are called:", ["Terrestrial animals", "Aquatic animals", "Amphibians", "Arboreal animals"], 2], ["Which animal is correctly matched with its habitat?", ["Polar bear – Desert", "Camel – Polar region", "Yak – Mountainous region", "Shark – Forest"], 2], ["Which of the following is NOT an aerial animal?", ["Eagle", "Swallow", "Bat", "Ostrich"], 3], ["Forests provide animals with:", ["Only food", "Only water", "Food and shelter", "Only sunlight"], 2], ["Which animal is adapted to living in salty seawater?", ["Shark", "Earthworm", "Frog", "Monkey"], 0], ["Which statement about aquatic habitats is correct?", ["All aquatic animals live in freshwater.", "Aquatic habitats include freshwater and marine water.", "Aquatic animals cannot breathe underwater.", "All aquatic animals breathe through lungs."], 1], ["A frog can survive in both water and on land. It is therefore classified as:", ["Aerial", "Arboreal", "Amphibian", "Terrestrial only"], 2], ["The body of insects like ants and butterflies is covered with:", ["Feathers", "Cuticle", "Fur", "Scales"], 1], ["Which body covering helps birds to fly and keeps them warm?", ["Scales", "Shell", "Feathers", "Spines"], 2], ["Fish generally have a body covering made of:", ["Hair", "Feathers", "Scales", "Fur"], 2], ["Which of the following animals has a hard protective shell?", ["Snail", "Eagle", "Tiger", "Frog"], 0], ["The body of a porcupine is covered with:", ["Feathers", "Spines", "Scales", "Hair"], 1], ["Which animal has a body covered with fur?", ["Fish", "Tiger", "Butterfly", "Frog"], 1], ["Reptilian and bird scales are mainly derived from which layer of skin?", ["Epidermis", "Dermis", "Muscular layer", "Bone layer"], 0], ["Fish scales are generally derived from:", ["Epidermis", "Dermis", "Feathers", "Cuticle"], 1], ["Which of the following pairs is incorrectly matched?", ["Butterfly – Cuticle", "Bird – Feathers", "Fish – Scales", "Porcupine – Shell"], 3], ["What is the main function of the shell in a tortoise?", ["To help it fly", "To protect its body", "To help it breathe", "To help it swim faster"], 1], ["Which of the following animals has overlapping scales?", ["Snake", "Peacock", "Rabbit", "Frog"], 0], ["Which animal has a body covering that protects it from extreme cold?", ["Polar bear", "Earthworm", "Butterfly", "Fish"], 0], ["Which of the following is NOT a body covering of animals?", ["Feathers", "Cuticle", "Scales", "Gills"], 3], ["The hard outer covering of a snail is called:", ["Spine", "Shell", "Cuticle", "Feather"], 1], ["Which combination is correctly matched?", ["Fish – Feathers; Bird – Scales", "Ant – Cuticle; Bird – Feathers", "Snake – Fur; Butterfly – Hair", "Tortoise – Feathers; Tiger – Shell"], 1], ["Animals that eat only plants and plant products are called:", ["Carnivores", "Omnivores", "Herbivores", "Scavengers"], 2], ["Which of the following is a carnivore?", ["Goat", "Tiger", "Cow", "Deer"], 1], ["Which animal is an omnivore?", ["Bear", "Horse", "Goat", "Cow"], 0], ["Which teeth are mainly used by herbivores for cutting and biting plants?", ["Canines", "Incisors", "Sharp molars", "All teeth are identical"], 1], ["Carnivores generally have sharp and pointed teeth called:", ["Molars", "Premolars", "Canines", "Incisors"], 2], ["Which of the following animals is a scavenger?", ["Vulture", "Cow", "Deer", "Rabbit"], 0], ["Animals that feed on dead animals are called:", ["Herbivores", "Scavengers", "Omnivores", "Producers"], 1], ["Which of the following animals is correctly classified as a herbivore?", ["Wolf", "Horse", "Tiger", "Vulture"], 1], ["Which teeth are mainly responsible for grinding and chewing food?", ["Canines", "Molars", "Incisors", "None of these"], 1], ["Which of the following pairs consists of omnivorous animals?", ["Bear and human", "Cow and goat", "Tiger and lion", "Deer and horse"], 0], ["Which of the following animals has sharp, pointed canines for tearing flesh?", ["Goat", "Tiger", "Cow", "Horse"], 1], ["An animal that eats both plants and animals is called:", ["Herbivore", "Carnivore", "Omnivore", "Scavenger"], 2], ["Which of the following is NOT a herbivore?", ["Rabbit", "Deer", "Elephant", "Wolf"], 3], ["The front teeth of rodents like rats and squirrels are specially adapted for:", ["Grinding food", "Gnawing food", "Sucking nectar", "Filtering water"], 1], ["Which of the following statements is correct?", ["All animals have the same type of teeth.", "Eating habits influence the structure of teeth.", "Herbivores have only sharp canines.", "Carnivores eat only plant products."], 1], ["Most terrestrial mammals breathe through:", ["Gills", "Lungs", "Spiracles", "Moist skin"], 1], ["Fish breathe through:", ["Lungs", "Spiracles", "Gills", "Skin only"], 2], ["Earthworms breathe through:", ["Lungs", "Gills", "Moist skin", "Spiracles"], 2], ["Insects like grasshoppers breathe through tiny openings called:", ["Gills", "Spiracles", "Nostrils", "Lungs"], 1], ["The network of tiny tubes connected to spiracles in insects is called:", ["Tracheal system", "Digestive system", "Circulatory system", "Nervous system"], 0], ["Which of the following animals can breathe through both lungs and moist skin?", ["Frog", "Shark", "Butterfly", "Earthworm"], 0], ["Which animal uses gills to obtain oxygen dissolved in water?", ["Whale", "Fish", "Dolphin", "Bat"], 1], ["Which of the following is a mammal that breathes through lungs despite living in water?", ["Shark", "Whale", "Rohu", "Octopus"], 1], ["During breathing, animals generally take in:", ["Carbon dioxide", "Oxygen", "Nitrogen only", "Hydrogen"], 1], ["Which of the following animals breathes through spiracles?", ["Grasshopper", "Earthworm", "Fish", "Dolphin"], 0], ["Why must the skin of an earthworm remain moist?", ["To help it fly", "To allow exchange of gases", "To protect it from sunlight only", "To digest food"], 1], ["Which of the following pairs is correctly matched?", ["Fish – Lungs", "Earthworm – Moist skin", "Grasshopper – Gills", "Dolphin – Spiracles"], 1], ["Which of these animals comes to the water surface to breathe air through lungs?", ["Whale", "Rohu", "Shark", "Catla"], 0], ["The exchange of oxygen and carbon dioxide in fish takes place mainly through:", ["Fins", "Gills", "Scales", "Tail"], 1], ["Which statement about breathing in amphibians is correct?", ["Frogs breathe only through gills throughout life.", "Adult frogs can breathe through lungs and moist skin.", "Frogs breathe only through spiracles.", "Frogs do not require oxygen."], 1], ["The ability of an animal to move from one place to another is called:", ["Respiration", "Locomotion", "Digestion", "Adaptation"], 1], ["Which of the following animals moves by slithering?", ["Snake", "Eagle", "Horse", "Frog"], 0], ["Which animal moves by hopping?", ["Kangaroo", "Fish", "Snail", "Dolphin"], 0], ["Which of the following animals moves by crawling?", ["Eagle", "Lizard", "Horse", "Deer"], 1], ["Which animal uses fins for swimming?", ["Bat", "Fish", "Monkey", "Snake"], 1], ["Which of the following is a flightless bird?", ["Eagle", "Swallow", "Ostrich", "Parakeet"], 2], ["Which of the following animals can fly?", ["Penguin", "Bat", "Ostrich", "Kiwi"], 1], ["Which body parts help birds in flying?", ["Fins", "Wings", "Gills", "Shell"], 1], ["Snakes move by:", ["Hopping", "Slithering", "Flying", "Swimming only"], 1], ["Which animal uses strong hindlimbs to jump?", ["Kangaroo", "Earthworm", "Snail", "Fish"], 0], ["Which of the following animals can swim using webbed feet?", ["Duck", "Tiger", "Camel", "Monkey"], 0], ["Which animal has a streamlined body that helps it move easily through water?", ["Fish", "Cow", "Elephant", "Rabbit"], 0], ["Which of the following animals uses wings but cannot fly?", ["Sparrow", "Ostrich", "Eagle", "Pigeon"], 1], ["A snail moves with the help of:", ["Wings", "A muscular foot", "Fins", "Hindlimbs"], 1], ["Which of the following pairs is incorrectly matched?", ["Snake – Slithering", "Kangaroo – Hopping", "Fish – Swimming", "Eagle – Crawling"], 3], ["The adjustment of an organism to its environment to improve its chances of survival is called:", ["Migration", "Adaptation", "Locomotion", "Respiration"], 1], ["Which feature helps a camel survive in desert conditions?", ["Thick layer of blubber", "Adaptations to conserve water", "Webbed feet", "Feathers"], 1], ["Polar bears have thick fur and a layer of fat mainly to:", ["Help them fly", "Keep their bodies warm", "Help them breathe underwater", "Help them climb trees"], 1], ["The process of animals moving from one region to another, often seasonally, is called:", ["Camouflage", "Mimicry", "Migration", "Hibernation"], 2], ["Which of the following animals is known for long-distance migration?", ["Arctic tern", "Snail", "Earthworm", "Tortoise"], 0], ["The Arctic tern travels between:", ["Arctic and Antarctic regions", "India and Australia only", "Deserts and forests", "Mountains and grasslands"], 0], ["The average round-trip length of migration of the Arctic tern is approximately:", ["700 km", "7,100 km", "71,000 km", "710 km"], 2], ["Which animal is known for migrating from Canada to Mexico?", ["Monarch butterfly", "Polar bear", "Camel", "Penguin"], 0], ["Monarch butterflies migrate to Mexico mainly to:", ["Find a suitable place to survive during unfavourable conditions", "Find freshwater to breathe", "Build nests underwater", "Escape from sunlight permanently"], 0], ["The ability of an organism to blend with its surroundings to avoid detection is called:", ["Migration", "Camouflage", "Locomotion", "Respiration"], 1], ["Which of the following is an example of camouflage?", ["A chameleon changing its colour to blend with its surroundings", "A bird flying to another country", "A fish breathing through gills", "A snake shedding its skin"], 0], ["Which animal is known for changing its body colour to blend with its surroundings?", ["Chameleon", "Elephant", "Whale", "Ostrich"], 0], ["The ability of an organism to resemble another organism or object is called:", ["Migration", "Mimicry", "Respiration", "Hibernation"], 1], ["Mimicry helps an animal mainly by:", ["Increasing its body weight", "Protecting it from predators", "Helping it prepare food", "Increasing its speed of digestion"], 1], ["Which of the following is an example of an animal adaptation for flying?", ["Hollow bones in birds", "Thick blubber in whales", "Gills in fish", "Shell in tortoises"], 0], ["Which of the following adaptations helps aquatic animals swim efficiently?", ["Streamlined body", "Thick fur", "Sharp claws", "Hollow bones"], 0], ["The body of a whale is adapted to cold water mainly because of:", ["Feathers", "Blubber", "Cuticle", "Scales"], 1], ["Why do animals migrate?", ["To find suitable conditions for survival and reproduction", "To stop breathing", "To avoid eating food", "To permanently change their body coverings"], 0], ["Which of the following statements correctly distinguishes camouflage from mimicry?", ["Camouflage is blending with surroundings, while mimicry involves resembling another organism or object.", "Camouflage is migration, while mimicry is respiration.", "Both mean movement from one place to another.", "Both are methods of breathing."], 0], ["Consider the following statements: 1. Fish breathe through gills. 2. Earthworms breathe through moist skin. 3. Birds have hollow bones that help in flight. 4. Polar bears have adaptations that help them survive in cold regions. Which statements are correct?", ["1 and 2 only", "2 and 3 only", "1, 2 and 4 only", "All four statements"], 3]];
+const sectionTitles = [
+  [0, "SECTION A – HABITATS OF ANIMALS"],
+  [20, "SECTION B – BODY COVERINGS OF ANIMALS"],
+  [35, "SECTION C – EATING HABITS OF ANIMALS"],
+  [50, "SECTION D – BREATHING METHODS OF ANIMALS"],
+  [65, "SECTION E – MOVEMENTS IN ANIMALS"],
+  [80, "SECTION F – ADAPTATIONS, MIGRATION, CAMOUFLAGE AND MIMICRY"]
+];
+const letters = ["A", "B", "C", "D"];
+const root = document.getElementById("questions");
+questions.forEach((q, i) => {
+  const section = sectionTitles.find(s => s[0] === i);
+  if (section) {
+    const heading = document.createElement("div");
+    heading.className = "section";
+    heading.textContent = section[1];
+    root.appendChild(heading);
+  }
+  const article = document.createElement("section");
+  article.className = "question";
+  article.id = `question-${i+1}`;
+  const title = document.createElement("div");
+  title.className = "qtext";
+  title.textContent = `${i+1}. ${q[0]}`;
+  article.appendChild(title);
+  const options = document.createElement("div");
+  options.className = "options";
+  q[1].forEach((option, j) => {
+    const label = document.createElement("label");
+    label.className = "option";
+    label.dataset.option = j;
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = `q${i}`;
+    radio.value = j;
+    radio.setAttribute("aria-label", `Question ${i+1}, option ${letters[j]}`);
+    radio.addEventListener("change", updateProgress);
+    const letter = document.createElement("span");
+    letter.className = "letter";
+    letter.textContent = `(${letters[j]})`;
+    const text = document.createElement("span");
+    text.textContent = option;
+    label.append(radio, letter, text);
+    options.appendChild(label);
+  });
+  article.appendChild(options);
+  const note = document.createElement("div");
+  note.className = "result-note";
+  note.id = `note-${i}`;
+  article.appendChild(note);
+  root.appendChild(article);
+});
+let remaining = 90 * 60;
+let submitted = false;
+const timerEl = document.getElementById("timer");
+function updateProgress() {
+  const count = document.querySelectorAll('input[type="radio"]:checked').length;
+  document.getElementById("progress").textContent = `Answered: ${count} / ${questions.length}`;
+}
+function renderTime() {
+  const min = Math.floor(remaining / 60).toString().padStart(2, "0");
+  const sec = (remaining % 60).toString().padStart(2, "0");
+  timerEl.textContent = `${min}:${sec}`;
+}
+renderTime();
+const clock = setInterval(() => {
+  if (submitted) return;
+  remaining--;
+  renderTime();
+  if (remaining <= 0) submitTest(true);
+}, 1000);
+function submitTest(auto = false) {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(clock);
+  let score = 0, attempted = 0;
+  questions.forEach((q, i) => {
+    const chosen = document.querySelector(`input[name="q${i}"]:checked`);
+    if (chosen) attempted++;
+    if (chosen && Number(chosen.value) === q[2]) score++;
+    const labels = document.querySelectorAll(`#question-${i+1} label.option`);
+    labels.forEach((label, j) => {
+      const radio = label.querySelector("input");
+      radio.disabled = true;
+      if (j === q[2]) label.classList.add("correct");
+      if (chosen && j === Number(chosen.value) && j !== q[2]) label.classList.add("wrong-selected");
+    });
+    const note = document.getElementById(`note-${i}`);
+    if (!chosen) note.textContent = `Not attempted. Correct answer: (${letters[q[2]]}) ${q[1][q[2]]}`;
+    else if (Number(chosen.value) === q[2]) note.textContent = "Correct.";
+    else note.textContent = `Incorrect. Correct answer: (${letters[q[2]]}) ${q[1][q[2]]}`;
+  });
+  document.getElementById("paper").classList.add("submitted");
+  document.getElementById("summary").textContent =
+    `${auto ? "Time is over. Test submitted automatically. " : "Test submitted. "}Score: ${score} / 100  |  Attempted: ${attempted} / 100  |  Incorrect: ${attempted-score}  |  Unattempted: ${100-attempted}`;
+  document.getElementById("submitBtn").disabled = true;
+  document.getElementById("progress").textContent = `Submitted · Attempted: ${attempted} / 100`;
+  document.getElementById("summary").scrollIntoView({behavior:"smooth", block:"center"});
+}
+document.getElementById("submitBtn").addEventListener("click", () => {
+  if (confirm("Are you sure you want to submit the test?")) submitTest(false);
+});
+document.getElementById("printBtn").addEventListener("click", () => window.print());
+</script>
+</body>
+</html>
