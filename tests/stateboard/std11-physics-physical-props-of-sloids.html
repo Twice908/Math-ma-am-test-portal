@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Physics — Mechanical Properties of Solids Test</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$'], ['\\(','\\)']] },
+    chtml: { fontURL: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2' }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --bg:#faf8f5;
+    --card:#ffffff;
+    --ink:#2b2620;
+    --sub:#6b6358;
+    --accent:#8a5a3f;
+    --accent-soft:#f1e4da;
+    --line:#e7ded3;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Georgia', 'Iowan Old Style', serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.55;
+    padding:24px 16px 60px;
+  }
+  .wrap{max-width:740px;margin:0 auto;}
+  header{border-bottom:2px solid var(--accent);padding-bottom:16px;margin-bottom:24px;}
+  header h1{font-size:1.5rem;margin:0 0 4px;letter-spacing:0.3px;}
+  header p{margin:0;color:var(--sub);font-size:0.92rem;}
+  .badge{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:0.72rem;padding:3px 10px;border-radius:20px;margin-top:8px;letter-spacing:0.3px;}
+  .testmeta{display:flex;justify-content:space-between;align-items:center;background:var(--accent-soft);padding:12px 16px;border-radius:8px;margin-bottom:20px;font-size:0.9rem;color:var(--sub);}
+  .instructions{background:#fffefc;border:1px solid var(--line);border-left:3px solid var(--accent);padding:12px 16px;margin-bottom:20px;color:var(--sub);font-size:0.9rem;}
+  .section-header{background:var(--accent);color:white;padding:12px 16px;border-radius:8px;margin-top:20px;margin-bottom:12px;font-weight:bold;font-size:0.95rem;letter-spacing:0.5px;}
+  .qcard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:16px;}
+  .qmeta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+  .qnum{font-weight:bold;color:var(--accent);font-size:0.95rem;}
+  .qtopic{font-size:0.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:0.5px;}
+  .qtext{font-size:1.02rem;margin-bottom:12px;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;}
+  .option{display:flex;align-items:flex-start;gap:8px;border:1px solid var(--line);border-radius:6px;padding:8px 10px;color:var(--ink);font-size:0.95rem;cursor:pointer;}
+  .option:hover{background:var(--accent-soft);}
+  .option input{margin-top:4px;accent-color:var(--accent);}
+  textarea{width:100%;min-height:70px;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-family:'Georgia',serif;font-size:0.95rem;resize:vertical;background:#fffefc;color:var(--ink);}
+  textarea:focus{outline:2px solid var(--accent-soft);border-color:var(--accent);}
+  .proverow textarea{min-height:110px;}
+  .footer-actions{position:sticky;bottom:0;background:linear-gradient(to top,var(--bg) 70%,transparent);padding:16px 0 4px;display:flex;gap:10px;justify-content:center;}
+  button{font-family:'Georgia',serif;font-size:0.95rem;padding:12px 24px;border-radius:8px;border:none;cursor:pointer;font-weight:bold;}
+  #submitBtn{background:var(--accent);color:white;}
+  #submitBtn:hover{background:#764a33;}
+  #resetBtn{background:transparent;color:var(--sub);border:1px solid var(--line);}
+  #resetBtn:hover{background:var(--accent-soft);}
+  #results{display:none;background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:20px;margin-top:20px;text-align:center;}
+  #results h2{margin-top:0;color:var(--accent);}
+  #results .score{font-size:1.6rem;font-weight:bold;color:var(--ink);}
+  #results p{color:var(--sub);font-size:0.9rem;}
+  #solutions{display:none;margin-top:32px;}
+  #solutions > h2{border-bottom:2px solid #4a7c59;color:#4a7c59;padding-bottom:10px;}
+  .solcard{background:#e9f2ea;border:1px solid #4a7c59;border-radius:10px;padding:18px 20px;margin-bottom:14px;}
+  .solcard .qtopic{color:#4a7c59;}
+  .soltext{font-size:0.95rem;}
+  .soltext p{margin:6px 0;}
+  @media (max-width:560px){.options{grid-template-columns:1fr;}.testmeta{align-items:flex-start;gap:8px;flex-direction:column;}}
+  .qtext ul{margin:6px 0 0;padding-left:20px;}
+  .blank{border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-family:inherit;font-size:0.95rem;width:100%;background:#fffefc;color:var(--ink);}
+  .blank:focus,select:focus{outline:2px solid var(--accent-soft);border-color:var(--accent);}
+  .matchrow{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+  .matchrow span{flex:1;}
+  select{font-family:inherit;font-size:0.95rem;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:#fffefc;color:var(--ink);min-width:200px;}
+  .ok{color:#4a7c59;font-weight:bold;} .bad{color:#a8403a;font-weight:bold;}
+  .scorebreak{font-size:0.95rem;color:var(--ink);margin:6px 0;}
+  .subq{margin:10px 0 4px;font-weight:bold;color:var(--accent);font-size:0.9rem;}
+  .choice{font-size:0.82rem;color:var(--sub);font-style:italic;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Physics — Mechanical Properties of Solids Test</h1>
+    <p>Elasticity · Stress and Strain · Moduli of Elasticity · Friction · MSBSHSE Std XI Science (Balbharati Chapter 6)</p>
+    <span class="badge">Use $g=9.8\,\text{m/s}^2$ unless stated otherwise</span>
+  </header>
+
+  <div class="testmeta">
+    <span><strong>Time:</strong> 1 hour 15 minutes</span>
+    <span><strong>Total Marks:</strong> 30</span>
+  </div>
+
+  <div class="instructions"><strong>Instructions:</strong> Q.1–Q.3 (10 marks) are scored automatically on submission. For Q.4–Q.7 write your answers and compare them with the worked solutions. In Q.5 attempt any 3, in Q.6 any 2, in Q.7.1 any 2 and in Q.7.2 any 1.</div>
+
+  <form id="testForm" onsubmit="return false">
+    <div class="section-header">Q.1 — Select the correct alternative · 4 marks</div>
+<div class="qcard"><div class="qmeta"><span class="qnum">A1</span><span class="qtopic">Dimensions</span></div><div class="qtext">The dimensional formula of Young’s modulus is:</div><div class="options"><label class="option"><input type="radio" name="a1" value="a"><span>(a) $[MLT^{-2}]$</span></label><label class="option"><input type="radio" name="a1" value="b"><span>(b) $[ML^{-1}T^{-2}]$</span></label><label class="option"><input type="radio" name="a1" value="c"><span>(c) $[ML^{2}T^{-2}]$</span></label><label class="option"><input type="radio" name="a1" value="d"><span>(d) $[M^{0}L^{0}T^{0}]$</span></label></div></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">A2</span><span class="qtopic">Elasticity</span></div><div class="qtext">Which of the following is more elastic?</div><div class="options"><label class="option"><input type="radio" name="a2" value="a"><span>(a) Rubber</span></label><label class="option"><input type="radio" name="a2" value="b"><span>(b) Plastic</span></label><label class="option"><input type="radio" name="a2" value="c"><span>(c) Steel</span></label><label class="option"><input type="radio" name="a2" value="d"><span>(d) Clay</span></label></div></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">A3</span><span class="qtopic">Poisson’s Ratio</span></div><div class="qtext">The ratio of lateral strain to longitudinal strain in magnitude is known as:</div><div class="options"><label class="option"><input type="radio" name="a3" value="a"><span>(a) Poisson’s ratio</span></label><label class="option"><input type="radio" name="a3" value="b"><span>(b) Young’s modulus</span></label><label class="option"><input type="radio" name="a3" value="c"><span>(c) Bulk modulus</span></label><label class="option"><input type="radio" name="a3" value="d"><span>(d) Modulus of rigidity</span></label></div></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">A4</span><span class="qtopic">Bulk Modulus</span></div><div class="qtext">The reciprocal of bulk modulus is called:</div><div class="options"><label class="option"><input type="radio" name="a4" value="a"><span>(a) Elasticity</span></label><label class="option"><input type="radio" name="a4" value="b"><span>(b) Rigidity</span></label><label class="option"><input type="radio" name="a4" value="c"><span>(c) Plasticity</span></label><label class="option"><input type="radio" name="a4" value="d"><span>(d) Compressibility</span></label></div></div>
+<div class="section-header">Q.2 — Fill in the blanks · 3 marks</div>
+<div class="qcard"><div class="qmeta"><span class="qnum">B1</span><span class="qtopic">Hooke’s Law</span></div><div class="qtext">Within the proportional limit, stress is directly proportional to ____________.</div><input type="text" class="blank" data-blank="b1" placeholder="Type your answer..." autocomplete="off"></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">B2</span><span class="qtopic">Units</span></div><div class="qtext">The SI unit of modulus of rigidity is ____________.</div><input type="text" class="blank" data-blank="b2" placeholder="Type your answer..." autocomplete="off"></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">B3</span><span class="qtopic">Strain Energy</span></div><div class="qtext">The energy stored in a body due to elastic deformation is called ____________.</div><input type="text" class="blank" data-blank="b3" placeholder="Type your answer..." autocomplete="off"></div>
+<div class="section-header">Q.3 — Match the pairs · 3 marks</div>
+<div class="qcard"><div class="qmeta"><span class="qnum">M1</span><span class="qtopic">Moduli of Elasticity</span></div><div class="qtext">Match each modulus in Group A with the strain it relates to in Group B.</div><div class="matchrow"><span>1. Young’s modulus</span><select data-match="m1"><option value="">— select —</option><option value="A">A. Shearing strain</option><option value="B">B. Longitudinal strain</option><option value="C">C. Volumetric strain</option></select></div><div class="matchrow"><span>2. Bulk modulus</span><select data-match="m2"><option value="">— select —</option><option value="A">A. Shearing strain</option><option value="B">B. Longitudinal strain</option><option value="C">C. Volumetric strain</option></select></div><div class="matchrow"><span>3. Modulus of rigidity</span><select data-match="m3"><option value="">— select —</option><option value="A">A. Shearing strain</option><option value="B">B. Longitudinal strain</option><option value="C">C. Volumetric strain</option></select></div></div>
+<div class="section-header">Q.4 — Answer in one sentence · 3 marks</div>
+<div class="qcard"><div class="qmeta"><span class="qnum">D1</span><span class="qtopic">Elastic Limit</span></div><div class="qtext">Define elastic limit.</div><textarea data-qid="d1" placeholder="Your answer..."></textarea></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">D2</span><span class="qtopic">Hardness</span></div><div class="qtext">What is meant by hardness of a material?</div><textarea data-qid="d2" placeholder="Your answer..."></textarea></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">D3</span><span class="qtopic">Friction</span></div><div class="qtext">Why is static friction called a self-adjusting force?</div><textarea data-qid="d3" placeholder="Your answer..."></textarea></div>
+<div class="section-header">Q.5 — Answer the following (any 3) · 6 marks</div>
+<div class="qcard"><div class="qmeta"><span class="qnum">E1</span><span class="qtopic">Elasticity</span></div><div class="qtext">Differentiate between elasticity and plasticity.</div><textarea data-qid="e1" placeholder="Your answer..."></textarea></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">E2</span><span class="qtopic">Hooke’s Law</span></div><div class="qtext">State and explain Hooke’s law.</div><textarea data-qid="e2" placeholder="Your answer..."></textarea></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">E3</span><span class="qtopic">Friction</span></div><div class="qtext">Explain the different types of friction.</div><textarea data-qid="e3" placeholder="Your answer..."></textarea></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">E4</span><span class="qtopic">Stress and Strain</span></div><div class="qtext">Define stress and strain. State their SI units, wherever applicable.</div><textarea data-qid="e4" placeholder="Your answer..."></textarea></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">E5</span><span class="qtopic">Friction</span></div><div class="qtext">State any two factors affecting the coefficient of friction.</div><textarea data-qid="e5" placeholder="Your answer..."></textarea></div>
+<div class="section-header">Q.6 — Answer in detail (any 2) · 6 marks</div>
+<div class="qcard"><div class="qmeta"><span class="qnum">F1</span><span class="qtopic">Stress–Strain Curve</span></div><div class="qtext">Draw a neat, labelled stress–strain curve for a ductile material and explain its different regions. (Describe the curve in words.)</div><textarea style="min-height:130px" data-qid="f1" placeholder="Your answer..."></textarea></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">F2</span><span class="qtopic">Moduli</span></div><div class="qtext">Differentiate between Young’s modulus, bulk modulus and modulus of rigidity.</div><textarea style="min-height:130px" data-qid="f2" placeholder="Your answer..."></textarea></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">F3</span><span class="qtopic">Strain Energy</span></div><div class="qtext">Derive an expression for the elastic potential energy stored in a stretched wire. Also obtain the expression for strain energy per unit volume.</div><textarea style="min-height:130px" data-qid="f3" placeholder="Your answer..."></textarea></div>
+<div class="section-header">Q.7 — Numericals · 5 marks</div>
+<div class="instructions"><strong>7.1</strong> Attempt any two (2 × 1 = 2 marks). <strong>7.2</strong> Attempt any one (3 marks). Use $g=9.8\,\text{m/s}^2$.</div>
+<div class="qcard"><div class="qmeta"><span class="qnum">G1</span><span class="qtopic">Longitudinal Strain</span></div><div class="qtext"><strong>7.1 (a)</strong> A rubber band of initial length 30 cm stretches to 32 cm under an applied load. Determine the longitudinal strain.</div><textarea style="min-height:110px" data-qid="g1" placeholder="Show your working..."></textarea></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">G2</span><span class="qtopic">Strain</span></div><div class="qtext"><strong>7.1 (b)</strong> A cable of length 50 m undergoes an elongation of 2.5 cm. Calculate the strain developed in the cable.</div><textarea style="min-height:110px" data-qid="g2" placeholder="Show your working..."></textarea></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">G3</span><span class="qtopic">Stress</span></div><div class="qtext"><strong>7.1 (c)</strong> A wire of cross-sectional area $0.01\,\text{cm}^2$ supports a mass of 100 kg. Determine the stress developed in the wire. ($g=9.8\,\text{m/s}^2$)</div><textarea style="min-height:110px" data-qid="g3" placeholder="Show your working..."></textarea></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">H1</span><span class="qtopic">Young’s Modulus</span></div><div class="qtext"><strong>7.2 (a)</strong> A telephone wire has an original length of 125 m and a radius of 1 mm. When subjected to a force of 800 N, its length becomes 125.25 m. Calculate Young’s modulus of the material.</div><textarea style="min-height:110px" data-qid="h1" placeholder="Show your working..."></textarea></div>
+<div class="qcard"><div class="qmeta"><span class="qnum">H2</span><span class="qtopic">Bulk Modulus</span></div><div class="qtext"><strong>7.2 (b) — OR —</strong> A metallic sphere of volume $0.31\,\text{m}^3$ is subjected to an increase in pressure of $2\times10^{7}\,\text{N/m}^2$. Determine the decrease in its volume if the bulk modulus of the metal is $6.1\times10^{10}\,\text{N/m}^2$.</div><textarea style="min-height:110px" data-qid="h2" placeholder="Show your working..."></textarea></div>
+  </form>
+
+  <div class="footer-actions">
+    <button id="submitBtn" type="button">Submit Test</button>
+    <button id="resetBtn" type="button">Reset</button>
+  </div>
+
+  <div id="results"><h2>Test Submitted</h2><div class="score" id="scoreDisplay"></div><div id="scoreDetail"></div><p>Your responses have been saved. Scroll down to review the answer key and worked solutions for the written questions.</p></div>
+
+  <div id="solutions">
+    <h2>Answer Key &amp; Worked Solutions</h2>
+    <div class="solcard"><div class="qmeta"><span class="qnum">Q1.1</span><span class="qtopic">Dimensions</span></div><div class="soltext"><p>$Y=\dfrac{F/A}{\Delta L/L}$ has the dimensions of pressure: $\dfrac{[MLT^{-2}]}{[L^2]}=[ML^{-1}T^{-2}]$. <strong>Answer: (b)</strong></p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q1.2</span><span class="qtopic">Elasticity</span></div><div class="soltext"><p>Steel has the highest Young’s modulus of the four, so it is the most elastic (it opposes deformation most strongly and recovers fully). <strong>Answer: (c)</strong></p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q1.3</span><span class="qtopic">Poisson’s Ratio</span></div><div class="soltext"><p>$\sigma=\dfrac{\text{lateral strain}}{\text{longitudinal strain}}$. <strong>Answer: (a)</strong></p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q1.4</span><span class="qtopic">Compressibility</span></div><div class="soltext"><p>$K=-\dfrac{\Delta P}{\Delta V/V}$; its reciprocal $\dfrac1K$ is the compressibility. <strong>Answer: (d)</strong></p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q2</span><span class="qtopic">Fill in the blanks</span></div><div class="soltext"><p>1. <strong>strain</strong> (Hooke’s law: stress ∝ strain). 2. <strong>N/m² (pascal)</strong>. 3. <strong>strain energy (elastic potential energy)</strong>.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q3</span><span class="qtopic">Match the pairs</span></div><div class="soltext"><p>1 → B (Young’s modulus: longitudinal strain); 2 → C (bulk modulus: volumetric strain); 3 → A (modulus of rigidity: shearing strain).</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q4.1</span><span class="qtopic">Elastic Limit</span></div><div class="soltext"><p>The elastic limit is the maximum stress up to which a body completely regains its original shape and size on removal of the deforming force.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q4.2</span><span class="qtopic">Hardness</span></div><div class="soltext"><p>Hardness is the ability of a material to resist scratching, indentation or abrasion on its surface.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q4.3</span><span class="qtopic">Friction</span></div><div class="soltext"><p>Static friction adjusts its magnitude to equal the applied force, up to a maximum (limiting) value $f_s\le\mu_sN$; hence it is self-adjusting.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q5.1</span><span class="qtopic">Elasticity vs Plasticity</span></div><div class="soltext"><p><strong>Elasticity:</strong> property by which a body regains its original shape/size after the deforming force is removed (e.g. steel, spring). <strong>Plasticity:</strong> property by which a body does not regain its original shape and stays permanently deformed (e.g. clay, putty).</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q5.2</span><span class="qtopic">Hooke’s Law</span></div><div class="soltext"><p>Within the elastic limit, stress is directly proportional to strain: $\text{stress}\propto\text{strain}$, i.e. $\text{stress}=E\times\text{strain}$, where $E$ is the modulus of elasticity, a constant of the material. For a wire, $F/A=Y\,\Delta L/L$.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q5.3</span><span class="qtopic">Types of Friction</span></div><div class="soltext"><p><strong>Static:</strong> acts between surfaces at rest relative to each other; self-adjusting, with maximum value $\mu_sN$. <strong>Kinetic (sliding):</strong> acts when surfaces slide; $f_k=\mu_kN$, with $\mu_k<\mu_s$. <strong>Rolling:</strong> acts when a body rolls over a surface; much smaller than sliding friction.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q5.4</span><span class="qtopic">Stress and Strain</span></div><div class="soltext"><p><strong>Stress</strong> = restoring force per unit area = $F/A$; SI unit N/m² (Pa). <strong>Strain</strong> = fractional change in dimension (e.g. $\Delta L/L$, $\Delta V/V$); it is a ratio and has <strong>no unit</strong>.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q5.5</span><span class="qtopic">Coefficient of Friction</span></div><div class="soltext"><p>It depends on (i) the nature (material and roughness) of the two surfaces in contact, and (ii) their condition — e.g. lubrication, cleanliness, temperature. It does not depend on the area of contact or on the normal reaction.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q6.1</span><span class="qtopic">Stress–Strain Curve</span></div><div class="soltext"><p>Plot stress (y-axis) against strain (x-axis).</p><p><strong>OA:</strong> straight line — proportional region; Hooke’s law holds, A is the proportional limit. <strong>AB:</strong> stress and strain no longer proportional but the wire still returns to its original length; B is the elastic limit (yield point). <strong>BC:</strong> beyond B there is permanent (plastic) deformation; the wire does not recover. <strong>CD:</strong> the material yields with a large strain for little increase in stress; D is the ultimate tensile strength (maximum stress). <strong>DE:</strong> the wire thins at a neck and breaks at E (fracture/breaking point).</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q6.2</span><span class="qtopic">Moduli</span></div><div class="soltext"><p><strong>Young’s modulus</strong> $Y=\dfrac{F/A}{\Delta L/L}$: tensile/compressive stress ÷ longitudinal strain; solids only. <strong>Bulk modulus</strong> $K=\dfrac{-\Delta P}{\Delta V/V}$: volume stress ÷ volumetric strain; solids, liquids and gases. <strong>Modulus of rigidity</strong> $\eta=\dfrac{F/A}{\theta}$: shear stress ÷ shear strain; solids only. All have SI unit N/m² and dimensions $[ML^{-1}T^{-2}]$.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q6.3</span><span class="qtopic">Strain Energy</span></div><div class="soltext"><p>Let a wire (length $L$, area $A$) be stretched by $l$. Force at extension $x$: $F=\dfrac{YA}{L}x$. Work done for a small extension $dx$: $dW=F\,dx$.</p><p>$W=\displaystyle\int_0^{l}\dfrac{YA}{L}x\,dx=\dfrac{YA\,l^2}{2L}=\dfrac12\,F\,l$.</p><p>So the elastic potential energy $U=\tfrac12 Fl$. Volume $=AL$, so energy per unit volume $=\dfrac{\tfrac12Fl}{AL}=\tfrac12\,\dfrac FA\cdot\dfrac lL=\tfrac12\times\text{stress}\times\text{strain}=\dfrac{Y}{2}(\text{strain})^2$.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q7.1 (a)</span><span class="qtopic">Longitudinal Strain</span></div><div class="soltext"><p>$\Delta L=32-30=2\,\text{cm}$. Strain $=\dfrac{2}{30}=\dfrac1{15}\approx0.067$.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q7.1 (b)</span><span class="qtopic">Strain</span></div><div class="soltext"><p>Strain $=\dfrac{\Delta L}{L}=\dfrac{0.025}{50}=5\times10^{-4}$.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q7.1 (c)</span><span class="qtopic">Stress</span></div><div class="soltext"><p>$F=mg=100\times9.8=980\,\text{N}$; $A=0.01\,\text{cm}^2=10^{-6}\,\text{m}^2$. Stress $=\dfrac{980}{10^{-6}}=9.8\times10^{8}\,\text{N/m}^2$.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q7.2 (a)</span><span class="qtopic">Young’s Modulus</span></div><div class="soltext"><p>$A=\pi r^2=3.142\times10^{-6}\,\text{m}^2$; $\Delta L=0.25\,\text{m}$.</p><p>$Y=\dfrac{FL}{A\,\Delta L}=\dfrac{800\times125}{3.142\times10^{-6}\times0.25}\approx1.27\times10^{11}\,\text{N/m}^2$.</p></div></div>
+<div class="solcard"><div class="qmeta"><span class="qnum">Q7.2 (b)</span><span class="qtopic">Bulk Modulus</span></div><div class="soltext"><p>$K=\dfrac{\Delta P\,V}{\Delta V}\Rightarrow\Delta V=\dfrac{\Delta P\,V}{K}=\dfrac{2\times10^{7}\times0.31}{6.1\times10^{10}}\approx1.02\times10^{-4}\,\text{m}^3$.</p></div></div>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'physics-std11-mechanical-properties-of-solids-v1';
+const mcqKey = {a1:'b', a2:'c', a3:'a', a4:'d'};
+const matchKey = {m1:'B', m2:'C', m3:'A'};
+const blankKey = {
+  b1:['strain'],
+  b2:['n/m2','n/m²','n m-2','nm-2','n/m^2','pa','pascal','pascals','newton per square metre','newton/m2','newton per square meter'],
+  b3:['strain energy','elastic potential energy','elastic energy','elastic strain energy','potential energy']
+};
+const norm = s => s.toLowerCase().replace(/\s+/g,' ').replace(/[.]/g,'').trim();
+const $$ = sel => document.querySelectorAll(sel);
+
+async function saveAnswers(){
+  const data = {};
+  $$('textarea[data-qid]').forEach(t => { data[t.dataset.qid] = t.value; });
+  $$('input[data-blank]').forEach(i => { data[i.dataset.blank] = i.value; });
+  $$('select[data-match]').forEach(s => { data[s.dataset.match] = s.value; });
+  $$('input[type="radio"]:checked').forEach(i => { data[i.name] = i.value; });
+  try{ await window.storage.set(STORAGE_KEY, JSON.stringify(data)); }catch(e){}
+  return data;
+}
+
+async function loadSaved(){
+  try{
+    const r = await window.storage.get(STORAGE_KEY);
+    if(r && r.value){
+      const d = JSON.parse(r.value);
+      $$('textarea[data-qid]').forEach(t => { if(d[t.dataset.qid]) t.value = d[t.dataset.qid]; });
+      $$('input[data-blank]').forEach(i => { if(d[i.dataset.blank]) i.value = d[i.dataset.blank]; });
+      $$('select[data-match]').forEach(s => { if(d[s.dataset.match]) s.value = d[s.dataset.match]; });
+      Object.keys(mcqKey).forEach(k => {
+        const i = document.querySelector('input[name="'+k+'"][value="'+d[k]+'"]'); if(i) i.checked = true;
+      });
+    }
+  }catch(e){}
+}
+
+function mark(el, ok){
+  el.querySelectorAll('.verdict').forEach(v => v.remove());
+  const v = document.createElement('div');
+  v.className = 'verdict ' + (ok ? 'ok' : 'bad');
+  v.textContent = ok ? '✓ Correct' : '✗ Incorrect';
+  el.appendChild(v);
+}
+
+document.getElementById('submitBtn').addEventListener('click', async () => {
+  const d = await saveAnswers();
+  let mcq = 0, blanks = 0, match = 0;
+  Object.keys(mcqKey).forEach(k => {
+    const ok = d[k] === mcqKey[k]; if(ok) mcq++;
+    mark(document.querySelector('input[name="'+k+'"]').closest('.qcard'), ok);
+  });
+  Object.keys(blankKey).forEach(k => {
+    const ok = blankKey[k].includes(norm(d[k] || '')); if(ok) blanks++;
+    mark(document.querySelector('input[data-blank="'+k+'"]').closest('.qcard'), ok);
+  });
+  Object.keys(matchKey).forEach(k => {
+    const ok = d[k] === matchKey[k]; if(ok) match++;
+    const row = document.querySelector('select[data-match="'+k+'"]').closest('.matchrow');
+    row.querySelectorAll('.verdict').forEach(v => v.remove());
+    const v = document.createElement('span');
+    v.className = 'verdict ' + (ok ? 'ok' : 'bad');
+    v.style.flex = '0 0 auto';
+    v.textContent = ok ? '✓' : '✗ (' + matchKey[k] + ')';
+    row.appendChild(v);
+  });
+  const total = mcq + blanks + match;
+  document.getElementById('scoreDisplay').textContent = total + ' / 10 (auto-scored)';
+  document.getElementById('scoreDetail').innerHTML =
+    '<div class="scorebreak">Q.1 MCQ: <strong>' + mcq + ' / 4</strong> · Q.2 Fill in the blanks: <strong>' + blanks + ' / 3</strong> · Q.3 Match the pairs: <strong>' + match + ' / 3</strong></div>' +
+    '<div class="scorebreak">Q.4–Q.7 (20 marks) are written answers — compare with the worked solutions below.</div>';
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('solutions').style.display = 'block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+  if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise();
+});
+
+document.getElementById('resetBtn').addEventListener('click', async () => {
+  $$('textarea[data-qid], input[data-blank]').forEach(t => { t.value = ''; });
+  $$('select[data-match]').forEach(s => { s.value = ''; });
+  $$('input[type="radio"]').forEach(i => { i.checked = false; });
+  $$('.verdict').forEach(v => v.remove());
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('solutions').style.display = 'none';
+  try{ await window.storage.delete(STORAGE_KEY); }catch(e){}
+});
+
+let saveTimer;
+$$('textarea[data-qid], input[data-blank], select[data-match], input[type="radio"]').forEach(c => {
+  c.addEventListener('input', () => { clearTimeout(saveTimer); saveTimer = setTimeout(saveAnswers, 800); });
+});
+loadSaved();
+</script>
+</body>
+</html>
